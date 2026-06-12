@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光的反射·折射·透镜模拟器 - 物理解码者</title>
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+.mode-tabs { display:flex;gap:6px;padding:12px 16px;background:#fafafa;border-bottom:1px solid #eee; }
+body.night-mode .mode-tabs { background:#111128;border-bottom-color:#222; }
+.mode-tabs button { padding:8px 18px;border:none;border-radius:8px;cursor:pointer;font-size:0.85em;background:#e0e0e0;transition:all 0.2s;font-weight:600; }
+.mode-tabs button:hover { transform:translateY(-1px); }
+.mode-tabs button.active { background:#1a237e;color:#fff; }
+body.night-mode .mode-tabs button { background:#333;color:#e0e0e0; }
+body.night-mode .mode-tabs button.active { background:#5c6bc0; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='../index.html'">← 镜海迷踪</button>
+  <span class="chapter-title">🔬 光的反射·折射·透镜模拟器</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="sim-container" style="max-width:800px;margin:0 auto;padding:20px;">
+  
+  <div class="canvas-container" style="border-radius:12px;">
+    <div class="mode-tabs">
+      <button id="modeReflect" class="active">🪞 反射</button>
+      <button id="modeRefract">💧 折射</button>
+      <button id="modeLens">🔍 透镜</button>
+    </div>
+    <canvas id="lightCanvas" style="height:380px;"></canvas>
+    <div class="controls" id="controls">
+      <label>入射角：<input type="range" id="angleSlider" min="0" max="85" value="45" step="1"> <span id="angleVal">45°</span></label>
+      <button id="resetLight">🔄 重置</button>
+    </div>
+    <div class="legend" id="legendReflect">🔴 入射光 &nbsp;&nbsp;🔵 反射光 &nbsp;&nbsp;⚪ 法线</div>
+  </div>
+
+  <div style="padding:16px;background:#e8f5e9;border-radius:12px;margin:16px 0;">
+    <p class="no-indent" style="margin:0;font-size:0.9em;">
+      <strong>💡 操作说明</strong><br>
+      🪞 <strong>反射模式</strong>：调节入射角，观察反射角始终等于入射角<br>
+      💧 <strong>折射模式</strong>：光从空气射入水中，观察折射角小于入射角<br>
+      🔍 <strong>透镜模式</strong>：平行光通过凸透镜会聚于焦点，通过凹透镜发散
+    </p>
+  </div>
+</div>
+
+<script src="../../../scripts/reader.js"></script>
+<script>
+(function() {
+  const canvas = document.getElementById('lightCanvas');
+  const ctx = canvas.getContext('2d');
+  const angleSlider = document.getElementById('angleSlider');
+  const angleVal = document.getElementById('angleVal');
+  const resetBtn = document.getElementById('resetLight');
+  const legendReflect = document.getElementById('legendReflect');
+
+  let mode = 'reflect'; // reflect, refract, lens
+  let animId;
+
+  function setup() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width || 760;
+    const h = 380;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.scale(dpr, dpr);
+    return { w, h };
+  }
+
+  function drawReflect(w, h) {
+    const cx = w / 2;
+    const cy = h / 2;
+    const mirrorY = cy;
+    const angle = parseFloat(angleSlider.value) * Math.PI / 180;
+    const rayLen = Math.min(w * 0.38, 280);
+
+    // Background
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, 0, w, h);
+
+    // Mirror
+    ctx.strokeStyle = '#5c6bc0'; ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(20, mirrorY); ctx.lineTo(w - 20, mirrorY);
+    const hashes = 12;
+    for (let i = 0; i <= hashes; i++) {
+      const x = 20 + (w - 40) * i / hashes;
+      ctx.moveTo(x, mirrorY - 8); ctx.lineTo(x, mirrorY + 8);
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#5c6bc0'; ctx.font = '12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('镜面', w - 70, mirrorY + 12);
+
+    // Normal line (dashed)
+    ctx.setLineDash([6, 6]);
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx, 20); ctx.lineTo(cx, h - 20); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.textAlign = 'center';
+    ctx.fillText('法线', cx, 6);
+
+    // Incident ray (from top-left to mirror center)
+    const incAngle = Math.PI/2 - angle;
+    const incEndX = cx;
+    const incEndY = mirrorY;
+    const incStartX = cx - Math.cos(incAngle) * rayLen;
+    const incStartY = mirrorY - Math.sin(incAngle) * rayLen;
+
+    ctx.strokeStyle = '#ef5350'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(incStartX, incStartY); ctx.lineTo(incEndX, incEndY); ctx.stroke();
+
+    // Arrow on incident ray
+    const arrowMid = 0.6;
+    const amx = incStartX + (incEndX - incStartX) * arrowMid;
+    const amy = incStartY + (incEndY - incStartY) * arrowMid;
+    ctx.fillStyle = '#ef5350';
+    ctx.beginPath();
+    ctx.moveTo(amx, amy);
+    ctx.lineTo(amx + 6, amy + 3);
+    ctx.lineTo(amx + 6, amy - 3);
+    ctx.closePath(); ctx.fill();
+
+    // Reflected ray (from mirror to top-right)
+    const refEndX = cx + Math.cos(incAngle) * rayLen;
+    const refEndY = mirrorY - Math.sin(incAngle) * rayLen;
+
+    ctx.strokeStyle = '#42a5f5'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(cx, mirrorY); ctx.lineTo(refEndX, refEndY); ctx.stroke();
+
+    // Arrow on reflected ray
+    const rmX = cx + (refEndX - cx) * 0.4;
+    const rmY = mirrorY + (refEndY - mirrorY) * 0.4;
+    ctx.fillStyle = '#42a5f5';
+    ctx.beginPath();
+    ctx.moveTo(rmX, rmY);
+    ctx.lineTo(rmX - 6, rmY + 3);
+    ctx.lineTo(rmX - 6, rmY - 3);
+    ctx.closePath(); ctx.fill();
+
+    // Arc for angle
+    const arcR = 50;
+    ctx.strokeStyle = 'rgba(255,255,200,0.5)'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(cx, mirrorY, arcR, Math.PI/2 - angle, Math.PI/2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx, mirrorY, arcR, Math.PI/2, Math.PI/2 + angle);
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(255,255,200,0.7)';
+    ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.fillText(`θ₁ = ${angleSlider.value}°`, cx - arcR/2 - 10, mirrorY - 6);
+    ctx.fillText(`θ₂ = ${angleSlider.value}°`, cx + arcR/2 + 10, mirrorY - 6);
+
+    // Labels
+    ctx.fillStyle = '#ef5350'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText('入射光', incStartX - 10, incStartY - 6);
+    ctx.fillStyle = '#42a5f5'; ctx.textAlign = 'right';
+    ctx.fillText('反射光', refEndX + 10, refEndY - 6);
+
+    // Info
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText(`入射角 = ${angleSlider.value}°   反射角 = ${angleSlider.value}°`, 12, h - 12);
+    ctx.fillStyle = 'rgba(255,255,200,0.6)';
+    ctx.fillText('✅ 反射角 = 入射角 — 反射定律成立！', w/2, h - 12);
+    ctx.textAlign = 'center';
+  }
+
+  function drawRefract(w, h) {
+    const cx = w / 2;
+    const cy = h / 2;
+    const surfaceY = cy;
+    const angle = parseFloat(angleSlider.value) * Math.PI / 180;
+    const rayLen = Math.min(w * 0.33, 240);
+
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, 0, w, h);
+
+    // Air (top) / Water (bottom)
+    ctx.fillStyle = 'rgba(13,71,161,0.15)';
+    ctx.fillRect(0, surfaceY, w, h - surfaceY);
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('💨 空气', 50, surfaceY - 14);
+    ctx.fillText('💧 水', 50, surfaceY + 26);
+
+    // Surface
+    ctx.strokeStyle = '#42a5f5'; ctx.lineWidth = 2;
+    ctx.setLineDash([8, 6]);
+    ctx.beginPath(); ctx.moveTo(20, surfaceY); ctx.lineTo(w - 20, surfaceY); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Normal
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx, 10); ctx.lineTo(cx, h - 10); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Incident ray (air → surface)
+    const incAngle = Math.PI/2 - angle;
+    const incStartX = cx - Math.cos(incAngle) * rayLen;
+    const incStartY = surfaceY - Math.sin(incAngle) * rayLen;
+
+    ctx.strokeStyle = '#ef5350'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(incStartX, incStartY); ctx.lineTo(cx, surfaceY); ctx.stroke();
+
+    // Refracted ray (surface → water)
+    const n1 = 1.0, n2 = 1.33; // air, water
+    const refrAngle = Math.asin(Math.min(1, n1 * Math.sin(angle) / n2));
+    const refrEndX = cx + Math.sin(refrAngle) * rayLen;
+    const refrEndY = surfaceY + Math.cos(refrAngle) * rayLen;
+
+    ctx.strokeStyle = '#66bb6a'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(cx, surfaceY); ctx.lineTo(refrEndX, refrEndY); ctx.stroke();
+
+    // Arcs for angles
+    const arcR = 45;
+    ctx.strokeStyle = 'rgba(255,255,200,0.4)'; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.arc(cx, surfaceY, arcR, Math.PI/2 - angle, Math.PI/2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx, surfaceY, arcR, Math.PI/2, Math.PI/2 + refrAngle);
+    ctx.stroke();
+
+    const deg1 = Math.round(angle * 180 / Math.PI);
+    const deg2 = Math.round(refrAngle * 180 / Math.PI);
+
+    ctx.fillStyle = 'rgba(255,255,200,0.7)';
+    ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(`入射角 ${deg1}°`, cx - arcR/2 - 15, surfaceY - 8);
+    ctx.fillText(`折射角 ${deg2}°`, cx + arcR/2 + 15, surfaceY + 22);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '13px sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText(`入射角 = ${deg1}°   折射角 = ${deg2}°`, 12, h - 12);
+    ctx.fillStyle = 'rgba(255,255,200,0.6)';
+    ctx.textAlign = 'center';
+    ctx.fillText(`✅ 光从空气→水：折射角 < 入射角`, w/2, h - 12);
+  }
+
+  function drawLens(w, h) {
+    const cx = w / 2;
+    const cy = h / 2;
+    const lensType = document.querySelector('#modeLens.active') ? 'convex' : 'convex';
+    // We'll toggle between convex and concave
+    const isConvex = document.querySelector('#modeLens.active') ? true : true;
+
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, 0, w, h);
+
+    // Draw rays
+    const rayCount = 7;
+    const startY = 50;
+    const endY = h - 50;
+    const step = (endY - startY) / (rayCount - 1);
+
+    // Lens position
+    const lensX = cx;
+
+    // Draw lens
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 3;
+    if (isConvex) {
+      ctx.beginPath();
+      ctx.arc(lensX - 90, cy, 150, -Math.PI/3, Math.PI/3);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(lensX + 90, cy, 150, Math.PI*2/3, Math.PI*4/3);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      ctx.beginPath();
+      ctx.arc(lensX - 90, cy, 150, -Math.PI/3, Math.PI/3);
+      ctx.lineTo(lensX + 90 + 150*Math.cos(Math.PI*2/3), cy + 150*Math.sin(Math.PI*2/3));
+      // simpler: just draw two arcs
+      ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.arc(lensX + 90, cy, 150, Math.PI*2/3, Math.PI*4/3);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(lensX - 90, cy, 150, -Math.PI/3, Math.PI/3);
+      ctx.stroke();
+    }
+
+    // Redraw clean
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, 0, w, h);
+
+    // Lens shape
+    const lensW = 20;
+    const lensH = h - 80;
+    // Convex lens shape (oval)
+    if (isConvex) {
+      ctx.fillStyle = 'rgba(100,181,246,0.15)';
+      ctx.strokeStyle = 'rgba(100,181,246,0.6)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(lensX, cy, lensW, lensH/2, 0, 0, Math.PI*2);
+      ctx.fill(); ctx.stroke();
+    } else {
+      // Concave lens
+      ctx.fillStyle = 'rgba(239,83,80,0.12)';
+      ctx.strokeStyle = 'rgba(239,83,80,0.5)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(lensX, cy, lensW/2, lensH/2, 0, 0, Math.PI*2);
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#0a0a1a';
+      ctx.beginPath();
+      ctx.ellipse(lensX, cy, lensW/3, lensH/2 - 5, 0, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // Label
+    ctx.fillStyle = '#64b5f6'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(isConvex ? '凸透镜' : '凹透镜', lensX, cy + lensH/2 + 24);
+
+    // Focal point
+    const f = 100;
+    ctx.fillStyle = '#ffd54f';
+    ctx.beginPath(); ctx.arc(lensX + f, cy, 5, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,213,79,0.5)'; ctx.font = '11px sans-serif';
+    ctx.fillText('F', lensX + f + 12, cy + 4);
+    ctx.beginPath(); ctx.arc(lensX - f, cy, 5, 0, Math.PI*2); ctx.fill();
+    ctx.fillText('F', lensX - f - 12, cy + 4);
+
+    // Axis
+    ctx.setLineDash([4,4]);
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(w - 20, cy); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Parallel rays
+    const rayStep = (h - 120) / (rayCount - 1);
+    for (let i = 0; i < rayCount; i++) {
+      const ry = 60 + i * rayStep;
+      const offset = ry - cy;
+
+      // Left side (incoming parallel rays)
+      ctx.strokeStyle = 'rgba(255,200,50,0.6)'; ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(20, ry);
+      ctx.lineTo(lensX - 5, ry);
+      ctx.stroke();
+
+      if (isConvex) {
+        // Right side (converging to focus)
+        const targetX = lensX + f;
+        const targetY = cy;
+        // Calculate exit direction
+        const dx = targetX - lensX;
+        const dy = targetY - ry;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        const nx = dx / dist;
+        const ny = dy / dist;
+        const exitLen = Math.min(350, Math.abs((w - lensX) / (nx || 0.01)));
+        
+        ctx.strokeStyle = 'rgba(255,200,50,0.7)'; ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(lensX + 5, ry);
+        ctx.lineTo(lensX + 5 + nx * exitLen, ry + ny * exitLen);
+        ctx.stroke();
+      } else {
+        // Concave: diverging
+        const spread = offset * 0.6;
+        ctx.strokeStyle = 'rgba(255,200,50,0.6)'; ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(lensX + 5, ry);
+        ctx.lineTo(w - 10, ry + spread);
+        ctx.stroke();
+
+        // Dashed extension back to virtual focus
+        ctx.setLineDash([4,4]);
+        ctx.strokeStyle = 'rgba(255,200,50,0.2)';
+        ctx.beginPath();
+        ctx.moveTo(w - 10, ry + spread);
+        ctx.lineTo(lensX + 5 + (w - lensX - 15) * 1.5, ry + spread * 1.5);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+
+    // Toggle button
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.font = '12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('平行光通过凸透镜 → 会聚于焦点', 12, 10);
+    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+    ctx.fillText('点击下方按钮切换凹凸透镜', 12, 28);
+
+    // Check which mode we're actually in from the button state
+    const isConcaveMode = document.getElementById('modeConcave') && 
+                           document.getElementById('modeConcave').classList.contains('active');
+    if (isConcaveMode) {
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.fillText('平行光通过凹透镜 → 发散', 12, 10);
+    }
+  }
+
+  function draw() {
+    const { w, h } = setup();
+    ctx.clearRect(0, 0, w, h);
+    
+    if (mode === 'reflect') drawReflect(w, h);
+    else if (mode === 'refract') drawRefract(w, h);
+    else drawLens(w, h);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  // Controls
+  function setMode(m) {
+    mode = m;
+    document.querySelectorAll('.mode-tabs button').forEach(b => b.classList.remove('active'));
+    document.getElementById('mode' + m.charAt(0).toUpperCase() + m.slice(1)).classList.add('active');
+    
+    // Show/hide angle slider
+    const controls = document.getElementById('controls');
+    const legend = document.querySelector('.legend');
+    if (m === 'lens') {
+      controls.style.display = 'none';
+      legend.innerHTML = '🟡 平行光线 &nbsp;&nbsp;🔵 透镜 &nbsp;&nbsp;⭐ 焦点 F';
+    } else {
+      controls.style.display = '';
+      legend.innerHTML = '🔴 入射光 &nbsp;&nbsp;🔵 反射光/折射光 &nbsp;&nbsp;⚪ 法线/界面';
+    }
+    cancelAnimationFrame(animId);
+    draw();
+
+    // For lens mode, add concave toggle
+    if (m === 'lens') {
+      const ctrls = document.querySelector('.controls');
+      ctrls.style.display = '';
+      ctrls.innerHTML = `
+        <button id="modeConvex" class="active" style="padding:6px 16px;border:none;border-radius:6px;cursor:pointer;font-size:0.85em;background:#1a237e;color:#fff;">凸透镜</button>
+        <button id="modeConcave" style="padding:6px 16px;border:none;border-radius:6px;cursor:pointer;font-size:0.85em;background:#e0e0e0;">凹透镜</button>
+        <button id="resetLens" style="padding:6px 16px;border:none;border-radius:6px;cursor:pointer;font-size:0.85em;background:#e0e0e0;">🔄 重置</button>
+      `;
+      document.getElementById('modeConvex').addEventListener('click', function() {
+        this.style.background = '#1a237e'; this.style.color = '#fff';
+        document.getElementById('modeConcave').style.background = '#e0e0e0'; document.getElementById('modeConcave').style.color = '#333';
+        cancelAnimationFrame(animId); draw();
+      });
+      document.getElementById('modeConcave').addEventListener('click', function() {
+        this.style.background = '#1a237e'; this.style.color = '#fff';
+        document.getElementById('modeConvex').style.background = '#e0e0e0'; document.getElementById('modeConvex').style.color = '#333';
+        cancelAnimationFrame(animId); draw();
+      });
+      document.getElementById('resetLens').addEventListener('click', function() {
+        cancelAnimationFrame(animId); draw();
+      });
+    } else {
+      const ctrls = document.querySelector('.controls');
+      ctrls.innerHTML = `
+        <label>入射角：<input type="range" id="angleSlider" min="0" max="85" value="45" step="1"> <span id="angleVal">45°</span></label>
+        <button id="resetLight">🔄 重置</button>
+      `;
+      document.getElementById('angleSlider').addEventListener('input', function() {
+        document.getElementById('angleVal').textContent = this.value + '°';
+        cancelAnimationFrame(animId); draw();
+      });
+      document.getElementById('resetLight').addEventListener('click', function() {
+        document.getElementById('angleSlider').value = '45';
+        document.getElementById('angleVal').textContent = '45°';
+        cancelAnimationFrame(animId); draw();
+      });
+    }
+  }
+
+  // Mode buttons
+  document.getElementById('modeReflect').addEventListener('click', function() { setMode('reflect'); });
+  document.getElementById('modeRefract').addEventListener('click', function() { setMode('refract'); });
+  document.getElementById('modeLens').addEventListener('click', function() { setMode('lens'); });
+
+  // Initial angle listener
+  angleSlider.addEventListener('input', function() {
+    angleVal.textContent = this.value + '°';
+  });
+  resetBtn.addEventListener('click', function() {
+    angleSlider.value = '45';
+    angleVal.textContent = '45°';
+  });
+
+  draw();
+})();
+</script>
+
+</body>
+</html>

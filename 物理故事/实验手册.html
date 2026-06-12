@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实验手册 - 物理解码者</title>
+<link rel="stylesheet" href="styles/main.css">
+<style>
+.exp-section { margin-bottom: 40px; }
+.exp-section h2 { font-size:1.3em; border-left:4px solid #4caf50; padding-left:12px; }
+.exp-card { background:#fff; border-radius:12px; padding:20px; margin:16px 0; box-shadow:0 1px 8px rgba(0,0,0,0.06); page-break-inside:avoid; }
+body.night-mode .exp-card { background:#16213e; }
+.exp-card h3 { margin-top:0; }
+.material-list { background:#f5f5f5; border-radius:8px; padding:12px 16px; margin:10px 0; }
+body.night-mode .material-list { background:#1a1a2e; }
+.material-list li { margin:4px 0; }
+.step-num { display:inline-block; width:24px; height:24px; background:#1a237e; color:#fff; border-radius:50%; text-align:center; line-height:24px; font-size:0.8em; font-weight:700; margin-right:8px; }
+body.night-mode .step-num { background:#5c6bc0; }
+.science-tip { background:#e8f5e9; border-radius:8px; padding:10px 14px; margin:10px 0; font-size:0.9em; border-left:3px solid #4caf50; }
+body.night-mode .science-tip { background:#1b3a1b; }
+.warning-tip { background:#fff3e0; border-radius:8px; padding:10px 14px; margin:10px 0; font-size:0.9em; border-left:3px solid #ff9800; }
+body.night-mode .warning-tip { background:#3a2810; }
+@media print { .reader-header { display:none; } body { background:#fff; } .exp-card { box-shadow:none; border:1px solid #ddd; } }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 书架</button>
+  <span class="chapter-title">📋 实验手册（可打印）</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+  <h2 style="border:none;text-align:center;">🧪 动手探索实验手册</h2>
+  <p class="no-indent" style="text-align:center;opacity:0.7;">全部使用生活常见材料 · 安全无危险</p>
+  <p class="no-indent" style="text-align:center;"><button onclick="window.print()" style="padding:8px 20px;background:#1a237e;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:0.9em;">🖨️ 打印手册</button></p>
+
+  <!-- Volume 1 Experiments -->
+  <div class="exp-section">
+    <h2>📖 第1卷：漂移之原与回音峡谷</h2>
+
+    <div class="exp-card">
+      <h3>📐 实验1：测量你的运动速度</h3>
+      <p><strong>对应知识点</strong>：机械运动 · 速度 v = s/t</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul>
+          <li>50-100米长的平直跑道（操场/走廊）</li>
+          <li>卷尺或步测</li>
+          <li>手机秒表</li>
+        </ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>在操场上量出50米或100米的距离，做好起点和终点标记</li>
+        <li><span class="step-num">2</span>让一位朋友在终点帮忙计时</li>
+        <li><span class="step-num">3</span>从起点开始以最快速度跑完，记录时间</li>
+        <li><span class="step-num">4</span>用公式 <strong>v = s / t</strong> 计算速度</li>
+        <li><span class="step-num">5</span>再试一次慢走，对比速度差了多少倍</li>
+      </ol>
+      <div class="science-tip">
+        💡 <strong>原理</strong>：你的跑步速度通常在 3-6 m/s，步行约 1-1.5 m/s。试试计算一下你跑100米需要多少秒（世界纪录约9.58秒！）。
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <h3>🎵 实验2：水杯琴——探索音调的秘密</h3>
+      <p><strong>对应知识点</strong>：声音的产生 · 音调与频率</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul>
+          <li>4-6个相同的玻璃杯</li>
+          <li>水</li>
+          <li>一根筷子或金属勺</li>
+        </ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>在杯子中倒入不同量的水（从少到多排列）</li>
+        <li><span class="step-num">2</span>用筷子轻轻敲击每个杯壁，比较声音</li>
+        <li><span class="step-num">3</span>水越少 → 音调越高；水越多 → 音调越低</li>
+        <li><span class="step-num">4</span>试试能不能敲出一段简单的旋律</li>
+      </ol>
+      <div class="science-tip">
+        💡 <strong>原理</strong>：水越少，杯壁振动越快（频率高），所以音调高。你发现没有——这和吉他弦的粗细原理是一样的！弦越细、越短 → 音调越高。
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <h3>👋 实验3：测量声音的速度（回声法）</h3>
+      <p><strong>对应知识点</strong>：声音的传播 · 回声</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul>
+          <li>空旷的操场或50米以上的长走廊</li>
+          <li>一面高大的墙壁</li>
+          <li>手机秒表</li>
+        </ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>站到距离墙壁约50米的位置</li>
+        <li><span class="step-num">2</span>对着墙壁大喊一声，同时开始计时</li>
+        <li><span class="step-num">3</span>听到回声时立即停止计时</li>
+        <li><span class="step-num">4</span>记录时间 t（秒）</li>
+        <li><span class="step-num">5</span>用公式 <strong>v = 2 × s / t</strong> 计算声速</li>
+      </ol>
+      <div class="science-tip">
+        💡 <strong>原理</strong>：声音到墙壁再返回，走了一个来回，所以距离是2s。正常声速约 340 m/s。你的测量结果接近吗？注意：温度会影响声速，温度越高声速越快！
+      </div>
+      <div class="warning-tip">
+        ⚠️ 注意安全！在马路边不要做这个实验。最好在学校操场或小区广场进行，确保没有车辆。
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <h3>🪜 实验4：声波振动可视化</h3>
+      <p><strong>对应知识点</strong>：声音是由振动产生的</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul>
+          <li>一个塑料杯或纸杯</li>
+          <li>保鲜膜</li>
+          <li>几粒盐或糖</li>
+          <li>一个音叉或手机（播放声音）</li>
+        </ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>用保鲜膜紧紧包住杯口</li>
+        <li><span class="step-num">2</span>在保鲜膜上撒几粒盐</li>
+        <li><span class="step-num">3</span>在杯子旁边大声说话或播放音乐</li>
+        <li><span class="step-num">4</span>观察盐粒在膜上跳动——这就是声波带动空气振动，空气再带动膜振动！</li>
+      </ol>
+      <div class="science-tip">
+        💡 <strong>原理</strong>：声音从声源发出，通过空气传到保鲜膜，引起膜振动。声音越大，盐粒跳得越高。你也可以用不同频率的声音试试看！
+      </div>
+    </div>
+  </div>
+
+  <!-- Future volumes -->
+  <div class="exp-section">
+    <h2>📖 第2卷及以后（即将推出）</h2>
+    <div class="exp-card">
+      <h3>🧊 实验5：观察冰的熔化过程</h3>
+      <p><strong>对应知识点</strong>：熔化与凝固 · 晶体熔点</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul><li>冰块（从冰箱取出）</li><li>温度计</li><li>杯子</li><li>秒表</li></ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>将冰块放入杯子，插入温度计测量初始温度</li>
+        <li><span class="step-num">2</span>将杯子放在室温下，每分钟记录一次温度</li>
+        <li><span class="step-num">3</span>观察温度变化：温度先上升 → 到0℃时停滞（熔化中）→ 冰全部熔化后继续上升</li>
+        <li><span class="step-num">4</span>画出温度-时间曲线，你会在0℃看到一条"平台"</li>
+      </ol>
+      <div class="science-tip">💡 <strong>原理</strong>：冰是晶体，熔点为0℃。熔化过程中冰水混合物温度保持在0℃，因为吸收的热量全部用于破坏分子间的排列（物态变化），而不是升高温度。</div>
+    </div>
+
+    <div class="exp-card">
+      <h3>💨 实验6：水蒸气液化观察</h3>
+      <p><strong>对应知识点</strong>：汽化与液化</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul><li>烧开的热水</li><li>一个玻璃杯</li><li>冰块</li></ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>将热水倒入玻璃杯（注意安全！）</li>
+        <li><span class="step-num">2</span>观察杯口上方——你看到"白气"了吗？那不是水蒸气，而是水蒸气<strong>液化</strong>成的小水滴！</li>
+        <li><span class="step-num">3</span>把一个冰冷的金属勺放在杯口上方，观察勺底迅速凝结的水珠</li>
+        <li><span class="step-num">4</span>原理：看不见的水蒸气遇冷液化成看得见的小水珠</li>
+      </ol>
+      <div class="warning-tip">⚠️ 注意安全！热水操作需有成年人在旁。不要将脸靠近杯口，以免被蒸汽烫伤。</div>
+    </div>
+
+    <div class="exp-card">
+      <h3>🧊 实验7：干冰的升华（如果条件允许）</h3>
+      <p><strong>对应知识点</strong>：升华与凝华</p>
+      <div class="material-list">
+        <strong>材料：</strong>
+        <ul><li>干冰（可从冰淇淋店或化学用品店购买）</li><li>厚手套</li><li>水</li></ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>戴上厚手套，将干冰放入碗中</li>
+        <li><span class="step-num">2</span>观察干冰——它不会变成液体，而是直接变成气体（升华）</li>
+        <li><span class="step-num">3</span>倒入少量温水，会产生大量白雾（水蒸气液化成的小水滴被升华的CO₂气体带出）</li>
+      </ol>
+      <div class="science-tip">💡 <strong>原理</strong>：干冰是固态二氧化碳(CO₂)，在标准大气压下升华温度为-78.5℃——它直接从固态变成气态，不经过液态！</div>
+      <div class="warning-tip">⚠️ 干冰温度极低（-78.5℃），切勿直接用手触摸！需使用厚手套或夹子操作。</div>
+    </div>
+    <div class="exp-card">
+      <h3>🪞 实验8：光的反射实验</h3>
+      <p><strong>对应知识点</strong>：光的反射定律 · 入射角 = 反射角</p>
+      <div class="material-list">
+        <strong>材料：</strong><ul><li>一面小镜子</li><li>手电筒或手机闪光灯</li><li>白纸</li><li>量角器</li></ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>将镜子立在白纸上</li>
+        <li><span class="step-num">2</span>用手电筒以一定角度照射镜子，在白纸上画出入射光和反射光的路径</li>
+        <li><span class="step-num">3</span>用笔标出入射点和法线，用量角器测量入射角和反射角</li>
+        <li><span class="step-num">4</span>改变入射角度，重复测量——你会发现反射角始终等于入射角！</li>
+      </ol>
+      <div class="science-tip">💡 <strong>原理</strong>：光的反射定律——反射角等于入射角。这就是镜海中的镜像形成的原理！</div>
+    </div>
+
+    <div class="exp-card">
+      <h3>💧 实验9：水的折射——硬币复活</h3>
+      <p><strong>对应知识点</strong>：光的折射</p>
+      <div class="material-list">
+        <strong>材料：</strong><ul><li>一个杯子</li><li>一枚硬币</li><li>水</li></ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>把硬币放在杯子底部中央</li>
+        <li><span class="step-num">2</span>后退到刚好看不到硬币的位置（保持眼睛位置不动）</li>
+        <li><span class="step-num">3</span>让另一个人缓慢向杯子里倒水</li>
+        <li><span class="step-num">4</span>神奇的事情发生了——硬币"浮"起来了！实际上是因为光的折射改变了光路</li>
+      </ol>
+      <div class="science-tip">💡 <strong>原理</strong>：光从水射入空气时发生折射，折射角大于入射角，所以硬币的像位置比实际位置高，看起来像"浮"起来了。</div>
+    </div>
+
+    <div class="exp-card">
+      <h3>🔍 实验10：用放大镜点火</h3>
+      <p><strong>对应知识点</strong>：凸透镜的会聚作用</p>
+      <div class="material-list">
+        <strong>材料：</strong><ul><li>凸透镜（放大镜）</li><li>一张黑纸</li><li>阳光充足的天气</li></ul>
+      </div>
+      <ol>
+        <li><span class="step-num">1</span>在阳光下，将放大镜对准太阳</li>
+        <li><span class="step-num">2</span>调整放大镜与黑纸的距离，使纸上的光斑最小最亮</li>
+        <li><span class="step-num">3</span>保持不动——过一会儿黑纸就会冒烟、燃烧！</li>
+      </ol>
+      <div class="warning-tip">⚠️ 注意安全！请在户外进行，旁边放一杯水备用。不要对着人或易燃物。</div>
+      <div class="science-tip">💡 <strong>原理</strong>：凸透镜把平行光会聚在焦点上，焦点的能量密度极高，温度可以点燃纸张。林小宇就是用这个原理熔化蛇妖的镜面！</div>
+    </div>
+    <div class="exp-card" style="opacity:0.6;">
+      <h3>🥚 鸡蛋浮沉实验</h3>
+      <p class="no-indent">在清水中加盐，观察鸡蛋在不同密度液体中的浮沉。——对应第4卷：重铸之城</p>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/reader.js"></script>
+</body>
+</html>

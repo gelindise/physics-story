@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物态变化模拟器 - 炎寒谷的试炼</title>
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+.sim-container { max-width:850px;margin:0 auto;padding:20px; }
+canvas { display:block;width:100%; }
+.controls-grid { display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;background:#fafafa;border-radius:0 0 12px 12px;border-top:1px solid #eee; }
+body.night-mode .controls-grid { background:#111128;border-top-color:#222; }
+.ctrl-group { padding:8px; }
+.ctrl-group label { display:block;font-size:0.85em;margin-bottom:4px;opacity:0.8; }
+.ctrl-group .btn-group { display:flex;gap:6px;flex-wrap:wrap; }
+.ctrl-group button { padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:0.82em;background:#e0e0e0;transition:all 0.2s; }
+.ctrl-group button:hover { transform:translateY(-1px); }
+.ctrl-group button.active { background:#1a237e;color:#fff; }
+body.night-mode .ctrl-group button { background:#333;color:#e0e0e0; }
+body.night-mode .ctrl-group button.active { background:#5c6bc0; }
+.status-display { padding:16px;background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:12px 12px 0 0;text-align:center; }
+body.night-mode .status-display { background:linear-gradient(135deg,#1a237e,#283593); }
+.status-display .substance { font-size:1.1em;font-weight:700; }
+.status-display .state { font-size:1.3em;margin:4px 0; }
+.status-display .temp { font-size:2em;font-weight:700;font-family:monospace; }
+.status-display .process { font-size:0.85em;opacity:0.7;margin-top:4px; }
+.phase-arrows { display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:10px 0;padding:8px; }
+.phase-arrows span { padding:4px 10px;border-radius:6px;font-size:0.78em;font-weight:600; }
+.arrow-absorb { background:#ffebee;color:#c62828; }
+.arrow-release { background:#e3f2fd;color:#1565c0; }
+body.night-mode .arrow-absorb { background:#4a1c24;color:#ef9a9a; }
+body.night-mode .arrow-release { background:#1a237e;color:#90caf9; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='../index.html'">← 炎寒谷的试炼</button>
+  <span class="chapter-title">🔬 物态变化模拟器</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="sim-container">
+
+  <div class="status-display" id="statusDisplay">
+    <div class="substance" id="substanceDisplay">💧 水 (H₂O)</div>
+    <div class="state" id="stateDisplay">❄️ 固态（冰）</div>
+    <div class="temp" id="tempDisplay">-20 °C</div>
+    <div class="process" id="processDisplay">当前状态稳定</div>
+  </div>
+
+  <div class="canvas-container" style="border-radius:0;">
+    <canvas id="phaseCanvas" style="height:280px;"></canvas>
+  </div>
+
+  <div class="controls-grid">
+    <div class="ctrl-group">
+      <label>🔥 加热 / ❄️ 冷却</label>
+      <div class="btn-group">
+        <button id="heatBtn" data-action="heat">🔥 加热</button>
+        <button id="coolBtn" data-action="cool">❄️ 冷却</button>
+        <button id="stopBtn" data-action="stop" class="active">⏸ 停止</button>
+        <button id="resetBtn">🔄 重置</button>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <label>物质选择</label>
+      <div class="btn-group">
+        <button id="waterBtn" class="active">💧 水</button>
+        <button id="co2Btn">🧊 干冰 (CO₂)</button>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <label>加热/冷却速度</label>
+      <input type="range" id="speedSlider" min="1" max="10" value="5" style="width:100%;">
+    </div>
+    <div class="ctrl-group">
+      <label>当前过程</label>
+      <div style="font-size:0.85em;min-height:36px;" id="processDetail">等待操作...</div>
+    </div>
+  </div>
+
+  <div class="phase-arrows" id="phaseArrows">
+    <span class="arrow-absorb" data-process="melt">熔化 (吸热)</span>
+    <span class="arrow-release" data-process="freeze">凝固 (放热)</span>
+    <span class="arrow-absorb" data-process="vaporize">汽化 (吸热)</span>
+    <span class="arrow-release" data-process="condense">液化 (放热)</span>
+    <span class="arrow-absorb" data-process="sublime">升华 (吸热)</span>
+    <span class="arrow-release" data-process="deposit">凝华 (放热)</span>
+  </div>
+
+  <div style="padding:20px;background:#e8f5e9;border-radius:12px;margin:16px 0;">
+    <p class="no-indent" style="text-indent:0;"><strong>💡 操作说明</strong></p>
+    <p class="no-indent">选择"加热"或"冷却"，观察物质在不同温度下的状态变化。<strong>注意观察</strong>：在熔点(0℃)和沸点(100℃)处，温度会暂时停滞——因为能量被用于物态变化而不是升温！</p>
+  </div>
+
+</div>
+
+<script src="../../../scripts/reader.js"></script>
+<script>
+(function() {
+  const canvas = document.getElementById('phaseCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // State
+  let substance = 'water'; // water or co2
+  let action = 'stop';     // heat, cool, stop
+  let temp = -20;
+  let state = 'solid';     // solid, melting, liquid, vaporizing, gas, subliming, depositing
+  let fraction = 0;        // phase change progress (0-1)
+  let speed = 5;
+  let animId;
+
+  // Phase change tracking
+  let currentProcess = '';
+
+  // Properties for water
+  const props = {
+    water: { name: '水 (H₂O)', melt: 0, boil: 100, solidColor: '#bbdefb', liquidColor: '#42a5f5', gasColor: '#e0e0e0', solidEmoji: '❄️', liquidEmoji: '💧', gasEmoji: '♨️' },
+    co2: { name: '干冰 (CO₂)', melt: -78.5, boil: -56.6, solidColor: '#e8eaf6', liquidColor: '#b0bec5', gasColor: '#cfd8dc', solidEmoji: '🧊', liquidEmoji: '💧', gasEmoji: '💨' }
+  };
+
+  function updateDisplay() {
+    const p = props[substance];
+    const tempEl = document.getElementById('tempDisplay');
+    const stateEl = document.getElementById('stateDisplay');
+    const processEl = document.getElementById('processDisplay');
+    const subEl = document.getElementById('substanceDisplay');
+    const detailEl = document.getElementById('processDetail');
+
+    subEl.textContent = substance === 'water' ? '💧 水 (H₂O)' : '🧊 干冰 (CO₂)';
+    tempEl.textContent = temp.toFixed(1) + ' °C';
+
+    let stateText = '';
+    let processText = '';
+    let detailText = '';
+
+    if (state === 'solid') { stateText = p.solidEmoji + ' 固态'; processText = '当前状态稳定'; detailText = '分子排列整齐，振动微弱'; }
+    else if (state === 'melting') { stateText = '❄️💧 熔化中'; processText = '正在熔化... 吸热中'; detailText = '温度保持在 ' + p.melt + '°C，固液共存'; }
+    else if (state === 'liquid') { stateText = p.liquidEmoji + ' 液态'; processText = '当前状态稳定'; detailText = '分子可以自由移动'; }
+    else if (state === 'vaporizing') { stateText = '💧♨️ 汽化中'; processText = '正在汽化... 吸热中'; detailText = '温度保持在 ' + p.boil + '°C，剧烈沸腾'; }
+    else if (state === 'gas') { stateText = p.gasEmoji + ' 气态'; processText = '当前状态稳定'; detailText = '分子高速运动，充满空间'; }
+    else if (state === 'subliming') { stateText = '❄️♨️ 升华中'; processText = '正在升华... 固→气'; detailText = '固体直接变成气体，跳过液态！'; }
+    else if (state === 'freezing') { stateText = '💧❄️ 凝固中'; processText = '正在凝固... 放热中'; detailText = '温度保持在 ' + p.melt + '°C'; }
+    else if (state === 'condensing') { stateText = '♨️💧 液化中'; processText = '正在液化... 放热中'; detailText = '气体变成液体，释放热量'; }
+    else if (state === 'depositing') { stateText = '♨️❄️ 凝华中'; processText = '正在凝华... 气→固'; detailText = '气体直接变成固体，跳过液态！'; }
+
+    stateEl.textContent = stateText;
+    processEl.textContent = processText;
+    detailEl.textContent = detailText;
+
+    // Highlight active phase arrow
+    document.querySelectorAll('.phase-arrows span').forEach(el => {
+      el.style.opacity = '0.5';
+      el.style.fontWeight = '400';
+    });
+    const processMap = {
+      'melting': 'melt', 'freezing': 'freeze',
+      'vaporizing': 'vaporize', 'condensing': 'condense',
+      'subliming': 'sublime', 'depositing': 'deposit'
+    };
+    const active = processMap[state];
+    if (active) {
+      const el = document.querySelector(`[data-process="${active}"]`);
+      if (el) { el.style.opacity = '1'; el.style.fontWeight = '700'; }
+    }
+  }
+
+  function updatePhysics() {
+    const p = props[substance];
+
+    if (action === 'stop') { updateDisplay(); return; }
+
+    const isHeat = action === 'heat';
+    const delta = speed * 0.3 * (isHeat ? 1 : -1);
+
+    if (state === 'solid') {
+      temp += delta;
+      if (temp >= p.melt) {
+        temp = p.melt;
+        state = 'melting';
+        fraction = 0;
+      }
+      if (temp < -100) temp = -100;
+    }
+    else if (state === 'melting') {
+      fraction += Math.abs(delta) / 50;
+      if (fraction >= 1) {
+        state = 'liquid';
+        fraction = 0;
+      }
+    }
+    else if (state === 'liquid') {
+      temp += delta;
+      if (temp >= p.boil) {
+        temp = p.boil;
+        state = 'vaporizing';
+        fraction = 0;
+      }
+      if (temp <= p.melt) {
+        temp = p.melt;
+        state = 'freezing';
+        fraction = 0;
+      }
+    }
+    else if (state === 'vaporizing') {
+      fraction += Math.abs(delta) / 30;
+      if (fraction >= 1) {
+        state = 'gas';
+        fraction = 0;
+      }
+    }
+    else if (state === 'gas') {
+      temp += delta;
+      if (temp <= p.boil && substance === 'water') {
+        temp = p.boil;
+        state = 'condensing';
+        fraction = 0;
+      }
+      if (temp <= p.boil && substance === 'co2') {
+        temp = p.boil;
+        state = 'condensing';
+        fraction = 0;
+      }
+      if (temp > 200) temp = 200;
+    }
+    else if (state === 'freezing') {
+      fraction += Math.abs(delta) / 50;
+      if (fraction >= 1) {
+        state = 'solid';
+        fraction = 0;
+      }
+    }
+    else if (state === 'condensing') {
+      fraction += Math.abs(delta) / 30;
+      if (fraction >= 1) {
+        state = 'liquid';
+        fraction = 0;
+      }
+    }
+    else if (state === 'subliming') {
+      fraction += Math.abs(delta) / 40;
+      if (fraction >= 1) { state = 'gas'; fraction = 0; }
+    }
+    else if (state === 'depositing') {
+      fraction += Math.abs(delta) / 40;
+      if (fraction >= 1) { state = 'solid'; fraction = 0; }
+    }
+
+    updateDisplay();
+  }
+
+  function drawScene() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width;
+    const h = 280;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.scale(dpr, dpr);
+
+    const p = props[substance];
+
+    // Background
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, w, h);
+
+    // Container
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(20, 20, w - 40, h - 40);
+
+    // Fill based on state
+    let fillColor, fillLevel;
+    if (state === 'solid' || state === 'melting' || state === 'freezing' || state === 'subliming') {
+      fillColor = p.solidColor;
+      fillLevel = 0.5;
+    } else if (state === 'liquid' || state === 'vaporizing' || state === 'condensing') {
+      fillColor = p.liquidColor;
+      fillLevel = 0.5;
+    } else {
+      fillColor = p.gasColor;
+      fillLevel = 0.1;
+    }
+
+    // Draw particles
+    const cx = w / 2;
+    const cy = h / 2;
+
+    if (state === 'solid') {
+      ctx.fillStyle = fillColor;
+      for (let i = 0; i < 20; i++) {
+        const x = cx + (i % 5 - 2) * 25;
+        const y = cy + (Math.floor(i / 5) - 2) * 25;
+        ctx.beginPath();
+        ctx.arc(x + Math.sin(i + Date.now()/2000) * 1, y + Math.cos(i + Date.now()/2000) * 1, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // Lattice lines
+      ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+          const x1 = cx + (i - 1.5) * 25;
+          const y1 = cy + (j - 1.5) * 25;
+          if (i < 3) { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(cx + (i+1 - 1.5)*25, y1); ctx.stroke(); }
+          if (j < 3) { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1, cy + (j+1 - 1.5)*25); ctx.stroke(); }
+        }
+      }
+    } else if (state === 'liquid' || state === 'melting' || state === 'freezing') {
+      // Water level
+      const waterY = cy + 40;
+      ctx.fillStyle = p.liquidColor;
+      ctx.globalAlpha = 0.5;
+      ctx.fillRect(22, waterY, w - 44, h - 62);
+      ctx.globalAlpha = 1;
+
+      // Particles in liquid
+      for (let i = 0; i < 30; i++) {
+        const x = 30 + (i * 137 + 50) % (w - 60);
+        const y = waterY + 10 + (i * 97 + 30) % (h - waterY - 50);
+        ctx.fillStyle = p.liquidColor;
+        ctx.beginPath();
+        ctx.arc(x + Math.sin(Date.now()/1000 + i) * 3, y + Math.cos(Date.now()/1200 + i*0.7) * 3, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Surface wave
+      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = 22; x < w - 22; x++) {
+        const y = waterY + Math.sin(x * 0.05 + Date.now() / 1500) * 4;
+        if (x === 22) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    } else if (state === 'gas' || state === 'vaporizing' || state === 'subliming' || state === 'depositing') {
+      for (let i = 0; i < 50; i++) {
+        const x = 30 + (i * 97) % (w - 60);
+        const y = 30 + (i * 53 + temp * 2) % (h - 60);
+        ctx.fillStyle = p.gasColor;
+        ctx.globalAlpha = 0.2 + 0.2 * Math.sin(Date.now()/2000 + i);
+        ctx.beginPath();
+        ctx.arc(x + Math.sin(Date.now()/800 + i*2) * 8, y + Math.cos(Date.now()/900 + i*1.7) * 8, 3 + Math.sin(Date.now()/1000 + i*3) * 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    } else if (state === 'condensing') {
+      for (let i = 0; i < 40; i++) {
+        const x = 30 + (i * 79 + fraction * 100) % (w - 60);
+        const y = 30 + (i * 43) % (h - 60);
+        ctx.fillStyle = p.liquidColor;
+        ctx.globalAlpha = 0.3;
+        ctx.beginPath();
+        ctx.arc(x + Math.sin(Date.now()/1000 + i)*5, y + Math.cos(Date.now()/1100 + i)*5, 4, 0, Math.PI*2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // Temperature bar
+    const barX = w - 50;
+    const barY = 30;
+    const barH = h - 60;
+    const barW = 14;
+
+    ctx.fillStyle = '#333';
+    ctx.fillRect(barX, barY, barW, barH);
+
+    // Heat gradient
+    const normTemp = Math.max(0, Math.min(1, (temp + 50) / 250));
+    const grad = ctx.createLinearGradient(0, barY + barH, 0, barY);
+    grad.addColorStop(0, '#1565c0');
+    grad.addColorStop(0.3, '#4fc3f7');
+    grad.addColorStop(0.5, '#fff59d');
+    grad.addColorStop(0.7, '#ff9800');
+    grad.addColorStop(1, '#c62828');
+    ctx.fillStyle = grad;
+    ctx.fillRect(barX, barY + barH * (1 - normTemp), barW, barH * normTemp);
+
+    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(barX, barY, barW, barH);
+
+    // Temp labels
+    ctx.fillStyle = '#fff';
+    ctx.font = '9px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('200°C', barX + barW/2, barY - 4);
+    ctx.fillText('-50°C', barX + barW/2, barY + barH + 10);
+
+    // Molecule structure label
+    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('🧪 分子排列可视化', 24, h - 24);
+
+    animId = requestAnimationFrame(drawScene);
+  }
+
+  // ===== Physics loop =====
+  let physInterval;
+  function startPhysics() {
+    stopPhysics();
+    physInterval = setInterval(updatePhysics, 100);
+  }
+  function stopPhysics() {
+    if (physInterval) { clearInterval(physInterval); physInterval = null; }
+  }
+
+  // ===== Controls =====
+  function setAction(a) {
+    action = a;
+    document.querySelectorAll('[data-action]').forEach(b => b.classList.remove('active'));
+    const btn = document.querySelector(`[data-action="${a}"]`);
+    if (btn) btn.classList.add('active');
+  }
+
+  function setSubstance(s) {
+    substance = s;
+    temp = -20;
+    state = 'solid';
+    fraction = 0;
+    action = 'stop';
+    setAction('stop');
+    document.querySelectorAll('#heatBtn,#coolBtn,#stopBtn').forEach(b => b.classList.remove('active'));
+    document.getElementById('stopBtn').classList.add('active');
+    document.querySelectorAll('#waterBtn,#co2Btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(s === 'water' ? 'waterBtn' : 'co2Btn').classList.add('active');
+  }
+
+  document.getElementById('heatBtn').addEventListener('click', function() {
+    setAction('heat');
+    // If solid below melt point and heating rapidly, check for sublimation
+    if (state === 'solid' && temp < props[substance].melt && substance === 'co2') {
+      // CO2 can sublime at -78.5°C under standard pressure
+      if (temp >= -78.5) {
+        state = 'subliming';
+        fraction = 0;
+      }
+    }
+  });
+  document.getElementById('coolBtn').addEventListener('click', function() {
+    setAction('cool');
+    // If gas and cooling rapidly, check for deposition
+    if (state === 'gas') {
+      const p = props[substance];
+      if (temp <= p.boil + 20) {
+        state = 'depositing';
+        fraction = 0;
+      }
+    }
+  });
+  document.getElementById('stopBtn').addEventListener('click', function() { setAction('stop'); });
+  document.getElementById('resetBtn').addEventListener('click', function() {
+    temp = -20;
+    state = 'solid';
+    fraction = 0;
+    action = 'stop';
+    setAction('stop');
+    updateDisplay();
+  });
+  document.getElementById('waterBtn').addEventListener('click', function() { setSubstance('water'); });
+  document.getElementById('co2Btn').addEventListener('click', function() { setSubstance('co2'); });
+  document.getElementById('speedSlider').addEventListener('input', function() { speed = parseInt(this.value); });
+
+  // Start
+  startPhysics();
+  drawScene();
+  updateDisplay();
+
+  // Handle visibility
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) stopPhysics();
+    else startPhysics();
+  });
+})();
+</script>
+
+</body>
+</html>

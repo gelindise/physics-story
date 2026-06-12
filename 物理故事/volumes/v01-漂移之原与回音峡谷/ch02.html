@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：回音峡谷的歌声 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.completed-badge { display:inline-block;padding:4px 12px;border-radius:20px;background:#c8e6c9;color:#2e7d32;font-size:0.8em;font-weight:600; }
+.note-box { background:#fffde7;border-radius:10px;padding:14px 18px;margin:16px 0;border-left:4px solid #f9a825;font-size:0.9em; }
+body.night-mode .note-box { background:#3a3010;border-left-color:#f9a825; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第1卷</button>
+  <span class="chapter-title">第2章 · 回音峡谷的歌声</span>
+  <span id="completeBadge" class="completed-badge" style="display:none;">✓ 已读完</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+
+<h2 style="border:none;font-size:2em;text-align:center;">第二章</h2>
+<h1 style="text-align:center;font-size:2.2em;margin-top:0;">回音峡谷的歌声</h1>
+<p class="no-indent" style="text-align:center;opacity:0.6;">📖 物理知识点：声音的产生与传播 · 回声 · 音调与响度</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>1. 峡谷的歌声</h3>
+
+<p>回音峡谷的入口像是被一把巨大的刀劈开的。两侧的岩壁高达数百米，表面光滑如镜。紫色的天空在峡谷上方形成一条细细的光带。</p>
+
+<p>但最让人在意的，是声音。</p>
+
+<p>整个峡谷像是一个巨大的乐器。风穿过岩壁的缝隙发出低沉的嗡鸣，碎石从高处落下发出清脆的碰撞，远处还有若有若无的歌声——那声音悠扬、空灵，像是从另一个世界传来的。</p>
+
+<p>"进去之后，跟紧我。"凌音的声音压得很低，"记住三件事：第一，不要太大声说话，会引来魔蝠。第二，注意听回声——峡谷里有无数岔路，只有通过回声才能判断方向。第三……"</p>
+
+<p>她顿了一下。"无论听到什么，都不要回头。"</p>
+
+<p>林小宇咽了口唾沫，点了点头。</p>
+
+<p>两人踏入峡谷。</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>2. 第一次遭遇</h3>
+
+<p>一开始，一切还算平静。峡谷内部的岩壁上覆盖着一种会发光的苔藓，发出幽蓝色的微光，照亮了道路。</p>
+
+<p>但走了大约半小时后，林小宇发现了一个问题——这里的路越来越复杂。岔路一个接一个，而且每条路看起来都一模一样。</p>
+
+<p>"我们是不是迷路了？"他小声问。</p>
+
+<p>凌音没有回答。她闭上眼睛，侧耳倾听。过了一会儿，她向左侧的一条岔路指了指："这边。"</p>
+
+<p>"你怎么知道的？"</p>
+
+<p>"听。"凌音说，"你听左边的回声比右边低沉，说明左边的通道更宽更深。根据漂移之原的方向，更深的通道通向峡谷中心。"</p>
+
+<p>林小宇仔细听了听。果然，左边的回声更悠长，右边的回声更短促。他忽然想起了物理课上讲过的——<strong>声音的反射</strong>。</p>
+
+<p>"原来如此——声音遇到障碍物会反射回来，形成回声。根据回声的差异，可以判断空间的大小和距离！"他兴奋地说，然后赶紧捂住嘴，怕声音太大。</p>
+
+<p>凌音微微一笑。"看来那个世界教的东西还挺有用的。"</p>
+
+  <!-- 知识卡片：声音的产生与传播 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：声音的产生与传播</div>
+  <div class="card-body">
+    <p><strong>声音是由物体的振动产生的</strong>。当你说话时，声带在振动；风吹过岩壁时，空气在振动。</p>
+    <p><strong>声音的传播需要介质</strong>：</p>
+    <ul>
+      <li>固体（岩壁）→ 传声最快</li>
+      <li>液体（水）→ 传声较快</li>
+      <li>气体（空气）→ 传声较慢</li>
+      <li><strong>真空不能传声</strong></li>
+    </ul>
+    <p><strong>回声</strong>：声音遇到障碍物反射回来，就形成了回声。如果障碍物距离太近（＜17m），回声会和原声混在一起，使声音加强。</p>
+    <p class="formula">声音在空气中的速度 ≈ 340 m/s</p>
+  </div>
+</div>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>3. 声音的陷阱</h3>
+
+<p>他们继续前行了一段距离。凌音靠回声辨别方向，林小宇则用他的"观察者之眼"辅助——他发现声音在空气中传播时也会留下"法则之线"，虽然很淡，但确实存在。</p>
+
+<p>"等等。"凌音忽然停下脚步。</p>
+
+<p>前方是一个开阔的空间，像一个地下大厅。大厅中央有一根巨大的石柱，石柱的表面布满密密麻麻的小孔。</p>
+
+<p>"这是……"</p>
+
+<p>话音未落，一阵尖锐的啸声从石柱中发出！那声音刺耳至极，像是有人用指甲在黑板上疯狂刮擦。林小宇痛苦地捂住耳朵，感觉耳膜都要被撕裂了。</p>
+
+<p>更恐怖的是，啸声引发了连锁反应——整个大厅的岩壁都开始共鸣，无数声音叠加在一起，形成一股可怕的声音风暴！</p>
+
+<p>"是回音魔蝠！"凌音喊道，"它们利用石柱发声！"</p>
+
+<p>林小宇忍着剧痛抬头看去，看到石柱上的小孔中飞出几十只蝙蝠般的生物。它们的喉咙处有奇特的结构，振动时发出不同的频率。</p>
+
+<p>他拼命集中注意力，启动了"观察者之眼"。然后他看到了——</p>
+
+<p>每只蝙蝠发出的声音都以波的形式传播，不同的频率有不同的波长。当某些频率的音波遇到岩壁时被反射回来，叠加在一起，在某些位置形成"加强区"，在另一些位置形成"减弱区"。</p>
+
+<p><em>原来如此……</em>他想。<em>声音是一种波。波有频率、波长和振幅。频率决定音调，振幅决定响度。</em></p>
+
+<p>"凌音！"他喊道，"那些高音是小的蝙蝠发出的，低音是大的蝙蝠发出的！如果我们能制造出相反的声波——"</p>
+
+<p>凌音立刻明白了他的意思。她取下腰间的笛子，凑到唇边，吹奏起来。</p>
+
+<p>笛声——极其低沉的声音——从她的笛子中发出。低沉的声波和蝙蝠的高频声波相遇，发生了干涉。某些位置的啸声被抵消了。虽然没能完全消灭所有声音，但至少让林小宇能够正常思考了。</p>
+
+<p>"用你的法则之力！"凌音喊道，"感受声音的律动，然后——掌控它！"</p>
+
+  <!-- 知识卡片：音调与响度 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：音调、响度和音色</div>
+  <div class="card-body">
+    <p><strong>音调</strong>：声音的高低。由振动频率决定。</p>
+    <ul>
+      <li>频率高 → 音调高（尖锐）</li>
+      <li>频率低 → 音调低（低沉）</li>
+      <li>单位：赫兹（Hz）</li>
+    </ul>
+    <p><strong>响度</strong>：声音的大小。由振动幅度决定。</p>
+    <ul>
+      <li>振幅大 → 响度大（声音大）</li>
+      <li>振幅小 → 响度小（声音小）</li>
+      <li>单位：分贝（dB）</li>
+    </ul>
+    <p><strong>音色</strong>：不同发声体发出声音的特色。即使音调和响度相同，不同乐器的声音也不同——这就是音色的区别。</p>
+    <p class="formula">频率（f）= 每秒振动的次数（Hz）</p>
+  </div>
+</div>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>4. 声波的共鸣</h3>
+
+<p>林小宇闭上眼睛，把注意力集中在声音的"法则之线"上。他"看到"音波在空气中扩散、反射、叠加、干涉……整个空间像一个巨大的交响乐舞台。</p>
+
+<p>他伸出手，尝试用意念去改变声波的传播。一开始什么也没发生。但他没有放弃——他回想物理课上的知识，思考关于声音的一切。</p>
+
+<p><em>声音需要介质才能传播……空气中声音的速度是340米每秒……频率决定了音调……</em></p>
+
+<p>忽然，他感觉到了一股力量！他指尖前的空气开始振动，发出一种特定频率的声波。他调整振动频率，让它正好与最大那只蝙蝠发出的低声波形成<strong>共振</strong>——</p>
+
+<p>嗡——！！</p>
+
+<p>石柱剧烈振动起来。共振的力量远比普通的声波强大。那只最大的蝙蝠被震得晕头转向，从空中跌落。</p>
+
+<p>"你做到了！"凌音惊喜地喊道，"你掌握了声波的法则之力！"</p>
+
+<p>蝙蝠们失去了首领，纷纷尖叫着飞散。大厅恢复了平静。</p>
+
+<p>林小宇喘着气，看着自己的手。他刚刚做到了——用对声音的理解，制造了共振，击败了敌人。这种感觉太奇妙了！以前在物理课上让他头疼的知识，现在变成了他最强的武器。</p>
+
+  <!-- 知识卡片：回声与共鸣 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：回声与共鸣</div>
+  <div class="card-body">
+    <p><strong>回声</strong>：声音遇到障碍物反射回来。</p>
+    <ul>
+      <li>人耳能区分回声与原声的最小距离：约17米（因为声音在空气中速度约340m/s，人耳能分辨的最小时间差约0.1秒）</li>
+      <li>应用：回声定位（声呐）、建筑声学设计</li>
+    </ul>
+    <p><strong>共鸣（共振）</strong>：当一个物体振动的频率与另一个物体的固有频率相同时，后者也会跟随振动，且振幅会越来越大。</p>
+    <p>这就是为什么林小宇能用特定频率的声波震晕魔蝠——他制造了声波共鸣！</p>
+    <p>⚠️ 现实中的共鸣现象：士兵过桥时"便步走"就是避免与桥产生共振，导致桥梁坍塌。</p>
+  </div>
+</div>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<!-- ===== 🔬 交互实验1：声波可视化 ===== -->
+<h3>🔬 互动实验：声波可视化</h3>
+<p class="no-indent">调节频率和振幅，观察声波的形成和变化。你能看到「音调高=波长短」「响度大=振幅大」吗？</p>
+
+<div class="canvas-container">
+  <canvas id="waveCanvas" style="height:260px;"></canvas>
+  <div class="controls">
+    <label>频率（音调）：<input type="range" id="frequency" min="1" max="10" value="4" step="0.1"> <span id="freqVal">4.0</span> Hz</label>
+    <label>振幅（响度）：<input type="range" id="amplitude" min="10" max="80" value="40" step="1"> <span id="ampVal">40</span></label>
+    <button id="pauseWave">⏸ 暂停</button>
+    <button id="resetWave">🔄 重置</button>
+  </div>
+  <div class="legend">🌊 声波（横波示意） &nbsp;&nbsp; 波长 = 两个波峰之间的距离</div>
+</div>
+
+<!-- ===== 🔬 交互实验2：回声测距 ===== -->
+<h3>🔬 互动实验：回声测距模拟</h3>
+<p class="no-indent">像凌音一样，用回声来判断距离。调整距离，观察声波反射需要多长时间。</p>
+
+<div class="canvas-container">
+  <canvas id="echoCanvas" style="height:280px;"></canvas>
+  <div class="controls">
+    <label>距离：<input type="range" id="echoDist" min="10" max="300" value="100" step="5"> <span id="echoDistVal">100</span> m</label>
+    <button id="sendPulse">📡 发射声波</button>
+  </div>
+  <div class="legend">🔊 发出的声音 &nbsp;&nbsp; 🔊 返回的回声</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：制造你的声音实验</h3>
+<div class="experiment-box">
+  <div class="exp-title">🎵 实验1：水杯琴</div>
+  <ol class="exp-steps">
+    <li>找几个相同的玻璃杯，分别装入不同高度的水</li>
+    <li>用筷子轻轻敲击杯壁，听每个杯子发出的声音</li>
+    <li>水越少 → 音调越高；水越多 → 音调越低</li>
+    <li>为什么？因为水越少，杯壁振动越快（频率高），音调就高</li>
+  </ol>
+</div>
+
+<div class="experiment-box">
+  <div class="exp-title">👋 实验2：测量声音的速度</div>
+  <ol class="exp-steps">
+    <li>找一个空旷的地方（操场或长走廊），站到距离墙壁50米左右的位置</li>
+    <li>对着墙大喊一声，同时开始计时</li>
+    <li>听到回声时停止计时</li>
+    <li>用公式 <strong>v = 2s / t</strong> 计算声速（因为声音要走一个来回！）</li>
+    <li>正常声速约340 m/s，看你的测量结果接近吗？</li>
+  </ol>
+</div>
+
+<div class="note-box">
+  💡 <strong>小知识</strong>：回声测距的原理和声呐（SONAR）一模一样！声呐就是通过发射声波并接收回声来探测水下物体的。科学家还用这个原理测量海洋深度、探测鱼群。
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：回声的距离</div>
+  <p>林小宇对着峡谷大喊一声，2秒后听到了回声。峡谷的岩壁距离他有多远？（声音在空气中速度取340m/s）</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-ch2-q1" value="a"> 85米</label>
+    <label><input type="radio" name="quiz-ch2-q1" value="b" data-correct="true"> 340米</label>
+    <label><input type="radio" name="quiz-ch2-q1" value="c"> 680米</label>
+    <label><input type="radio" name="quiz-ch2-q1" value="d"> 1360米</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：声音在真空中</div>
+  <p>如果在太空中，凌音吹响笛子，林小宇能听到吗？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-ch2-q2" value="a" data-correct="true"> 不能，真空不能传声</label>
+    <label><input type="radio" name="quiz-ch2-q2" value="b"> 能，声音可以在真空中传播</label>
+    <label><input type="radio" name="quiz-ch2-q2" value="c"> 能但很小，因为太空没有空气</label>
+    <label><input type="radio" name="quiz-ch2-q2" value="d"> 不能，因为笛子在太空中吹不响</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题3：音调与频率</div>
+  <p>一只小蝙蝠每秒振动翅膀200次，另一只大蝙蝠每秒振动80次。谁发出的声音音调更高？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-ch2-q3" value="a" data-correct="true"> 小蝙蝠（频率200Hz > 80Hz）</label>
+    <label><input type="radio" name="quiz-ch2-q3" value="b"> 大蝙蝠（体型大声音更尖）</label>
+    <label><input type="radio" name="quiz-ch2-q3" value="c"> 一样高</label>
+    <label><input type="radio" name="quiz-ch2-q3" value="d"> 无法比较</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>5. 峡谷的尽头</h3>
+
+<p>经过声音的战斗，林小宇和凌音继续深入回音峡谷。掌握了声波法则之力后，林小宇已经能通过回声准确地判断出周围的每一个岔路——他甚至能通过回声的差异"画出"周围的地形图。</p>
+
+<p>"你进步得真快。"凌音说，"我见过很多觉醒者，但没有一个像你这么快掌握法则之力的。"</p>
+
+<p>"可能是因为……"林小宇想了想，"我们那个世界每天都在学这些。只是我以前没觉得它们有什么用。"</p>
+
+<p>他低头看了看手心中流动的"声波法则之线"。那些以前在课本上死记硬背的东西，现在变成了他身体的一部分。</p>
+
+<p>他们来到了峡谷的尽头。前方是一个巨大的石台，石台上方漂浮着一块拳头大小的石头——它散发着柔和的蓝光，周围的空气仿佛凝固了一般。</p>
+
+<p>"静止之石……"凌音喃喃道。</p>
+
+<p>但就在这时，一个低沉的声音从四面八方传来——</p>
+
+<p>"你们……终于来了……"</p>
+
+<p>石台上方的岩壁上，一只巨大的蝙蝠缓缓展开翅膀。它的翼展至少有十米，双眼闪着红光。回音魔蝠之王——峡谷的守护者。</p>
+
+<p>"想要静止之石……就得先通过我这一关……"</p>
+
+<p>魔蝠之王张开口，一股足以撕裂空气的超声波直扑而来！</p>
+
+<p>林小宇和凌音同时朝着两侧翻滚躲避。林小宇感觉到那股声波从他耳边擦过，带着毁灭性的力量。</p>
+
+<p>"看来还有最后一战。"林小宇深吸一口气，激活了"观察者之眼"——在他的视野中，整个空间布满了声波的法则之线。</p>
+
+<p>他"看到"了声音的轨迹、频率、振幅。他"看到"了音波在空气中传播的每一个细节。</p>
+
+<p>这一次，他不打算躲了。</p>
+
+<p style="text-align:center;margin:30px 0;"><strong>—— 第2章 完 ——</strong></p>
+
+<p class="no-indent" style="text-align:center;margin:10px 0;opacity:0.7;">⚠️ 林小宇和回音魔蝠之王的战斗结果如何？他们能否拿到静止之石？</p>
+<p class="no-indent" style="text-align:center;margin:10px 0;opacity:0.7;">👉 请关注 <strong>第2卷：炎寒谷的试炼</strong>（即将推出）</p>
+
+<p class="no-indent" style="text-align:center;margin:30px 0;">
+  <a href="../../index.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📚 返回书架</a>
+</p>
+
+</div>
+
+<script src="../../scripts/reader.js"></script>
+
+<!-- ===== Experiment 1: Sound Wave Visualizer ===== -->
+<script>
+(function() {
+  const canvas = document.getElementById('waveCanvas');
+  if (!canvas) return;
+  const freqSlider = document.getElementById('frequency');
+  const ampSlider = document.getElementById('amplitude');
+  const freqVal = document.getElementById('freqVal');
+  const ampVal = document.getElementById('ampVal');
+  const pauseBtn = document.getElementById('pauseWave');
+  const resetBtn = document.getElementById('resetWave');
+
+  let paused = false;
+  let time = 0;
+  let animId;
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width;
+    const h = 260;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    const freq = parseFloat(freqSlider.value);
+    const amp = parseFloat(ampSlider.value);
+
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, w, h);
+
+    // Grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 50) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = 0; y < h; y += 30) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+
+    // Center line
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.beginPath(); ctx.moveTo(0, h/2); ctx.lineTo(w, h/2); ctx.stroke();
+
+    // Draw wave
+    ctx.strokeStyle = '#4fc3f7';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    for (let x = 0; x < w; x++) {
+      const y = h/2 + Math.sin((x / w * freq * Math.PI * 4) + time) * amp * (h/2/80);
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Wavelength indicator
+    const waveLen = w / freq / 2;
+    ctx.strokeStyle = 'rgba(255,255,100,0.5)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4,4]);
+    const startX = 50;
+    ctx.beginPath();
+    ctx.moveTo(startX, 20);
+    ctx.lineTo(startX + waveLen, 20);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,255,100,0.7)';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('← 波长 →', startX + waveLen/2, 16);
+
+    // Amplitude indicator
+    ctx.strokeStyle = 'rgba(255,100,100,0.5)';
+    const peakX = w * 0.75;
+    const ampPx = amp * (h/2/80);
+    ctx.beginPath();
+    ctx.moveTo(peakX, h/2);
+    ctx.lineTo(peakX, h/2 - ampPx);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255,100,100,0.7)';
+    ctx.textAlign = 'left';
+    ctx.fillText('振幅↑', peakX + 4, h/2 - ampPx/2);
+
+    // Info
+    ctx.fillStyle = '#fff';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`频率: ${freq.toFixed(1)} (音调${freq > 5 ? '高' : '低'})`, 12, 200);
+    ctx.fillText(`振幅: ${amp} (响度${amp > 40 ? '大' : '小'})`, 12, 220);
+
+    if (!paused) time += 0.05;
+    animId = requestAnimationFrame(draw);
+  }
+
+  freqSlider.addEventListener('input', function() { freqVal.textContent = this.value; });
+  ampSlider.addEventListener('input', function() { ampVal.textContent = this.value; });
+  pauseBtn.addEventListener('click', function() { paused = !paused; this.textContent = paused ? '▶ 继续' : '⏸ 暂停'; });
+  resetBtn.addEventListener('click', function() { time = 0; paused = false; pauseBtn.textContent = '⏸ 暂停'; });
+  draw();
+})();
+</script>
+
+<!-- ===== Experiment 2: Echo Ranging ===== -->
+<script>
+(function() {
+  const canvas = document.getElementById('echoCanvas');
+  if (!canvas) return;
+  const distSlider = document.getElementById('echoDist');
+  const distVal = document.getElementById('echoDistVal');
+  const sendBtn = document.getElementById('sendPulse');
+
+  let pulsing = false;
+  let pulseX = 40;
+  let pulseDir = 1;
+  let returning = false;
+  let animId;
+
+  distSlider.addEventListener('input', function() { distVal.textContent = this.value; });
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width;
+    const h = 280;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    const dist = parseFloat(distSlider.value);
+    const scale = (w - 80) / dist;
+    const wallX = 40 + dist * scale;
+
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, w, h);
+
+    // Ground
+    ctx.fillStyle = '#1a2a1a';
+    ctx.fillRect(0, h-50, w, 50);
+
+    // Wall
+    ctx.fillStyle = '#3a3a4a';
+    ctx.fillRect(wallX-4, h-120, 8, 120);
+    ctx.fillStyle = '#5a5a7a';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('岩壁', wallX, h-130);
+
+    // Source
+    ctx.fillStyle = '#4fc3f7';
+    ctx.beginPath();
+    ctx.arc(40, h-60, 8, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('声源', 40, h-80);
+
+    // Distance line
+    ctx.strokeStyle = 'rgba(255,255,100,0.3)';
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();
+    ctx.moveTo(40, h-75);
+    ctx.lineTo(wallX, h-75);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,255,100,0.6)';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(dist + ' m', (40 + wallX)/2, h-85);
+
+    // Pulse
+    if (pulsing) {
+      ctx.fillStyle = returning ? '#ff9800' : '#4fc3f7';
+      ctx.beginPath();
+      ctx.arc(pulseX, h-60, 6, 0, Math.PI*2);
+      ctx.fill();
+
+      // Wave ring
+      ctx.strokeStyle = returning ? 'rgba(255,152,0,0.3)' : 'rgba(79,195,247,0.3)';
+      ctx.lineWidth = 2;
+      for (let r = 1; r <= 3; r++) {
+        const ringR = r * 10;
+        ctx.beginPath();
+        ctx.arc(pulseX, h-60, ringR, 0, Math.PI*2);
+        ctx.stroke();
+      }
+
+      // Label
+      ctx.fillStyle = '#fff';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(returning ? '🔊 回音' : '🔊 声波', pulseX, h-90);
+
+      // Move
+      const step = scale * 340 * 0.004;
+      if (!returning) {
+        pulseX += step;
+        if (pulseX >= wallX) { returning = true; pulseX = wallX; }
+      } else {
+        pulseX -= step * 0.8;
+        if (pulseX <= 40) { pulsing = false; }
+      }
+    } else {
+      // Ready state
+      ctx.fillStyle = 'rgba(79,195,247,0.3)';
+      ctx.font = '14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('点击「发射声波」开始测距', w/2, h/2 - 10);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.font = '11px sans-serif';
+      const echoTime = (dist * 2 / 340).toFixed(2);
+      ctx.fillText(`到岩壁 ${dist}m，声波往返约需 ${echoTime} 秒`, w/2, h/2 + 16);
+    }
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  sendBtn.addEventListener('click', function() {
+    if (pulsing) return;
+    pulsing = true;
+    pulseX = 40;
+    pulseDir = 1;
+    returning = false;
+  });
+
+  draw();
+
+  // Scroll-triggered completion
+  window.addEventListener('scroll', function() {
+    const badge = document.getElementById('completeBadge');
+    const key = 'v01ch02';
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8 && !localStorage.getItem('physics-story-progress').includes(key)) {
+      const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      p[key] = true;
+      localStorage.setItem('physics-story-progress', JSON.stringify(p));
+      badge.style.display = 'inline-block';
+    }
+  });
+
+  // Check initial badge state
+  (function() {
+    const badge = document.getElementById('completeBadge');
+    const key = 'v01ch02';
+    const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+    if (p[key]) badge.style.display = 'inline-block';
+  })();
+})();
+</script>
+
+</body>
+</html>

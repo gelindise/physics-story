@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：蒸汽迷宫 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.completed-badge { display:inline-block;padding:4px 12px;border-radius:20px;background:#c8e6c9;color:#2e7d32;font-size:0.8em;font-weight:600; }
+.phase-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0; }
+.phase-grid .pg-item { padding:12px;border-radius:8px;background:#f5f5f5;font-size:0.85em;text-align:center; }
+body.night-mode .phase-grid .pg-item { background:#1a1a2e; }
+.pg-item.pg-absorb { border-left:3px solid #c62828; }
+.pg-item.pg-release { border-left:3px solid #1565c0; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第2卷</button>
+  <span class="chapter-title">第2卷 · 第2章 蒸汽迷宫</span>
+  <span id="completeBadge" class="completed-badge" style="display:none;">✓ 已读完</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+
+<h2 style="border:none;font-size:2em;text-align:center;">第二章</h2>
+<h1 style="text-align:center;font-size:2.2em;margin-top:0;">蒸汽迷宫</h1>
+<p class="no-indent" style="text-align:center;opacity:0.6;">📖 物理知识点：汽化与液化 · 沸腾与蒸发 · 升华与凝华</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>1. 霜炎巨兽</h3>
+
+<p>黑暗中，那双红蓝双色的眼睛越来越近。地面在沉重的脚步声中颤抖。</p>
+
+<p>终于，一个庞大的身影从迷雾中显现——</p>
+
+<p>霜炎巨兽。</p>
+
+<p>它的体型像一座小山，高达五米。最奇特的是它的身体——左半身覆盖着冰蓝色的鳞甲，散发着刺骨的寒气；右半身覆盖着赤红色的熔岩甲壳，升腾着灼热的蒸汽。冰与火在同一具身体上共存，互不侵犯。</p>
+
+<p>它的左眼是冰蓝色的，右眼是火红色的。当双眼同时注视着林小宇时，他感觉一半身体被冻僵，另一半身体被灼烧。</p>
+
+<p>"人类……"霜炎巨兽开口了，声音像是冰裂和岩浆冒泡的混合，"你们……想拿走温衡之石？"</p>
+
+<p>"法则原石的碎片不属于你。"凌音挡在林小宇身前，"它是用来修复元界的。"</p>
+
+<p>霜炎巨兽发出一阵低沉的笑声。"修复？你们知道元界为什么要被修复吗？你们知道大灾变是怎么发生的吗？"</p>
+
+<p>林小宇和凌音对视了一眼。</p>
+
+<p>"看来你们什么都不知道。"霜炎巨兽迈出一步，"那就让我来告诉你们——所谓的大灾变，其实是法则守护者自己造成的！他们无法控制原石的力量，导致了崩坏！"</p>
+
+<p>"但你们——"它盯着林小宇，"你身上有他的气息。那个背叛者……最后的法则守护者……"</p>
+
+<p>"你在说什么？"林小宇完全听不懂。</p>
+
+<p>"你不需要知道。"霜炎巨兽张开巨口，冰蓝色的寒气从它左侧的口中喷涌而出，"你只需要知道——想通过这里，就要击败我！"</p>
+
+<p>寒气扑面而来。林小宇翻身躲开，地面被寒气击中，瞬间覆盖了一层厚厚的冰霜。</p>
+
+<p>战斗开始了。</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>2. 蒸汽爆炸</h3>
+
+<p>林小宇和凌音各自向两侧闪避。霜炎巨兽的攻击方式极其诡异——左半身喷出寒气，右半身喷出火焰，寒热交替，让人防不胜防。</p>
+
+<p>"它的弱点在胸口！"凌音喊道，"冰与火的交界处！"</p>
+
+<p>林小宇开启"观察者之眼"，仔细审视那双色巨兽的身体。他看到——在巨兽的胸口处，冰霜和熔岩交汇的地方，有一个能量漩涡。那里汇集了巨兽体内全部的法则之力。</p>
+
+<p>但问题是：怎么攻击到那里？</p>
+
+<p>巨兽的左半身有冰甲保护，右半身有熔岩甲壳——普通攻击根本无法穿透。</p>
+
+<p>林小宇急中生智。他注意到巨兽脚下有一个小水潭——那是冰雪融化和蒸汽凝结形成的液态水。他心念一动，用意念加热水潭中的水——</p>
+
+<p>水潭开始冒泡。温度急剧上升，很快达到了100℃。水沸腾了！</p>
+
+<p>沸腾产生的大量蒸汽向上升腾，形成了一堵蒸汽墙，暂时挡住了巨兽的视线。</p>
+
+<p>"好机会！"凌音吹起笛子，音波攻击穿过蒸汽墙击中了巨兽的胸口。</p>
+
+<p>巨兽怒吼一声，但并没有受到严重伤害。</p>
+
+<p>"光靠蒸汽墙不够……"林小宇咬牙。他需要更强的攻击手段。</p>
+
+<p>他在脑海中快速回顾物态变化的知识——<strong>汽化</strong>是液态变成气态，要<strong>吸热</strong>；<strong>液化</strong>是气态变成液态，要<strong>放热</strong>。如果让水剧烈汽化，水的体积会膨胀大约1700倍——那会产生巨大的压力！</p>
+
+<p>他开始疯狂加热封闭岩缝中的水。水在密封的空间中汽化，压力急剧升高——</p>
+
+<p>嘭——！！</p>
+
+<p>一声巨响。岩缝中的水蒸气爆炸式喷发，形成了一股蒸汽冲击波！巨兽被冲击波击中，后退了几步。</p>
+
+<p>"蒸汽爆炸……"林小宇喘着气，"利用水变成蒸汽时体积剧烈膨胀的原理……"</p>
+
+  <!-- 知识卡片：汽化 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：汽化——液体变成气体</div>
+  <div class="card-body">
+    <p><strong>汽化</strong>：物质从液态变成气态的过程，需要<span class="temp-hot">吸热</span>。</p>
+    <p>汽化有两种方式：</p>
+    <ul>
+      <li><strong>蒸发</strong>：在任何温度下都能进行的汽化（只在液体表面进行，缓慢）</li>
+      <li><strong>沸腾</strong>：在特定温度（沸点）下进行的剧烈汽化（在液体表面和内部同时进行）</li>
+    </ul>
+    <p><strong>影响蒸发快慢的因素</strong>：</p>
+    <ul>
+      <li>温度越高，蒸发越快</li>
+      <li>液体的表面积越大，蒸发越快</li>
+      <li>液体表面空气流动越快，蒸发越快</li>
+    </ul>
+    <p><strong>沸腾的条件</strong>：① 达到沸点 ② 继续吸热</p>
+    <p>水的沸点在标准大气压下是 <strong>100℃</strong>。水的沸点随气压升高而升高，随气压降低而降低（高山上煮不熟饭就是这个原因！）。</p>
+    <p class="formula">汽化 → 吸热 &nbsp;&nbsp; 液化 → 放热</p>
+  </div>
+</div>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>3. 冰雪之盾</h3>
+
+<p>蒸汽爆炸只是让霜炎巨兽后退了几步，并没有造成实质性伤害。巨兽愤怒了——它挥舞着冰霜覆盖的左臂砸向地面。</p>
+
+<p>地面剧烈震动，一道冰浪向林小宇袭来！冰浪所到之处，一切都被冻结。</p>
+
+<p>林小宇跳起来躲开，但落地时被冰面滑倒，摔在了地上。</p>
+
+<p>"小心！"凌音冲过来，用笛子吹出一道音波屏障，挡住了后续的冰刺。</p>
+
+<p>林小宇爬起来，快速思考。<em>它的冰是怎么形成的？应该是空气中的水蒸气遇到极低的温度，直接<strong>凝华</strong>成了冰晶——从气态跳过液态直接变成了固态！</em></p>
+
+<p><em>那么反过来——</em>他集中注意力，将空气中的水蒸气直接变成固态冰，形成了一面冰盾。</p>
+
+<p>这不是普通的冰。这是水蒸气直接<strong>凝华</strong>而成的冰——结构更致密，更坚硬！</p>
+
+<p>巨兽的火焰右臂砸在冰盾上，虽然冰盾出现了裂纹，但成功地挡住了攻击。</p>
+
+<p>"好！"凌音赞道。</p>
+
+<p>林小宇则抓住了一个关键——凝华是<strong>放热</strong>过程，而升华是<strong>吸热</strong>过程。如果他能让巨兽身体某一部分的冰<strong>升华</strong>（直接变成水蒸气），就能在不产生液态水的情况下破坏它的冰甲！</p>
+
+<p>他集中注意力，将意念聚焦在巨兽左臂的冰甲上——</p>
+
+<p>冰甲的表面开始出现白雾。那不是熔化——冰直接变成了水蒸气，跳过了液态阶段！<strong>升华</strong>！</p>
+
+<p>冰甲开始变薄。巨兽察觉到异常，发出一声怒吼，但林小宇没有停止——他加大了升华的力度。冰甲在他的意念下不断升华，白色的蒸汽从冰甲表面升腾而起。</p>
+
+<p>终于——咔的一声——冰甲的一大块碎裂了！</p>
+
+  <!-- 知识卡片：液化 + 升华与凝华 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：液化 · 升华 · 凝华</div>
+  <div class="card-body">
+
+    <p><strong>液化</strong>：气体变成液体（<span class="temp-cold">放热</span>）</p>
+    <ul>
+      <li>方式：① 降低温度 ② 压缩体积</li>
+      <li>生活中的液化现象：冬天呼出的白气、冰水瓶子外壁的水珠、露水</li>
+    </ul>
+
+    <p><strong>升华</strong>：固体直接变成气体（<span class="temp-hot">吸热</span>）</p>
+    <ul>
+      <li>生活中的升华：樟脑丸（卫生球）变小、干冰（固态CO₂）直接变成气体、冰冻的衣服变干</li>
+    </ul>
+
+    <p><strong>凝华</strong>：气体直接变成固体（<span class="temp-cold">放热</span>）</p>
+    <ul>
+      <li>生活中的凝华：霜的形成、雪花的形成、灯泡用久了内壁变黑（钨蒸气凝华）</li>
+    </ul>
+
+    <p style="font-weight:700;">六种物态变化总结：</p>
+    <div class="phase-grid">
+      <div class="pg-item pg-absorb">熔化（固→液）<br>🔥 吸热</div>
+      <div class="pg-item pg-release">凝固（液→固）<br>❄️ 放热</div>
+      <div class="pg-item pg-absorb">汽化（液→气）<br>🔥 吸热</div>
+      <div class="pg-item pg-release">液化（气→液）<br>❄️ 放热</div>
+      <div class="pg-item pg-absorb">升华（固→气）<br>🔥 吸热</div>
+      <div class="pg-item pg-release">凝华（气→固）<br>❄️ 放热</div>
+    </div>
+  </div>
+</div>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>4. 法则之力的融合</h3>
+
+<p>冰甲破碎后，霜炎巨兽的弱点——胸口——暴露了出来。但林小宇也消耗了大量体力。控制物态变化比控制机械运动要费力得多。</p>
+
+<p>巨兽暴怒了。它同时张开了冰与火的双口——</p>
+
+<p>一股极寒的冰流和一股炽热的火焰同时喷出，在半空中交汇，形成了一股冰火混合的毁灭性能量柱！</p>
+
+<p>林小宇已经精疲力竭，眼看躲不开了——</p>
+
+<p>就在这时，凌音挡在了他面前。</p>
+
+<p>她吹响了笛子。这一次，笛声中蕴含的不只是声音——还有一种奇异的力量。声波在空中形成了涟漪，冰火能量柱击中涟漪时竟然被折射了方向，打在了旁边的岩壁上！</p>
+
+<p>轰——！</p>
+
+<p>岩壁崩塌，露出了后面的一个洞穴。洞穴中弥漫着柔和的红色光芒。</p>
+
+<p>"温衡之石……就在里面。"凌音说，声音有些颤抖。</p>
+
+<p>林小宇惊讶地看着她——她的瞳孔中，银光比以前更亮了。</p>
+
+<p>"你……你也是觉醒者？"</p>
+
+<p>凌音没有回答。她转过头，看向霜炎巨兽。"我们一起。你用物态变化的法则之力，我用声音的法则之力——我们联手。"</p>
+
+<p>林小宇点点头。他站起来，与凌音并肩而立。</p>
+
+<p>两人同时发动了攻击——</p>
+
+<p>林小宇将周围空气中的水蒸气大量<strong>液化</strong>，形成了一片浓密的水雾。水雾阻挡了巨兽的视线。紧接着，他让水雾急剧降温——水雾中的小水滴<strong>凝固</strong>成冰晶，像无数微小的冰针一样悬浮在空中。</p>
+
+<p>凌音吹响笛子，音波驱动着冰晶风暴向巨兽席卷而去！</p>
+
+<p>巨兽被冰晶风暴击中，冰与火的身体同时受到了攻击。它发出震天的吼声，庞大的身躯开始摇晃。</p>
+
+<p>"就是现在！"林小宇把所有剩余的精力集中起来——他让巨兽胸口的温度急剧升高，同时让周围的水蒸气高速旋转。</p>
+
+<p>蒸汽在高温下膨胀——</p>
+
+<p>嘭！！！</p>
+
+<p>一声惊天动地的爆炸。霜炎巨兽被掀翻在地，冰火的身体开始分离。</p>
+
+<p>蓝光和红光从它体内涌出，在空中旋转、交织，最终凝结成一块拳头大小的石头——温衡之石。石头散发着柔和的红色光芒，触手温热。</p>
+
+<p>霜炎巨兽的身体逐渐散尽，只留下一地的冰屑和灰烬。</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>5. 温衡之石</h3>
+
+<p>林小宇走过去，捡起了温衡之石。石头入手温热，他能感受到其中蕴含着关于温度和物态变化的法则之力。</p>
+
+<p>当他的手指触碰到石头时，大量的信息涌入他的脑海——温度与热量的本质、物质三态之间的转化规律、吸热与放热的平衡……所有的物态变化知识在这一刻完全融会贯通。</p>
+
+<p>他的"法则之力"升级了。他现在不仅能<strong>看到</strong>温度和物态变化，还能在一定范围内<strong>控制</strong>它们。</p>
+
+<p>"你感觉到了？"凌音走过来。</p>
+
+<p>林小宇点点头。"就像……突然明白了以前怎么都学不会的东西。"</p>
+
+<p>他举起温衡之石，对着天空。两道原石碎片——静止之石和温衡之石——开始产生共鸣。一幅更大的地图在他脑海中展开。</p>
+
+<p>第三个光点在东方——那里标注着：<strong>镜海</strong>。</p>
+
+<p>"镜海……"凌音轻声说，"一个被光与镜像主宰的地方。那里的法则碎片……是关于光的。"</p>
+
+<p>林小宇看着远方紫色的天际线。他已经掌握了两块法则碎片——机械运动和物态变化。前方还有更多挑战在等着他。</p>
+
+<p>而炎寒谷——在这个冰与火交织的地方——他不仅学会了物态变化的全部知识，还发现了凌音身上隐藏的秘密。</p>
+
+<p>她把笛子插回腰间，回头看了他一眼。"走吧。还有很长的路要走。"</p>
+
+<p>林小宇微微一笑，跟上了她的脚步。</p>
+
+
+<!-- ===== 🔬 互动实验：沸腾的温度 ===== -->
+<h3>🔬 互动实验：沸腾曲线</h3>
+<p class="no-indent">给水持续加热，观察温度变化。注意——水沸腾时（100℃），温度也会"停住"！</p>
+
+<div class="canvas-container">
+  <canvas id="boilCanvas" style="height:260px;"></canvas>
+  <div class="controls">
+    <button id="startBoil">🔥 开始加热</button>
+    <button id="resetBoil">🔄 重置</button>
+  </div>
+  <div class="legend">🌡️ 水温变化曲线 &nbsp;&nbsp; 注意沸腾时的温度平台</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：炎寒谷的实验</h3>
+
+<div class="experiment-box">
+  <div class="exp-title">♨️ 实验1：观察水的沸腾</div>
+  <ol class="exp-steps">
+    <li>用烧水壶烧一壶水（注意安全！）</li>
+    <li>用温度计测量水温变化，每分钟记录一次</li>
+    <li>注意观察：温度上升到100℃后就不再上升了——水正在沸腾！</li>
+    <li>继续加热，温度保持在100℃不变，直到水全部烧干</li>
+  </ol>
+</div>
+
+<div class="experiment-box">
+  <div class="exp-title">❄️ 实验2：霜的制造</div>
+  <p>凝华的经典演示——自己造霜！</p>
+  <ol class="exp-steps">
+    <li>准备一个金属杯或易拉罐，放入冰块和盐</li>
+    <li>搅拌几下，等待30秒</li>
+    <li>观察杯壁外侧——出现了一层白色的霜！</li>
+    <li>空气中的水蒸气遇到冰冷的杯壁，<strong>凝华</strong>成了冰晶</li>
+  </ol>
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：沸腾的条件</div>
+  <p>水在标准大气压下沸腾的温度是多少？青藏高原上烧水，水温达到90℃就沸腾了，这说明什么？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v2c2-q1" value="a" data-correct="true"> 100℃；说明气压越低，沸点越低</label>
+    <label><input type="radio" name="quiz-v2c2-q1" value="b"> 100℃；说明海拔越高沸点越高</label>
+    <label><input type="radio" name="quiz-v2c2-q1" value="c"> 0℃；说明高原水烧不开</label>
+    <label><input type="radio" name="quiz-v2c2-q1" value="d"> 90℃；和气压无关</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：物态变化判断</div>
+  <p>冬天的早晨，窗玻璃上出现了美丽的冰花。这是水的哪种物态变化？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v2c2-q2" value="a"> 凝固（水变成冰）</label>
+    <label><input type="radio" name="quiz-v2c2-q2" value="b" data-correct="true"> 凝华（水蒸气直接变成冰晶）</label>
+    <label><input type="radio" name="quiz-v2c2-q2" value="c"> 液化（水蒸气变成水再结冰）</label>
+    <label><input type="radio" name="quiz-v2c2-q2" value="d"> 升华（水变成冰）</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题3：六种物态变化</div>
+  <p>下列哪一组物态变化都是<strong>吸热</strong>的？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v2c2-q3" value="a"> 凝固、液化、凝华</label>
+    <label><input type="radio" name="quiz-v2c2-q3" value="b" data-correct="true"> 熔化、汽化、升华</label>
+    <label><input type="radio" name="quiz-v2c2-q3" value="c"> 熔化、凝固、汽化</label>
+    <label><input type="radio" name="quiz-v2c2-q3" value="d"> 液化、汽化、升华</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<p style="text-align:center;margin:30px 0;"><strong>—— 第2卷·完 ——</strong></p>
+
+<p class="no-indent" style="text-align:center;margin:10px 0;opacity:0.7;">
+  👉 下一站：<strong>镜海</strong>——一个被光与镜像统治的神秘海域。林小宇即将面对光的反射与折射的挑战！
+</p>
+<p class="no-indent" style="text-align:center;margin:20px 0;">
+  <a href="../../index.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📚 返回书架</a>
+</p>
+
+</div>
+
+<script src="../../scripts/reader.js"></script>
+
+<!-- No separate interactive experiment section in ch02 since the phase change simulator is embedded -->
+<script>
+(function() {
+  window.addEventListener('scroll', function() {
+    const badge = document.getElementById('completeBadge');
+    const key = 'v02ch02';
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p[key]) {
+        p[key] = true;
+        localStorage.setItem('physics-story-progress', JSON.stringify(p));
+      }
+      badge.style.display = 'inline-block';
+    }
+  });
+  (function() {
+    const key = 'v02ch02';
+    const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+    if (p[key]) document.getElementById('completeBadge').style.display = 'inline-block';
+  })();
+})();
+</script>
+
+
+<!-- ===== Boiling Curve Experiment ===== -->
+<script>
+(function() {
+  const canvas = document.getElementById('boilCanvas');
+  if (!canvas) return;
+  const startBtn = document.getElementById('startBoil');
+  const resetBtn = document.getElementById('resetBoil');
+  let boiling = false, time = 0, temp = 20, points = [], animId;
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width, h = 260;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    if (boiling && temp < 120) {
+      time += 0.3;
+      if (temp < 100) temp += 1.2;
+      else if (temp >= 100) temp = 100 + Math.sin(time) * 0.3; // boil plateau
+      points.push({t: time, temp: temp});
+    }
+
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    for (let x = 0; x < w; x += 50) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for (let y = 0; y < h; y += 30) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+
+    // 100°C line
+    const y100 = h - 20 - (100 - 0) / 140 * (h - 60);
+    ctx.setLineDash([4,4]);
+    ctx.strokeStyle = 'rgba(255,100,50,0.4)';
+    ctx.beginPath(); ctx.moveTo(0, y100); ctx.lineTo(w, y100); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,100,50,0.6)';
+    ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText('100°C (沸点)', 4, y100 - 2);
+    ctx.setLineDash([]);
+
+    // Data curve
+    if (points.length > 1) {
+      const xScale = w / Math.max(points[points.length-1].t, 60);
+      ctx.strokeStyle = '#ff7043'; ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      points.forEach((p, i) => {
+        const x = p.t * xScale;
+        const y = h - 20 - (p.temp - 0) / 140 * (h - 60);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText(`⏱ ${time.toFixed(1)}s  |  🌡 ${temp.toFixed(1)}°C`, 12, 12);
+    if (temp >= 100) {
+      ctx.fillStyle = '#ff7043';
+      ctx.fillText('♨️ 水沸腾了！温度保持在100℃', 12, 32);
+    }
+
+    boiling && temp < 120 ? animId = requestAnimationFrame(draw) : cancelAnimationFrame(animId);
+  }
+
+  startBtn.addEventListener('click', function() { if (!boiling) { boiling = true; draw(); } });
+  resetBtn.addEventListener('click', function() {
+    boiling = false; cancelAnimationFrame(animId);
+    time = 0; temp = 20; points = []; draw();
+  });
+  draw();
+})();
+</script>
+
+</body>
+</html>

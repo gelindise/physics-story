@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冷面物理 - 笑着笑着就学会了</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  background: #0a0a0f;
+  color: #e8e8e8;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== 顶部 ===== */
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 40px 20px;
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(100, 180, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 200, 50, 0.04) 0%, transparent 50%),
+    #0a0a0f;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(100,180,255,0.3), transparent);
+}
+
+.hero h1 {
+  font-size: clamp(2.6em, 7vw, 4.5em);
+  font-weight: 800;
+  letter-spacing: 8px;
+  position: relative;
+  z-index: 1;
+  color: #f0f0f0;
+}
+.hero .accent {
+  background: linear-gradient(135deg, #64b5f6, #ffd54f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .tagline {
+  font-size: clamp(1em, 2.2vw, 1.4em);
+  color: rgba(255,255,255,0.6);
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 4px;
+}
+.hero .subtag {
+  font-size: 0.9em;
+  color: rgba(255,255,255,0.3);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  line-height: 1.8;
+}
+
+/* ===== 人设卡片 ===== */
+.persona-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.persona-tag {
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.6);
+}
+.persona-tag.highlight {
+  border-color: rgba(100,180,255,0.3);
+  color: #64b5f6;
+  background: rgba(100,180,255,0.06);
+}
+.persona-tag.fire {
+  border-color: rgba(255,200,50,0.3);
+  color: #ffd54f;
+  background: rgba(255,200,50,0.06);
+}
+
+/* ===== 导航 ===== */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 0 20px;
+}
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: 56px;
+  overflow-x: auto;
+}
+.nav-inner .brand {
+  font-weight: 700;
+  color: #f0f0f0;
+  white-space: nowrap;
+  font-size: 0.95em;
+  letter-spacing: 2px;
+}
+.nav-inner a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 0.88em;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.nav-inner a:hover { color: #64b5f6; }
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* ===== 关于 ===== */
+.section-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 48px 0 24px;
+  padding-left: 16px;
+  border-left: 4px solid #64b5f6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title:first-child { margin-top: 10px; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.about-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 24px 18px;
+  text-align: center;
+}
+.about-card .icon { font-size: 2em; margin-bottom: 10px; }
+.about-card h4 { font-size: 0.95em; color: #64b5f6; margin-bottom: 6px; }
+.about-card p { font-size: 0.8em; color: rgba(255,255,255,0.5); }
+
+/* ===== 专场卡片 ===== */
+.ep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+}
+.ep-card {
+  background: linear-gradient(145deg, #12121a, #16162a);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 24px 22px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.ep-card:hover {
+  border-color: rgba(100,180,255,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(100,180,255,0.04);
+}
+.ep-card.ready {
+  cursor: pointer;
+  border-color: rgba(100,180,255,0.15);
+}
+.ep-card.ready:hover {
+  border-color: rgba(100,180,255,0.5);
+  box-shadow: 0 12px 40px rgba(100,180,255,0.08);
+}
+.ep-card .badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.65em;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.badge-done { background: rgba(100,180,255,0.12); color: #64b5f6; }
+.badge-hot { background: rgba(255,200,50,0.12); color: #ffd54f; }
+.badge-next { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.35); }
+.badge-more { background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.2); }
+
+.ep-card .ep-num {
+  font-size: 0.7em;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.ep-card .ep-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.ep-card .ep-topics {
+  font-size: 0.78em;
+  color: rgba(100,180,255,0.5);
+  margin-bottom: 10px;
+}
+.ep-card .ep-desc {
+  font-size: 0.83em;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+.ep-card .ep-status {
+  margin-top: 12px;
+  font-size: 0.72em;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ===== 生产流程 ===== */
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.flow-step {
+  background: rgba(100,180,255,0.06);
+  border: 1px solid rgba(100,180,255,0.1);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.82em;
+  color: rgba(255,255,255,0.6);
+}
+.flow-arrow {
+  color: rgba(255,255,255,0.15);
+  font-size: 1.2em;
+}
+
+/* ===== FAQ ===== */
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 16px 0;
+}
+.faq-q {
+  font-weight: 600;
+  color: #64b5f6;
+  margin-bottom: 6px;
+  font-size: 0.95em;
+}
+.faq-a {
+  font-size: 0.9em;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+
+/* ===== 进度 ===== */
+.progress-overview {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0 32px;
+  flex-wrap: wrap;
+}
+.progress-bar-outer {
+  flex: 1;
+  min-width: 120px;
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 16%;
+  background: linear-gradient(90deg, #64b5f6, #ffd54f);
+  border-radius: 10px;
+  transition: width 0.8s ease;
+}
+.progress-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 0.82em;
+  color: rgba(255,255,255,0.4);
+}
+.progress-stats strong { color: #64b5f6; }
+
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.2);
+  font-size: 0.82em;
+}
+.footer a {
+  color: rgba(100,180,255,0.4);
+  text-decoration: none;
+}
+.footer a:hover { color: #64b5f6; }
+
+@media (max-width: 600px) {
+  .ep-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr 1fr; }
+  .nav-inner { gap: 16px; }
+  .flow { gap: 4px; }
+}
+
+/* ===== 金句滚动 ===== */
+.ticker {
+  background: rgba(100,180,255,0.03);
+  border-top: 1px solid rgba(100,180,255,0.06);
+  border-bottom: 1px solid rgba(100,180,255,0.06);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-wrap {
+  display: inline-block;
+  animation: ticker 35s linear infinite;
+}
+.ticker-wrap span {
+  display: inline-block;
+  padding: 0 40px;
+  font-size: 0.82em;
+  color: rgba(100,180,255,0.4);
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1><span class="accent">冷面</span>物理</h1>
+  <p class="tagline">笑着笑着就学会了</p>
+  <p class="subtag">一个外表沉稳、内心热情的物理老师 · 🎤 冷面物理 · 笑着笑着就学会了<br>用脱口秀逐字稿，带你发现物理的滚烫真相</p>
+  <div class="persona-bar">
+    <span class="persona-tag">👔 外表沉稳</span>
+    <span class="persona-tag highlight">🔥 内心热情</span>
+    <span class="persona-tag fire">⚡ 冷面笑匠</span>
+    <span class="persona-tag">📝 每周两更</span>
+    <span class="persona-tag">📖 公众号逐字稿</span>
+  </div>
+</div>
+
+<div class="nav-bar">
+  <div class="nav-inner">
+    <span class="brand">❄️ 冷面物理</span>
+    <a href="#about">关于</a>
+    <a href="#shows">专场</a>
+    <a href="#faq">常见问题</a>
+    <a href="#progress">进度</a>
+    <a href="../物理故事/index.html" style="color:rgba(100,200,255,0.4);">← 物理解码者</a>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-wrap">
+    <span>⚡ "你正以每秒30公里在太空中飞驰，你妈还说你懒"</span>
+    <span>🎯 "参照物就是你妈眼里别人家的孩子"</span>
+    <span>🔥 "物理是唯一让你错了都不知道怎么反驳的学科"</span>
+    <span>💡 "物理不是背公式，是看懂世界在干什么"</span>
+    <span>📢 "别跟我说你多努力，给个数据"</span>
+    <span>⚡ "你正以每秒30公里在太空中飞驰，你妈还说你懒"</span>
+    <span>🎯 "参照物就是你妈眼里别人家的孩子"</span>
+    <span>🔥 "物理是唯一让你错了都不知道怎么反驳的学科"</span>
+    <span>💡 "物理不是背公式，是看懂世界在干什么"</span>
+    <span>📢 "别跟我说你多努力，给个数据"</span>
+  </div>
+</div>
+
+<div class="container">
+
+<section id="about">
+  <h2 class="section-title">🎭 这个人设</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="icon">👔</div>
+      <h4>外表沉稳</h4>
+      <p>不紧不慢，娓娓道来。像一位冷静的科学家在讲述他的领域——平静、自信、有分量。</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">🔥</div>
+      <h4>内心热情</h4>
+      <p>讲到物理的精彩处，眼神会发光。对宇宙规律的滚烫热爱，会自然而然感染每一个人。</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">📝</div>
+      <h4>公众号逐字稿</h4>
+      <p>完全口语化，画面感极强。读者看着文字就能'听见'语气、'看见'场景。</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">📖</div>
+      <h4>故事联动</h4>
+      <p>与「物理解码者：异世法则」互补——这里笑出共鸣，那里读进深度。</p>
+    </div>
+  </div>
+</section>
+
+<section id="progress">
+  <h2 class="section-title">📊 创作进度</h2>
+  <div class="progress-overview">
+    <div class="progress-bar-outer">
+      <div class="progress-fill" style="width:100%"></div>
+    </div>
+    <div class="progress-stats">
+      <span>✅ 🎉 已完稿 <strong>16</strong> 个专场（全套完结！）</span>
+      <span>✍️ 🎉 全部完成</span>
+      <span>🎯 总计 <strong>16</strong> 个专场</span>
+      <span>📅 每周 <strong>2</strong> 更</span>
+    </div>
+  </div>
+</section>
+
+<section id="shows">
+  <h2 class="section-title">📋 专场列表</h2>
+  <div class="ep-grid">
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 00 · 开场秀</div>
+      <div class="ep-title">🎤 物理是个啥？</div>
+      <div class="ep-topics">绪论 · 为什么要学物理</div>
+      <div class="ep-desc">物理和玄学的区别是什么？物理为什么这么"诚实"？宇宙有自己的操作系统——那就是物理。</div>
+      <div class="ep-status">3个段子+互动 · 可发布</div>
+    </div>
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 01</div>
+      <div class="ep-title">🏃 卷王的世界</div>
+      <div class="ep-topics">机械运动 · 参照物 · 速度</div>
+      <div class="ep-desc">你坐在教室里没动？错！你正以每秒30公里飞驰。参照物就是你妈眼里"别人家的孩子"。</div>
+      <div class="ep-status">4个段子+互动 · 可发布</div>
+    </div>
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 02</div>
+      <div class="ep-title">🤫 闭嘴，听我说！</div>
+      <div class="ep-topics">声音 · 传播 · 回声 · 音调响度音色</div>
+      <div class="ep-desc">你妈隔着三堵墙喊你吃饭——声音是怎么穿越障碍的？为什么有些人的声音像天使，有些人像锯木头？</div>
+      <div class="ep-status">4个段子+互动 · 可发布</div>
+    </div>
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 03</div>
+      <div class="ep-title">🔥 你热了吗？</div>
+      <div class="ep-topics">温度 · 熔化凝固 · 晶体</div>
+      <div class="ep-desc">冰棍融化的速度和暑假作业的进度有什么关系？为什么冰很讲原则——不到0度绝对不化。</div>
+      <div class="ep-status">4个段子+互动 · 可发布</div>
+    </div>
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 04</div>
+      <div class="ep-title">❄️ 冰火两重天</div>
+      <div class="ep-topics">汽化液化 · 升华凝华</div>
+      <div class="ep-desc">洗澡时镜子为什么起雾？干冰不是冰，吃了会出大事。</div>
+      <div class="ep-status">本周排期中</div>
+    </div>
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 05</div>
+      <div class="ep-title">👁️ 我看透了这个世界</div>
+      <div class="ep-topics">光的直线传播 · 反射 · 平面镜成像</div>
+      <div class="ep-desc">自拍为什么要用美颜？镜子里的是不是你？光走直线——物理最有原则的知识。</div>
+      <div class="ep-status">5个段子+互动 · 可发布</div>
+    </div>
+
+    <div class="ep-card ready">
+      <span class="badge badge-done">✅ 已完稿</span>
+      <div class="ep-num">EP 06</div>
+      <div class="ep-title">🥢 折射人生</div>
+      <div class="ep-topics">光的折射 · 凸透镜成像规律</div>
+      <div class="ep-desc">筷子插水里弯了——像极了你的理综成绩。"一倍焦距分虚实"，口诀你记住了吗？</div>
+      <div class="ep-status">5个段子+互动 · 可发布</div>
+    </div>
+
+    <div class="ep-card" style="opacity:0.4">
+      <span class="badge badge-more">⏳ 计划中</span>
+      <div class="ep-num">EP 07-16</div>
+      <div class="ep-title">📦 更多专场</div>
+      <div class="ep-topics">密度 · 力 · 压强 · 浮力 · 机械 · 内能 · 电路 · 电磁</div>
+      <div class="ep-desc">每周两更，逐步覆盖初中物理全部核心知识点。</div>
+      <div class="ep-status">预留 10 个专场位</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">❓ 关于冷面物理</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">这到底是个什么课？</div>
+    <div class="faq-a">一个物理老师用脱口秀的方式讲初中物理。每期一篇公众号逐字稿，用段子和生活场景带出知识点。外表沉稳地拆解，内心热情地分享——在欢声笑语中学到真东西。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">和「物理解码者：异世法则」是什么关系？</div>
+    <div class="faq-a">两个独立的品牌，但互相联动。「物理解码者」用异世界冒险故事讲物理，适合深度阅读；这里用脱口秀段子讲物理，适合轻松入门和复习。每期会推荐对应的故事章节，形成双线闭环。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">更新频率和平台？</div>
+    <div class="faq-a">每周两更（周三正片+周日轻量互动），先通过微信公众号发布逐字稿，后续计划拓展到视频和音频平台。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">知识点覆盖全面吗？</div>
+    <div class="faq-a">对标人教版初中物理，共 16 个专场，覆盖全部核心板块。期中考试前完成前 5 期，期末考试前完成前 12 期。</div>
+  </div>
+</section>
+
+</div>
+
+<div class="footer">
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <p style="margin-top:6px;">
+    <a href="../物理故事/index.html">← 物理解码者：异世法则</a>
+    &nbsp;·&nbsp;
+    16 / 16 专场 · 全套完结 🎉
+  </p>
+  <p style="margin-top:10px;font-size:0.8em;">👨‍🏫 一个外表沉稳、内心热情的物理老师 · 🎤 冷面物理 · 笑着笑着就学会了</p>
+</div>
+
+
+<script>
+// 专场点击跳转
+document.querySelectorAll('.ep-card.ready').forEach(function(card) {
+  card.addEventListener('click', function() {
+    var links = {
+      'EP 00': '专场稿/脱口秀物理课-样稿-开场秀.html',
+      'EP 01': '专场稿/专场1-卷王的世界.html',
+      'EP 02': '专场稿/专场2-闭嘴听我说.html',
+      'EP 03': '专场稿/专场3-你热了吗.html',
+      'EP 04': '专场稿/专场4-冰火两重天.html',
+      'EP 05': '专场稿/专场5-我看透了这个世界.html',
+      'EP 06': '专场稿/专场6-折射人生.html',
+      'EP 07': '专场稿/专场7-重量级选手.html',
+      'EP 08': '专场稿/专场8-你别推我.html',
+      'EP 09': '专场稿/专场9-压力山大.html',
+      'EP 10': '专场稿/专场10-浮起来吧少年.html',
+      'EP 11': '专场稿/专场11-给我一个支点.html',
+      'EP 12': '专场稿/专场12-能量守恒.html',
+      'EP 13': '专场稿/专场13-发热的青春.html',
+      'EP 14': '专场稿/专场14-电到你了吗.html',
+      'EP 15': '专场稿/专场15-磁力吸引法则.html'
+    };
+    var epNum = this.querySelector('.ep-num').textContent.trim();
+    for (var key in links) {
+      if (epNum.startsWith(key)) {
+        window.open(links[key], '_blank');
+        return;
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

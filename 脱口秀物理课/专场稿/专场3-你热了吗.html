@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你热了吗？ - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag">EP 03</div>
+  <h1>你热了吗？</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 温度·温度计·熔化·凝固·晶体与非晶体</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎬 <span>开场</span></div>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p">今天我们来聊一个跟你们每个人都感同身受的话题——</p>
+<p class="p">热。</p>
+<p class="p">不是"热"本身，是"你热了吗"的那个热。</p>
+<p class="p">（语速平稳）</p>
+<p class="p">你有没有发现一个很奇怪的现象——</p>
+<p class="p">夏天 30 度，你热得像个冰淇淋一样融化。</p>
+<p class="p">冬天 10 度，你冷得像个冰棍一样发抖。</p>
+<p class="p">但这中间的 20 度温差，跟物理实验里那些动不动就零下 200 度、零上 1000 度比起来——简直温柔得像一杯温水。</p>
+<p class="p">那问题来了：<strong>温度到底是什么？</strong></p>
+<p class="p">（停顿，看着大家）</p>
+<p class="p">你可能会说："温度嘛，就是冷热程度呗。"</p>
+<p class="p">对，也不全对。</p>
+<p class="p">物理上，温度的本质是——<strong>分子运动的剧烈程度</strong>。</p>
+<p class="p">（语速放慢，眼神开始发亮）</p>
+<p class="p">你感觉"热"，不是因为天气跟你过不去。</p>
+<p class="p">是因为空气分子在疯狂地撞击你的皮肤，每秒撞几亿次。</p>
+<p class="p">你感觉"冷"，也不是天气针对你——</p>
+<p class="p">是因为分子运动慢了，给你的撞击少了。</p>
+<p class="p">所以下次有人说你"热情"——</p>
+<p class="p">你的分子运动很剧烈，说明你体内的分子正在高速运转。</p>
+<p class="p">（淡淡地）</p>
+<p class="p">反之，有人说你"冷淡"——</p>
+<p class="p">你的分子运动比较平缓。</p>
+<p class="p">这是科学，不是态度问题。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🔥 <span>段子时间</span></div>
+<ul class="ul">
+<li>温度计——我"体感"不算数</li>
+</ul>
+<p class="p">（拿出一个温度计的动作）</p>
+<p class="p">你们都用过体温计吧？</p>
+<p class="p">小时候发烧，你妈把体温计夹在你腋下。</p>
+<p class="p">五分钟后拿出来一看——38.5 度。</p>
+<p class="p">你妈说："发烧了，吃药。"</p>
+<p class="p">你说："我觉得还好……"</p>
+<p class="p">你妈说："体温计说的不算你说的。"</p>
+<p class="p">（停顿）</p>
+<p class="p">这就是物理的第一课——<strong>客观测量</strong>。</p>
+<p class="p">你觉得热不热，那是"体感"。</p>
+<p class="p">温度计上的数字，那是"温度"。</p>
+<p class="p">体感会骗你。</p>
+<p class="p">温度计不会。</p>
+<p class="p">你去洗桑拿，80 度的空气你还能待一会儿。</p>
+<p class="p">但如果是 80 度的水——你进去就熟了。</p>
+<p class="p">为什么？</p>
+<p class="p">因为空气和水的<strong>比热容</strong>不一样，传递热量的速度和能力也不一样。</p>
+<p class="p">但温度计上的数字都是 80。</p>
+<p class="p">温度没骗你——是你自己的感觉体系太脆弱了。</p>
+<p class="p">（微微摇头）</p>
+<p class="p">所以物理教会我们的第一件事就是：</p>
+<p class="p"><strong>别信感觉，信数据。</strong></p>
+<p class="p">就像你觉得自己复习了三个小时——</p>
+<p class="p">看看计时器吧，可能只有 40 分钟。</p>
+<ul class="ul">
+<li>温度的变化——从冰棍到"水棍"</li>
+</ul>
+<p class="p">（不紧不慢地）</p>
+<p class="p">夏天你们最爱吃什么？</p>
+<p class="p">冰棍。</p>
+<p class="p">但你们有没有发现一个奇怪的现象——</p>
+<p class="p">你从冰箱里拿出一根冰棍，在室温下放着。</p>
+<p class="p">它开始融化。</p>
+<p class="p">滴答，滴答，水一滴一滴掉下来。</p>
+<p class="p">（停顿）</p>
+<p class="p">但你知道吗——冰棍在融化成水的过程中，<strong>温度一直是 0 度</strong>。</p>
+<p class="p">对。你没听错。</p>
+<p class="p">冰在融化的时候，虽然你看到它在"变水"，但它的温度不变。</p>
+<p class="p">（眼神微微发亮）</p>
+<p class="p">这就是物理上一个非常重要的概念——<strong>熔化和凝固</strong>。</p>
+<p class="p"><strong>熔化</strong>：固体变成液体的过程。</p>
+<p class="p"><strong>凝固</strong>：液体变成固体的过程。</p>
+<p class="p">关键在于——<strong>在熔化/凝固的过程中，温度不变</strong>。</p>
+<p class="p">冰变成水，温度保持在 0 度，直到所有冰都融化成水，温度才会继续上升。</p>
+<p class="p">水结成冰，温度也保持在 0 度，直到所有水都结成冰，温度才会继续下降。</p>
+<p class="p">（停顿）</p>
+<p class="p">这意味着什么？</p>
+<p class="p">意味着你跟物理学家说："这块冰正在变水，但它还是 0 度。"</p>
+<p class="p">物理学家说："正常。"</p>
+<p class="p">你说："但这不合理啊——它在变，但温度不变？"</p>
+<p class="p">物理学家说："它就是不变。"</p>
+<p class="p">（笑）</p>
+<p class="p">物理有时候就是这么"不讲道理"，但它是真的。</p>
+<p class="p">所以冰棍滴下来的不是"融化了的冰"——</p>
+<p class="p">那是 0 度的水。</p>
+<ul class="ul">
+<li>晶体和非晶体——有原则的物质和没原则的物质</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">既然讲到熔化和凝固，我必须跟你们说一个很酷的分类——</p>
+<p class="p">有些物质，有"原则"。</p>
+<p class="p">有些物质，没有"原则"。</p>
+<p class="p"><strong>有原则的</strong>：晶体。</p>
+<p class="p">比如冰、食盐、钻石、金属。</p>
+<p class="p">它们有固定的<strong>熔点</strong>和<strong>凝固点</strong>。</p>
+<p class="p">冰的熔点是 0 度——不到 0 度不化，到了 0 度才开始化，而且在化完之前温度不涨。</p>
+<p class="p">就像一个有原则的人——</p>
+<p class="p">"我说 0 度就是 0 度，少一度不化，多一度才开始。没商量。"</p>
+<p class="p">（停顿）</p>
+<p class="p"><strong>没原则的</strong>：非晶体。</p>
+<p class="p">比如玻璃、橡胶、塑料、沥青。</p>
+<p class="p">它们没有固定的熔点。</p>
+<p class="p">从固体变软、变黏、变稀——是一个渐变的过程，没有一个精确的温度点。</p>
+<p class="p">就像你爸说 "马上到"——</p>
+<p class="p">"马上"可以是 5 分钟，也可以是 50 分钟。</p>
+<p class="p">没有一个精确的时间点。</p>
+<p class="p">（笑）</p>
+<p class="p">所以下次你上课学"晶体有固定的熔点"——</p>
+<p class="p">你就记住：冰是那个说"0 度就 0 度，少一度都不行"的倔强者。</p>
+<p class="p">而玻璃是那个说"呃……我大概……可能……快化了？"的犹豫者。</p>
+<ul class="ul">
+<li>一个关于"热"的人生哲理</li>
+</ul>
+<p class="p">（语速放缓）</p>
+<p class="p">你们不觉得物理很有趣吗？</p>
+<p class="p">它研究的是最基础的东西——冷、热、固体、液体、气体。</p>
+<p class="p">但它教会我们的道理，却远远超过了物理本身。</p>
+<p class="p">比如：</p>
+<p class="p"><strong>晶体熔化需要吸收热量，但温度不变。</strong></p>
+<p class="p">这意味着什么？</p>
+<p class="p">意味着你在成长的某些阶段——你看起来很努力，你的"温度"没有变化。</p>
+<p class="p">但你在"吸收热量"。</p>
+<p class="p">你在积累。</p>
+<p class="p">你在为下一步的变化储备能量。</p>
+<p class="p">等到所有该融化的都融化了——</p>
+<p class="p">温度才会开始上升。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以，如果你现在觉得自己努力了但看不到进步——</p>
+<p class="p">你不是在浪费时间。</p>
+<p class="p">你是在"熔化"。</p>
+<p class="p">你的温度没变，但你在吸收热量。</p>
+<p class="p">等到了那个临界点——你会发现自己已经完全不一样了。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">📖 <span>法则小课堂</span></div>
+<p class="p">收了。正经 60 秒。</p>
+<p class="p">今天三个核心知识点：</p>
+<ul class="ul">
+<li><strong>温度</strong>：表示物体<strong>冷热程度</strong>的物理量。本质是分子运动的剧烈程度。</li>
+</ul>
+<p class="p">   口诀：<strong>"热=分子嗨，冷=分子蔫。"</strong></p>
+<ul class="ul">
+<li><strong>熔化与凝固</strong>：熔化（固→液）吸热，凝固（液→固）放热。<strong>熔化/凝固过程中温度不变</strong>。</li>
+</ul>
+<p class="p">   口诀：<strong>"熔化吸收热，凝固释放热，温度不变是铁律。"</strong></p>
+<ul class="ul">
+<li><strong>晶体与非晶体</strong>：</li>
+<li>晶体：有<strong>固定熔点</strong>（冰、食盐、金属）</li>
+<li>非晶体：没有固定熔点（玻璃、橡胶、塑料）</li>
+</ul>
+<p class="p">   口诀：<strong>"晶体有原则，非晶体没谱。"</strong></p>
+<p class="p">说到这个，「物理解码者」V02C01 冰与火之门里——</p>
+<p class="p">林小宇进入炎寒谷，一个温度极不稳定的地方。</p>
+<p class="p">水在冰、水、蒸汽之间胡乱跳变，因为他进入的是一个"物态变化失控"的领域。</p>
+<p class="p">他能活下来，就是因为他在课堂上学过——</p>
+<p class="p"><strong>物质的状态不是魔法，是温度决定了它们是谁。</strong></p>
+<p class="p">想知道他怎么用物态变化知识破解机关的吗？去看异世法则吧。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">💡 <span>互动挑战</span></div>
+<p class="p">来，考考你——</p>
+<p class="p">（停顿）</p>
+<p class="p">一杯 0 度的冰水混合物，放在 0 度的房间里。</p>
+<p class="p">问：冰会融化吗？</p>
+<p class="p">A. 会，因为冰本来就是会融化的</p>
+<p class="p">B. 不会，因为冰水混合物和房间温度相同，没有热传递</p>
+<p class="p">C. 会融化一半然后停止</p>
+<p class="p">（停顿）</p>
+<p class="p">答案是 <strong>B. 不会</strong>。</p>
+<p class="p">冰融化需要<strong>吸收热量</strong>。但房间也是 0 度——没有温度差，就没有热传递。冰吸收不到热量，就老老实实地当冰。</p>
+<p class="p">所以物理告诉你：要融化别人，首先要让自己有温度差。</p>
+<p class="p">（微微点头）</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎯 <span>本期金句</span></div>
+<p class="p">下期预告：EP 04 · <strong>冰火两重天</strong></p>
+<p class="p">水变成了水蒸气，你以为是"消失了"？</p>
+<p class="p">不，它还在——只是换了一种你看不见的方式存在。</p>
+<p class="p">我们周三见。</p>
+<p class="p">（微微点头，收起讲义）</p>
+<div class="divider">✦ ✦ ✦</div>
+<p class="p">📖 想读故事版？→ 看看「物理解码者」V02C01 冰与火之门</p>
+<p class="p">💬 有想听的物理知识点？→ 评论区留言</p>
+<p class="p">⭐ 觉得有用？→ 点赞+在看，让更多同学笑着学会物理</p>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你别推我 - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag">EP 08</div>
+  <h1>你别推我</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 力 · 重力 · 摩擦力 · 牛顿第一定律 · 惯性 · 二力平衡</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎬 <span>开场</span></div>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p">今天我们来聊一个你每天都在"做"、但从来没认真想过的东西——</p>
+<p class="p"><strong>力。</strong></p>
+<p class="p">（语速平稳）</p>
+<p class="p">你推门进来——用了力。</p>
+<p class="p">你坐下——椅子给了你支持力。</p>
+<p class="p">你写作业——笔和纸之间有摩擦力。</p>
+<p class="p">你妈把你从床上拽起来——那更是力。</p>
+<p class="p">（眼神微微发亮）</p>
+<p class="p">力无处不在。</p>
+<p class="p">但物理上的"力"到底是什么？</p>
+<p class="p"><strong>力是物体对物体的作用。</strong></p>
+<p class="p">注意两个关键词：</p>
+<p class="p">第一，<strong>物体对物体</strong>——力不能单独存在，必须有"施力物体"和"受力物体"。</p>
+<p class="p">第二，<strong>作用</strong>——力是"推、拉、提、压"这类动作，不是一种"东西"。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以如果你问一个物理学家："我现在感觉好无力……"</p>
+<p class="p">物理学家会说："不，你很有力。你说话的时候声带在振动——那是力。你站着的时候脚在压地面——那是力。你叹气的时候肺在压缩空气——那也是力。"</p>
+<p class="p">……虽然这个回答解决不了你的情绪问题。</p>
+<p class="p">（微微一笑）</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🔥 <span>段子时间</span></div>
+<ul class="ul">
+<li>力的作用是相互的——你打桌子，桌子也打你</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">力的第一个重要性质：</p>
+<p class="p"><strong>力的作用是相互的。</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">你打桌子一拳——你的拳头对桌子施加了一个力。</p>
+<p class="p">然后呢？</p>
+<p class="p">桌子也对你施加了一个<strong>大小相等、方向相反</strong>的力。</p>
+<p class="p">（目光平静地看着观众）</p>
+<p class="p">你手疼，不是因为你的拳头不够硬——</p>
+<p class="p">是因为桌子"还手"了。</p>
+<p class="p">只不过桌子不像人，它不会喊疼。</p>
+<p class="p">（笑）</p>
+<p class="p">力的作用是相互的。生活中无处不在：</p>
+<p class="p">你走路的时候，脚往后蹬地面——脚对地面施加向后的力。</p>
+<p class="p">地面反过来，对你施加向前的力——你往前走。</p>
+<p class="p">你跳起来的时候，你对地面施加向下的力。</p>
+<p class="p">地面反过来，对你施加向上的力——你跳起来了。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以物理告诉你一个温暖的真相：</p>
+<p class="p"><strong>你做的每一件事，世界都会回应你。</strong></p>
+<p class="p">你对世界施加力，世界也会给你一个等大反向的力。</p>
+<p class="p">（语气依然平稳）</p>
+<p class="p">当然，物理只保证"等大反向"，不保证"好的方向"。</p>
+<p class="p">（笑）</p>
+<ul class="ul">
+<li>重力——不是你想落地，是地球不放过你</li>
+</ul>
+<p class="p">（眼神专注，语速放慢）</p>
+<p class="p">有一个力，从你出生到离开这个世界，从来没有离开过你——</p>
+<p class="p"><strong>重力。</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">重力是地球对物体的吸引力。</p>
+<p class="p">方向：<strong>竖直向下</strong>。</p>
+<p class="p">大小：<strong>G = mg</strong>（G 是重力，m 是质量，g 是重力加速度，约 9.8 N/kg）。</p>
+<p class="p">（推了推眼镜）</p>
+<p class="p">你手里的笔一松开——它往下掉。</p>
+<p class="p">为什么？</p>
+<p class="p">不是因为它"想"掉在地上。</p>
+<p class="p">是因为地球在"拉"它。</p>
+<p class="p">你向上跳——你迟早会落回地面。</p>
+<p class="p">为什么？</p>
+<p class="p">不是因为你跳得不够高。</p>
+<p class="p">是因为地球在"拉"你。</p>
+<p class="p">（语速不紧不慢）</p>
+<p class="p">所以物理告诉你：</p>
+<p class="p">你跳得再高，也逃不出地球的掌心。</p>
+<p class="p">你以为你在"飞"——不，地球只是暂时允许你离开地面 0.5 秒。</p>
+<p class="p">（停顿）</p>
+<p class="p">重力的大小取决于两个因素：</p>
+<p class="p"><strong>质量 m</strong> 和 <strong>g（重力加速度）</strong>。</p>
+<p class="p">你质量越大，重力越大——你越重。</p>
+<p class="p">g 越大，重力越大——你感觉越"沉"。</p>
+<p class="p">在地球上 g ≈ 9.8 N/kg。</p>
+<p class="p">在月球上 g ≈ 1.6 N/kg——所以你在月球上跳得高。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">所以如果你想跳得高——去月球。</p>
+<p class="p">如果你想飞——别想了，学好物理，造火箭。</p>
+<ul class="ul">
+<li>摩擦力——你妈说"用力擦"是有道理的</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">接下来讲一个让你又爱又恨的力——</p>
+<p class="p"><strong>摩擦力。</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">摩擦力是什么？</p>
+<p class="p">两个互相接触的物体，当它们有<strong>相对运动</strong>（或相对运动趋势）时，</p>
+<p class="p">在接触面上产生的<strong>阻碍相对运动</strong>的力。</p>
+<p class="p">（语速放慢）</p>
+<p class="p">简单说：摩擦力<strong>不想让你动</strong>。</p>
+<p class="p">你推一个箱子，箱子没动——</p>
+<p class="p">静摩擦力在阻止它动。</p>
+<p class="p">你推一个箱子，箱子在动——</p>
+<p class="p">滑动摩擦力在拖着它的后腿。</p>
+<p class="p">（停顿）</p>
+<p class="p">摩擦力的大小取决于：</p>
+<ul class="ul">
+<li><strong>压力</strong>——你压得越紧，摩擦力越大</li>
+<li><strong>接触面的粗糙程度</strong>——越粗糙，摩擦力越大</li>
+</ul>
+<p class="p">这就是为什么——</p>
+<p class="p">你妈让你"用力擦"——加大压力，增大摩擦力。</p>
+<p class="p">你妈让你"换个抹布"——用更粗糙的接触面，增大摩擦力。</p>
+<p class="p">（语气平稳）</p>
+<p class="p">你妈教你做家务，本质上是在教你应用物理学。</p>
+<p class="p">（笑）</p>
+<p class="p">但摩擦力也有好的一面：</p>
+<p class="p">没有摩擦力——你走不了路。脚会打滑。</p>
+<p class="p">没有摩擦力——你拿不住笔。笔会滑出去。</p>
+<p class="p">没有摩擦力——你系不了鞋带。鞋带会散开。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以下次你抱怨摩擦力让你"推不动"——</p>
+<p class="p">想想如果没有摩擦力，你连抱怨的机会都没有。</p>
+<p class="p">你会躺在地上滑来滑去，停不下来。</p>
+<p class="p">（微微点头）</p>
+<p class="p">摩擦力：虽然讨厌，但没它不行。</p>
+<p class="p">就像期末复习。</p>
+<p class="p">（笑）</p>
+<ul class="ul">
+<li>牛顿第一定律——不是"懒"是惯性</li>
+</ul>
+<p class="p">（眼神专注）</p>
+<p class="p">好，最精彩的来了——</p>
+<p class="p"><strong>牛顿第一定律（惯性定律）：</strong></p>
+<p class="p">一切物体在没有受到力的作用时，总保持<strong>静止</strong>状态或<strong>匀速直线运动</strong>状态。</p>
+<p class="p">（停顿，让学生消化）</p>
+<p class="p">翻译成人话：</p>
+<p class="p">如果没有人推你、拉你、打你——你就呆在原地不动。</p>
+<p class="p">如果你已经在动了，只要没有人拦你——你就一直动下去。</p>
+<p class="p">（推了推眼镜）</p>
+<p class="p">这个定律的核心是：<strong>物体有保持原来运动状态的性质</strong>。</p>
+<p class="p">这个性质叫——<strong>惯性</strong>。</p>
+<p class="p">（语速放慢）</p>
+<p class="p">为什么急刹车的时候人会往前倒？</p>
+<p class="p">车在往前开，你在车里也往前运动。</p>
+<p class="p">车突然停了——但你的身体<strong>想继续保持运动状态</strong>。</p>
+<p class="p">于是你往前冲。</p>
+<p class="p">（停顿）</p>
+<p class="p">不是你"反应慢"。</p>
+<p class="p">是你的身体遵循牛顿第一定律。</p>
+<p class="p">你妈说："叫你系安全带你不系！"</p>
+<p class="p">你可以说："妈，这是惯性。不是我懒，是物理规律决定的。"</p>
+<p class="p">你妈说："我不管什么惯性，下次再这样你别坐我的车。"</p>
+<p class="p">（笑）</p>
+<p class="p">惯性的大小取决于<strong>质量</strong>——</p>
+<p class="p">质量越大，惯性越大。</p>
+<p class="p">一辆卡车的惯性比一辆自行车大得多。</p>
+<p class="p">所以卡车更难停下来——不是因为刹车不够好，是因为它的"懒劲"更大。</p>
+<p class="p">（微微点头）</p>
+<p class="p">所以物理告诉你：越重的物体，越"懒得"改变自己的运动状态。</p>
+<p class="p">（停顿）</p>
+<p class="p">也就是——</p>
+<p class="p"><strong>质量越大，越"稳"。</strong></p>
+<p class="p">这句话可以用在很多地方。</p>
+<p class="p">你自己体会。</p>
+<p class="p">（笑）</p>
+<ul class="ul">
+<li>二力平衡——为什么你站着不会倒</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">最后一个知识点：<strong>二力平衡</strong>。</p>
+<p class="p">你站在地上，没有往下掉，也没有往上飞——</p>
+<p class="p">为什么？</p>
+<p class="p">因为<strong>重力和支持力平衡了</strong>。</p>
+<p class="p">（停顿）</p>
+<p class="p">重力（G）把你往下拉。</p>
+<p class="p">地面给你的支持力（F）把你往上推。</p>
+<p class="p">G 和 F 大小相等、方向相反、作用在同一条直线上、作用在同一个物体上——</p>
+<p class="p"><strong>二力平衡。</strong></p>
+<p class="p">（语速平稳）</p>
+<p class="p">二力平衡的条件四个字：</p>
+<p class="p"><strong>等大、反向、同线、同物。</strong></p>
+<p class="p">物体在平衡力作用下——保持静止或匀速直线运动。</p>
+<p class="p">你站着不动——重力和支持力平衡了。</p>
+<p class="p">你匀速走路——拉力和摩擦力平衡了。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以物理告诉你：</p>
+<p class="p">有些时候，你不是没有力量——</p>
+<p class="p">你只是需要找到"平衡"。</p>
+<p class="p">就像你站在地上的时候——</p>
+<p class="p">往下的力和往上的力正好相等。</p>
+<p class="p">你才站得稳。</p>
+<p class="p">生活也一样。</p>
+<p class="p">压力和支持，付出和收获——</p>
+<p class="p">平衡了，你就稳了。</p>
+<p class="p">（微微点头）</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">📖 <span>法则小课堂</span></div>
+<p class="p">收了。正经 60 秒。</p>
+<p class="p">今天五个核心知识点：</p>
+<ul class="ul">
+<li><strong>力</strong>：物体对物体的作用。<strong>力的作用是相互的。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"你推我，我也推你。"</strong></p>
+<ul class="ul">
+<li><strong>重力 G=mg</strong>：地球对物体的吸引力。方向<strong>竖直向下</strong>。</li>
+</ul>
+<p class="p">   口诀：<strong>"地球不放过你。"</strong></p>
+<ul class="ul">
+<li><strong>摩擦力</strong>：阻碍相对运动的力。大小取决于<strong>压力</strong>和<strong>粗糙程度</strong>。</li>
+</ul>
+<p class="p">   口诀：<strong>"摩擦力虽然烦，没有它你更惨。"</strong></p>
+<ul class="ul">
+<li><strong>牛顿第一定律（惯性）</strong>：物体保持原来运动状态的性质。<strong>质量越大，惯性越大。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"越重的越懒得动。"</strong></p>
+<ul class="ul">
+<li><strong>二力平衡</strong>：等大、反向、同线、同物。</li>
+</ul>
+<p class="p">   口诀：<strong>"平衡了，你就稳了。"</strong></p>
+<p class="p">说到这个，「物理解码者」V05 力之试炼场里——</p>
+<p class="p">林小宇进入了一个古竞技场。</p>
+<p class="p">这里的规则是：不能用武器，只能用力学知识战斗。</p>
+<p class="p">对手是一个能把重力随意改变的暗影武士——让你突然变重走不动路，或者突然失重飘起来。</p>
+<p class="p">林小宇利用<strong>惯性</strong>——在重力突然改变时保持运动状态不变——</p>
+<p class="p">利用<strong>摩擦力</strong>——在光滑地面上增加压力获得摩擦力站稳——</p>
+<p class="p">他打赢了。</p>
+<p class="p">他说了一句话：<strong>"你以为物理是用来考试的？不，物理是用来打架的。"</strong></p>
+<p class="p">想看他怎么在力之试炼场里赢的吗？去看异世法则。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">💡 <span>互动挑战</span></div>
+<p class="p">来，考考你——</p>
+<p class="p">（停顿）</p>
+<p class="p">一辆公交车正在匀速直线行驶。</p>
+<p class="p">你站在车厢里，手没有扶任何东西。</p>
+<p class="p">突然司机急刹车。</p>
+<p class="p">问：你会往哪个方向倒？</p>
+<p class="p">A. 往前倒（因为惯性，身体想保持原来的运动状态）</p>
+<p class="p">B. 往后倒</p>
+<p class="p">C. 往左倒</p>
+<p class="p">（停顿，给思考时间）</p>
+<p class="p">答案是 <strong>A. 往前倒</strong>。</p>
+<p class="p">车停下来了，你的身体还想继续往前运动——所以往前倒。</p>
+<p class="p">这就是惯性的力量。</p>
+<p class="p">所以坐车要系安全带——不是交通法规，是物理教你要保护自己。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎯 <span>本期金句</span></div>
+<p class="p">下期预告：EP 09 · <strong>压力山大</strong></p>
+<p class="p">学霸坐在你旁边，为什么你没有感到压强？压力≠压强——这两个概念差了整整一个"面积"。</p>
+<p class="p">我们下期见。</p>
+<p class="p">（微微点头，收起讲义）</p>
+<div class="divider">✦ ✦ ✦</div>
+<p class="p">📖 想读故事版？→ 看看「物理解码者」V05 力之试炼场</p>
+<p class="p">💬 有想听的物理知识点？→ 评论区留言</p>
+<p class="p">⭐ 觉得有用？→ 点赞+在看，让更多同学笑着学会物理</p>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

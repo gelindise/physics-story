@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冰火两重天 - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag">EP 04</div>
+  <h1>冰火两重天</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 汽化·液化·沸腾·蒸发·升华·凝华（六种物态变化全览）</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎬 <span>开场</span></div>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p">今天我们来做一个思想实验。</p>
+<p class="p">（不紧不慢地）</p>
+<p class="p">想象一下——</p>
+<p class="p">你有一块冰。</p>
+<p class="p">你把冰加热，它变成了水。</p>
+<p class="p">你再加热，水变成了水蒸气。</p>
+<p class="p">这个过程你们都知道。物质有三种状态：固体、液体、气体。</p>
+<p class="p">（眼神开始发亮）</p>
+<p class="p">但接下来我要问你的问题是——</p>
+<p class="p">水蒸气，去哪里了？</p>
+<p class="p">（停顿）</p>
+<p class="p">你烧一壶水，水烧干了。水"消失"了。</p>
+<p class="p">你洗完衣服晾在外面，衣服干了。水"消失"了。</p>
+<p class="p">下雨之后地上有积水，太阳出来之后水坑干了。水"消失"了。</p>
+<p class="p">水真的"消失"了吗？</p>
+<p class="p">（微微摇头）</p>
+<p class="p">没有。</p>
+<p class="p">它只是换了一种你看不见的方式——存在于你周围的空气里。</p>
+<p class="p">这就是物态变化最神奇的地方：</p>
+<p class="p"><strong>物质没有消失，它只是换了一个形态。</strong></p>
+<p class="p">就像你交上去的作业——没消失，只是换了一个地方躺着。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🔥 <span>段子时间</span></div>
+<ul class="ul">
+<li>汽化——水是怎么"失踪"的</li>
+</ul>
+<p class="p">（语速平稳）</p>
+<p class="p">液体变成气体的过程，叫<strong>汽化</strong>。</p>
+<p class="p">汽化有两种方式：</p>
+<p class="p">第一种：<strong>沸腾</strong>。</p>
+<p class="p">水烧到 100 度，咕噜咕噜冒泡。这是剧烈的汽化。</p>
+<p class="p">水分子获得足够能量，挣脱同伴的束缚，跳到空气中去了。</p>
+<p class="p">（停顿）</p>
+<p class="p">就像你周五下午最后一节课——</p>
+<p class="p">下课铃一响，全班瞬间沸腾。</p>
+<p class="p">每个人都获得了足够的能量，从座位上弹射出去，跳到走廊里。</p>
+<p class="p">第二种：<strong>蒸发</strong>。</p>
+<p class="p">你看不见它，但它一直在发生。</p>
+<p class="p">你的湿衣服晾着晾着就干了——这就是蒸发。</p>
+<p class="p">地上的水坑慢慢不见了——这也是蒸发。</p>
+<p class="p">蒸发的特点是：<strong>在任何温度下都能发生</strong>，只是速度不一样。</p>
+<p class="p">温度越高、空气越干燥、风越大——蒸发越快。</p>
+<p class="p">（语气依然平稳）</p>
+<p class="p">这就是为什么你妈洗完衣服要晾在阳台上——</p>
+<p class="p">温度、干燥度、通风，三个条件拉满，蒸发速度最大化。</p>
+<p class="p">如果你妈把衣服晾在浴室里——</p>
+<p class="p">温度是够高的，但是湿度太大，蒸发就慢。</p>
+<p class="p">你妈知道这个吗？你妈不一定学过物理。</p>
+<p class="p">但她知道"晾在阳台干得快"——这是生活经验。</p>
+<p class="p">（淡淡地）</p>
+<p class="p">物理就是把你妈的生活经验写成公式。</p>
+<ul class="ul">
+<li>液化——你看到的"白气"不是水蒸气</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">来，我要纠正你们一个非常常见的误解。</p>
+<p class="p">（停顿）</p>
+<p class="p">你们冬天的时候呼一口气，看到"白气"了吧？</p>
+<p class="p">大部分人说：那是水蒸气。</p>
+<p class="p"><strong>错。</strong></p>
+<p class="p">（微微摇头）</p>
+<p class="p">水蒸气是<strong>无色无味的气体</strong>。你看不见它。</p>
+<p class="p">你看到的"白气"，是水蒸气遇到冷空气，<strong>液化</strong>成了小水珠。</p>
+<p class="p">注意这个过程——</p>
+<p class="p">你呼出的气体里有水蒸气 → 遇到外面的冷空气 → 水蒸气液化成小水珠 → 你看到了"白气"。</p>
+<p class="p">（放慢语速）</p>
+<p class="p">白气不是水蒸气。白气是<strong>液化后的水珠</strong>。</p>
+<p class="p">就像洗澡的时候——</p>
+<p class="p">浴室里的水蒸气遇到冷的镜子，液化成小水珠——镜子起雾了。</p>
+<p class="p">你妈说："你看，水蒸气把镜子弄雾了。"</p>
+<p class="p">你妈说对了一半。准确说是：</p>
+<p class="p">"水蒸气遇到冷的镜子，液化成小水珠，导致镜子起雾。"</p>
+<p class="p">（停顿，嘴角微动）</p>
+<p class="p">当然，如果你在你妈面前这样说——你妈只会说：</p>
+<p class="p">"把镜子擦一下。"</p>
+<p class="p">物理不能在生活实战中拯救你，但它能让你在擦镜子的时候多一份睿智。</p>
+<ul class="ul">
+<li>沸腾的条件——水也是有底线的</li>
+</ul>
+<p class="p">（眼神专注）</p>
+<p class="p">说到汽化，我必须跟你们讲一下沸腾。</p>
+<p class="p">水要沸腾，需要两个条件：</p>
+<p class="p"><strong>条件一：温度达到沸点。</strong></p>
+<p class="p">水在标准大气压下，沸点是 100 度。</p>
+<p class="p">不到 100 度，再着急也没用。</p>
+<p class="p">到了 100 度，它才开始沸腾。</p>
+<p class="p">（停顿）</p>
+<p class="p"><strong>条件二：继续吸热。</strong></p>
+<p class="p">这是很多人忽略的一点。</p>
+<p class="p">水到了 100 度之后，要继续给它加热，它才会沸腾。</p>
+<p class="p">如果不继续加热——它就停在 100 度，不沸腾。</p>
+<p class="p">（语速放慢）</p>
+<p class="p">而且更神奇的是——</p>
+<p class="p">水在沸腾的过程中，<strong>温度一直保持在 100 度不变</strong>。</p>
+<p class="p">不管你用大火还是小火，沸腾的水都是 100 度（在标准大气压下）。</p>
+<p class="p">所以煮饺子的时候，水开了之后用小火——</p>
+<p class="p">反正水的温度都是 100 度，大火小火都一样。</p>
+<p class="p">但如果你用大火……你的燃气费会更高。</p>
+<p class="p">（淡淡地）</p>
+<p class="p">物理让你省钱。</p>
+<ul class="ul">
+<li>升华和凝华——不走寻常路的两个选手</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">前面讲的四种变化：熔化、凝固、汽化、液化。</p>
+<p class="p">都是从固体→液体→气体，或者反过来。</p>
+<p class="p">但有两位选手，它们不走寻常路——</p>
+<p class="p">（语速平稳，但眼神亮起来）</p>
+<p class="p"><strong>升华</strong>：固体直接变成气体。</p>
+<p class="p"><strong>凝华</strong>：气体直接变成固体。</p>
+<p class="p">跳过"液体"这个中间步骤。</p>
+<p class="p">你见过干冰吧？</p>
+<p class="p">舞台上"仙气飘飘"的效果，就是干冰升华——固态二氧化碳直接变成气态二氧化碳。</p>
+<p class="p">它不经过液体，直接变成气体。所以你看到舞台上"烟雾缭绕"。</p>
+<p class="p">那不是普通的烟，那是二氧化碳气体中的小水珠被降温液化形成的"雾"。</p>
+<p class="p">（停顿）</p>
+<p class="p">还有冬天的霜花——</p>
+<p class="p">你早上起来看到窗户上结了一层冰花，很美。</p>
+<p class="p">那不是水变成冰的过程——那是空气中的水蒸气直接<strong>凝华</strong>成固态的冰晶。</p>
+<p class="p">气体直接变固体，跳过液体阶段。</p>
+<p class="p">（微微点头）</p>
+<p class="p">所以物理告诉我们：</p>
+<p class="p"><strong>有些物质，就是不按套路出牌。</strong></p>
+<p class="p">就像你班上那些不走寻常路的同学——</p>
+<p class="p">大家都在走从固体到液体到气体的路线，它偏要直接从固体跳到气体。</p>
+<ul class="ul">
+<li>六种物态变化 · 全家福</li>
+</ul>
+<p class="p">（不紧不慢，像在念家谱）</p>
+<p class="p">好，来一个总结。</p>
+<p class="p"><strong>六种物态变化：</strong></p>
+<p class="p"><strong>熔化</strong>：固 → 液  吸热  （冰变成水）</p>
+<p class="p"><strong>凝固</strong>：液 → 固  放热  （水结成冰）</p>
+<p class="p"><strong>汽化</strong>：液 → 气  吸热  （水变成水蒸气）</p>
+<p class="p"><strong>液化</strong>：气 → 液  放热  （水蒸气变成水珠）</p>
+<p class="p"><strong>升华</strong>：固 → 气  吸热  （干冰变成二氧化碳气体）</p>
+<p class="p"><strong>凝华</strong>：气 → 固  放热  （水蒸气变成霜花）</p>
+<p class="p">（停顿，像在让学生消化）</p>
+<p class="p">怎么记？</p>
+<p class="p">来，一个口诀：</p>
+<p class="p">"**熔凝化液升与华，吸热放热你来查。</p>
+<p class="p">固液之间熔和凝，液气之间化和液。</p>
+<p class="p">固气之间升与华，物态变化就这些。**"</p>
+<p class="p">嗯……不算特别好记。再来一个？</p>
+<p class="p">（笑）</p>
+<p class="p">好吧，再教你一个更简单的——</p>
+<p class="p">"**熔化汽化升华——吸热三兄弟。</p>
+<p class="p">凝固液化凝华——放热三姐妹。**"</p>
+<p class="p">记住了吗？</p>
+<p class="p">吸热的是：熔、汽、升。</p>
+<p class="p">放热的是：凝、液、华。</p>
+<p class="p">（微微点头）</p>
+<p class="p">考试的时候分不清，就想想——</p>
+<p class="p">"冰化了要吸热"——这是你的生活经验。</p>
+<p class="p">然后倒推：吸热的都是"化"字辈的兄弟。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">📖 <span>法则小课堂</span></div>
+<p class="p">收了。正经 60 秒。</p>
+<p class="p">今天的核心知识，就是<strong>六种物态变化</strong>全览表：</p>
+<p class="p">口诀：<strong>"熔汽升吸热，凝液华放热。"</strong></p>
+<p class="p">说到这个，「物理解码者」V02C02 蒸汽迷宫里——</p>
+<p class="p">林小宇进入了一个被浓雾笼罩的蒸汽迷宫。</p>
+<p class="p">他一开始以为雾是"水蒸气"，然后他想起——</p>
+<p class="p">水蒸气是无色无味的，他看到的是液化的小水珠。</p>
+<p class="p">这个知识让他识破了迷宫的规律——</p>
+<p class="p">雾最浓的地方，说明温度刚刚降到露点，一定有隐藏的冷源。</p>
+<p class="p">他顺着这条线索找到了出口。</p>
+<p class="p">一个"水蒸气是无色的"知识，在异世界里救了他一命。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">💡 <span>互动挑战</span></div>
+<p class="p">来，考考你——</p>
+<p class="p">（停顿）</p>
+<p class="p">夏天，从冰箱里拿出一瓶冰可乐，放在桌子上。</p>
+<p class="p">过了一会儿，瓶壁上出现了小水珠。</p>
+<p class="p">问：这些小水珠是从哪里来的？</p>
+<p class="p">A. 从瓶子里渗出来的</p>
+<p class="p">B. 从冰箱里带出来的</p>
+<p class="p">C. 空气中的水蒸气遇到冷的瓶壁液化成的小水珠</p>
+<p class="p">（停顿，给思考时间）</p>
+<p class="p">答案是 <strong>C</strong>。</p>
+<p class="p">空气中的水蒸气遇到冷的瓶壁，温度降低——液化成了小水珠。</p>
+<p class="p">不是可乐渗出来了，也不是冰箱残留。</p>
+<p class="p">所以下次你喝冰可乐，看到瓶壁上的水珠——</p>
+<p class="p">你可以跟你朋友说："你知道吗，这是空气中的水蒸气液化的结果。"</p>
+<p class="p">你朋友会看着你说：</p>
+<p class="p">"……哦。你还喝不喝？"</p>
+<p class="p">（笑）</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎯 <span>本期金句</span></div>
+<p class="p">下期预告：EP 05 · <strong>我看透了这个世界</strong></p>
+<p class="p">为什么你能看到东西？光是怎么跑到你眼睛里的？为什么自拍要美颜——镜子里到底是不是你？</p>
+<p class="p">我们下期见。</p>
+<p class="p">（微微点头，收起讲义）</p>
+<div class="divider">✦ ✦ ✦</div>
+<p class="p">📖 想读故事版？→ 看看「物理解码者」V02C02 蒸汽迷宫</p>
+<p class="p">💬 有想听的物理知识点？→ 评论区留言</p>
+<p class="p">⭐ 觉得有用？→ 点赞+在看，让更多同学笑着学会物理</p>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冷面物理 - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag"></div>
+  <h1>冷面物理</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 机械运动 · 参照物 · 速度 v=s/t</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<h2 class="h2">🎬 开场热场</h2>
+<p class="p">（走上台，轻松地）</p>
+<p class="p">好，欢迎来到第一期正片。</p>
+<p class="p">上期开场秀我问了一个问题——物理到底研究什么？</p>
+<p class="p">有同学给我留言说："老师，物理研究的是怎么让我考及格。"</p>
+<p class="p">（笑）</p>
+<p class="p">今天我告诉你，物理研究的第一件事情特别简单——<strong>东西怎么动</strong>。</p>
+<p class="p">对，你没听错。物理学家花了上千年研究的问题是——这个东西，它为什么会动？怎么动的？能动多快？</p>
+<p class="p">你可能觉得这有什么好研究的？动就是动呗。</p>
+<p class="p">那我问你一个问题——</p>
+<p class="p"><strong>你现在是静止的，还是在运动？</strong></p>
+<p class="p">（停顿，看观众）</p>
+<p class="p">大部分同学会回答：静止的。因为我坐在椅子上，一动没动。</p>
+<p class="p">好，那我告诉你——</p>
+<p class="p"><strong>你错了。</strong></p>
+<p class="p">而且错得离谱。</p>
+<p class="p">你正以每秒约 30 公里的速度在太空中飞驰。</p>
+<p class="p">地球自转带着你转——你在赤道上的线速度大约是每秒 465 米。</p>
+<p class="p">地球公转带着你绕太阳跑——每秒约 30 公里。</p>
+<p class="p">太阳系带着你绕银河系跑——每秒约 220 公里。</p>
+<p class="p">你坐在教室里一动不动？不存在的。</p>
+<p class="p">所以物理告诉你一个好消息和一个坏消息——</p>
+<p class="p">好消息是：你其实一直在运动，你根本不是懒。</p>
+<p class="p">坏消息是：你妈说"你别整天坐着不动"——物理老师可以给你作证，你其实一直在动。</p>
+<p class="p">不过你妈可能不会相信就是了。</p>
+<p class="p">（笑）</p>
+<div class="divider">✦ ✦ ✦</div>
+<h2 class="h2">🔥 段子时间</h2>
+<h3 class="h3">段子 1：参照物——宇宙版"别人家的孩子"</h3>
+<p class="p">那问题来了——为什么我觉得自己没动呢？</p>
+<p class="p">因为你选错了<strong>参照物</strong>。</p>
+<p class="p">参照物是物理的第一个重要概念。什么意思呢？就是——你说一个东西动不动，得先找个东西来跟它比。</p>
+<p class="p">说得通俗一点——</p>
+<p class="p"><strong>参照物就是你妈眼里"别人家的孩子"。</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">你考了 80 分，挺开心的是吧？你妈说："人家小明考了 98。"</p>
+<p class="p">你——在"小明"这个参照物面前——就是"慢"的。</p>
+<p class="p">你考了 98 分，你妈说："人家小红考了 100。"</p>
+<p class="p">在"小红"这个参照物面前——你还是"慢"的。</p>
+<p class="p">你考了 100 分，你妈说："这次考试太简单了，没有区分度。"</p>
+<p class="p">你妈直接更换参照物了，你没有任何办法。</p>
+<p class="p">（笑）</p>
+<p class="p">物理教给我们一个重要的人生道理：<strong>不要随便选参照物，选错了你会很惨。</strong></p>
+<p class="p">你说你是全班第一——你选"全班同学"当参照物。</p>
+<p class="p">你说你是年级第十——你选"全年级"当参照物。</p>
+<p class="p">你说你在全中国排不上号——你选"全中国"当参照物。</p>
+<p class="p">同一个你，参照物不一样，你的"排名"天差地别。</p>
+<p class="p">所以下次你妈说"你看人家小明"，你可以淡定地说：</p>
+<p class="p">"妈，参照物选得不对。你应该拿我跟小明比昨天——那我进步了 5 分呢。这就叫'选择不同的参照物，运动状态不同'。"</p>
+<p class="p">虽然大概率你妈听不懂，但万一她听懂了，那你就赚了。</p>
+<p class="p">（笑）</p>
+<h3 class="h3">段子 2：运动的相对性——你和地球的"爱恨情仇"</h3>
+<p class="p">回到我们刚才说的——你觉得你静止，但地球在动。</p>
+<p class="p">所以我问你一个更扎心的问题——</p>
+<p class="p"><strong>你和太阳谁在动？</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">你可能说：当然太阳在动啊！太阳东升西落，每天绕着地球转一圈。</p>
+<p class="p">恭喜你，你的思维水平跟公元 2 世纪托勒密差不多。</p>
+<p class="p">（笑）</p>
+<p class="p">托勒密认为太阳绕着地球转，所有人信了 1400 年。</p>
+<p class="p">直到哥白尼出来说："不，是地球绕着太阳转。"</p>
+<p class="p">当时大家都觉得他疯了。</p>
+<p class="p">所以我们现在知道——你觉得太阳在动，是因为你选错了参照物。</p>
+<p class="p">你选了地球当参照物，那太阳当然是"动"的那一个。</p>
+<p class="p">但如果选了太阳当参照物——是你在动，地球在绕太阳转。</p>
+<p class="p"><strong>所以"动不动"这件事，完全取决于你选什么来比。</strong></p>
+<p class="p">这就解释了为什么——</p>
+<p class="p">为什么你坐在高铁上看旁边的车，你觉得它在后退？</p>
+<p class="p">因为你选了自己坐的高铁当参照物，旁边的车相对于你的高铁在向后"运动"。</p>
+<p class="p">实际上，那辆车可能停在原地没动。</p>
+<p class="p">为什么你在等红灯的时候，旁边的公交车动了一下，你赶紧踩刹车？</p>
+<p class="p">因为你感觉是自己往后溜车了。</p>
+<p class="p">实际上，是公交车往前挪了——但你以公交车为参照物，认为自己"后退"了。</p>
+<p class="p">物理告诉我们一个残酷的事实：</p>
+<p class="p"><strong>你感受到的"运动"，很多时候只是一种错觉。你对世界的判断，完全取决于你选择了什么来做比较。</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">像极了人生。</p>
+<p class="p">（笑）</p>
+<h3 class="h3">段子 3：速度——你妈催你的时候最有发言权</h3>
+<p class="p">好，现在我们知道了——物体在运动，而且运动需要参照物来判断。</p>
+<p class="p">那怎么描述运动的"快慢"呢？</p>
+<p class="p">这就引出了我们今天的主角：<strong>速度</strong>。</p>
+<p class="p">速度 = 路程 ÷ 时间。公式：v = s/t。</p>
+<p class="p">（做出嫌弃的表情）</p>
+<p class="p">我知道你们看到公式想关掉。</p>
+<p class="p">别关！听我说完——这个公式其实你每天都在用，只是你没意识到。</p>
+<p class="p">你有没有过这样的经历——</p>
+<p class="p">你妈在厨房喊你："吃饭了！"</p>
+<p class="p">你："马上！"</p>
+<p class="p">你妈一分钟后："怎么还没来！"</p>
+<p class="p">你："马上马上！"</p>
+<p class="p">你妈三十秒后："菜都凉了！！！"</p>
+<p class="p">好了，如果你把这个场景写成一个物理题——</p>
+<p class="p">已知：你从房间到餐桌的距离 s = 10 米</p>
+<p class="p">你的时间 t₁ = 3 分钟（在你妈看来）</p>
+<p class="p">你的时间 t₂ = 30 秒（在你看来）</p>
+<p class="p">求：你妈认为你的速度 vs 你认为自己的速度？</p>
+<p class="p">你会发现——同样一段路，你认为自己走得很快，你妈认为你慢得像蜗牛。</p>
+<p class="p">为什么？因为你们俩对"时间"的感知不一样。</p>
+<p class="p">（笑）</p>
+<p class="p">物理学家才不管你觉得快还是慢。物理学家说：我们客观一点。</p>
+<p class="p">10 米的路，你走了 30 秒。v = 10 ÷ 30 ≈ 0.33 米/秒。</p>
+<p class="p">这就是你的速度。客观的。不带感情的。没有商量余地的。</p>
+<p class="p">所以为什么物理有时候让你觉得很残酷？</p>
+<p class="p">因为它不照顾你的感受。</p>
+<p class="p">你觉得你学习很努力了？那不叫努力。你每天学了 2 小时，这叫"你的学习时间"。</p>
+<p class="p">物理只关心结果——你学 2 小时掌握 3 个知识点，效率 = 1.5 个/小时。</p>
+<p class="p">精确、冷酷、不跟你讨价还价。</p>
+<p class="p">所以速度这个公式告诉我们一个很重要的道理：</p>
+<p class="p"><strong>别跟我说你多努力，给个数据。</strong></p>
+<p class="p">（笑）</p>
+<h3 class="h3">段子 4：瞬时速度 vs 平均速度——人生导师型知识点</h3>
+<p class="p">既然讲到速度，我必须跟你们说一个知识点——它完全可以升级为人生哲理。</p>
+<p class="p"><strong>瞬时速度</strong>：你某一瞬间的速度。</p>
+<p class="p"><strong>平均速度</strong>：你一整段时间的平均值。</p>
+<p class="p">有什么区别？</p>
+<p class="p">你从家到学校，3 公里。你骑自行车，有时候猛踩，有时候溜车，有时候等红绿灯。</p>
+<p class="p">你用了 15 分钟。那么你的平均速度是：3 公里 ÷ 0.25 小时 = 12 公里/小时。</p>
+<p class="p">但在这个过程中——</p>
+<p class="p">你猛踩的时候瞬时速度可能有 20 公里/小时。</p>
+<p class="p">你等红绿灯的时候瞬时速度是 0。</p>
+<p class="p">你的人生也是这样——没有人能一直保持"瞬时速度"。</p>
+<p class="p">你考试前一天晚上复习到凌晨 2 点——这是你的"瞬时速度"冲刺。</p>
+<p class="p">你平时摸鱼发呆——这是你的"瞬时速度"低谷。</p>
+<p class="p">但最后决定你能不能到学校的，不是你的瞬时速度有多快——是你的<strong>平均速度</strong>。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以该冲刺的时候冲刺，该匀速的时候匀速，该休息的时候休息。</p>
+<p class="p">只要你的平均速度足够把你送到目的地，你就赢了。</p>
+<p class="p">这就是物理给你的人生建议。</p>
+<p class="p">（笑）</p>
+<div class="divider">✦ ✦ ✦</div>
+<h2 class="h2">📖 法则小课堂</h2>
+<p class="p">好，收了收了。正经 60 秒。</p>
+<p class="p">今天三个核心知识点，记好了：</p>
+<p class="p"><strong>1. 机械运动</strong>：一个物体相对于另一个物体的位置变化，叫机械运动。</p>
+<ul class="ul">
+<li>关键词：<strong>相对</strong>。没有绝对的静止。</li>
+</ul>
+<p class="p"><strong>2. 参照物</strong>：判断物体运动时被选作标准的物体。</p>
+<ul class="ul">
+<li>技巧：选不同的参照物，运动的描述可能不同。</li>
+<li>口诀：<strong>"你动不动，取决于你跟谁比。"</strong></li>
+</ul>
+<p class="p"><strong>3. 速度 v = s/t</strong></p>
+<ul class="ul">
+<li>v = 速度（米/秒）</li>
+<li>s = 路程（米）</li>
+<li>t = 时间（秒）</li>
+<li>单位换算：1 米/秒 = 3.6 千米/小时</li>
+<li>口诀：<strong>"路程除以时间，等于你有多快——不接受主观评价。"</strong></li>
+</ul>
+<p class="p">说到这个，你们知道「物理解码者」里的林小宇是怎么学会速度的吗？</p>
+<p class="p">他穿越到异世界，发现整个世界都在漂移——山峰在漂、河流在跑、连脚下的岩石都在动。他还觉醒了一种叫"观察者之眼"的能力——能看到"法则之线"，每条线上都显示着物体的运动速度和方向。</p>
+<p class="p">他从一个物理考不及格的学渣，变成了异世界里唯一能看清万物运动轨迹的人。</p>
+<p class="p">后来他发现——原来他上课学的 v=s/t，不是用来考试填空题的，是用来<strong>理解这个世界</strong>的。</p>
+<p class="p">所以你们现在学的每一个公式，可能在某一天——说不定就是你在一个奇怪的地方——突然变得有用了。</p>
+<div class="divider">✦ ✦ ✦</div>
+<h2 class="h2">💡 互动挑战</h2>
+<p class="p">好，挑战时间。</p>
+<p class="p"><strong>现象</strong>：你和朋友在火车上。火车启动了，但你感觉是旁边的车在后退。</p>
+<p class="p">请问：</p>
+<ul class="ul">
+<li>你选的参照物是________？</li>
+<li>旁边的车相对于你来说是________（运动/静止）？</li>
+<li>如果参考地面，旁边的车是________（运动/静止）？</li>
+</ul>
+<p class="p">（停顿，给观众思考时间）</p>
+<p class="p"><strong>答案</strong>：</p>
+<ul class="ul">
+<li>你选的参照物是<strong>你自己（或你坐的火车）</strong></li>
+<li>旁边的车相对于你来说是<strong>运动的</strong>（它在"后退"）</li>
+<li>如果参考地面，旁边的车是<strong>静止的</strong>（根本没动）</li>
+</ul>
+<p class="p">全对的——你跟林小宇一样，有"观察者之眼"的潜质。</p>
+<div class="divider">✦ ✦ ✦</div>
+<h2 class="h2">🎯 本期金句</h2>
+<p class="p">下期预告：<strong>专场 #2 · 闭嘴，听我说！</strong></p>
+<p class="p">你有没有想过——你妈隔着三个房间喊你吃饭，声音是怎么穿过墙壁的？</p>
+<p class="p">为什么你喊"啊——"山谷会回应你？</p>
+<p class="p">还有——为什么有些人的声音像天使，有些人像锯木头？</p>
+<p class="p">我们下期见！</p>
+<p class="p">（鞠躬下台）</p>
+<div class="divider">✦ ✦ ✦</div>
+<h2 class="h2">📎 附录：知识点-段子对照表</h2>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

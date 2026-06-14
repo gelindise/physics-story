@@ -74,6 +74,34 @@ body.night-mode .mode-tabs button.active { background:#5c6bc0; }
     return { w, h };
   }
 
+  // Draw arrow centered on a ray from (x1,y1) to (x2,y2) at position t (0-1)
+  function drawArrowOnRay(ctx, x1, y1, x2, y2, t, size, color) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const len = Math.sqrt(dx * dx + dy * dy);
+    if (len < 1) return;
+    const ux = dx / len;
+    const uy = dy / len;
+    const tipX = x1 + dx * t;
+    const tipY = y1 + dy * t;
+    const backX = tipX - ux * size;
+    const backY = tipY - uy * size;
+    const px = -uy;
+    const py = ux;
+    const halfW = size * 0.45;
+    const lx = backX + px * halfW;
+    const ly = backY + py * halfW;
+    const rx = backX - px * halfW;
+    const ry = backY - py * halfW;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(tipX, tipY);
+    ctx.lineTo(lx, ly);
+    ctx.lineTo(rx, ry);
+    ctx.closePath();
+    ctx.fill();
+  }
+
   function drawReflect(w, h) {
     const cx = w / 2;
     const cy = h / 2;
@@ -116,16 +144,7 @@ body.night-mode .mode-tabs button.active { background:#5c6bc0; }
     ctx.beginPath(); ctx.moveTo(incStartX, incStartY); ctx.lineTo(incEndX, incEndY); ctx.stroke();
 
     // Arrow on incident ray
-    const arrowMid = 0.6;
-    const amx = incStartX + (incEndX - incStartX) * arrowMid;
-    const amy = incStartY + (incEndY - incStartY) * arrowMid;
-    ctx.fillStyle = '#ef5350';
-    ctx.beginPath();
-    ctx.moveTo(amx, amy);
-    ctx.lineTo(amx + 6, amy + 3);
-    ctx.lineTo(amx + 6, amy - 3);
-    ctx.closePath(); ctx.fill();
-
+    drawArrowOnRay(ctx, incStartX, incStartY, incEndX, incEndY, 0.55, 12, '#ef5350');
     // Reflected ray (from mirror to top-right)
     const refEndX = cx + Math.cos(incAngle) * rayLen;
     const refEndY = mirrorY - Math.sin(incAngle) * rayLen;
@@ -134,29 +153,27 @@ body.night-mode .mode-tabs button.active { background:#5c6bc0; }
     ctx.beginPath(); ctx.moveTo(cx, mirrorY); ctx.lineTo(refEndX, refEndY); ctx.stroke();
 
     // Arrow on reflected ray
-    const rmX = cx + (refEndX - cx) * 0.4;
-    const rmY = mirrorY + (refEndY - mirrorY) * 0.4;
-    ctx.fillStyle = '#42a5f5';
-    ctx.beginPath();
-    ctx.moveTo(rmX, rmY);
-    ctx.lineTo(rmX - 6, rmY + 3);
-    ctx.lineTo(rmX - 6, rmY - 3);
-    ctx.closePath(); ctx.fill();
+    drawArrowOnRay(ctx, cx, mirrorY, refEndX, refEndY, 0.45, 12, '#42a5f5');
 
-    // Arc for angle
+    // Arcs for angles (between each ray and the normal, above mirror)
     const arcR = 50;
     ctx.strokeStyle = 'rgba(255,255,200,0.5)'; ctx.lineWidth = 1.5;
+    // Incident angle arc (left side: between normal pointing up and incident ray)
     ctx.beginPath();
-    ctx.arc(cx, mirrorY, arcR, Math.PI/2 - angle, Math.PI/2);
+    ctx.arc(cx, mirrorY, arcR, -(Math.PI/2 + angle), -Math.PI/2);
     ctx.stroke();
+    // Reflection angle arc (right side: between normal and reflected ray)
     ctx.beginPath();
-    ctx.arc(cx, mirrorY, arcR, Math.PI/2, Math.PI/2 + angle);
+    ctx.arc(cx, mirrorY, arcR, -Math.PI/2, -(Math.PI/2 - angle));
     ctx.stroke();
 
+    // Angle labels positioned at the midpoint of each arc
     ctx.fillStyle = 'rgba(255,255,200,0.7)';
     ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
-    ctx.fillText(`θ₁ = ${angleSlider.value}°`, cx - arcR/2 - 10, mirrorY - 6);
-    ctx.fillText(`θ₂ = ${angleSlider.value}°`, cx + arcR/2 + 10, mirrorY - 6);
+    const labelOff = arcR + 18;
+    const halfAngle = angle / 2;
+    ctx.fillText(`θ₁ = ${angleSlider.value}°`, cx - Math.sin(halfAngle) * labelOff, mirrorY - Math.cos(halfAngle) * labelOff);
+    ctx.fillText(`θ₂ = ${angleSlider.value}°`, cx + Math.sin(halfAngle) * labelOff, mirrorY - Math.cos(halfAngle) * labelOff);
 
     // Labels
     ctx.fillStyle = '#ef5350'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
@@ -210,6 +227,9 @@ body.night-mode .mode-tabs button.active { background:#5c6bc0; }
     ctx.strokeStyle = '#ef5350'; ctx.lineWidth = 2.5;
     ctx.beginPath(); ctx.moveTo(incStartX, incStartY); ctx.lineTo(cx, surfaceY); ctx.stroke();
 
+    // Arrow on incident ray
+    drawArrowOnRay(ctx, incStartX, incStartY, cx, surfaceY, 0.55, 12, '#ef5350');
+
     // Refracted ray (surface → water)
     const n1 = 1.0, n2 = 1.33; // air, water
     const refrAngle = Math.asin(Math.min(1, n1 * Math.sin(angle) / n2));
@@ -219,23 +239,31 @@ body.night-mode .mode-tabs button.active { background:#5c6bc0; }
     ctx.strokeStyle = '#66bb6a'; ctx.lineWidth = 2.5;
     ctx.beginPath(); ctx.moveTo(cx, surfaceY); ctx.lineTo(refrEndX, refrEndY); ctx.stroke();
 
-    // Arcs for angles
+    // Arrow on refracted ray
+    drawArrowOnRay(ctx, cx, surfaceY, refrEndX, refrEndY, 0.45, 12, '#66bb6a');
+
+    // Arcs for angles (between each ray and the normal)
     const arcR = 45;
     ctx.strokeStyle = 'rgba(255,255,200,0.4)'; ctx.lineWidth = 1.2;
+    // Incident angle arc (above surface: between normal pointing up and incident ray)
     ctx.beginPath();
-    ctx.arc(cx, surfaceY, arcR, Math.PI/2 - angle, Math.PI/2);
+    ctx.arc(cx, surfaceY, arcR, -(Math.PI/2 + angle), -Math.PI/2);
     ctx.stroke();
+    // Refracted angle arc (below surface: between normal pointing down and refracted ray)
     ctx.beginPath();
-    ctx.arc(cx, surfaceY, arcR, Math.PI/2, Math.PI/2 + refrAngle);
+    ctx.arc(cx, surfaceY, arcR, Math.PI/2 - refrAngle, Math.PI/2);
     ctx.stroke();
 
     const deg1 = Math.round(angle * 180 / Math.PI);
     const deg2 = Math.round(refrAngle * 180 / Math.PI);
 
+    // Angle labels positioned at the midpoint of each arc
     ctx.fillStyle = 'rgba(255,255,200,0.7)';
     ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText(`入射角 ${deg1}°`, cx - arcR/2 - 15, surfaceY - 8);
-    ctx.fillText(`折射角 ${deg2}°`, cx + arcR/2 + 15, surfaceY + 22);
+    const labelOff = arcR + 16;
+    ctx.fillText(`入射角 ${deg1}°`, cx - Math.sin(angle/2) * labelOff, surfaceY - Math.cos(angle/2) * labelOff);
+    const halfRefr = refrAngle / 2;
+    ctx.fillText(`折射角 ${deg2}°`, cx + Math.sin(halfRefr) * labelOff, surfaceY + Math.cos(halfRefr) * labelOff);
 
     ctx.fillStyle = 'rgba(255,255,255,0.5)';
     ctx.font = '13px sans-serif';

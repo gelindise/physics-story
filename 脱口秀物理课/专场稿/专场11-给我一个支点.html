@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给我一个支点 - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag">EP 11</div>
+  <h1>给我一个支点</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 杠杆 · 杠杆平衡条件 F₁L₁=F₂L₂ · 滑轮 · 机械效率</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎬 <span>开场</span></div>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p">今天我们来聊一个能让你"省力"的东西——</p>
+<p class="p"><strong>简单机械。</strong></p>
+<p class="p">（语速平稳）</p>
+<p class="p">你有没有想过——</p>
+<p class="p">古代人没有起重机、没有挖掘机、没有电动工具——</p>
+<p class="p">他们是怎么建起金字塔、长城、罗马斗兽场的？</p>
+<p class="p">靠的是……<strong>脑子</strong>。</p>
+<p class="p">（眼神微微发亮）</p>
+<p class="p">具体说，靠的是<strong>简单机械</strong>。</p>
+<p class="p">杠杆、滑轮、斜面、轮轴——</p>
+<p class="p">这些看起来"原始"的工具，背后是物理的智慧。</p>
+<p class="p">（停顿）</p>
+<p class="p">古希腊有位物理学家叫阿基米德——</p>
+<p class="p">他说了一句非常狂的话：</p>
+<p class="p"><strong>"给我一个支点，我能撬起整个地球。"</strong></p>
+<p class="p">他不是在吹牛。</p>
+<p class="p">他是认真的。</p>
+<p class="p">如果给他一个足够长的杠杆，和一个足够坚固的支点——</p>
+<p class="p">理论上，他真的能撬动地球。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">当然，实际操作上有点小困难——</p>
+<p class="p">比如，他得先找到一个"足够坚固"的支点。</p>
+<p class="p">但地球外面……好像没有这种东西。</p>
+<p class="p">但物理上，他是对的。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🔥 <span>段子时间</span></div>
+<ul class="ul">
+<li>杠杆——你可以偷懒，但物理允许你偷懒</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p"><strong>杠杆</strong>：一根在力的作用下能绕<strong>固定点</strong>转动的硬棒。</p>
+<p class="p">（停顿）</p>
+<p class="p">杠杆五要素：</p>
+<p class="p"><strong>支点</strong>：杠杆绕其转动的固定点（O）</p>
+<p class="p"><strong>动力</strong>：使杠杆转动的力（F₁）</p>
+<p class="p"><strong>阻力</strong>：阻碍杠杆转动的力（F₂）</p>
+<p class="p"><strong>动力臂</strong>：支点到动力作用线的距离（L₁）</p>
+<p class="p"><strong>阻力臂</strong>：支点到阻力作用线的距离（L₂）</p>
+<p class="p">（眼神专注）</p>
+<p class="p"><strong>杠杆平衡条件：F₁ × L₁ = F₂ × L₂</strong></p>
+<p class="p">动力 × 动力臂 = 阻力 × 阻力臂</p>
+<p class="p">（停顿，语速放慢）</p>
+<p class="p">这个公式的意思是：</p>
+<p class="p"><strong>力臂越长，需要的力越小。</strong></p>
+<p class="p">你想撬起一个很重的东西——</p>
+<p class="p">只要把动力臂做长一点，你就能用很小的力撬起很重的物体。</p>
+<p class="p">这就是为什么——</p>
+<p class="p">你用一根撬棍能撬起一块大石头（动力臂长 > 阻力臂短）。</p>
+<p class="p">你用开瓶器能打开啤酒瓶盖（动力臂 > 阻力臂）。</p>
+<p class="p">你爸撬不开你的房门——呃……那是另一个问题。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">杠杆分为三类：</p>
+<p class="p"><strong>省力杠杆</strong>：L₁ > L₂ → F₁ < F₂（省力，但费距离）</p>
+<p class="p">比如：撬棍、开瓶器、扳手</p>
+<p class="p"><strong>费力杠杆</strong>：L₁ < L₂ → F₁ > F₂（费力，但省距离）</p>
+<p class="p">比如：镊子、钓鱼竿、扫帚</p>
+<p class="p"><strong>等臂杠杆</strong>：L₁ = L₂ → F₁ = F₂（不省力也不费力）</p>
+<p class="p">比如：天平</p>
+<p class="p">（停顿）</p>
+<p class="p">为什么要有"费力杠杆"？</p>
+<p class="p">因为有些时候，你宁可费力一点——但希望动得"精准"。</p>
+<p class="p">用镊子夹东西——你手移动很大，镊子尖端只移动很小——但非常精准。</p>
+<p class="p">就像你妈做手工的时候——宁可用镊子，也不用大钳子。</p>
+<p class="p">（微微点头）</p>
+<p class="p">所以物理告诉你：</p>
+<p class="p"><strong>有时候省力的代价是距离——你省了力，但要多走一段路。</strong></p>
+<p class="p"><strong>有时候精准的代价是力气——你精准了，但要多费点劲。</strong></p>
+<p class="p"><strong>人生也是一样——没有免费的午餐，也没有免费"省力"的杠杆。</strong></p>
+<ul class="ul">
+<li>滑轮——改变方向的智慧</li>
+</ul>
+<p class="p">（不紧不慢地）</p>
+<p class="p"><strong>滑轮</strong>：一个带槽的轮子，绕中心轴转动。</p>
+<p class="p">分为两种：</p>
+<p class="p"><strong>定滑轮</strong>：轴固定不动。</p>
+<p class="p">特点：<strong>不省力，但改变方向。</strong></p>
+<p class="p">你用定滑轮把水桶从井里提上来——你往下拉绳子，水桶往上走。</p>
+<p class="p">力没省——但方向变了。</p>
+<p class="p"><strong>动滑轮</strong>：轴随物体一起动。</p>
+<p class="p">特点：<strong>省一半力，但不改变方向。</strong></p>
+<p class="p">你用动滑轮提重物——重物的重量被两根绳子分担，你只需要用一半的力。</p>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p"><strong>滑轮组</strong>：定滑轮 + 动滑轮组合。</p>
+<p class="p">既省力，又改变方向。</p>
+<p class="p">省力的倍数 = 承担重物的绳子段数。</p>
+<p class="p">如果你用了 3 段绳子承担重物——你用的力 = 重物重量的 1/3。</p>
+<p class="p">如果你用了 5 段绳子承担重物——你用的力 = 重物重量的 1/5。</p>
+<p class="p">（眼神专注）</p>
+<p class="p">所以物理告诉你：</p>
+<p class="p"><strong>绳子越多，越省力。</strong></p>
+<p class="p">但代价是——你要拉更长的距离。</p>
+<p class="p">就像分工合作——人越多，每个人分担的越少。</p>
+<p class="p">但协调沟通的成本也更高了。</p>
+<p class="p">（微微点头）</p>
+<p class="p">绕得过滑轮的绳子，绕不过人生的道理。</p>
+<ul class="ul">
+<li>机械效率——不是所有的"付出"都能变成"收获"</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">好，既然讲到机械了——</p>
+<p class="p">我们要面对一个残酷的现实：</p>
+<p class="p"><strong>任何机械都不能100%把输入的功转化为有用的功。</strong></p>
+<p class="p">（停顿）</p>
+<p class="p">你用力拉绳子，做了<strong>总功</strong>。</p>
+<p class="p">但有一部分功被摩擦力、机械自重"消耗"了——</p>
+<p class="p">最后真正用来"干活"的，叫<strong>有用功</strong>。</p>
+<p class="p"><strong>机械效率 η = 有用功 ÷ 总功 × 100%</strong></p>
+<p class="p">（语速放慢）</p>
+<p class="p">η 永远小于 100%。</p>
+<p class="p">因为摩擦力永远存在。</p>
+<p class="p">机械自重永远存在。</p>
+<p class="p">能量损耗永远存在。</p>
+<p class="p">（停顿）</p>
+<p class="p">这跟人生一样——</p>
+<p class="p">你的付出（总功）不可能 100% 变成成果（有用功）。</p>
+<p class="p">总有一些"损耗"——等待的时间、走弯路、被误解、被拒绝。</p>
+<p class="p">但物理也告诉你：<strong>你可以提高效率。</strong></p>
+<p class="p">减少摩擦（润滑）→ 减少阻力，提高效率。</p>
+<p class="p">减少额外负担（减重）→ 轻装上阵，提高效率。</p>
+<p class="p">（眼神专注）</p>
+<p class="p">所以物理给你的建议是：</p>
+<p class="p"><strong>接受损耗的存在——但要努力减少不必要的损耗。</strong></p>
+<p class="p">就像你那花了 40 分钟找笔才开始写作业的晚上——</p>
+<p class="p">真正的"总功"是 2 小时，但"有用功"可能只有 1 小时。</p>
+<p class="p">那 1 小时的找笔时间——就是摩擦。就是损耗。</p>
+<p class="p">物理不帮你找笔，但物理告诉你：把笔提前准备好。</p>
+<p class="p">（微微一笑）</p>
+<ul class="ul">
+<li>斜面——蜿蜒的路不一定是弯路</li>
+</ul>
+<p class="p">（语气平稳）</p>
+<p class="p">最后一个简单机械：<strong>斜面</strong>。</p>
+<p class="p">（停顿）</p>
+<p class="p">你想把一个重物运到高处——</p>
+<p class="p">直接垂直提上去——需要的力 = 重物的重量，非常费力。</p>
+<p class="p">但如果你搭一个斜面，把重物沿着斜面推上去——</p>
+<p class="p">需要的力 = 重物重量 × （斜面高 ÷ 斜面长）</p>
+<p class="p"><strong>斜面越长，越省力。</strong></p>
+<p class="p">（眼神微微发亮）</p>
+<p class="p">这就是为什么——</p>
+<p class="p">山路要"之"字形绕上去——不是修路的人不会走直线——</p>
+<p class="p">是让路变长、变缓——车才开得上去。</p>
+<p class="p">盘山公路不直——但省力。</p>
+<p class="p">（停顿）</p>
+<p class="p">所以物理告诉你一个很温柔的道理：</p>
+<p class="p"><strong>路长一点，不一定就是绕路。</strong></p>
+<p class="p"><strong>它可能是在帮你省力。</strong></p>
+<p class="p">就像你备考——</p>
+<p class="p">直接死记硬背（垂直拉升）很费力。</p>
+<p class="p">但你找一个"斜面"——理解本质、做有趣的练习——虽然时间花得多一些，但轻松多了。</p>
+<p class="p">（微微点头）</p>
+<p class="p">蜿蜒的路不一定是弯路。</p>
+<p class="p">它可能是最聪明的路。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">📖 <span>法则小课堂</span></div>
+<p class="p">收了。正经 60 秒。</p>
+<p class="p">今天四个核心知识点：</p>
+<ul class="ul">
+<li><strong>杠杆平衡条件</strong>：F₁L₁ = F₂L₂。<strong>力臂越长越省力。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"给我一个支点，撬起整个地球。"</strong></p>
+<ul class="ul">
+<li><strong>滑轮</strong>：</li>
+<li>定滑轮：<strong>不省力，但改变方向</strong></li>
+<li>动滑轮：<strong>省一半力，多一倍距离</strong></li>
+<li>滑轮组：<strong>省 n 倍力，多 n 倍距离</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"绳子越多越省力。"</strong></p>
+<ul class="ul">
+<li><strong>机械效率 η</strong>：有用功 ÷ 总功。<strong>永远小于 100%。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"损耗永远存在，但可以减少。"</strong></p>
+<ul class="ul">
+<li><strong>斜面</strong>：<strong>斜面越长越省力。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"路长不一定是弯路，可能是在帮你省力。"</strong></p>
+<p class="p">说到这个，「物理解码者」V07 齿轮森林与通天塔里——</p>
+<p class="p">林小宇进入了一片由齿轮和机械构成的森林。</p>
+<p class="p">这里的通天塔没有楼梯——只能用滑轮和杠杆把自己"吊"上去。</p>
+<p class="p">林小宇用滑轮组——3 段绳子承担体重——用自己体重的 1/3 的力把自己拉了上去。</p>
+<p class="p">但在塔顶他发现——塔顶的机关需要精确的力才能触发。</p>
+<p class="p">他用刚学的杠杆平衡条件 F₁L₁ = F₂L₂ 计算——</p>
+<p class="p">调整支点位置，找到了恰好触发机关的力。</p>
+<p class="p">他说：<strong>"我学杠杆的时候以为是为了考试。现在我站在塔顶——我知道物理不是为了考试，是为了爬得更高。"</strong></p>
+<p class="p">想看他怎么用简单机械爬上通天塔的吗？去看异世法则。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">💡 <span>互动挑战</span></div>
+<p class="p">来，考考你——</p>
+<p class="p">（停顿）</p>
+<p class="p">一个杠杆，动力臂是 1 米，阻力臂是 0.2 米。</p>
+<p class="p">要撬起一个 500 N 的重物。</p>
+<p class="p">问：需要多大的动力？</p>
+<p class="p">A. 50 N</p>
+<p class="p">B. 100 N</p>
+<p class="p">C. 250 N</p>
+<p class="p">（停顿，给思考时间）</p>
+<p class="p">答案是 <strong>B. 100 N</strong>。</p>
+<p class="p">F₁ × L₁ = F₂ × L₂</p>
+<p class="p">F₁ × 1 = 500 × 0.2</p>
+<p class="p">F₁ = 100 N</p>
+<p class="p">你用 100 N 的力就能撬起 500 N 的重物——省了 5 倍的力。</p>
+<p class="p">这就是杠杆的力量 😉</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎯 <span>本期金句</span></div>
+<p class="p">下期预告：EP 12 · <strong>能量守恒：你不是懒，是能量转化了</strong></p>
+<p class="p">你上课犯困不是因为懒——是你的化学能转化成了别的能量。</p>
+<p class="p">我们下期见。</p>
+<p class="p">（微微点头，收起讲义）</p>
+<div class="divider">✦ ✦ ✦</div>
+<p class="p">📖 想读故事版？→ 看看「物理解码者」V07 齿轮森林与通天塔</p>
+<p class="p">💬 有想听的物理知识点？→ 评论区留言</p>
+<p class="p">⭐ 觉得有用？→ 点赞+在看，让更多同学笑着学会物理</p>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电到你了吗 - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag">EP 14</div>
+  <h1>电到你了吗</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 电荷 · 电流 · 电路 · 串并联 · 欧姆定律 I=U/R · 电功率 P=UI</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎬 <span>开场</span></div>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p">今天我们来聊一个"带电"的话题——</p>
+<p class="p"><strong>电。</strong></p>
+<p class="p">（语速平稳）</p>
+<p class="p">你们有没有过这样的经历——</p>
+<p class="p">冬天脱毛衣，听到"噼里啪啦"的声音，还看到火花——</p>
+<p class="p">你伸手摸门把手，"啪"地一下被电到了。</p>
+<p class="p">（眼神微微发亮）</p>
+<p class="p">那不是门把手"攻击"你——</p>
+<p class="p">那是<strong>电荷</strong>在搞事情。</p>
+<p class="p">你穿毛衣时，毛衣和你的衣服摩擦——</p>
+<p class="p">电子从一件衣服"跑"到了另一件衣服上。</p>
+<p class="p">你身上带上了<strong>静电</strong>。</p>
+<p class="p">你摸门把手——门把手是金属（导体）——</p>
+<p class="p">电荷从你身上通过门把手"跑"到地上去——</p>
+<p class="p">"啪"——你被"电"了。</p>
+<p class="p">（停顿）</p>
+<p class="p">但你知道吗？</p>
+<p class="p">你身上带的这个电压——可能有几千伏。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">几千伏——听起来很可怕吧？</p>
+<p class="p">但你没被电死——因为<strong>电流太小了</strong>。</p>
+<p class="p">电压高 ≠ 危险。<strong>电流大才危险。</strong></p>
+<p class="p">今天我们就来聊聊这个——电。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🔥 <span>段子时间</span></div>
+<ul class="ul">
+<li>电荷——为什么有些东西"带电"</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p"><strong>电荷</strong>：电的量度。用 Q 表示，单位是<strong>库仑（C）</strong>。</p>
+<p class="p">电荷有两种：</p>
+<p class="p"><strong>正电荷</strong>（+）——质子带的。</p>
+<p class="p"><strong>负电荷</strong>（-）——电子带的。</p>
+<p class="p">（停顿，语速放慢）</p>
+<p class="p"><strong>同性相斥，异性相吸。</strong></p>
+<p class="p">正正相斥、负负相斥。</p>
+<p class="p">正负相吸。</p>
+<p class="p">（眼神专注）</p>
+<p class="p">你冬天脱毛衣——毛衣和你的衣服摩擦——</p>
+<p class="p">电子从毛衣跑到了你的衣服上——你的衣服带负电，毛衣带正电。</p>
+<p class="p">你伸手摸门把手——</p>
+<p class="p">门把手是导体——电荷通过门把手"逃"到地上——</p>
+<p class="p">你听到"啪"的一声——那是电荷在流动。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">所以你不是"被电到了"——</p>
+<p class="p">你只是被自己的<strong>负电荷</strong>集体出逃的声音吓了一跳。</p>
+<ul class="ul">
+<li>电路——电的"高速公路"</li>
+</ul>
+<p class="p">（不紧不慢地）</p>
+<p class="p"><strong>电路</strong>：电流流通的路径。</p>
+<p class="p">电路的基本组成：</p>
+<p class="p"><strong>电源</strong>：提供电能的装置（电池、发电机）。</p>
+<p class="p"><strong>用电器</strong>：消耗电能的装置（灯泡、风扇、手机）。</p>
+<p class="p"><strong>开关</strong>：控制通断。</p>
+<p class="p"><strong>导线</strong>：连接通路。</p>
+<p class="p">（停顿）</p>
+<p class="p"><strong>通路</strong>：处处连通的电路——电流可以流通。</p>
+<p class="p"><strong>开路（断路）</strong>：某处断开的电路——电流不能流通。</p>
+<p class="p"><strong>短路</strong>：电源两极直接被导线连接——非常大电流——会烧坏电路。</p>
+<p class="p">（眼神专注）</p>
+<p class="p">你们小时候玩电池和小灯泡——把灯泡的两个脚连到电池的两端——</p>
+<p class="p">灯亮了——这就是一个最简单的电路。</p>
+<p class="p">你妈看到了说："别玩了，小心触电。"</p>
+<p class="p">你说："妈，这是科学实验。"</p>
+<p class="p">然后你妈把电池没收了。</p>
+<p class="p">（微微一笑）</p>
+<ul class="ul">
+<li>串并联——两种"排队"方式</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">电路有两种基本连接方式——</p>
+<p class="p"><strong>串联：元件首尾相连。</strong></p>
+<p class="p">特点：</p>
+<ul class="ul">
+<li>电流只有一个路径</li>
+<li>电流处处相等（I₁ = I₂ = I₃）</li>
+<li>总电压 = 各用电器电压之和（U = U₁ + U₂ + U₃）</li>
+<li>"一荣俱荣，一损俱损"——一个坏了，全部不工作</li>
+</ul>
+<p class="p">就像排队打饭——一个人卡住了，后面全等着。</p>
+<p class="p">（停顿）</p>
+<p class="p"><strong>并联：元件并列连接。</strong></p>
+<p class="p">特点：</p>
+<ul class="ul">
+<li>电流有多个路径</li>
+<li>干路电流 = 各支路电流之和（I = I₁ + I₂ + I₃）</li>
+<li>各支路电压相等（U₁ = U₂ = U₃ = U）</li>
+<li>"独立工作"——一个坏了，不影响其他</li>
+</ul>
+<p class="p">就像多个窗口同时打饭——一个窗口卡了，去另一个。</p>
+<p class="p">（语速放慢，眼神专注）</p>
+<p class="p">这就是为什么家里的灯都是并联的——</p>
+<p class="p">一个灯泡烧了，其他灯还能亮。</p>
+<p class="p">如果串联呢？</p>
+<p class="p">一个灯泡烧了——全屋黑暗。你连去找新的灯泡都看不见。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">串联很"团结"——但团结的代价是：一个倒下，全军覆没。</p>
+<p class="p">并联很"独立"——但独立的代价是：需要更多的"线路"。</p>
+<p class="p">像极了学生会——串联式管理（一个人不干了全瘫痪）vs 并联式管理（各司其职互不影响）。</p>
+<p class="p">物理在教你管理学的道理。</p>
+<ul class="ul">
+<li>欧姆定律——电流的"交通规则"</li>
+</ul>
+<p class="p">（眼神专注，语速放慢）</p>
+<p class="p"><strong>欧姆定律</strong>：导体中的电流，跟导体两端的电压成正比，跟导体的电阻成反比。</p>
+<p class="p"><strong>I = U / R</strong></p>
+<p class="p">I → 电流（安培 A）</p>
+<p class="p">U → 电压（伏特 V）</p>
+<p class="p">R → 电阻（欧姆 Ω）</p>
+<p class="p">（停顿）</p>
+<p class="p">电压越大——电流越大（推得越狠）。</p>
+<p class="p">电阻越大——电流越小（拦得越凶）。</p>
+<p class="p">（推了推眼镜）</p>
+<p class="p">这就像你过马路：</p>
+<p class="p"><strong>电压</strong> = 你在后面推我的力气（推得越狠，我走得越快）。</p>
+<p class="p"><strong>电阻</strong> = 路上的人多不多（人越多，我走得越慢）。</p>
+<p class="p"><strong>电流</strong> = 我实际走过去的速度。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">所以欧姆定律其实就是：</p>
+<p class="p"><strong>我走多快 = 你推我多狠 ÷ 路上多堵。</strong></p>
+<ul class="ul">
+<li>电功率——你的电器"吃"多少电</li>
+</ul>
+<p class="p">（语气平稳）</p>
+<p class="p"><strong>电功率</strong>：电流在单位时间内做的功。</p>
+<p class="p"><strong>P = UI</strong></p>
+<p class="p">P → 电功率（瓦特 W）</p>
+<p class="p">U → 电压（伏特 V）</p>
+<p class="p">I → 电流（安培 A）</p>
+<p class="p">（停顿）</p>
+<p class="p">你家的空调——功率可能是 2000 W。</p>
+<p class="p">你家的灯泡——功率可能是 20 W。</p>
+<p class="p">空调的功率更大——同样时间内，空调"吃"的电更多。</p>
+<p class="p">（眼神专注）</p>
+<p class="p">还有两个重要的公式：</p>
+<p class="p"><strong>P = I²R</strong>（电流的平方 × 电阻）——串联电路比较发热。</p>
+<p class="p"><strong>P = U²/R</strong>（电压的平方 ÷ 电阻）——并联电路比较功率。</p>
+<p class="p">（停顿）</p>
+<p class="p">怎么理解？</p>
+<p class="p">如果你把同一个灯泡接到 220V 和 110V——</p>
+<p class="p">220V 时功率 = 4 倍于 110V 时功率（因为 U²——电压翻倍，功率翻 4 倍）。</p>
+<p class="p">这就是为什么有些电器在电压不稳的地方会"忽明忽暗"——</p>
+<p class="p">电压一变，功率跟着 U² 变——变化非常明显。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">电灯忽明忽暗——不是灯在闹情绪——</p>
+<p class="p">是 U² 在跟你过不去。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">📖 <span>法则小课堂</span></div>
+<p class="p">收了。正经 60 秒。</p>
+<p class="p">今天五个核心知识点：</p>
+<ul class="ul">
+<li><strong>电荷</strong>：正负两种。<strong>同性相斥，异性相吸。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"正正斥，负负斥，正负吸一起。"</strong></p>
+<ul class="ul">
+<li><strong>电路组成</strong>：电源、用电器、开关、导线。</li>
+</ul>
+<p class="p">   口诀：<strong>"源头电器开关线，缺一不可成回路。"</strong></p>
+<ul class="ul">
+<li><strong>串并联对比</strong>：</li>
+<li>串联：<strong>电流一条路，处处相等。</strong></li>
+<li>并联：<strong>电流多条路，各支路独立。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"串联一损俱损，并联各自为政。"</strong></p>
+<ul class="ul">
+<li><strong>欧姆定律 I=U/R</strong>：电流跟电压成正比，跟电阻成反比。</li>
+</ul>
+<p class="p">   口诀：<strong>"电压大电流大，电阻大电流小。"</strong></p>
+<ul class="ul">
+<li><strong>电功率 P=UI</strong>：电压 × 电流。<strong>P=U²/R 和 P=I²R 也记牢。</strong></li>
+</ul>
+<p class="p">   口诀：<strong>"电压翻倍，功率翻四倍。"</strong></p>
+<p class="p">说到这个，「物理解码者」V09 雷霆城风云里——</p>
+<p class="p">林小宇来到了一个被雷电统治的城市。</p>
+<p class="p">这里的能源全靠闪电——但闪电电压极不稳定，经常烧毁设备。</p>
+<p class="p">林小宇利用欧姆定律 I = U/R——</p>
+<p class="p">在电路里串联一个<strong>可变电阻</strong>：当闪电电压高时，增大电阻，保持电流稳定。</p>
+<p class="p">他还设计了一个并联电路——每个家庭独立供电，</p>
+<p class="p">一个被雷劈了也不影响其他家。</p>
+<p class="p">他说：<strong>"I=U/R 不只是一个公式——它是你在电压不稳的世界里活下去的保障。"</strong></p>
+<p class="p">想看他怎么用欧姆定律拯救雷霆城的吗？去看异世法则。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">💡 <span>互动挑战</span></div>
+<p class="p">来，考考你——</p>
+<p class="p">（停顿）</p>
+<p class="p">一个灯泡接在 220V 的电压上，通过它的电流是 0.5 A。</p>
+<p class="p">问：这个灯泡的电功率是多少？</p>
+<p class="p">A. 110 W</p>
+<p class="p">B. 220 W</p>
+<p class="p">C. 440 W</p>
+<p class="p">（停顿，给思考时间）</p>
+<p class="p">答案是 <strong>A. 110 W</strong>。</p>
+<p class="p">P = U × I = 220 × 0.5 = 110 W。</p>
+<p class="p">做对了？你已经"通电"了 😉</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎯 <span>本期金句</span></div>
+<p class="p">下期预告：EP 15 · <strong>磁力吸引法则</strong></p>
+<p class="p">为什么磁铁能吸铁？为什么指南针总是指向北？为什么有些人对你有"引力"——并没有。</p>
+<p class="p">我们下期见。</p>
+<p class="p">（微微点头，收起讲义）</p>
+<div class="divider">✦ ✦ ✦</div>
+<p class="p">📖 想读故事版？→ 看看「物理解码者」V09 雷霆城风云</p>
+<p class="p">💬 有想听的物理知识点？→ 评论区留言</p>
+<p class="p">⭐ 觉得有用？→ 点赞+在看，让更多同学笑着学会物理</p>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

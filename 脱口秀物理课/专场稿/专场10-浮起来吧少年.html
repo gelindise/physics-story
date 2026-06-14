@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浮起来吧少年 - 冷面物理</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+  background:#f8f6f2;color:#2c2c2c;line-height:1.9;
+}
+.wx{max-width:680px;margin:0 auto;padding:30px 24px 60px}
+.banner{
+  background:linear-gradient(135deg,#1a2744,#2a3a5c);color:#fff;
+  border-radius:16px;padding:32px 24px;text-align:center;margin:0 0 28px;
+  position:relative;overflow:hidden;
+}
+.banner::before{
+  content:'';position:absolute;top:-60%;left:-30%;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(100,180,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.banner h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:4px;position:relative}
+.ep-tag{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;position:relative}
+.banner p{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,0.7);position:relative}
+.topics{
+  display:inline-block;background:rgba(255,255,255,0.08);
+  padding:3px 14px;border-radius:20px;font-size:12px;
+  color:rgba(255,255,255,0.8);margin-top:10px;position:relative;
+}
+.p{font-size:16px;line-height:2;margin:10px 0;text-indent:2em;color:#333}
+.h2{font-size:20px;font-weight:700;color:#1a2744;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a853}
+.h3{font-size:17px;font-weight:700;color:#2a3a5c;margin:24px 0 10px}
+.stag{font-size:14px;font-weight:700;color:#d4a853;margin:32px 0 12px;padding:8px 0;letter-spacing:2px}
+.stag span{color:#1a2744}
+.bq{
+  background:linear-gradient(135deg,#f0f4ff,#e8edf8);
+  border-left:4px solid #d4a853;padding:14px 18px;
+  margin:14px 0;border-radius:0 8px 8px 0;
+  font-size:15px;line-height:1.8;color:#1a2744;
+}
+.ul{padding-left:28px;margin:12px 0;list-style:none}
+.ul li{font-size:15px;line-height:1.9;color:#333;margin:4px 0;padding-left:8px;position:relative}
+.ul li::before{content:'·';position:absolute;left:-14px;color:#d4a853;font-weight:700}
+.divider{text-align:center;color:#ccc;margin:30px 0;font-size:14px;letter-spacing:8px}
+strong{color:#1a2744}
+code{background:#edf0f5;padding:2px 8px;border-radius:4px;font-size:14px;color:#2a3a5c}
+.footer{
+  text-align:center;margin:40px 0 20px;padding:24px;
+  background:linear-gradient(135deg,#f0f4ff,#f8f6f2);
+  border-radius:12px;font-size:13px;color:#666;
+  border:1px solid #e0e4eb;
+}
+.footer .brand{color:#d4a853;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wx">
+<div class="banner">
+  <div class="ep-tag">EP 10</div>
+  <h1>浮起来吧少年</h1>
+  <p>❄️ 冷面物理 · 笑着笑着就学会了</p>
+  <div class="topics">📖 浮力 · 阿基米德原理 F浮=ρ液gV排 · 浮沉条件 · 浮力的应用</div>
+</div>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎬 <span>开场</span></div>
+<p class="p">（停顿，推了推眼镜）</p>
+<p class="p">今天我们来聊一个非常"轻松"的话题——</p>
+<p class="p"><strong>浮力。</strong></p>
+<p class="p">（语速平稳）</p>
+<p class="p">你有没有在浴缸里泡过澡？</p>
+<p class="p">你躺进浴缸，水漫出来了。</p>
+<p class="p">你感觉自己的身体变轻了。</p>
+<p class="p">（眼神微微发亮）</p>
+<p class="p">你不是变轻了——是<strong>浮力</strong>在帮你。</p>
+<p class="p">你进入水中，水会"推"你——从下往上推。</p>
+<p class="p">这个向上的力，就是<strong>浮力</strong>。</p>
+<p class="p">（停顿）</p>
+<p class="p">浮力是怎么来的？</p>
+<p class="p">当你浸入水中时，你的下表面受到的水的压强比上表面大——</p>
+<p class="p">因为越深压强越大。</p>
+<p class="p">所以水对你下表面的"向上推力" > 上表面的"向下压力"——</p>
+<p class="p">你获得了一个<strong>向上的合力</strong>——浮力。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">这就是浮力的本质：</p>
+<p class="p"><strong>浮力 = 液体对物体向上和向下的压力差。</strong></p>
+<p class="p">你在水里的"失重感"，不是你真的变轻了——</p>
+<p class="p">是水在帮你托着。</p>
+<p class="p">物理版的"搭把手"。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🔥 <span>段子时间</span></div>
+<ul class="ul">
+<li>阿基米德——洗澡洗出了一个定理</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">说到浮力，就不得不提一个人——</p>
+<p class="p"><strong>阿基米德。</strong></p>
+<p class="p">（停顿，语速放慢）</p>
+<p class="p">传说阿基米德在浴缸里泡澡的时候，突然想通了一个问题——</p>
+<p class="p">然后他光着身子冲出浴缸，在大街上喊："尤里卡！尤里卡！"（我发现了！我发现了！）</p>
+<p class="p">（语气依然平稳）</p>
+<p class="p">他不是疯了。</p>
+<p class="p">他是发现了浮力的本质——</p>
+<p class="p"><strong>阿基米德原理：浸在液体中的物体，受到向上的浮力，浮力大小等于它排开的液体所受的重力。</strong></p>
+<p class="p">公式：<strong>F浮 = ρ液 × g × V排</strong></p>
+<p class="p">ρ液：液体的密度</p>
+<p class="p">g：重力加速度</p>
+<p class="p">V排：物体排开液体的体积（也就是浸入液体的那部分体积）</p>
+<p class="p">（停顿）</p>
+<p class="p">什么意思？</p>
+<p class="p">你往浴缸里一跳——你身体浸入水中的部分"排开"了水。</p>
+<p class="p">被排开的水有多重，你受到的浮力就有多大。</p>
+<p class="p">（眼神专注）</p>
+<p class="p">所以物理告诉你一个真相：</p>
+<p class="p"><strong>你在水里的"轻"，是以"排开水"为代价的。</strong></p>
+<p class="p">你每下沉一厘米，就排开一部分水。</p>
+<p class="p">被排开的水越多，浮力越大。</p>
+<p class="p">浮力大到等于你的重量——你就浮起来了。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">所以阿基米德在浴缸里发现浮力的时候——</p>
+<p class="p">他不是在洗澡，他是在做物理实验。</p>
+<p class="p">只是他太激动了，忘记穿衣服。</p>
+<p class="p">（笑）</p>
+<ul class="ul">
+<li>为什么铁船能浮在水上</li>
+</ul>
+<p class="p">（推了推眼镜）</p>
+<p class="p">一个问题——</p>
+<p class="p">铁的密度是 7.8 g/cm³，水的密度是 1.0 g/cm³。</p>
+<p class="p">铁的密度比水大——按道理铁应该沉在水底。</p>
+<p class="p">那为什么钢铁做的轮船能浮在海上？</p>
+<p class="p">（停顿）</p>
+<p class="p">因为<strong>排开水的体积</strong>。</p>
+<p class="p">（语速放慢）</p>
+<p class="p">一块实心铁——体积小，排开的水少，浮力小——沉了。</p>
+<p class="p">但如果把这块铁做成一个"空壳"——体积变大了，浸入水中时排开的水更多了——</p>
+<p class="p">浮力增加了。</p>
+<p class="p">当浮力等于船的重量时——船就浮起来了。</p>
+<p class="p">（眼神发亮）</p>
+<p class="p">铁船能浮在水上的原因，不是因为铁变"轻"了——</p>
+<p class="p">是铁的形状让它排开了足够多的水，产生了足够大的浮力。</p>
+<p class="p">这也是为什么——</p>
+<p class="p"><strong>轮船从河里开到海里，会上浮一点。</strong></p>
+<p class="p">海水的密度（1.03 g/cm³）比淡水（1.0 g/cm³）大——</p>
+<p class="p">同样的船，在海水里排开的水少一点就能产生足够的浮力——所以船上浮了。</p>
+<p class="p">（推了推眼镜）</p>
+<p class="p">所以物理告诉你：</p>
+<p class="p"><strong>不是铁变了，是排开的水变了。</strong></p>
+<p class="p">做人也一样——你不需要改变自己，换个环境你就能浮起来。</p>
+<p class="p">（笑）</p>
+<ul class="ul">
+<li>浮沉条件——你到底想浮还是想沉</li>
+</ul>
+<p class="p">（不紧不慢地）</p>
+<p class="p">浮力的终极问题：一个物体放到液体里，它到底会浮还是会沉？</p>
+<p class="p">（停顿）</p>
+<p class="p"><strong>浮沉条件：</strong></p>
+<p class="p"><strong>ρ物 < ρ液 → 上浮</strong>（最终漂浮）</p>
+<p class="p">木头浮在水上——木头的密度（0.5）< 水的密度（1.0）。</p>
+<p class="p"><strong>ρ物 = ρ液 → 悬浮</strong></p>
+<p class="p">你可以在水里"悬"着不动——如果你的平均密度刚好等于水的密度。</p>
+<p class="p"><strong>ρ物 > ρ液 → 下沉</strong></p>
+<p class="p">铁沉在水底——铁的密度（7.8）> 水的密度（1.0）。</p>
+<p class="p">（眼神专注，停顿）</p>
+<p class="p">所以决定你浮沉的，不是你"想不想"——</p>
+<p class="p">是你的平均密度和液体密度的比较。</p>
+<p class="p">这就是为什么：</p>
+<p class="p"><strong>人在死海里能浮起来</strong>——死海含盐量高，密度大（约 1.2 g/cm³）。</p>
+<p class="p">人的平均密度约 1.0 g/cm³——小于死海水的密度——所以人浮起来了。</p>
+<p class="p">而且浮得很高——因为密度差大。</p>
+<p class="p">（微微一笑）</p>
+<p class="p">死海里不只是"浮起来"——你是被"推"起来的。</p>
+<p class="p">如果你在死海里想沉下去——反而比较难。</p>
+<p class="p">（停顿）</p>
+<p class="p">物理有时候挺叛逆的：</p>
+<p class="p">越想沉的越浮，越想浮的可能越沉。</p>
+<p class="p">像极了人生。</p>
+<p class="p">（笑）</p>
+<ul class="ul">
+<li>潜水艇——我"想"浮就浮，想沉就沉</li>
+</ul>
+<p class="p">（眼神专注）</p>
+<p class="p">那有没有"想浮就浮，想沉就沉"的东西？</p>
+<p class="p">有——<strong>潜水艇。</strong></p>
+<p class="p">（推了推眼镜）</p>
+<p class="p">潜水艇的原理非常聪明：</p>
+<p class="p">潜水艇有<strong>压载水舱</strong>。</p>
+<p class="p"><strong>下沉</strong>：向压载水舱注水——潜水艇变"重"了（平均密度变大）——下沉。</p>
+<p class="p"><strong>上浮</strong>：用压缩空气把水舱里的水排出去——潜水艇变"轻"了（平均密度变小）——上浮。</p>
+<p class="p"><strong>悬浮</strong>：调整水舱里的水量，使平均密度等于海水密度——悬在水中。</p>
+<p class="p">（停顿）</p>
+<p class="p">潜水艇本质上是一个"密度可调"的容器。</p>
+<p class="p">它没有改变自己的"物质"——它改变的是自己的"平均密度"。</p>
+<p class="p">（语速放慢）</p>
+<p class="p">所以物理告诉你：</p>
+<p class="p"><strong>你不需要改变自己是谁——你只需要调整自己"装了多少水"。</strong></p>
+<p class="p">（微微点头）</p>
+<p class="p">潜水艇在这一点上，比很多人都聪明。</p>
+<ul class="ul">
+<li>浮力在生活中的"隐藏"应用</li>
+</ul>
+<p class="p">（语气平稳）</p>
+<p class="p">浮力不只在游泳池和浴缸里有用——</p>
+<p class="p"><strong>气球和飞艇</strong>：</p>
+<p class="p">气球里充氦气（密度小于空气）→ ρ球 < ρ空气 → 气球上浮。</p>
+<p class="p">这不是魔法——是浮力在工作。</p>
+<p class="p">只不过这里的"液体"换成了"空气"——没错，空气也有浮力。</p>
+<p class="p">（停顿）</p>
+<p class="p"><strong>捞东西</strong>：</p>
+<p class="p">掉到水里的东西，用渔网捞——</p>
+<p class="p">渔网让水的阻力分散到更大的面积上，浮力帮你把东西"托"起来。</p>
+<p class="p"><strong>救生衣</strong>：</p>
+<p class="p">救生衣的材料密度很小（泡沫/充气）→ 穿上后人+救生衣的平均密度 < 水——浮起来。</p>
+<p class="p">（推了推眼镜）</p>
+<p class="p">所以下次你穿救生衣——</p>
+<p class="p">你不是在穿一件衣服，你是在穿一个"密度调节器"。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">📖 <span>法则小课堂</span></div>
+<p class="p">收了。正经 60 秒。</p>
+<p class="p">今天四个核心知识点：</p>
+<ul class="ul">
+<li><strong>浮力</strong>：浸在液体中的物体受到的<strong>向上</strong>的力。本质是<strong>压力差</strong>。</li>
+</ul>
+<ul class="ul">
+<li><strong>阿基米德原理</strong>：F浮 = ρ液 × g × V排。浮力 = 排开液体的重力。</li>
+</ul>
+<p class="p">   口诀：<strong>"排开多少水，就有多少浮力。"</strong></p>
+<ul class="ul">
+<li><strong>浮沉条件</strong>：</li>
+<li>ρ物 < ρ液 → 上浮/漂浮</li>
+<li>ρ物 = ρ液 → 悬浮</li>
+<li>ρ物 > ρ液 → 下沉</li>
+</ul>
+<p class="p">   口诀：<strong>"密度小就浮，密度大就沉，相等就悬着。"</strong></p>
+<ul class="ul">
+<li><strong>浮力的应用</strong>：轮船（空心增大V排）、潜水艇（调密度）、气球飞艇（空气浮力）。</li>
+</ul>
+<p class="p">   口诀：<strong>"想浮就增大体积，想沉就增大密度。"</strong></p>
+<p class="p">说到这个，「物理解码者」V06 深渊之底里——</p>
+<p class="p">林小宇进入了一个"密度倒悬"的深渊。</p>
+<p class="p">在这里，越往下水的密度越大——不是因为压强，是法则混乱。</p>
+<p class="p">普通的物体在这个深渊里浮沉完全不可预测。</p>
+<p class="p">林小宇利用 F浮 = ρ液 × g × V排——</p>
+<p class="p">他发现越往深处，ρ液越大，浮力越大——</p>
+<p class="p">到一定深度后，他自己也会被"推"上去，根本沉不下去。</p>
+<p class="p">他利用这个原理：往下跳的时候带一个重物增加重量，</p>
+<p class="p">到底之后扔掉重物——浮力把他瞬间"弹"回水面。</p>
+<p class="p">他靠这个完成了深渊的往返探险。</p>
+<p class="p">他说：<strong>"阿基米德在浴缸里发现的定理，我在深渊里用它完成了电梯的活儿。"</strong></p>
+<p class="p">想看看他怎么利用浮力在深渊里探险的吗？去看异世法则。</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">💡 <span>互动挑战</span></div>
+<p class="p">来，考考你——</p>
+<p class="p">（停顿）</p>
+<p class="p">一个物体的体积是 0.5 m³，把它完全浸入水中。</p>
+<p class="p">（水的密度 ρ = 1000 kg/m³，g = 10 N/kg）</p>
+<p class="p">问：它受到的浮力是多少？</p>
+<p class="p">A. 500 N</p>
+<p class="p">B. 5000 N</p>
+<p class="p">C. 50000 N</p>
+<p class="p">（停顿，给思考时间）</p>
+<p class="p">答案是 <strong>B. 5000 N</strong>。</p>
+<p class="p">F浮 = ρ液 × g × V排 = 1000 × 10 × 0.5 = 5000 N。</p>
+<p class="p">这个浮力相当于托起一个 500 公斤重的东西——相当于 7 个成年人。</p>
+<p class="p">做对了？你已经"掌握"了浮力 😉</p>
+<div class="divider">✦ ✦ ✦</div>
+<div class="stag">🎯 <span>本期金句</span></div>
+<p class="p">下期预告：EP 11 · <strong>给我一个支点</strong></p>
+<p class="p">为什么杠杆能撬动比你重几十倍的东西？给我一个支点，我能撬起整个地球。</p>
+<p class="p">我们下期见。</p>
+<p class="p">（微微点头，收起讲义）</p>
+<div class="divider">✦ ✦ ✦</div>
+<p class="p">📖 想读故事版？→ 看看「物理解码者」V06 深渊之底</p>
+<p class="p">💬 有想听的物理知识点？→ 评论区留言</p>
+<p class="p">⭐ 觉得有用？→ 点赞+在看，让更多同学笑着学会物理</p>
+<div class="footer">
+  <p style="margin:4px 0;">❄️ <span class="brand">冷面物理</span> · 笑着笑着就学会了</p>
+  <p style="margin:4px 0;text-indent:0;">📖 想读故事版？→ 看看「物理解码者：异世法则」</p>
+  <p style="margin:4px 0;text-indent:0;">💬 有想听的物理知识点？→ 评论区留言</p>
+</div>
+</div>
+</body>
+</html>

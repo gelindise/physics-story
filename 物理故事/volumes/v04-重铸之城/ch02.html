@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：重建之法 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.completed-badge { display:inline-block;padding:4px 12px;border-radius:20px;background:#c8e6c9;color:#2e7d32;font-size:0.8em;font-weight:600; }
+.formula-box { text-align:center;padding:16px;margin:12px 0;background:rgba(0,131,143,0.1);border-radius:12px;border:1px solid rgba(0,131,143,0.3); }
+.formula-box .formula { font-size:1.5em;font-weight:700;color:#00838f;margin:8px 0; }
+body.night-mode .formula-box { background:rgba(0,131,143,0.2); }
+body.night-mode .formula-box .formula { color:#4dd0e1; }
+.application-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0; }
+@media (max-width:600px) { .application-grid { grid-template-columns:1fr; } }
+.application-card { padding:14px;border-radius:10px;font-size:0.85em;line-height:1.6; }
+.application-card.purple { background:rgba(106,27,154,0.12);border:1px solid rgba(106,27,154,0.2); }
+.application-card.teal { background:rgba(0,131,143,0.12);border:1px solid rgba(0,131,143,0.2); }
+.application-card.amber { background:rgba(255,143,0,0.12);border:1px solid rgba(255,143,0,0.2); }
+.application-card.green { background:rgba(27,94,32,0.12);border:1px solid rgba(27,94,32,0.2); }
+body.night-mode .application-card.purple { background:rgba(106,27,154,0.25); }
+body.night-mode .application-card.teal { background:rgba(0,131,143,0.25); }
+body.night-mode .application-card.amber { background:rgba(255,143,0,0.25); }
+body.night-mode .application-card.green { background:rgba(27,94,32,0.25); }
+.timeline { position:relative;padding:20px 0;margin:20px 0; }
+.timeline::before { content:'';position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#6a1b9a,#00838f);border-radius:2px; }
+.timeline-item { position:relative;padding:8px 0 8px 60px;margin-bottom:16px; }
+.timeline-item::before { content:'';position:absolute;left:22px;top:16px;width:18px;height:18px;border-radius:50%;background:#6a1b9a;border:3px solid #fff; }
+body.night-mode .timeline-item::before { border-color:#1a1a2e; }
+.timeline-item.done::before { background:#00838f; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第4卷</button>
+  <span class="chapter-title">第4卷 · 第2章 重建之法</span>
+  <span id="completeBadge" class="completed-badge" style="display:none;">✓ 已读完</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+
+<h2 style="border:none;font-size:2em;text-align:center;">第二章</h2>
+<h1 style="text-align:center;font-size:2.2em;margin-top:0;">重建之法</h1>
+<p class="no-indent" style="text-align:center;opacity:0.6;">📖 物理知识点：密度公式的变形 · 密度的应用 · 物质的鉴别</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>1. 元塔之内</h3>
+
+<p>元塔内部远比外表看上去更加宏大。林小宇和凌音踏入的那一刻，身后的光幕重新合拢，将他们封闭在塔内。</p>
+
+<p>塔内没有楼梯——取而代之的是一条悬浮在半空中的螺旋光道。光道的每一段都由不同的材质构成：有的像玻璃般透明，有的像金属一样有光泽，有的表面布满细密的气孔。</p>
+
+<p>"这些……都是不同的材料。"林小宇蹲下来，敲了敲脚下的光道。不同的段落发出不同的声响——清脆的金属声、沉闷的石板声、轻快的木材声。</p>
+
+<p>墙上刻着一行大字：</p>
+
+<p style="text-align:center;padding:20px;font-size:1.3em;background:rgba(0,131,143,0.1);border-radius:12px;border:1px solid rgba(0,131,143,0.3);">
+  🏛️ <strong>万物皆有其量——密度是物质的指纹。</strong>
+</p>
+
+<p>他们沿着螺旋光道向上走，来到第一个平台。</p>
+
+<p>平台中央放着一个巨大的容器，里面装满了水。旁边摆着几块看起来一模一样的灰色金属块。墙上显示着一行文字：</p>
+
+<p style="font-style:italic;padding:10px 20px;background:rgba(0,0,0,0.05);border-radius:8px;border-left:4px solid #00838f;">
+  "有一批货物标注为'纯铝'，但工匠怀疑里面混入了铁。已知铝的密度为2.7 g/cm³，铁的密度为7.9 g/cm³。在不破坏材料的前提下，判断这批材料是否纯正。"
+</p>
+
+<p>林小宇拿起一块金属，感受到了它异常的重量。"不用测也知道——这肯定不是纯铝，比铝重太多了。"</p>
+
+<p>"但要怎么向工匠证明呢？"凌音问。</p>
+
+<p>"用排水法测体积，再算出密度。"林小宇把金属块拴上细线，浸入装满水的容器中，溢出的水流入旁边的量筒。"这就是排水法——物体浸入液体中时排开液体的体积等于物体自身的体积。"</p>
+
+<p>他测量出金属块的体积是50 cm³，用天平测出质量是265 g。</p>
+
+  <!-- 知识卡片：密度公式的变形 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：密度公式的变形</div>
+  <div class="card-body">
+    <p>密度公式 ρ = m / V 可以变形为：</p>
+    <div class="formula-box">
+      <div style="font-size:0.9em;">求质量：</div>
+      <div class="formula">m = ρ × V</div>
+      <div style="font-size:0.9em;margin-top:8px;">求体积：</div>
+      <div class="formula">V = m / ρ</div>
+    </div>
+    <p><strong>排水法测体积</strong>：将物体浸入盛满水的容器中，排开的水的体积就是物体的体积。</p>
+    <p>这两种变形在实际应用中非常有用——比如用密度和体积计算质量，或者用密度和质量计算体积。</p>
+  </div>
+</div>
+
+<p>林小宇计算着："ρ = 265 ÷ 50 = 5.3 g/cm³。铝的密度是2.7，铁的密度是7.9。5.3正好介于两者之间——说明这批材料是铝和铁的混合物。"</p>
+
+<p>他的话音刚落，光道前方亮起了一道光芒，通往下一个平台的门打开了。</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>2. 密度共振器</h3>
+
+<p>两人继续向上爬。越往上走，周围的符文就越密集。林小宇注意到有些符文正在闪烁着不稳定的红光，就像电路出现了故障。</p>
+
+<p>终于，他们来到了元塔的最高层——一个圆形的巨大空间。</p>
+
+<p>房间的中央悬浮着一台精密的装置：它由一个半透明的球体和周围的六个金属环组成，金属环按照不同的角度围绕着球体旋转。球体内部有一团混沌的光芒在翻涌。</p>
+
+<p>"这就是密度共振器。"凌音低声说。</p>
+
+<p>装置旁边有一座控制台，台面上刻着复杂的调校刻度。但控制台的一个关键部件——一个用特殊合金制成的调校旋钮——已经碎裂了。</p>
+
+<p>林小宇仔细检查控制台上的铭文，上面记载着密度共振器的原理：</p>
+
+  <!-- 知识卡片：密度的应用 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：密度在生活中的应用</div>
+  <div class="card-body">
+    <p>密度知识在现实世界中有广泛的应用：</p>
+    <div class="application-grid">
+      <div class="application-card purple">
+        <strong>🔍 鉴别物质</strong><br>
+        通过测量密度可以鉴别材料真伪。<br>
+        例：真金的密度是19.3 g/cm³，如果是镀金的假金，密度会小很多。
+      </div>
+      <div class="application-card teal">
+        <strong>⚖️ 计算质量</strong><br>
+        对于无法直接称量的大型物体，可以通过体积×密度来计算质量。<br>
+        例：一座石碑的体积×石材密度 = 石碑质量。
+      </div>
+      <div class="application-card amber">
+        <strong>📐 计算体积</strong><br>
+        对于形状不规则的物体，可以用质量÷密度求出体积。
+      </div>
+      <div class="application-card green">
+        <strong>🚢 浮力应用</strong><br>
+        轮船用钢铁却能在水上航行——船体是空心的，平均密度小于水。
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>"原来密度共振器的工作原理是这样的——"林小宇读着铭文，"它通过共振波调节材料内部的粒子排列密度。正常的密度共振器可以稳定整个城市的材料密度。但现在它失控了。"</p>
+
+<p>凌音指着碎裂的旋钮。"问题是——要修复这个旋钮，我们需要用到一种特定的合金，它的密度必须是8.5 g/cm³。这是共振器的调校材料，密度偏差超过0.1就会导致整个系统再次崩溃。"</p>
+
+<p>林小宇蹲下来仔细查看控制台下方的小型铸造说明书。上面写着制作调校旋钮需要的两种原料：</p>
+
+<ul>
+  <li><strong>铜</strong>（ρ = 8.9 g/cm³）</li>
+  <li><strong>锡</strong>（ρ = 7.3 g/cm³）</li>
+</ul>
+
+<p>说明书中给出了配比公式：需要制作一个体积为100 cm³的合金旋钮，密度为8.5 g/cm³。问需要铜和锡各多少克？</p>
+
+  <!-- 知识卡片：混合物的密度 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：混合物的密度计算</div>
+  <div class="card-body">
+    <p>两种物质混合后，混合物的密度满足：</p>
+    <p style="text-align:center;font-size:1.2em;font-weight:700;margin:8px 0;">
+      ρ<sub>混合</sub> = (m₁ + m₂) / (V₁ + V₂)
+    </p>
+    <p>解题思路（已知目标密度和总体积）：</p>
+    <ol>
+      <li>设铜的质量为 m<sub>铜</sub>，锡的质量为 m<sub>锡</sub></li>
+      <li>m<sub>铜</sub> + m<sub>锡</sub> = ρ<sub>目标</sub> × V<sub>总</sub> = 8.5 × 100 = 850 g</li>
+      <li>V<sub>铜</sub> + V<sub>锡</sub> = m<sub>铜</sub>/8.9 + m<sub>锡</sub>/7.3 = 100 cm³</li>
+      <li>解方程组可得 m<sub>铜</sub> 和 m<sub>锡</sub></li>
+    </ol>
+  </div>
+</div>
+
+<p>林小宇拿出随身携带的笔记本，快速计算起来：</p>
+
+<p style="padding:16px 20px;background:rgba(0,0,0,0.04);border-radius:10px;font-family:monospace;font-size:0.9em;line-height:1.8;">
+  设需要铜 m₁ 克，锡 m₂ 克。<br>
+  <br>
+  ① m₁ + m₂ = 8.5 × 100 = 850<br>
+  ② m₁ / 8.9 + m₂ / 7.3 = 100<br>
+  <br>
+  由①得 m₂ = 850 - m₁<br>
+  代入②：m₁ / 8.9 + (850 - m₁) / 7.3 = 100<br>
+  <br>
+  通分：7.3m₁ / 65.0 + 8.9(850 - m₁) / 65.0 = 100<br>
+  7.3m₁ + 7565 - 8.9m₁ = 6500<br>
+  -1.6m₁ = -1065<br>
+  m₁ = 665.6 g（铜）<br>
+  m₂ = 850 - 665.6 = 184.4 g（锡）
+</p>
+
+<p>"需要665.6克铜和184.4克锡！"林小宇抬头说。</p>
+
+<p>铁锤这时也从塔底赶了上来，听到计算结果后立刻开始操作。他在铸造台上精确称量了铜和锡，将它们放入熔炉中熔化，然后浇铸成旋钮的形状。</p>
+
+<p>合金冷却后，林小宇用天平和排水法再次验证了密度：</p>
+
+<p style="text-align:center;padding:14px;background:rgba(0,131,143,0.1);border-radius:10px;font-size:1.1em;">
+  ρ = 850 g ÷ 100 cm³ = <strong>8.5 g/cm³</strong> ✅ 完美匹配！
+</p>
+
+<p>新的旋钮安装到控制台上的那一刻，密度共振器发出一声低沉的嗡鸣。六个金属环开始加速旋转，球体内部的混沌光芒逐渐稳定下来，变成了柔和的蓝色。</p>
+
+<p>整个元塔开始震动。透过塔壁上的观察窗，林小宇看到城市上空出现了一层淡蓝色的波纹，像水波一样向四面八方扩散。</p>
+
+<p>那些漂浮在空中的铁块缓缓降落；沉在水底的木桶慢慢浮了起来；倾斜的建筑物发出嘎吱嘎吱的声音，逐渐恢复了平衡……</p>
+
+<p>"成功了！"铁锤激动得声音都在颤抖，"城市的密度法则……恢复正常了！"</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>3. 真相的碎片</h3>
+
+<p>就在三人兴奋之际，密度共振器的球体忽然投射出一幅全息影像。</p>
+
+<p>影像中是一个穿着深灰色斗篷的身影，背对着他们，站在一座高塔的顶端。</p>
+
+<p>"恭喜你，年轻的物理解码者。"那个身影开口了，声音低沉而带着回响，"你通过了重铸之城的试炼。能掌握密度的法则，说明你已经超越了百分之九十的人。"</p>
+
+<p>"你是谁？"凌音警惕地问。</p>
+
+<p>"你可以叫我——'观察者'。"身影缓缓转过身来，但脸上戴着一张银色面具，看不到面容。"我是这个世界的守护者……也是你们的引路人。每当你收集一块碎片，我就会离你更近一步。"</p>
+
+<p>"静止之石的碎片是你留下的？"林小宇问。</p>
+
+<p>"不是我留下的……是我在守护它们。"观察者的声音中带着一丝忧伤，"元界的法则正在崩溃，这一点你已经感觉到了。暗影使徒的势力在扩张，他们想利用法则碎片的力量扭曲这个世界。"</p>
+
+<p>影像闪烁了一下，显示出一张更大的地图。上面有七个光点——其中三个已经熄灭，四个还在闪烁。</p>
+
+<p>"你已经拿到了三块碎片。还有四块等待你去寻找。"观察者说，"下一个目的地——竞技之城。在那里，你需要理解力的法则。但我要提醒你……"</p>
+
+<p>他的声音变得严厉起来："暗影使徒已经在追踪你了。你每前进一步，他们就会靠近一步。在他们找到你之前，你必须变得更强大。"</p>
+
+<p>全息影像消散了。房间陷入了短暂的沉默。</p>
+
+<p>"暗影使徒……"铁锤喃喃道，"原来传说是真的。有人在觊觎元界的法则之力。"</p>
+
+<p>林小宇握紧了拳头。他感受到自己胸口的三块碎片在共鸣，它们像指南针一样指向了下一个方向。</p>
+
+<p>"我们继续前进。"他说，"不管暗影使徒是谁，我不会让他们得逞。"</p>
+
+<p>凌音微微一笑，拍了拍他的肩膀。"走吧——下一站，竞技之城。"</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>4. 重铸之后</h3>
+
+<p>走出元塔时，林小宇被眼前的景象震撼了。</p>
+
+<p>整个城市焕然一新。曾经漂浮的金属已经各归其位，沉入水中的木材浮了上来，歪斜的建筑物恢复了整齐。街道上挤满了欢呼的居民，他们载歌载舞，庆祝城市的重生。</p>
+
+<p>铁锤在元塔门口与他们告别。</p>
+
+<p>"这个给你们。"他从腰间解下一个用特殊金属制成的小天平，"这是我们工匠协会的'密度之衡'。它能快速测量小件物品的质量和体积，并自动显示密度。在接下来的旅程中，也许它会派上用场。"</p>
+
+<p>林小宇郑重地接过天平。加上之前获得的碎片，他现在已经收集了三块法则碎片。</p>
+
+<p>离开城市的路上，林小宇回头看了一眼重铸之城——那座曾经濒临崩溃的城市，如今在夕阳的照耀下闪闪发光。</p>
+
+<p>"你知道吗？"林小宇对凌音说，"我刚穿越到这个世界的时候，觉得物理一点用都没有。但这一路上，我发现物理法则就是理解这个世界的钥匙。"</p>
+
+<p>"你以前觉得物理是什么？"凌音好奇地问。</p>
+
+<p>"一堆无聊的公式。"林小宇苦笑，"但现在我知道了——每一个公式背后，都藏着这个世界运行的真相。密度告诉我为什么铁会沉、木头会浮；质量告诉我物质的多少如何衡量。这些不是在书本上的知识——它们是世界本身的法则。"</p>
+
+<p>凌音若有所思。"所以你不是在学习物理，你是在'解码'这个世界。"</p>
+
+<p>"对。"林小宇笑了，"我是一个物理解码者。"</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>本章知识点总结</h3>
+
+<div class="knowledge-card">
+  <div class="card-header">📚 本章法则笔记汇总</div>
+  <div class="card-body">
+    <ol>
+      <li><strong>密度公式的变形</strong>：m = ρV（求质量）、V = m/ρ（求体积）</li>
+      <li><strong>排水法测体积</strong>：浸入液体中的物体排开液体的体积 = 物体体积</li>
+      <li><strong>密度的应用</strong>：鉴别物质、计算质量、计算体积、判断浮沉</li>
+      <li><strong>混合物的密度</strong>：ρ<sub>混合</sub> = (m₁ + m₂) / (V₁ + V₂)</li>
+      <li><strong>密度是物质的特性</strong>——不同物质密度一般不同，通过测量密度可以鉴别物质</li>
+    </ol>
+  </div>
+</div>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <strong>穿越元界</strong> → 获得第一块碎片（静止之石）
+  </div>
+  <div class="timeline-item">
+    <strong>回音峡谷</strong> → 第二块碎片（声之石）
+  </div>
+  <div class="timeline-item">
+    <strong>炎寒谷</strong> → 第三块碎片（温衡之石）
+  </div>
+  <div class="timeline-item">
+    <strong>镜海迷踪</strong> → 第四块碎片（光之石）
+  </div>
+  <div class="timeline-item done">
+    <strong>重铸之城</strong> → 第五块碎片（密度之衡）✅
+  </div>
+  <div class="timeline-item" style="opacity:0.6;">
+    <strong>竞技之城</strong> → 第六块碎片（力之石）
+  </div>
+  <div class="timeline-item" style="opacity:0.4;">
+    <strong>最终之地</strong> → 第七块碎片（？？？）
+  </div>
+</div>
+
+<p style="text-align:center;margin:40px 0 20px;font-size:1.1em;font-weight:700;color:#00838f;">
+  —— 第4卷 · 完 ——
+</p>
+
+<p style="text-align:center;font-size:0.9em;opacity:0.6;">
+  下一卷：「力之试炼场」—— 力与运动的法则即将揭晓
+</p>
+
+</div>
+
+<script>
+(function() {
+  // Theme toggle
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('night-mode');
+  });
+
+  // Scroll-triggered completion
+  window.addEventListener('scroll', function() {
+    const badge = document.getElementById('completeBadge');
+    const key = 'v04ch02';
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p[key]) {
+        p[key] = true;
+        localStorage.setItem('physics-story-progress', JSON.stringify(p));
+      }
+      badge.style.display = 'inline-block';
+    }
+  });
+  (function() {
+    const key = 'v04ch02';
+    const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+    if (p[key]) document.getElementById('completeBadge').style.display = 'inline-block';
+  })();
+})();
+</script>
+
+</body>
+</html>

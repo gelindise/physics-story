@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>密度与浮沉模拟器 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.canvas-wrapper { max-width:720px;margin:20px auto;background:#0a0a1a;border-radius:16px;overflow:hidden;position:relative; }
+#simCanvas { display:block;width:100%;height:360px;cursor:pointer; }
+.controls { display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:16px 0;padding:16px;background:rgba(255,255,255,0.04);border-radius:12px; }
+.controls .ctrl-group { display:flex;flex-direction:column;align-items:center;gap:4px; }
+.controls label { font-size:0.8em;opacity:0.7; }
+.controls input[type="range"] { width:120px; }
+.controls select { padding:6px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:inherit;font-size:0.9em; }
+.controls button { padding:8px 20px;border-radius:8px;border:none;font-weight:600;cursor:pointer;background:#00838f;color:#fff;font-size:0.9em; }
+.controls button:hover { background:#006064; }
+.controls button:active { transform:scale(0.97); }
+.info-panel { display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;max-width:720px;margin:12px auto;padding:12px 16px;background:rgba(0,0,0,0.04);border-radius:10px;font-size:0.85em; }
+.info-panel div { text-align:center; }
+.info-panel .value { font-size:1.3em;font-weight:700;color:#00838f; }
+body.night-mode .info-panel { background:rgba(255,255,255,0.04); }
+body.night-mode .info-panel .value { color:#4dd0e1; }
+.ref-table { max-width:600px;margin:12px auto;border-collapse:collapse;font-size:0.82em; }
+.ref-table th,.ref-table td { padding:4px 10px;border:1px solid rgba(255,255,255,0.12);text-align:center; }
+.ref-table th { background:rgba(106,27,154,0.2);font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='../index.html'">← 第4卷</button>
+  <span class="chapter-title">🔬 密度与浮沉模拟器</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+
+<h1 style="text-align:center;font-size:1.8em;">密度与浮沉模拟器</h1>
+<p class="no-indent" style="text-align:center;opacity:0.7;">选择不同材料，观察它们在液体中的浮沉状态</p>
+
+<div class="canvas-wrapper">
+  <canvas id="simCanvas"></canvas>
+</div>
+
+<div class="controls">
+  <div class="ctrl-group">
+    <label for="material">材料</label>
+    <select id="material">
+      <option value="0.5">松木（0.5）</option>
+      <option value="0.9">冰（0.9）</option>
+      <option value="1.0" selected>水（1.0）↔ 悬浮</option>
+      <option value="2.7">铝（2.7）</option>
+      <option value="7.9">铁（7.9）</option>
+      <option value="8.9">铜（8.9）</option>
+      <option value="10.5">银（10.5）</option>
+      <option value="11.3">铅（11.3）</option>
+      <option value="19.3">金（19.3）</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <label for="liquidDensity">液体密度 (g/cm³)</label>
+    <input type="range" id="liquidDensity" min="0.3" max="15" step="0.1" value="1.0">
+    <span id="liquidDensityValue" style="font-size:0.9em;font-weight:600;">1.0</span>
+  </div>
+  <div class="ctrl-group">
+    <label for="objSize">物体大小</label>
+    <input type="range" id="objSize" min="0.4" max="1.0" step="0.05" value="0.7">
+  </div>
+  <button id="dropBtn">⬇️ 放入液体</button>
+  <button id="resetBtn">↺ 重置</button>
+</div>
+
+<div class="info-panel">
+  <div>
+    <div>材料密度</div>
+    <div class="value" id="materialDensity">1.00 g/cm³</div>
+  </div>
+  <div>
+    <div>液体密度</div>
+    <div class="value" id="liquidDensityDisplay">1.00 g/cm³</div>
+  </div>
+  <div>
+    <div>状态</div>
+    <div class="value" id="stateDisplay" style="font-size:1em;">等待放入</div>
+  </div>
+</div>
+
+<div class="knowledge-card" style="max-width:720px;margin:20px auto;">
+  <div class="card-header">📖 密度与浮沉规律</div>
+  <div class="card-body">
+    <ul>
+      <li><strong>ρ<sub>物</sub> &lt; ρ<sub>液</sub></strong> → 物体<strong>上浮</strong>，最终漂浮在液面上</li>
+      <li><strong>ρ<sub>物</sub> = ρ<sub>液</sub></strong> → 物体<strong>悬浮</strong>，可以停留在液体中任何位置</li>
+      <li><strong>ρ<sub>物</sub> &gt; ρ<sub>液</sub></strong> → 物体<strong>下沉</strong>，沉到容器底部</li>
+    </ul>
+    <p style="margin-top:8px;font-size:0.9em;opacity:0.7;">💡 拖动物体大小滑块可以改变排水体积，但浮沉状态由密度决定！</p>
+  </div>
+</div>
+
+<div style="max-width:720px;margin:20px auto;">
+  <p style="font-weight:600;margin-bottom:8px;">📊 常见物质密度参考表 (g/cm³)</p>
+  <table class="ref-table">
+    <tr><th>固体</th><th>密度</th><th>液体</th><th>密度</th></tr>
+    <tr><td>金</td><td>19.3</td><td>水银</td><td>13.6</td></tr>
+    <tr><td>铅</td><td>11.3</td><td>海水</td><td>1.03</td></tr>
+    <tr><td>银</td><td>10.5</td><td>水</td><td>1.0</td></tr>
+    <tr><td>铜</td><td>8.9</td><td>蜂蜜</td><td>1.4</td></tr>
+    <tr><td>铁</td><td>7.9</td><td>植物油</td><td>0.9</td></tr>
+    <tr><td>铝</td><td>2.7</td><td>酒精</td><td>0.8</td></tr>
+    <tr><td>冰</td><td>0.9</td><td>汽油</td><td>0.71</td></tr>
+    <tr><td>松木</td><td>0.5</td><td>浓盐水</td><td>1.2</td></tr>
+  </table>
+</div>
+
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('simCanvas');
+  const ctx = canvas.getContext('2d');
+  const materialSelect = document.getElementById('material');
+  const liquidDensitySlider = document.getElementById('liquidDensity');
+  const liquidDensityValue = document.getElementById('liquidDensityValue');
+  const sizeSlider = document.getElementById('objSize');
+  const materialDensitySpan = document.getElementById('materialDensity');
+  const liquidDensityDisplay = document.getElementById('liquidDensityDisplay');
+  const stateDisplay = document.getElementById('stateDisplay');
+
+  let dropping = false;
+  let animId = null;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.clientWidth || 700;
+    const h = 360;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.scale(dpr, dpr);
+    return { w, h };
+  }
+
+  function draw(dropY) {
+    const { w, h } = resize();
+    const liquidDens = parseFloat(liquidDensitySlider.value);
+    const matDens = parseFloat(materialSelect.value);
+    const size = parseFloat(sizeSlider.value);
+    const waterY = h * 0.65;
+    const objSize = 30 + size * 40;
+    const cx = w / 2;
+
+    // Background
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, w, h);
+
+    // Container
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(20, 20, w - 40, h - 50);
+    // Fill level label
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(`液体（ρ = ${liquidDens.toFixed(1)} g/cm³）`, 30, waterY - 4);
+
+    // Water fill (gradient)
+    const grad = ctx.createLinearGradient(0, waterY, 0, h - 30);
+    if (liquidDens < 1) {
+      grad.addColorStop(0, 'rgba(100,181,246,0.2)');
+      grad.addColorStop(0.5, 'rgba(100,181,246,0.35)');
+      grad.addColorStop(1, 'rgba(100,181,246,0.45)');
+    } else if (liquidDens > 5) {
+      grad.addColorStop(0, 'rgba(255,202,40,0.3)');
+      grad.addColorStop(0.5, 'rgba(255,152,0,0.4)');
+      grad.addColorStop(1, 'rgba(255,87,34,0.5)');
+    } else {
+      grad.addColorStop(0, 'rgba(33,150,243,0.25)');
+      grad.addColorStop(0.5, 'rgba(33,150,243,0.4)');
+      grad.addColorStop(1, 'rgba(25,118,210,0.5)');
+    }
+    ctx.fillStyle = grad;
+    ctx.fillRect(21, waterY, w - 42, h - 72);
+
+    // Liquid surface wave
+    ctx.beginPath();
+    ctx.moveTo(21, waterY);
+    for (let x = 0; x <= w - 42; x += 3) {
+      const wave = Math.sin((Date.now() / 800) + x * 0.03) * 2;
+      ctx.lineTo(21 + x, waterY + wave);
+    }
+    ctx.lineTo(w - 21, waterY);
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Determine object position
+    let objY;
+    const floatY = waterY - objSize / 2 - 4;
+    const sinkY = h - 30 - objSize / 2;
+    const suspendY = waterY + (h - 30 - waterY) * 0.3;
+
+    if (dropY !== undefined) {
+      objY = dropY;
+    } else {
+      if (matDens < liquidDens) objY = floatY;
+      else if (matDens > liquidDens) objY = sinkY;
+      else objY = suspendY;
+    }
+
+    // Object color based on density
+    let color;
+    if (matDens < 0.8) color = '#a1887f';
+    else if (matDens < 1.5) color = '#90caf9';
+    else if (matDens < 5) color = '#bdbdbd';
+    else if (matDens < 9) color = '#78909c';
+    else if (matDens < 12) color = '#ce93d8';
+    else color = '#ffd54f';
+
+    // Draw object (cube)
+    ctx.fillStyle = color;
+    ctx.shadowColor = 'rgba(255,255,255,0.1)';
+    ctx.shadowBlur = 10;
+    ctx.fillRect(cx - objSize / 2, objY - objSize / 2, objSize, objSize);
+    ctx.shadowBlur = 0;
+
+    // Object border
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(cx - objSize / 2, objY - objSize / 2, objSize, objSize);
+
+    // Object label
+    const matName = materialSelect.options[materialSelect.selectedIndex].text.split('（')[0];
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(matName, cx, objY - objSize / 2 - 4);
+
+    // Submerged label
+    if (matDens < liquidDens) {
+      ctx.fillStyle = '#66bb6a';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('⬆ 上浮 → 漂浮', cx, 24);
+      stateDisplay.textContent = '上浮（漂浮）';
+    } else if (matDens > liquidDens) {
+      ctx.fillStyle = '#ef5350';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('⬇ 下沉 → 沉底', cx, 24);
+      stateDisplay.textContent = '下沉（沉底）';
+    } else {
+      ctx.fillStyle = '#4dd0e1';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('↕ 悬浮', cx, 24);
+      stateDisplay.textContent = '悬浮';
+    }
+
+    // Info overlay
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.fillRect(w - 175, 8, 167, 40);
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`ρ材料 = ${matDens.toFixed(1)}  ρ液体 = ${liquidDens.toFixed(1)}`, w - 14, 14);
+    ctx.fillText(`排水体积 ≈ ${(matDens <= liquidDens ? objSize * objSize : 0).toFixed(0)} 像素²`, w - 14, 30);
+
+    materialDensitySpan.textContent = matDens.toFixed(2) + ' g/cm³';
+    liquidDensityDisplay.textContent = liquidDens.toFixed(2) + ' g/cm³';
+  }
+
+  let dropY = undefined;
+
+  function animateDrop() {
+    const { h } = resize();
+    const waterY = h * 0.65;
+    const liquidDens = parseFloat(liquidDensitySlider.value);
+    const matDens = parseFloat(materialSelect.value);
+    const size = parseFloat(sizeSlider.value);
+    const objSize = 30 + size * 40;
+    const startY = 40 + objSize / 2;
+    const floatY = waterY - objSize / 2 - 4;
+    const sinkY = h - 30 - objSize / 2;
+    const suspendY = waterY + (h - 30 - waterY) * 0.3;
+
+    let finalY;
+    if (matDens < liquidDens) finalY = floatY;
+    else if (matDens > liquidDens) finalY = sinkY;
+    else finalY = suspendY;
+
+    if (dropY === undefined) dropY = startY;
+
+    const speed = 3;
+    let reached = false;
+    if (dropY < finalY) {
+      dropY = Math.min(dropY + speed, finalY);
+    } else if (dropY > finalY) {
+      dropY = Math.max(dropY - speed, finalY);
+    } else {
+      reached = true;
+    }
+
+    draw(dropY);
+
+    if (!reached) {
+      animId = requestAnimationFrame(animateDrop);
+    } else {
+      dropping = false;
+    }
+  }
+
+  document.getElementById('dropBtn').addEventListener('click', function() {
+    if (dropping) return;
+    dropping = true;
+    dropY = undefined;
+    if (animId) cancelAnimationFrame(animId);
+    animateDrop();
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function() {
+    dropping = false;
+    if (animId) cancelAnimationFrame(animId);
+    dropY = undefined;
+    draw(40);
+    stateDisplay.textContent = '等待放入';
+  });
+
+  materialSelect.addEventListener('change', function() {
+    if (!dropping) { dropY = undefined; draw(); }
+  });
+
+  liquidDensitySlider.addEventListener('input', function() {
+    liquidDensityValue.textContent = parseFloat(this.value).toFixed(1);
+    if (!dropping) { dropY = undefined; draw(); }
+  });
+
+  sizeSlider.addEventListener('input', function() {
+    if (!dropping) { dropY = undefined; draw(); }
+  });
+
+  // Theme toggle
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('night-mode');
+  });
+
+  // Initial draw with animation loop for liquid wave
+  draw();
+  setInterval(() => { if (!dropping) draw(dropY); }, 100);
+
+  // Resize handler
+  window.addEventListener('resize', () => { if (!dropping) draw(dropY); });
+})();
+</script>
+
+</body>
+</html>

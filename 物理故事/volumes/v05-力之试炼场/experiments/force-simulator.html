@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>力与运动模拟器 - 交互实验</title>
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; background:#f5f5f5; display:flex; flex-direction:column; align-items:center; }
+body.night-mode { background:#1a1a2e; }
+.experiment-container { max-width:900px; width:100%; margin:20px auto; padding:0 16px; }
+.experiment-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.experiment-header h1 { margin:0; font-size:1.5em; flex:1; }
+.canvas-wrapper { background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.1); padding:16px; margin-bottom:16px; touch-action:none; }
+body.night-mode .canvas-wrapper { background:#16213e; box-shadow:0 4px 20px rgba(0,0,0,0.4); }
+#simCanvas { display:block; width:100%; height:auto; background:#fafafa; border-radius:10px; cursor:pointer; }
+body.night-mode #simCanvas { background:#0f1a2e; }
+.control-panel { display:grid; grid-template-columns:1fr 1fr; gap:12px; background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.1); padding:20px; margin-bottom:16px; }
+body.night-mode .control-panel { background:#16213e; }
+.control-group { display:flex; flex-direction:column; gap:4px; }
+.control-group label { font-size:0.8em; font-weight:600; opacity:0.8; display:flex; justify-content:space-between; }
+.control-group input[type="range"] { width:100%; height:6px; -webkit-appearance:none; appearance:none; background:linear-gradient(to right,#1565c0,#42a5f5); border-radius:3px; outline:none; }
+.control-group input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:#1565c0; cursor:pointer; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,0.3); }
+.stat-display { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.1); padding:16px; margin-bottom:16px; }
+body.night-mode .stat-display { background:#16213e; }
+.stat-item { text-align:center; padding:8px; background:rgba(21,101,192,0.08); border-radius:10px; }
+body.night-mode .stat-item { background:rgba(66,165,245,0.1); }
+.stat-item .value { font-size:1.6em; font-weight:700; color:#1565c0; }
+body.night-mode .stat-item .value { color:#42a5f5; }
+.stat-item .label { font-size:0.75em; opacity:0.7; margin-top:2px; }
+.button-row { display:flex; gap:8px; flex-wrap:wrap; }
+.button-row button { flex:1; min-width:80px; padding:10px; border:none; border-radius:10px; font-size:0.9em; font-weight:600; cursor:pointer; transition:all 0.2s; }
+.button-row button:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+.btn-go { background:#2e7d32; color:#fff; }
+.btn-stop { background:#c62828; color:#fff; }
+.btn-reset { background:#1565c0; color:#fff; }
+.btn-preset { background:#6a1b9a; color:#fff; }
+.surface-indicator { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+.surface-chip { padding:6px 14px; border-radius:20px; font-size:0.75em; font-weight:600; cursor:pointer; border:2px solid transparent; transition:all 0.2s; }
+.surface-chip.active { border-color:#1565c0; box-shadow:0 0 0 2px rgba(21,101,192,0.3); }
+.surface-chip.ice { background:#e3f2fd; color:#1565c0; }
+body.night-mode .surface-chip.ice { background:rgba(21,101,192,0.2); color:#90caf9; }
+.surface-chip.wood { background:#fff3e0; color:#e65100; }
+body.night-mode .surface-chip.wood { background:rgba(230,81,0,0.2); color:#ffcc80; }
+.surface-chip.sand { background:#fce4ec; color:#ad1457; }
+body.night-mode .surface-chip.sand { background:rgba(173,20,87,0.2); color:#f48fb1; }
+.surface-chip.rubber { background:#e8f5e9; color:#2e7d32; }
+body.night-mode .surface-chip.rubber { background:rgba(46,125,50,0.2); color:#a5d6a7; }
+.legend { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; font-size:0.8em; margin:8px 0; }
+.legend-item { display:flex; align-items:center; gap:6px; }
+.legend-dot { width:14px; height:14px; border-radius:50%; }
+.knowledge-tip { background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.1); padding:16px; margin-bottom:16px; font-size:0.85em; line-height:1.7; }
+body.night-mode .knowledge-tip { background:#16213e; }
+.knowledge-tip strong { color:#1565c0; }
+body.night-mode .knowledge-tip strong { color:#42a5f5; }
+@media (max-width:600px) {
+  .control-panel { grid-template-columns:1fr; }
+  .stat-display { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="experiment-container">
+  <div class="experiment-header">
+    <button class="back-btn" onclick="location.href='../index.html'">← 第5卷</button>
+    <h1>🔬 力与运动模拟器</h1>
+    <button class="theme-toggle" id="themeToggle">🌓</button>
+  </div>
+
+  <!-- 表面选择 -->
+  <div class="surface-indicator">
+    <span style="font-size:0.85em;font-weight:600;opacity:0.7;line-height:32px;">接触面：</span>
+    <div class="surface-chip ice active" data-surface="ice" onclick="setSurface('ice',this)">🧊 冰面</div>
+    <div class="surface-chip wood" data-surface="wood" onclick="setSurface('wood',this)">🪵 木板</div>
+    <div class="surface-chip sand" data-surface="sand" onclick="setSurface('sand',this)">🏖️ 沙地</div>
+    <div class="surface-chip rubber" data-surface="rubber" onclick="setSurface('rubber',this)">🛞 橡胶</div>
+  </div>
+
+  <!-- 画布 -->
+  <div class="canvas-wrapper">
+    <canvas id="simCanvas" width="820" height="360"></canvas>
+  </div>
+
+  <!-- 实时数据 -->
+  <div class="stat-display">
+    <div class="stat-item">
+      <div class="value" id="valSpeed">0.0</div>
+      <div class="label">速度 (m/s)</div>
+    </div>
+    <div class="stat-item">
+      <div class="value" id="valAccel">0.0</div>
+      <div class="label">加速度 (m/s²)</div>
+    </div>
+    <div class="stat-item">
+      <div class="value" id="valNetForce">0.0</div>
+      <div class="label">合力 (N)</div>
+    </div>
+  </div>
+
+  <!-- 控制 -->
+  <div class="control-panel">
+    <div class="control-group">
+      <label>推力 <span id="valForce">50</span> N</label>
+      <input type="range" id="forceSlider" min="0" max="200" value="50" oninput="updateForce(this.value)">
+    </div>
+    <div class="control-group">
+      <label>物体质量 <span id="valMass">10</span> kg</label>
+      <input type="range" id="massSlider" min="2" max="50" value="10" oninput="updateMass(this.value)">
+    </div>
+  </div>
+
+  <!-- 按钮 -->
+  <div class="button-row" style="margin-bottom:12px;">
+    <button class="btn-go" onclick="startSim()">▶ 启动</button>
+    <button class="btn-stop" onclick="stopSim()">⏹ 停止</button>
+    <button class="btn-reset" onclick="resetSim()">↺ 重置</button>
+    <button class="btn-preset" onclick="loadPreset()">🎯 惯性演示</button>
+  </div>
+
+  <!-- 图例 -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#e53935;"></div> 推力（向右）</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1565c0;"></div> 摩擦力（向左）</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2e7d32;"></div> 合力（净力）</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ff6f00;"></div> 物体</div>
+  </div>
+
+  <!-- 知识提示 -->
+  <div class="knowledge-tip" id="knowledgeTip">
+    💡 <strong>提示：</strong>推力 &gt; 摩擦力时，物体加速运动；推力 = 摩擦力时，物体匀速运动（二力平衡）；取消推力后，摩擦力让物体慢慢停下（惯性）。
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('simCanvas');
+const ctx = canvas.getContext('2d');
+const rect = { x:80, y:160, w:80, h:56 };
+
+let sim = {
+  running: false,
+  force: 50,
+  mass: 10,
+  surface: 'ice',
+  friction: 0,
+  netForce: 0,
+  accel: 0,
+  speed: 0,
+  posX: 80,
+  time: 0
+};
+
+const SURFACES = {
+  ice:    { mu: 0.05, color: '#e3f2fd', label: '冰面（很光滑）', desc: '摩擦力很小，需要较长时间才能停下' },
+  wood:   { mu: 0.25, color: '#fff3e0', label: '木板（一般）', desc: '摩擦力适中，停止距离适中' },
+  sand:   { mu: 0.50, color: '#fce4ec', label: '沙地（粗糙）', desc: '摩擦力较大，会很快停下来' },
+  rubber: { mu: 0.80, color: '#e8f5e9', label: '橡胶（很粗糙）', desc: '摩擦力非常大，几乎瞬间就会停止' }
+};
+
+function setSurface(type, el) {
+  sim.surface = type;
+  document.querySelectorAll('.surface-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  resetSim();
+}
+
+function updateForce(v) {
+  sim.force = Number(v);
+  document.getElementById('valForce').textContent = v;
+  if (!sim.running) drawScene();
+}
+
+function updateMass(v) {
+  sim.mass = Number(v);
+  document.getElementById('valMass').textContent = v;
+  if (!sim.running) drawScene();
+}
+
+function startSim() {
+  if (sim.running) return;
+  sim.running = true;
+  sim.speed = 0;
+  sim.time = 0;
+  sim.posX = 80;
+  drawScene();
+}
+
+function stopSim() {
+  sim.running = false;
+}
+
+function resetSim() {
+  sim.running = false;
+  sim.speed = 0;
+  sim.time = 0;
+  sim.posX = 80;
+  document.getElementById('knowledgeTip').innerHTML = '💡 <strong>提示：</strong>推力 &gt; 摩擦力时，物体加速运动；推力 = 摩擦力时，物体匀速运动（二力平衡）；取消推力后，摩擦力让物体慢慢停下（惯性）。';
+  drawScene();
+}
+
+function loadPreset() {
+  sim.running = true;
+  sim.mass = 10;
+  sim.force = 100;
+  sim.surface = 'ice';
+  sim.speed = 8;
+  sim.posX = 80;
+  sim.time = 0;
+  document.getElementById('forceSlider').value = 100;
+  document.getElementById('valForce').textContent = '100';
+  document.getElementById('massSlider').value = 10;
+  document.getElementById('valMass').textContent = '10';
+  document.querySelectorAll('.surface-chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('[data-surface="ice"]').classList.add('active');
+  document.getElementById('knowledgeTip').innerHTML = '🎯 <strong>惯性演示：</strong>模拟一个高速运动的物体在冰面上滑行。注意：撤去推力后，物体因<strong>惯性</strong>保持运动状态，摩擦力使它逐渐减速。';
+  drawScene();
+}
+
+function getFriction() {
+  const sf = SURFACES[sim.surface];
+  const g = 9.8;
+  return sf.mu * sim.mass * g;
+}
+
+function physicsUpdate(dt) {
+  const friction = getFriction();
+  let applied = sim.running ? sim.force : 0;
+  let net = applied - friction;
+  if (sim.speed <= 0 && net < 0) net = 0;
+  let accel = net / sim.mass;
+  if (Math.abs(accel) < 0.001) accel = 0;
+  sim.speed += accel * dt;
+  if (sim.speed < 0) { sim.speed = 0; net = 0; accel = 0; }
+  if (sim.speed > 20) sim.speed = 20;
+  sim.posX += sim.speed * dt * 8;
+  sim.netForce = net;
+  sim.accel = accel;
+  sim.friction = applied > 0 ? friction : (sim.speed > 0 ? friction : 0);
+  sim.time += dt;
+
+  if (sim.posX > 700) { sim.posX = 80; }
+  if (sim.speed < 0.001 && !sim.running) sim.speed = 0;
+
+  document.getElementById('valSpeed').textContent = sim.speed.toFixed(1);
+  document.getElementById('valAccel').textContent = sim.accel.toFixed(1);
+  document.getElementById('valNetForce').textContent = sim.netForce.toFixed(1);
+}
+
+function drawScene() {
+  const W = canvas.width, H = canvas.height;
+  const sf = SURFACES[sim.surface];
+  ctx.clearRect(0, 0, W, H);
+
+  // Background surface
+  ctx.fillStyle = sf.color;
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.fillRect(0, 0, W, 20);
+  ctx.fillRect(0, H-20, W, 20);
+
+  // Surface label
+  ctx.fillStyle = 'rgba(0,0,0,0.15)';
+  ctx.font = '13px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('接触面：' + sf.label, W/2, 32);
+
+  // Ground line
+  ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, rect.y + rect.h + 20);
+  ctx.lineTo(W, rect.y + rect.h + 20);
+  ctx.stroke();
+
+  // Draw box
+  const bx = sim.posX;
+  const by = rect.y;
+  const bw = rect.w;
+  const bh = rect.h;
+
+  // Shadow
+  ctx.fillStyle = 'rgba(0,0,0,0.1)';
+  ctx.beginPath();
+  ctx.ellipse(bx + bw/2, by + bh + 16, bw/2 + 4, 8, 0, 0, Math.PI*2);
+  ctx.fill();
+
+  // Box body
+  const grad = ctx.createLinearGradient(bx, by, bx, by + bh);
+  grad.addColorStop(0, '#ff8f00');
+  grad.addColorStop(1, '#e65100');
+  ctx.fillStyle = grad;
+  ctx.shadowColor = 'rgba(0,0,0,0.2)';
+  ctx.shadowBlur = 10;
+  ctx.fillRect(bx, by, bw, bh);
+  ctx.shadowBlur = 0;
+
+  // Box border
+  ctx.strokeStyle = '#bf360c';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(bx, by, bw, bh);
+
+  // Mass label on box
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 14px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(sim.mass + ' kg', bx + bw/2, by + bh/2);
+
+  // Arrow: Applied Force (right)
+  if (sim.running && sim.force > 0) {
+    const fx = bx + bw + 20;
+    const fy = by + bh/2;
+    const len = Math.min(sim.force * 1.2, 120);
+    drawArrow(ctx, bx + bw, fy, bx + bw + len, fy, '#e53935', 3);
+    ctx.fillStyle = '#e53935';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('推力 ' + sim.force + 'N', bx + bw + len/2, fy + 10);
+  }
+
+  // Arrow: Friction (left) - only when applied force exists OR when moving
+  if (sim.friction > 0.5 || sim.speed > 0.1) {
+    const ff = sim.running && sim.force > 0 ? getFriction() : getFriction();
+    const fx2 = bx;
+    const fy2 = by + bh/2 + 30;
+    const len2 = Math.min(ff * 0.8, 100);
+    drawArrow(ctx, bx, fy2, bx - len2, fy2, '#1565c0', 3);
+    ctx.fillStyle = '#1565c0';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('摩擦力 ' + ff.toFixed(1) + 'N', bx - len2/2, fy2 + 10);
+  }
+
+  // Arrow: Net Force
+  if (sim.running && Math.abs(sim.netForce) > 0.5) {
+    const nx = bx + bw/2;
+    const ny = by - 35;
+    const nLen = Math.min(Math.abs(sim.netForce) * 0.6, 80);
+    const dir = sim.netForce > 0 ? 1 : -1;
+    drawArrow(ctx, nx - (dir>0?0:nLen), ny, nx + (dir>0?nLen:0), ny, '#2e7d32', 2.5);
+    ctx.fillStyle = '#2e7d32';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('合力 ' + Math.abs(sim.netForce).toFixed(1) + 'N', nx + (dir>0?nLen/2:-nLen/2), ny - 6);
+  }
+
+  // Speed indicator
+  ctx.fillStyle = 'rgba(0,0,0,0.4)';
+  ctx.font = '13px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText('⏱ 用时: ' + sim.time.toFixed(1) + 's   |   🏃 状态: ' + getState(), 16, H - 30);
+
+  // State color
+  if (sim.speed > 0.5) {
+    ctx.fillStyle = sim.accel > 0.1 ? '#2e7d32' : (sim.accel > -0.1 ? '#ff6f00' : '#c62828');
+    ctx.beginPath();
+    ctx.arc(30, H - 40, 6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function getState() {
+  if (!sim.running && sim.speed < 0.01) return '静止';
+  if (sim.accel > 0.3) return '加速运动 ↑';
+  if (sim.accel < -0.3) return '减速运动 ↓';
+  if (Math.abs(sim.accel) <= 0.3 && sim.speed > 0.1) return '匀速运动 →';
+  return '静止';
+}
+
+function drawArrow(ctx, x1, y1, x2, y2, color, width) {
+  const angle = Math.atan2(y2 - y1, x2 - x1);
+  const headLen = 12;
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = width || 2.5;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - headLen * Math.cos(angle - 0.4), y2 - headLen * Math.sin(angle - 0.4));
+  ctx.lineTo(x2 - headLen * Math.cos(angle + 0.4), y2 - headLen * Math.sin(angle + 0.4));
+  ctx.closePath();
+  ctx.fill();
+}
+
+let lastTime = 0;
+function loop(timestamp) {
+  if (!lastTime) lastTime = timestamp;
+  let dt = (timestamp - lastTime) / 1000;
+  lastTime = timestamp;
+  if (dt > 0.05) dt = 0.05;
+
+  if (sim.running || sim.speed > 0.001) {
+    physicsUpdate(dt);
+  }
+  drawScene();
+  requestAnimationFrame(loop);
+}
+
+// Theme
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('night-mode');
+});
+
+// Keyboard
+document.addEventListener('keydown', function(e) {
+  if (e.key === ' ' || e.code === 'Space') {
+    e.preventDefault();
+    if (sim.running) stopSim(); else startSim();
+  }
+  if (e.key === 'r' || e.key === 'R') resetSim();
+});
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

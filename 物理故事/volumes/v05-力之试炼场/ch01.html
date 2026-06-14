@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章：力的觉醒 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.completed-badge { display:inline-block;padding:4px 12px;border-radius:20px;background:#c8e6c9;color:#2e7d32;font-size:0.8em;font-weight:600; }
+.formula-big { text-align:center;font-size:1.6em;font-weight:700;color:#bf360c;margin:12px 0; }
+body.night-mode .formula-big { color:#ff8a65; }
+.force-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0; }
+@media (max-width:600px) { .force-grid { grid-template-columns:1fr; } }
+.force-card { padding:14px;border-radius:10px;font-size:0.85em;line-height:1.6; }
+.force-card.orange { background:rgba(191,54,12,0.12);border:1px solid rgba(191,54,12,0.2); }
+.force-card.blue { background:rgba(33,150,243,0.12);border:1px solid rgba(33,150,243,0.2); }
+.force-card.green { background:rgba(56,142,60,0.12);border:1px solid rgba(56,142,60,0.2); }
+.force-card.purple { background:rgba(106,27,154,0.12);border:1px solid rgba(106,27,154,0.2); }
+body.night-mode .force-card.orange { background:rgba(191,54,12,0.25); }
+body.night-mode .force-card.blue { background:rgba(33,150,243,0.25); }
+body.night-mode .force-card.green { background:rgba(56,142,60,0.25); }
+body.night-mode .force-card.purple { background:rgba(106,27,154,0.25); }
+.compare-table { width:100%;border-collapse:collapse;margin:12px 0;font-size:0.85em; }
+.compare-table th,.compare-table td { padding:6px 10px;border:1px solid rgba(255,255,255,0.15);text-align:center; }
+.compare-table th { background:rgba(191,54,12,0.2);font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第5卷</button>
+  <span class="chapter-title">第5卷 · 第1章 力的觉醒</span>
+  <span id="completeBadge" class="completed-badge" style="display:none;">✓ 已读完</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+
+<h2 style="border:none;font-size:2em;text-align:center;">第一章</h2>
+<h1 style="text-align:center;font-size:2.2em;margin-top:0;">力的觉醒</h1>
+<p class="no-indent" style="text-align:center;opacity:0.6;">📖 物理知识点：力的概念 · 力的作用效果 · 重力 · 弹力</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>1. 竞技之城</h3>
+
+<p>离开重铸之城后，林小宇和凌音沿着东北方向走了五天。路上，林小宇一直在研究铁锤赠送的"密度之衡"——这个小天平能在几秒钟内算出任何材料的密度，非常实用。</p>
+
+<p>"还有多远？"林小宇擦了擦额头的汗。这片区域的天气异常炎热，阳光像利剑一样刺下来。</p>
+
+<p>"看那边。"凌音指向远处。</p>
+
+<p>林小宇抬头望去，不由得愣住了。</p>
+
+<p>一座巨大的竞技场矗立在前方的平原上，至少有三个足球场那么大。竞技场的墙壁由灰白色的巨石砌成，表面刻满了各种战斗场景的浮雕。竞技场周围环绕着密密麻麻的建筑——商店、客栈、训练场……整座城市就是围绕着这个竞技场建立的。</p>
+
+<p>"竞技之城——元界中最崇尚力量的地方。"凌音说，"在这里，地位、财富、权力，一切都通过竞技来决定。弱者只能服从强者。"</p>
+
+<p>他们走进城门时，立刻感受到了这座城市特有的氛围。街道两旁全是武器店和训练馆，到处都能听到金属碰撞的声音和呐喊声。路人的目光都带着某种审视——仿佛在评估对方的战斗力。</p>
+
+<p>"看，又有新人来送死了。"一个路人嘲笑道。</p>
+
+<p>"这小孩能撑过第一轮吗？我看悬。"</p>
+
+<p>林小宇没有理会这些言论。他激活了"观察者之眼"，试图寻找碎片的气息——</p>
+
+<p>碎片就在竞技场的中心！</p>
+
+<p>"在那里。"他指向竞技场中央的一座高塔。</p>
+
+<p>但通往竞技场的大门紧闭着，门口站着两个身高两米以上的守卫，肌肉虬结，盔甲反射着寒光。</p>
+
+<p>"想进竞技场？"左边的守卫低头看着林小宇，"先通过预选赛。只有在竞技中证明自己的力量，才有资格挑战中心塔。"</p>
+
+  <!-- 知识卡片：力 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：力</div>
+  <div class="card-body">
+    <p><strong>力</strong>是物体对物体的作用。力不能脱离物体而单独存在——施加力的物体叫<strong>施力物体</strong>，受到力的物体叫<strong>受力物体</strong>。</p>
+    <p><strong>力的单位</strong>：<strong>牛顿（N）</strong>，简称牛。1 N大约相当于托起两个鸡蛋所用的力。</p>
+    <p><strong>力的作用效果</strong>：</p>
+    <ul>
+      <li>力可以改变物体的<strong>形状</strong>（使物体发生形变）</li>
+      <li>力可以改变物体的<strong>运动状态</strong>（包括速度大小和方向的改变）</li>
+    </ul>
+    <p><strong>力的三要素</strong>：<strong>大小、方向、作用点</strong>——这三个要素决定力的作用效果。</p>
+    <p><strong>力的示意图</strong>：用一条带箭头的线段表示力——线段的起点表示作用点，箭头方向表示力的方向，线段长度表示力的大小。</p>
+  </div>
+</div>
+
+<p>"要参加预选赛，得先去训练场测试基本力量。"守卫指了指旁边的一个大院子，"那里有测试官，看看你们有没有参赛资格。"</p>
+
+<p>林小宇和凌音走进训练场。院子里摆满了各种训练器材——石锁、弓弩、沙袋……还有一个高约三米的巨大铁架，上面挂着一根粗壮的弹簧，弹簧下端连着一个把手。</p>
+
+<p>一个皮肤黝黑、身材精壮的测试官迎了上来。"新来的？拉一下这个弹簧测力器，能拉到200N以上，就有资格报名预选赛。"</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>2. 弹力的秘密</h3>
+
+  <!-- 知识卡片：弹力 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：弹力</div>
+  <div class="card-body">
+    <p><strong>弹力</strong>：物体发生<strong>弹性形变</strong>后，由于要恢复原状而产生的力。</p>
+    <ul>
+      <li><strong>弹性形变</strong>：撤去外力后能恢复原状的形变</li>
+      <li><strong>塑性形变</strong>：撤去外力后不能恢复原状的形变</li>
+    </ul>
+    <p><strong>弹簧测力计</strong>的工作原理：</p>
+    <p style="text-align:center;font-size:1.1em;font-weight:700;margin:8px 0;">
+      在弹性限度内，弹簧的<strong>伸长量</strong>与受到的<strong>拉力</strong>成正比。
+    </p>
+    <p>使用弹簧测力计的步骤：</p>
+    <ol>
+      <li>观察量程和分度值，不能超过量程</li>
+      <li>检查指针是否指在零刻度线上</li>
+      <li>拉动弹簧，避免弹簧与外壳摩擦</li>
+      <li>读数时，视线要与指针平齐</li>
+    </ol>
+  </div>
+</div>
+
+<p>凌音走上前。她握住把手，深吸一口气，猛地向下拉——弹簧被拉长了，但远没有达到200N。</p>
+
+<p>"120N。"测试官瞥了一眼刻度，摇了摇头，"差得远。"</p>
+
+<p>林小宇仔细观察着弹簧测力器的结构。他注意到弹簧上刻着精细的刻度，旁边还有一个备注：</p>
+
+<p><em>"弹簧原长20cm，每增加50N拉力，弹簧伸长5cm。"</em></p>
+
+<p>"有意思……"林小宇在心中默算，"这说明在弹性限度内，弹簧的伸长量与所受的拉力成正比。每10N对应1cm的伸长。"</p>
+
+<p>他握住把手，不是猛拉，而是均匀发力——弹簧被缓缓拉长。他观察着刻度，让自己的力量稳定输出。</p>
+
+<p>"190N……195N……200N！"测试官瞪大了眼睛。</p>
+
+<p>林小宇松开了手。"我平时体育成绩很差的，但物理的力量——可不只是肌肉的力量。"</p>
+
+<p>测试官打量着他。"有意思，你这小子靠的是脑子。行，你们俩都有资格参加预选赛了。明天上午，竞技场北门集合。"</p>
+
+<p>就在这时，地面忽然猛烈震动了一下。</p>
+
+<p>林小宇差点站立不稳——他感觉到一股巨大的力量从地底涌出，整片大地都在颤动。</p>
+
+<p>"地震？"凌音紧张地环顾四周。</p>
+
+<p>测试官却一脸平静。"别紧张，是竞技场的'重力机关'在调试。明天预选赛的时候，你们就知道了。"他意味深长地笑了笑。</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>3. 重力之谜</h3>
+
+<p>晚上，林小宇和凌音在一家小客栈住下。林小宇一直在回想白天的地震——那绝不是普通的地震。它来得突然，消失得也干净，更像是某种人为制造的力场波动。</p>
+
+<p>"凌音，你对这个竞技场了解多少？"</p>
+
+<p>凌音端着茶杯沉思了一会儿。"传说竞技之城的地下埋藏着一座古老的'力之核心'——那是元界法则源泉的一部分。暗影使徒一直在寻找它，但竞技之城的人把核心当作力量的源泉来使用。竞技中所有的机关、陷阱、重力变化，都由力之核心驱动。"</p>
+
+<p>"所以那些地震……是力之核心在运转？"</p>
+
+<p>"有可能。"凌音点头，"明天进入竞技场后，你不但要应对对手，还要应对不断变化的重力环境。"</p>
+
+  <!-- 知识卡片：重力 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：重力</div>
+  <div class="card-body">
+    <p><strong>重力</strong>：由于地球（或其他天体）的吸引而使物体受到的力。</p>
+    <ul>
+      <li>重力的<strong>施力物体</strong>：地球</li>
+      <li>重力的<strong>方向</strong>：<strong>竖直向下</strong>（指向地心）</li>
+      <li>重力的<strong>作用点</strong>：物体的<strong>重心</strong></li>
+    </ul>
+    <p><strong>重力的大小</strong>：</p>
+    <p style="text-align:center;font-size:1.3em;font-weight:700;color:#bf360c;">
+      G = mg
+    </p>
+    <p>其中：</p>
+    <ul>
+      <li><strong>G</strong>——重力，单位：N（牛顿）</li>
+      <li><strong>m</strong>——质量，单位：kg</li>
+      <li><strong>g</strong>——重力常数，g = 9.8 N/kg（粗略计算时取10 N/kg）</li>
+    </ul>
+    <p>g的含义：质量为1 kg的物体受到的重力为9.8 N。</p>
+  </div>
+</div>
+
+<p>"重力的大小由质量和g决定。"林小宇在笔记本上写着，"在地球上，g ≈ 9.8 N/kg。但在这个世界，g的值是可以被操控的……"</p>
+
+<p>他忽然意识到一个问题："如果我在地球上体重50kg，受到的重力是50×9.8 = 490N。但如果力之核心把我的g值加倍，我瞬间就感觉自己的体重变成了两倍！"</p>
+
+<p>"也就是说，明天你可能会面对超重环境。"凌音说，"你必须学会在这种条件下战斗。"</p>
+
+<p>林小宇看着窗外灯火通明的竞技场，心中默默回忆着重力的知识。他看到远处有一个高台，上面竖着一根高高的旗杆，旗杆顶端挂着一盏灯。他注意到灯不是竖直向下的——它在微风中稍稍倾斜。</p>
+
+<p>"重力的方向永远竖直向下——指向地面中心。"他自言自语，"不会因为其他力而改变方向。即使灯被风吹斜了，重力方向还是竖直向下。"</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>4. 力的较量</h3>
+
+<p>第二天清晨，竞技场北门已经聚集了几十个参赛者。他们个个身强体壮，有的穿着金属铠甲，有的背着巨型武器。林小宇站在人群中显得格格不入——他既没有肌肉，也没有武器，只带着一本笔记本和密度之衡。</p>
+
+<p>"就你？"一个满脸横肉的大汉走过来，轻蔑地上下打量他，"竞技场可不是学校，小子。你这种弱鸡进去，不到三分钟就会被抬出来。"</p>
+
+<p>林小宇没有回应。他激活了观察者之眼，在法则之线的视野中，他能"看到"每个人身上的力场。壮汉身上的力场很强大，但杂乱无章。而在竞技场地底深处——那里有一个巨大的、旋转的力场漩涡。</p>
+
+<p>那就是力之核心。</p>
+
+<p>竞技场的巨型铁门缓缓打开。测试官站在门口，手中举着一面旗帜。</p>
+
+<p>"预选赛规则很简单——穿过竞技场，到达中心塔。可以使用任何方式。但是——"他顿了一下，"竞技场内的重力环境会随时变化。第一个到达塔底的人，获得挑战资格。"</p>
+
+<p>参赛者们涌入竞技场。</p>
+
+<p>林小宇一踏入场地，就感觉到了异样——脚下的地面不完全是平的，有些区域微微隆起，有些区域凹陷下去。更诡异的是，有些区域的石头呈现出不同的颜色。</p>
+
+<p>他蹲下来，敲了敲一块暗色的地面。</p>
+
+<p>那块地面——竟然是软的。</p>
+
+<p>"不同区域的材质不同？"他用密度之衡测量了一下，"这片区域的石头密度明显比周围的要大……也就是说同样的体积，质量更大，重力也更大。"</p>
+
+<p>凌音已经跑出去几步，但她很快停了下来——</p>
+
+<p>前方的壮汉跑进了一片暗色区域，忽然像被什么东西拽住了一样，脚步猛地变得沉重，速度骤降。</p>
+
+<p>"重力加倍区！"林小宇明白了，"那片区域的重力是正常的两倍！"</p>
+
+<p>他自己选了一条路——绕开暗色区域，踩上那些质地均匀的浅色石板。这样虽然路线长了点，但至少不会被突如其来的重力变化拖垮。</p>
+
+<p>就在这时，前方的一名参赛者踩到了一块浅蓝色的石板——</p>
+
+<p>那块石板瞬间收缩，像弹簧一样弹射出去，把参赛者整个人抛向了空中！</p>
+
+<p>"弹力机关！"林小宇惊讶地看到，那块石板在受力后发生了弹性形变，积蓄的弹力瞬间释放，成了一个小型弹射器。</p>
+
+<p>被弹射的参赛者飞过了大半个竞技场，重重摔在地上，滚了几圈——但他反而笑了："老子飞过来了！"</p>
+
+<p>林小宇脑中灵光一闪。他仔细观察了不同颜色石板的分布，发现了一个规律：</p>
+
+<p>浅蓝色 → 弹力板（弹性形变，可弹射）<br>
+深灰色 → 重力区（重力增加1.5-3倍）<br>
+浅黄色 → 正常区域<br>
+红色 → 摩擦力减小区（地面光滑）</p>
+
+<p>"这就像是一个用物理知识设计的跑酷地图！"他兴奋地说。</p>
+
+  <!-- 知识卡片：力的总结 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：本章力的知识总结</div>
+  <div class="card-body">
+    <table class="compare-table">
+      <tr><th>力的类型</th><th>产生原因</th><th>方向</th><th>大小</th></tr>
+      <tr>
+        <td><strong>重力</strong></td>
+        <td>地球吸引</td>
+        <td>竖直向下</td>
+        <td>G = mg</td>
+      </tr>
+      <tr>
+        <td><strong>弹力</strong></td>
+        <td>弹性形变</td>
+        <td>与形变方向相反</td>
+        <td>与形变量成正比</td>
+      </tr>
+      <tr>
+        <td><strong>拉力</strong></td>
+        <td>绳子或弹簧的拉伸</td>
+        <td>沿绳子或弹簧方向</td>
+        <td>由施力物体决定</td>
+      </tr>
+      <tr>
+        <td><strong>支持力</strong></td>
+        <td>物体压在支撑面上</td>
+        <td>垂直于支撑面</td>
+        <td>由压力大小决定</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<p>林小宇深吸一口气，向前冲去。他没有硬拼体力，而是利用弹力板跳跃过重力区，利用观察者之眼提前识别地面的颜色变化。不到五分钟，他就超越了那些肌肉发达的参赛者。</p>
+
+<p>当他来到竞技场中央的高塔下时，回头一看——大多数人还在重力区中挣扎。</p>
+
+<p>高塔的大门上刻着一行字：</p>
+
+<p style="text-align:center;padding:20px;font-size:1.1em;background:rgba(191,54,12,0.1);border-radius:12px;border:1px solid rgba(191,54,12,0.3);">
+  ⚔️ <strong>进入此塔意味着接受全部试炼</strong><br>
+  <span style="font-size:0.85em;">你将面对：重力陷阱 · 弹力迷宫 · 摩擦之壁 · 惯性之环</span>
+</p>
+
+<p>林小宇毫不犹豫地推开了大门。</p>
+
+<div style="text-align:center;margin:40px 0;">
+  <p style="font-size:1.2em;font-weight:700;color:#bf360c;">
+    —— 进入力之试炼塔，真正的挑战才刚刚开始 ——
+  </p>
+  <p style="opacity:0.6;margin-top:4px;">继续阅读第2章：竞技之战 👉</p>
+</div>
+
+</div>
+
+<script>
+(function() {
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('night-mode');
+  });
+
+  window.addEventListener('scroll', function() {
+    const badge = document.getElementById('completeBadge');
+    const key = 'v05ch01';
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p[key]) {
+        p[key] = true;
+        localStorage.setItem('physics-story-progress', JSON.stringify(p));
+      }
+      badge.style.display = 'inline-block';
+    }
+  });
+  (function() {
+    const key = 'v05ch01';
+    const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+    if (p[key]) document.getElementById('completeBadge').style.display = 'inline-block';
+  })();
+})();
+</script>
+
+</body>
+</html>

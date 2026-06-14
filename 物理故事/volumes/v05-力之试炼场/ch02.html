@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：竞技之战 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.completed-badge { display:inline-block;padding:4px 12px;border-radius:20px;background:#c8e6c9;color:#2e7d32;font-size:0.8em;font-weight:600; }
+.formula-big { text-align:center;font-size:1.6em;font-weight:700;color:#bf360c;margin:12px 0; }
+body.night-mode .formula-big { color:#ff8a65; }
+.experiment-panel { background:rgba(0,0,0,0.05);border-radius:12px;padding:20px;margin:16px 0;text-align:center; }
+body.night-mode .experiment-panel { background:rgba(255,255,255,0.05); }
+.inline-demo { display:inline-block;padding:10px 20px;margin:8px 4px;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.3s; }
+.inline-demo:hover { transform:scale(1.05); }
+.friction-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0; }
+@media (max-width:600px) { .friction-grid { grid-template-columns:1fr; } }
+.friction-card { padding:14px;border-radius:10px;font-size:0.85em;line-height:1.6; }
+.friction-card.red { background:rgba(211,47,47,0.12);border:1px solid rgba(211,47,47,0.2); }
+.friction-card.blue { background:rgba(33,150,243,0.12);border:1px solid rgba(33,150,243,0.2); }
+.friction-card.green { background:rgba(56,142,60,0.12);border:1px solid rgba(56,142,60,0.2); }
+.friction-card.purple { background:rgba(106,27,154,0.12);border:1px solid rgba(106,27,154,0.2); }
+body.night-mode .friction-card.red { background:rgba(211,47,47,0.25); }
+body.night-mode .friction-card.blue { background:rgba(33,150,243,0.25); }
+body.night-mode .friction-card.green { background:rgba(56,142,60,0.25); }
+body.night-mode .friction-card.purple { background:rgba(106,27,154,0.25); }
+.compare-table { width:100%;border-collapse:collapse;margin:12px 0;font-size:0.85em; }
+.compare-table th,.compare-table td { padding:6px 10px;border:1px solid rgba(255,255,255,0.15);text-align:center; }
+.compare-table th { background:rgba(191,54,12,0.2);font-weight:600; }
+.timeline { position:relative;padding:20px 0;margin:20px 0; }
+.timeline::before { content:'';position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#bf360c,#1565c0);border-radius:2px; }
+.timeline-item { position:relative;padding:8px 0 8px 60px;margin-bottom:16px; }
+.timeline-item::before { content:'';position:absolute;left:22px;top:16px;width:18px;height:18px;border-radius:50%;background:#bf360c;border:3px solid #fff; }
+body.night-mode .timeline-item::before { border-color:#1a1a2e; }
+.timeline-item.done::before { background:#1565c0; }
+</style>
+</head>
+<body>
+
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第5卷</button>
+  <span class="chapter-title">第5卷 · 第2章 竞技之战</span>
+  <span id="completeBadge" class="completed-badge" style="display:none;">✓ 已读完</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+
+<div class="reader-content">
+
+<h2 style="border:none;font-size:2em;text-align:center;">第二章</h2>
+<h1 style="text-align:center;font-size:2.2em;margin-top:0;">竞技之战</h1>
+<p class="no-indent" style="text-align:center;opacity:0.6;">📖 物理知识点：摩擦力 · 惯性 · 二力平衡 · 作用力与反作用力</p>
+
+<div class="story-divider">✦ ✦ ✦</div>
+
+<h3>1. 试炼塔：第一层 · 摩擦之壁</h3>
+
+<p>高塔的大门在身后关闭，发出沉重的轰鸣声。林小宇站在一个宽阔的圆形大厅中，四周的墙壁由不同材质的石板拼接而成——有的光滑如镜，有的粗糙似砂纸。</p>
+
+<p>大厅正中央的石台上刻着一行字：</p>
+
+<p style="text-align:center;padding:16px;background:rgba(0,0,0,0.05);border-radius:8px;">
+  <strong>「欲上此塔，先攀此壁。选择合适的墙面，方能登顶。」</strong>
+</p>
+
+<p>林小宇抬头看去——大厅的墙壁向上延伸至少有五层楼高，顶部是一个开口，通向上一层。要上去，唯一的办法就是徒手爬墙。</p>
+
+<p>"爬墙？"林小宇摸了摸不同材质的墙面。</p>
+
+<p>最左边是一块<strong>抛光大理石墙面</strong>，几乎能照出人影。他伸手一推，手掌直接滑了下来——太光滑了，根本抓不住。</p>
+
+<p>中间是一块<strong>普通砖墙</strong>，略微粗糙，能提供一些摩擦力。他试着抓住砖缝往上爬了几步，但很快手指就酸了。</p>
+
+<p>最右边是一块<strong>布满颗粒的磨砂石墙</strong>，表面非常粗糙。他抓住墙面，掌心传来扎实的阻力——摩擦力很大，抓得很稳。</p>
+
+<p>"就是它了。"林小宇开始沿着磨砂石墙向上攀爬。</p>
+
+<p>每爬一步，他都能感受到手掌与墙面之间的那种阻碍——<strong>摩擦力</strong>。墙面越粗糙，摩擦力越大，爬得越稳。</p>
+
+<p>爬到一半时，他看到墙面上有一个小凹槽，里面嵌着一块透明的晶石。晶石表面刻着几个小字：</p>
+
+<p style="text-align:center;padding:12px;font-style:italic;background:rgba(33,150,243,0.1);border-radius:8px;">
+  "当物体在另一个物体表面滑动时，会受到阻碍运动的力→<strong>滑动摩擦力</strong>"
+</p>
+
+<p>他把晶石取下来，一股知识流涌入脑海——</p>
+
+  <!-- 知识卡片：摩擦力 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：摩擦力</div>
+  <div class="card-body">
+    <p><strong>摩擦力</strong>：两个相互接触的物体，当它们发生相对运动（或有相对运动趋势）时，在接触面上产生的阻碍相对运动的力。</p>
+
+    <p><strong>摩擦力的分类</strong>：</p>
+    <ul>
+      <li><strong>滑动摩擦力</strong>：物体在另一个物体表面上滑动时产生的摩擦。如：写字、滑冰。</li>
+      <li><strong>滚动摩擦力</strong>：物体在另一个物体表面上滚动时产生的摩擦。如：滚轮、球轴承。</li>
+      <li><strong>静摩擦力</strong>：物体有相对运动趋势但没有运动时产生的摩擦。如：拿在手中的杯子不会滑落。</li>
+    </ul>
+
+    <p><strong>影响滑动摩擦力大小的因素</strong>：</p>
+    <ul>
+      <li>压力越大，滑动摩擦力越大（f = μN）</li>
+      <li>接触面越粗糙，滑动摩擦力越大</li>
+      <li><strong>注意</strong>：滑动摩擦力大小与接触面积大小无关</li>
+    </ul>
+
+    <p><strong>增大摩擦力的方法</strong>：增大压力、使接触面变粗糙<br>
+    <strong>减小摩擦力的方法</strong>：减小压力、使接触面变光滑、加润滑油、用滚动代替滑动</p>
+
+    <p style="text-align:center;font-size:1.1em;font-weight:700;background:rgba(33,150,243,0.1);padding:8px;border-radius:6px;">
+      摩擦力=压力×摩擦系数 → f = μN
+    </p>
+  </div>
+</div>
+
+<p>林小宇爬到了顶部，翻身上了第二层。他将晶石收好，发现脚下的地板是金属制的，踩上去微微震动。</p>
+
+<h3>2. 第二层 · 惯性之环</h3>
+
+<p>第二层是一个巨大的环形平台，大约有半个足球场那么大。平台边缘是深不见底的深渊，而平台的中央有一个巨大的旋转圆盘。</p>
+
+<p>圆形平台边缘站着几个石像人——或者说，曾经是真正的挑战者，被某种力量变成了石头。林小宇打了个寒颤。</p>
+
+<p>环形平台上方的天花板上刻着一行大字：</p>
+
+<p style="text-align:center;padding:16px;background:rgba(0,0,0,0.05);border-radius:8px;">
+  <strong>「物之性也，静者恒静，动者恒动——除非外力加之。」</strong>
+</p>
+
+<p>凌音不知何时已经跟了上来，她瞥了一眼那行字："这是……惯性？"</p>
+
+<p>"对。"林小宇仔细观察环形平台，"牛顿第一定律——一切物体在没有受到力的作用时，总保持静止状态或匀速直线运动状态。"</p>
+
+<p>这时，中央的旋转圆盘开始加速转动。石像人周围的符文亮了起来——</p>
+
+<p>林小宇还没反应过来，脚下的地板猛地开始旋转！他一个踉跄，差点摔倒。</p>
+
+<p>"抓紧护栏！"凌音喊道。</p>
+
+<p>但护栏在哪里？整个第二层就是一个巨大的圆形空间，四周只有光滑的墙壁，没有任何可抓的东西。</p>
+
+<p>随着圆盘的旋转速度越来越快，林小宇感觉到一股强大的力把他往外"甩"——这就是<strong>惯性</strong>。</p>
+
+<p>他努力向圆盘中心走去，却发现越是远离中心，受到的"甩出力"越大。他索性稳住身体，仔细观察圆盘的运动规律：</p>
+
+<ul>
+  <li>当圆盘匀速旋转时，他只要站在一个固定点上，身体就会保持相对静止——因为他的身体也随着圆盘一起运动。</li>
+  <li>当圆盘加速时，他会向后倒——因为他的身体要保持原来的速度，跟不上加速的地板。</li>
+  <li>当圆盘突然停止时，他会向前冲——因为他的身体要保持运动状态，但地板突然静止了。</li>
+</ul>
+
+<p>这就像是——坐上公交车时，车启动人会向后仰，车刹车人会向前倾。这就是<strong>惯性</strong>的表现！</p>
+
+  <!-- 知识卡片：惯性 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：牛顿第一定律（惯性定律）</div>
+  <div class="card-body">
+    <p><strong>牛顿第一定律</strong>：一切物体在没有受到力的作用时，总保持<strong>静止状态</strong>或<strong>匀速直线运动状态</strong>。</p>
+
+    <p><strong>惯性</strong>：物体保持原来运动状态不变的性质，叫惯性。惯性是物体固有的属性。</p>
+
+    <p><strong>惯性的理解</strong>：</p>
+    <ul>
+      <li>一切物体在任何情况下都有惯性</li>
+      <li>惯性不是力！不能说"受到惯性作用"</li>
+      <li>惯性的大小只与物体的<strong>质量</strong>有关——质量越大，惯性越大</li>
+      <li>与速度大小无关——同样的质量，速度不同惯性相同</li>
+    </ul>
+
+    <p><strong>生活中的惯性现象</strong>：</p>
+    <ul>
+      <li>急刹车时身体前倾——身体保持运动状态</li>
+      <li>启动时身体后仰——身体保持静止状态</li>
+      <li>锤柄撞击地面锤头变紧——锤柄突然静止，锤头继续向下运动</li>
+      <li>跳远时助跑——利用惯性使身体在空中继续向前运动</li>
+    </ul>
+
+    <div class="formula-big" style="font-size:1em;padding:10px;">
+      ⚡ 惯性大小只与质量有关：m越大，惯性越大
+    </div>
+  </div>
+</div>
+
+<p>林小宇注意到，圆盘停止旋转时，会短暂停留30秒。这段时间足够跑到通往上一层的楼梯口。</p>
+
+<p>他计算好时间，在圆盘旋转到某个角度时猛地向楼梯口冲去——利用惯性，他借着圆盘旋转的方向冲刺，速度更快了一倍！</p>
+
+<p>然而就在他即将到达楼梯口时，圆盘上突然升起几根石柱，挡住了去路。</p>
+
+<p>"有机关！"凌音惊呼。</p>
+
+<p>林小宇定睛一看——石柱上各刻着一句话，只有回答正确才能通过。</p>
+
+<p>石柱一：<em>"扔出去的篮球在空中继续向前飞，这是因为篮球______。"</em></p>
+
+<p class="no-indent" style="color:#2e7d32;font-weight:600;">✅ 正确答案：具有惯性</p>
+
+<p>石柱二：<em>"物体的惯性大小与什么有关？"</em></p>
+
+<p class="no-indent" style="color:#2e7d32;font-weight:600;">✅ 正确答案：质量</p>
+
+<p>石柱三：<em>"正在行驶的汽车突然刹车，乘客会向前倒。这说明什么？"</em></p>
+
+<p class="no-indent" style="color:#2e7d32;font-weight:600;">✅ 正确答案：乘客具有惯性，保持了原来的运动状态</p>
+
+<p>三根石柱依次沉入地面。林小宇和凌音顺利通过了第二层。</p>
+
+<h3>3. 第三层 · 平衡之台</h3>
+
+<p>第三层是一个方形石室，地面上排列着九个巨大的石台，呈3×3的网格状。每个石台大约三米见方，表面光滑平整。</p>
+
+<p>石室正前方的墙壁上刻着：</p>
+
+<p style="text-align:center;padding:16px;background:rgba(0,0,0,0.05);border-radius:8px;">
+  <strong>「二人相争，力平则安。立于台上，以力相抗——不倒者胜。」</strong>
+</p>
+
+<p>林小宇刚读完，身后传来沉重的脚步声。</p>
+
+<p>一个三米高的石像从门口走了进来。它全身由青灰色的岩石构成，双目闪着红光。石像走到林小宇面前，伸出巨大的手掌——它想先试他的力量。</p>
+
+<p>林小宇伸手抵住石像的手掌。石像缓缓加力——林小宇感觉到一股巨大的推力。</p>
+
+<p>但他稳住了身形，没有后退。石像的推力与他自身的支撑力之间形成了<strong>平衡</strong>。</p>
+
+<p>石像似乎是懵了，没想到一个少年能挡住它的推力。它撤回了手掌，发出了低沉的声音："不错，力量均衡。上石台吧，用力量对决来决定谁先通过。"</p>
+
+<p>林小宇跳上一个石台。石像踩上了对面的另一个石台。</p>
+
+<p>石台边缘升起一道光幕，将两人围在台内。墙壁上浮现出规则：</p>
+
+<ul>
+  <li><strong>规则1</strong>：双方各施加一个水平方向上的力作用于对方。</li>
+  <li><strong>规则2</strong>：谁能将对方推出石台即为胜者。</li>
+  <li><strong>规则3</strong>：如果双方力量平衡，石台保持稳定。</li>
+</ul>
+
+<p>石像率先出手——它猛地一推，一股巨力袭来。</p>
+
+<p>林小宇迅速压低重心，双脚紧紧抓住地面，用全身的力量对抗石像的推力——</p>
+
+<p>两股力量在石台中心相遇，大小相等、方向相反——石台纹丝不动。</p>
+
+<p>"这就是<strong>二力平衡</strong>。"林小宇喃喃自语，"作用在同一物体上的两个力，如果大小相等、方向相反、作用在同一直线上，这两个力就彼此平衡。"</p>
+
+  <!-- 知识卡片：二力平衡 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：二力平衡</div>
+  <div class="card-body">
+    <p><strong>平衡状态</strong>：物体保持静止或匀速直线运动的状态。</p>
+
+    <p><strong>二力平衡的条件</strong>（四个条件缺一不可）：</p>
+    <ol>
+      <li><strong>同体</strong>：两个力作用在<strong>同一物体</strong>上</li>
+      <li><strong>等大</strong>：两个力<strong>大小相等</strong></li>
+      <li><strong>反向</strong>：两个力<strong>方向相反</strong></li>
+      <li><strong>共线</strong>：两个力作用在<strong>同一直线上</strong></li>
+    </ol>
+
+    <p><strong>平衡力与相互作用力的区别</strong>：</p>
+    <table class="compare-table">
+      <tr><th></th><th>平衡力</th><th>相互作用力</th></tr>
+      <tr><td>相同点</td><td>大小相等、方向相反、共线</td><td>大小相等、方向相反、共线</td></tr>
+      <tr><td>不同点</td><td>作用在<strong>同一个物体</strong>上</td><td>作用在<strong>两个不同物体</strong>上</td></tr>
+      <tr><td>效果</td><td>可以抵消（合力为零）</td><td>不能抵消</td></tr>
+      <tr><td>例子</td><td>放在桌面上的课本：重力G和支持力F</td><td>书对桌子的压力和桌子对书的支持力</td></tr>
+    </table>
+
+    <p><strong>二力平衡的应用</strong>：</p>
+    <ul>
+      <li>悬挂的吊灯——重力和拉力平衡</li>
+      <li>水平路面匀速行驶的汽车——牵引力和摩擦力平衡</li>
+      <li>静止在桌面上的物体——重力和支持力平衡</li>
+    </ul>
+  </div>
+</div>
+
+<p>林小宇和石像僵持了一会。但林小宇发现了一个规律——石像每隔五次发力后，会有一次短暂的"换气"停顿，这时它的推力会瞬间减弱。</p>
+
+<p>「好机会！」</p>
+
+<p>在石像第五次发力结束、第六次发力开始的间隙，林小宇猛地撤回力量——石像突然失去了对抗力，巨大的推力让它自己向后踉跄，一脚踩出了石台边缘！</p>
+
+<p>光幕消散。石像低头看了看自己踩出界的脚，又看了看林小宇，发出了隆隆的笑声：</p>
+
+<p>"聪明的战术。你不只懂得力量，还懂得<strong>力的均衡与变化</strong>。你有资格继续前进。"</p>
+
+<p>石像退回了角落，变回了一座普通的石雕。</p>
+
+<p>通往第四层的楼梯敞开。林小宇和凌音并肩走了上去。</p>
+
+<h3>4. 顶层 · 力之试炼 · BOSS战</h3>
+
+<p>第四层——也是最后一层——是一个直径约50米的圆形竞技场。穹顶上镶嵌着无数发光晶石，将整个场地照得如同白昼。</p>
+
+<p>竞技场的正中央，悬浮着一块拳头大小的晶石——它散发着淡金色的光芒，缓缓自转。晶石的表面隐隐可见一个"力"字的符文。</p>
+
+<p>"那就是<strong>力之石</strong>。"凌音低声说。</p>
+
+<p>就在林小宇准备上前取石时，场地四周忽然升起四根巨大的石柱。每根石柱上都站着一个全身盔甲的骑士——不，不是真人，而是由机关驱动的<strong>机关骑士</strong>。</p>
+
+<p>四个机关骑士一跃而下，呈四角阵型将林小宇包围。它们手中各持一件武器——巨剑、战锤、长矛和盾牌。</p>
+
+<p>"击败我们四人，方可取得力之石。"巨剑骑士的声音低沉而空洞。</p>
+
+<p>林小宇深吸一口气。他知道，这不是靠蛮力能赢的战斗——他必须用好刚刚学会的物理知识。</p>
+
+<p>巨剑骑士率先攻击——巨大的剑横扫而来。林小宇侧身一躲，剑锋擦着他的衣服掠过。</p>
+
+<p>"好险。"他注意到，剑虽然重，但挥动速度很慢——这给了他判断的时间。</p>
+
+<p>战锤骑士冲了上来，举起巨锤就要砸下。林小宇脑中闪过刚才的惯性知识——他一个箭步冲向战锤骑士的方向，在锤子落下的前一秒突然改变方向！</p>
+
+<p>战锤骑士用力过猛，来不及收力，被自己的惯性带着向前冲了好几步，差点摔倒。</p>
+
+<p>"你们的招式是固定的——因为你们不是真正的生命，只是机器。"林小宇一边闪躲一边思考，"只要我能分析出……"</p>
+
+<p>长矛骑士刺出一枪。</p>
+
+<p>林小宇闪开后注意到了地上一块松动的小石子。他捡起石子，对准战锤骑士脚下的地面掷去——</p>
+
+<p>石子滚到战锤骑士脚下。战锤骑士踩在石子上，鞋底与石子的<strong>滚动摩擦力</strong>远小于<strong>滑动摩擦力</strong>，它的脚下一滑，单膝跪地。</p>
+
+<p>"摩擦力……滚动摩擦远小于滑动摩擦。"</p>
+
+<p>盾牌骑士冲了过来，用盾牌正面撞击。林小宇下意识地伸手抵住盾牌——</p>
+
+<p>盾牌上传来的巨大力量震得他胳膊发麻。但就在接触的瞬间，他感受到了一个重要的物理事实：</p>
+
+<p>他推盾牌的同时，盾牌也在推他。他施加的力越大，盾牌反弹的力也越大。这两个力<strong>大小相等、方向相反</strong>，作用在两个不同的物体上——正是<strong>牛顿第三定律</strong>：作用力与反作用力！</p>
+
+  <!-- 知识卡片：牛顿第三定律 -->
+<div class="knowledge-card">
+  <div class="card-header">⚡ 法则笔记：牛顿第三定律</div>
+  <div class="card-body">
+    <p><strong>牛顿第三定律</strong>：两个物体之间的作用力和反作用力总是大小相等、方向相反，并且作用在同一直线上。</p>
+
+    <p><strong>作用力与反作用力的特点</strong>：</p>
+    <ul>
+      <li><strong>同时性</strong>：同时产生、同时消失、同时变化</li>
+      <li><strong>等大性</strong>：大小相等</li>
+      <li><strong>反向性</strong>：方向相反</li>
+      <li><strong>共线性</strong>：作用在同一直线上</li>
+      <li><strong>异物性</strong>：作用在两个不同的物体上</li>
+    </ul>
+
+    <p><strong>生活中的作用力与反作用力</strong>：</p>
+    <ul>
+      <li>走路：脚向后蹬地（作用力），地面对脚产生向前的推力（反作用力）</li>
+      <li>划船：桨向后推水，水向前推桨</li>
+      <li>火箭发射：喷出的气体向下推空气，空气向上推火箭</li>
+      <li>踢球：脚给球一个力，球也给脚一个力（所以脚会疼）</li>
+    </ul>
+
+    <div class="formula-big" style="font-size:1em;padding:10px;">
+      ⚡ F<sub>作用</sub> = -F<sub>反作用</sub>（大小相等，方向相反）
+    </div>
+  </div>
+</div>
+
+<p>林小宇灵机一动。他调整了策略——不再试图用力量硬抗，而是利用盾牌骑士自己的力量来反击。</p>
+
+<p>当盾牌骑士再次冲撞时，林小宇往侧方一闪——同时伸手在盾牌侧面用力一推。</p>
+
+<p>根据牛顿第三定律，盾牌骑士受到了一个侧向的力。它的身体开始失去平衡——它想用另一只脚支撑，但惯性让它继续向原来的方向运动。</p>
+
+<p>最终的场景是——盾牌骑士与长矛骑士撞在一起，两个机关人摔成一团。</p>
+
+<p>还剩下两个。</p>
+
+<p>巨剑骑士再次挥剑。林小宇不再躲闪，而是看准时机，往剑面的侧面猛地一推——力的方向变了，巨剑偏离了轨迹，劈了个空。</p>
+
+<p>战锤骑士摇摇晃晃地站起来，重新举起巨锤。林小宇迎上前去，假装正面对抗——但在最后一刻刹住脚步，让战锤骑士再次落空。</p>
+
+<p>惯性让战锤骑士再次失去平衡，这次它直接摔出了竞技场边界，撞在墙上，彻底不动了。</p>
+
+<p>只剩巨剑骑士了。</p>
+
+<p>林小宇这一次没有闪避。他直接朝巨剑骑士冲了过去，两人之间的距离越来越近——</p>
+
+<p>在距离只剩三步时，巨剑骑士挥出了巨剑。而林小宇准确地预测到了挥剑的轨迹——他猛地蹲下，巨剑从他头顶飞过。接着他双手抓住巨剑骑士的腿，用力一拉——</p>
+
+<p>二力平衡的法则再次生效。林小宇的拉力让巨剑骑士失去了稳定的支撑。巨剑骑士轰然倒地。</p>
+
+<p>四个机关骑士全部倒下了。</p>
+
+<p>场地中央的力之石剧烈震动，淡金色的光芒大放。它缓缓向林小宇飘来，悬浮在他面前。</p>
+
+<p>林小宇伸出手，握住了力之石——</p>
+
+<p>轰！</p>
+
+<p>一股强大的知识洪流涌入他的脑海：力的定义、重力加速度、弹簧的弹力、摩擦力的计算、牛顿三大定律……所有的物理知识在瞬间融会贯通。</p>
+
+<p>"啊——"林小宇忍不住叫出声。他的手上浮现出一个金色的符文印记——<strong>力的纹章</strong>。</p>
+
+<p>力之石的光芒渐渐收敛，融入了他的身体。加上之前的五块碎片，他已经集齐了六块碎片的力量。</p>
+
+<p class="no-indent" style="text-align:center;font-size:1.1em;background:rgba(21,101,192,0.1);border-radius:12px;padding:20px;border:1px solid rgba(21,101,192,0.3);">
+  ⚡ <strong>力之试炼 · 通关！</strong><br>
+  <span style="font-size:0.85em;">已掌握法则：力的作用效果 · 重力 · 弹力 · 摩擦力 · 惯性 · 二力平衡 · 牛顿第三定律</span>
+</p>
+
+<h3>5. 暗影使徒再现</h3>
+
+<p>就在林小宇和凌音准备离开时，一个熟悉的声音从竞技场的阴影中响起——</p>
+
+<p>"恭喜。"</p>
+
+<p>一个人影从黑暗中走出。他穿着黑色长袍，脸上戴着半张银色面具，露出的半边脸带着嘲讽的微笑。</p>
+
+<p>暗影使徒。</p>
+
+<p>"你已经集齐了六块碎片。"暗影使徒缓缓鼓掌，"速度比我预想的还快一些。不过，第七块碎片——你永远也拿不到。"</p>
+
+<p>"你到底想干什么？"林小宇紧握双拳。</p>
+
+<p>"我只是……在按照剧本走而已。"暗影使徒轻笑道，"你以为你在拯救元界？不，你只是在帮我们收集碎片的力量。等你收集齐全部七块碎片——就是你交出一切的时候。"</p>
+
+<p>凌音抽出了短剑。但暗影使徒只是挥了挥手——一股强大的力场推了过来，将两人撞飞到墙上。</p>
+
+<p>"现在还不是决战的时候。"暗影使徒转身朝阴影走去，"下一站是……<strong>深渊之底</strong>。那是一个你永远无法靠自己逃脱的地方。如果你还能活着出来——我们再见面。"</p>
+
+<p>他的身影融入了黑暗，消失了。</p>
+
+<p>林小宇从墙上滑落，捂着胸口。凌音扶住他："你没事吧？"</p>
+
+<p>"没事。但他说得对——我们还得继续前进。"</p>
+
+<p>他看向凌音："下一块碎片在……水下。一个叫'深渊之底'的地方。"</p>
+
+<p>凌音的表情变得凝重。</p>
+
+<p>他们走出试炼塔时，外面的阳光已经变成了金黄色。竞技之城的人们看到林小宇手上的金色符文，纷纷投来敬畏的目光——他已经成为了这座城市最强者之一。</p>
+
+<p>但林小宇知道，真正的考验还在前方。</p>
+
+  <!-- 知识卡片：本章总结 -->
+<div class="knowledge-card">
+  <div class="card-header">📚 第2章法则笔记汇总</div>
+  <div class="card-body">
+    <ol>
+      <li><strong>摩擦力</strong>：阻碍相对运动的力。f = μN。增大方法：增大压力、使接触面变粗糙。</li>
+      <li><strong>牛顿第一定律（惯性定律）</strong>：物体不受力时保持静止或匀速直线运动。</li>
+      <li><strong>惯性</strong>：物体保持运动状态不变的性质。质量越大，惯性越大。</li>
+      <li><strong>二力平衡</strong>：同体、等大、反向、共线。合力为零。</li>
+      <li><strong>牛顿第三定律</strong>：作用力与反作用力等大、反向、共线、异体。</li>
+      <li><strong>平衡力 vs 相互作用力</strong>：前者同体，后者异体。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <strong>穿越元界</strong> → 获得第一块碎片（静止之石）
+  </div>
+  <div class="timeline-item">
+    <strong>回音峡谷</strong> → 第二块碎片（声之石）
+  </div>
+  <div class="timeline-item">
+    <strong>炎寒谷</strong> → 第三块碎片（温衡之石）
+  </div>
+  <div class="timeline-item">
+    <strong>镜海迷踪</strong> → 第四块碎片（光之石）
+  </div>
+  <div class="timeline-item">
+    <strong>重铸之城</strong> → 第五块碎片（密度之衡）✅
+  </div>
+  <div class="timeline-item done">
+    <strong>竞技之城</strong> → 第六块碎片（力之石）✅
+  </div>
+  <div class="timeline-item" style="opacity:0.6;">
+    <strong>深渊之底</strong> → 第七块碎片（？？？）
+  </div>
+  <div class="timeline-item" style="opacity:0.4;">
+    <strong>最终之地</strong> → 第七块碎片（？？？）
+  </div>
+</div>
+
+<p style="text-align:center;margin:40px 0 20px;font-size:1.1em;font-weight:700;color:#1565c0;">
+  —— 第5卷 · 完 ——
+</p>
+
+<p style="text-align:center;font-size:0.9em;opacity:0.6;">
+  下一卷：「深渊之底」—— 压强与浮力的秘密即将揭晓
+</p>
+
+</div>
+
+<script>
+(function() {
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('night-mode');
+  });
+
+  window.addEventListener('scroll', function() {
+    const badge = document.getElementById('completeBadge');
+    const key = 'v05ch02';
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p[key]) {
+        p[key] = true;
+        localStorage.setItem('physics-story-progress', JSON.stringify(p));
+      }
+      badge.style.display = 'inline-block';
+    }
+  });
+  (function() {
+    const key = 'v05ch02';
+    const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+    if (p[key]) document.getElementById('completeBadge').style.display = 'inline-block';
+  })();
+})();
+</script>
+
+</body>
+</html>

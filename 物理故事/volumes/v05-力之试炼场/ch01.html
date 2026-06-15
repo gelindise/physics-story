@@ -293,6 +293,68 @@ body.night-mode .force-card.purple { background:rgba(106,27,154,0.25); }
 
 <p>林小宇毫不犹豫地推开了大门。</p>
 
+<!-- ===== 🔬 交互实验：力与弹簧模拟器 ===== -->
+<h3>🔬 互动实验：力与弹簧模拟器</h3>
+<p class="no-indent">在弹簧上挂不同质量的钩码，观察弹簧的伸长量。看看弹力和重力如何达到平衡！</p>
+
+<div class="canvas-container">
+  <canvas id="springCanvas" style="height:360px;"></canvas>
+  <div class="controls">
+    <label>钩码质量：<input type="range" id="massSlider" min="0" max="500" value="100" step="10"> <span id="massValue">100</span> g</label>
+    <label>弹簧劲度系数：<input type="range" id="stiffnessSlider" min="1" max="10" value="5" step="0.5"> <span id="stiffnessValue">5</span> N/m</label>
+    <button id="resetSpring">🔄 重置</button>
+  </div>
+  <div id="springInfo" style="margin-top:8px;text-align:center;font-weight:700;min-height:24px;"></div>
+  <div class="legend">⚡ 红色箭头 = 重力（向下） &nbsp; 🔵 蓝色箭头 = 弹力（向上）</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：感受力的大小</h3>
+<div class="experiment-box">
+  <div class="exp-title">📐 实验1：自制弹簧测力计</div>
+  <ol class="exp-steps">
+    <li>找一根橡皮筋或弹簧，挂在衣架或挂钩上</li>
+    <li>用已知质量的物体（如一袋500g的盐）挂在下面，标记橡皮筋伸长的位置</li>
+    <li>再用其他已知质量的物体做标记——你就做出了一个简易测力计！</li>
+    <li>用你的"测力计"测量各种小物件的重量</li>
+  </ol>
+  <div class="exp-title" style="margin-top:16px;">🎒 实验2：感受1牛顿的力</div>
+  <ol class="exp-steps">
+    <li>1牛顿 ≈ 托起一个约100g的苹果所用的力</li>
+    <li>用电子秤称出约100g的物体（一个小苹果或一盒牛奶的1/5）</li>
+    <li>用手托住它——这就是约1N的力！</li>
+    <li>试试托起两盒1L的牛奶（约2kg）——感受20N的力</li>
+  </ol>
+  <p style="font-size:0.85em;opacity:0.7;">💡 G = mg：地球表面1kg物体受到的重力约10N。你的体重是多少牛顿？</p>
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：重力计算</div>
+  <p>林小宇的质量是50kg，他在地球上受到的重力是多少？（g取10N/kg）如果他到了月球上（g月=1/6 g地），他的质量和重力会怎样变化？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v5c1-q1" value="a"> 地球500N，月球83.3N；质量不变，重力减小</label>
+    <label><input type="radio" name="quiz-v5c1-q1" value="b" data-correct="true"> 地球500N，月球约83.3N；质量不变，重力减小为1/6</label>
+    <label><input type="radio" name="quiz-v5c1-q1" value="c"> 地球500N，月球500N；质量和重力都不变</label>
+    <label><input type="radio" name="quiz-v5c1-q1" value="d"> 地球50N，月球8.3N；质量和重力都减小</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：弹力与形变</div>
+  <p>一根弹簧原长10cm，挂上2N的钩码后伸长到14cm。如果挂上3N的钩码，弹簧的长度会变成多少？（在弹性限度内）</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v5c1-q2" value="a"> 15cm</label>
+    <label><input type="radio" name="quiz-v5c1-q2" value="b" data-correct="true"> 16cm（每1N伸长2cm，3N伸长6cm，10+6=16）</label>
+    <label><input type="radio" name="quiz-v5c1-q2" value="c"> 18cm</label>
+    <label><input type="radio" name="quiz-v5c1-q2" value="d"> 14cm（弹力不变）</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
 <div style="text-align:center;margin:40px 0;">
   <p style="font-size:1.2em;font-weight:700;color:#bf360c;">
     —— 进入力之试炼塔，真正的挑战才刚刚开始 ——
@@ -304,6 +366,190 @@ body.night-mode .force-card.purple { background:rgba(106,27,154,0.25); }
 
 <script src="../../scripts/reader.js"></script>
 <script>
+
+  // ===== 🔬 Spring force simulator =====
+  (function() {
+    const canvas = document.getElementById('springCanvas');
+    if (!canvas) return;
+    const massSlider = document.getElementById('massSlider');
+    const massValue = document.getElementById('massValue');
+    const stiffnessSlider = document.getElementById('stiffnessSlider');
+    const stiffnessValue = document.getElementById('stiffnessValue');
+    const resetBtn = document.getElementById('resetSpring');
+    const infoDiv = document.getElementById('springInfo');
+
+    let animId = 0;
+    let bobOffset = 0;
+    let bobVelocity = 0;
+
+    function draw() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.max(rect.width, 300);
+      const h = 360;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.height = h + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      const mass_g = parseFloat(massSlider.value);
+      const mass_kg = mass_g / 1000;
+      const k = parseFloat(stiffnessSlider.value);
+      const g = 10;
+      const gravity = mass_kg * g;
+      const stretch = gravity / k;
+      const maxStretch = 100;
+
+      // Physics: Simple harmonic motion with damping
+      const targetStretch = Math.min(stretch * 20, maxStretch);
+      bobVelocity += (targetStretch - bobOffset) * 0.08;
+      bobVelocity *= 0.92;
+      bobOffset += bobVelocity;
+
+      const centerX = w / 2;
+      const topY = 30;
+      const springLen = 60 + bobOffset;
+      const bobY = topY + springLen + 20;
+      const bobR = Math.min(20 + mass_g / 30, 40);
+
+      // Ceiling
+      ctx.fillStyle = '#555';
+      ctx.fillRect(centerX - 20, topY - 4, 40, 8);
+      ctx.fillStyle = '#777';
+      ctx.fillRect(centerX - 3, topY + 4, 6, 10);
+
+      // Spring
+      ctx.strokeStyle = '#78909c';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(centerX, topY + 14);
+      const coils = 8;
+      const coilH = springLen / coils;
+      for (let i = 0; i < coils; i++) {
+        const cy = topY + 14 + i * coilH;
+        ctx.lineTo(centerX + (i % 2 === 0 ? 12 : -12), cy + coilH / 2);
+      }
+      ctx.lineTo(centerX, topY + 14 + springLen);
+      ctx.stroke();
+
+      // Bob
+      const grad = ctx.createRadialGradient(centerX - 8, bobY - 8, 2, centerX, bobY, bobR);
+      grad.addColorStop(0, '#e53935');
+      grad.addColorStop(1, '#b71c1c');
+      ctx.fillStyle = grad;
+      ctx.shadowColor = 'rgba(0,0,0,0.2)';
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(centerX, bobY, bobR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = '#880e4f';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Mass label
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(mass_g + 'g', centerX, bobY);
+
+      // Force arrows
+      if (mass_g > 0) {
+        const arrowLen = Math.min(gravity * 4, 60);
+        // Gravity arrow (down)
+        const ax1 = centerX, ay1 = bobY + bobR + 5;
+        const ax2 = centerX, ay2 = ay1 + arrowLen;
+        const angle = Math.PI / 2;
+        ctx.strokeStyle = '#ef5350';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(ax1, ay1);
+        ctx.lineTo(ax2, ay2);
+        ctx.stroke();
+        const hl = 10;
+        ctx.fillStyle = '#ef5350';
+        ctx.beginPath();
+        ctx.moveTo(ax2, ay2);
+        ctx.lineTo(ax2 - hl * Math.cos(angle - 0.4), ay2 - hl * Math.sin(angle - 0.4));
+        ctx.lineTo(ax2 - hl * Math.cos(angle + 0.4), ay2 - hl * Math.sin(angle + 0.4));
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#ef5350';
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText('G=' + gravity.toFixed(1) + 'N', centerX, ay2 + 2);
+
+        // Spring force arrow (up)
+        const bx1 = centerX, by1 = topY + 14 + springLen - 5;
+        const bx2 = centerX, by2 = by1 - arrowLen;
+        ctx.strokeStyle = '#42a5f5';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(bx1, by1);
+        ctx.lineTo(bx2, by2);
+        ctx.stroke();
+        ctx.fillStyle = '#42a5f5';
+        ctx.beginPath();
+        ctx.moveTo(bx2, by2);
+        ctx.lineTo(bx2 - hl * Math.cos(-Math.PI/2 - 0.4), by2 - hl * Math.sin(-Math.PI/2 - 0.4));
+        ctx.lineTo(bx2 - hl * Math.cos(-Math.PI/2 + 0.4), by2 - hl * Math.sin(-Math.PI/2 + 0.4));
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#42a5f5';
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText('F弹=' + (k * stretch).toFixed(1) + 'N', centerX, by2 - 2);
+
+        // Info
+        infoDiv.innerHTML = '⚡ G = ' + mass_kg.toFixed(2) + 'kg × 10N/kg = <strong>' + gravity.toFixed(1) + 'N</strong> &nbsp;|&nbsp; 伸长 x = ' + (stretch * 100).toFixed(1) + 'cm';
+      } else {
+        infoDiv.innerHTML = '🔄 未挂物体，弹簧处于原长';
+      }
+    }
+
+    function start() {
+      if (animId) cancelAnimationFrame(animId);
+      bobOffset = 0;
+      bobVelocity = 0;
+      animId = requestAnimationFrame(draw);
+    }
+
+    massSlider.addEventListener('input', function() {
+      massValue.textContent = this.value;
+    });
+    stiffnessSlider.addEventListener('input', function() {
+      stiffnessValue.textContent = this.value;
+    });
+    resetBtn.addEventListener('click', function() {
+      massSlider.value = 100;
+      stiffnessSlider.value = 5;
+      massValue.textContent = '100';
+      stiffnessValue.textContent = '5';
+      start();
+    });
+
+    function animate() {
+      draw();
+      animId = requestAnimationFrame(animate);
+    }
+
+    if (animId) cancelAnimationFrame(animId);
+    animate();
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if (animId) cancelAnimationFrame(animId);
+        animate();
+      }, 200);
+    });
+  })();
 (function() {
   document.getElementById('themeToggle').addEventListener('click', function() {
     document.body.classList.toggle('night-mode');

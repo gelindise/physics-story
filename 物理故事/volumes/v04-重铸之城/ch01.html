@@ -272,6 +272,76 @@ body.night-mode .floating-demo .ice { background:linear-gradient(135deg,#01579b,
 
 <p>林小宇深吸一口气，踏入了元塔的大门。</p>
 
+<!-- ===== 🔬 交互实验：密度测量模拟器 ===== -->
+<h3>🔬 互动实验：密度测量模拟器</h3>
+<p class="no-indent">把不同金属块放入量筒中，测量它们的质量和体积，计算出密度，找出真正的银块！</p>
+
+<div class="canvas-container">
+  <canvas id="densityCanvas" style="height:340px;"></canvas>
+  <div class="controls">
+    <label>选择金属：<select id="metalSelect">
+      <option value="0">金属A（银色）</option>
+      <option value="1">金属B（灰色）</option>
+      <option value="2">金属C（暗银色）</option>
+    </select></label>
+    <label>质量 <span id="massDisplay">0</span> g</label>
+    <label>体积 <span id="volDisplay">0</span> cm³</label>
+    <button id="measureBtn">📏 测量密度</button>
+    <button id="resetDensity">🔄 重置</button>
+  </div>
+  <div id="densityResult" style="margin-top:8px;text-align:center;font-weight:700;min-height:24px;"></div>
+  <div class="legend">🧪 左下：电子秤 &nbsp;&nbsp; 右下：量筒（单位cm³）</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：测量身边的密度</h3>
+<div class="experiment-box">
+  <div class="exp-title">📐 用排水法测物体密度</div>
+  <p>找一些家里的小物件，用厨房秤和量杯测出它们的密度！</p>
+  <ol class="exp-steps">
+    <li>准备：厨房电子秤、有刻度的一次性水杯、细线、小物件（钥匙、橡皮、苹果等）</li>
+    <li>用电子秤称出物体的质量 m，记录在表格中</li>
+    <li>在水杯中倒入适量水，记录水面刻度 V₁</li>
+    <li>用细线拴住物体，完全浸入水中，记录水面刻度 V₂</li>
+    <li>物体体积 V = V₂ − V₁，代入公式 <strong>ρ = m / V</strong> 计算密度</li>
+    <li>查密度表，看看你的物体是什么材料做的</li>
+  </ol>
+  <div class="exp-title" style="margin-top:16px;">🥚 实验2：鸡蛋的浮沉</div>
+  <ol class="exp-steps">
+    <li>把鸡蛋放入清水中——它沉底了（ρ蛋 > ρ水）</li>
+    <li>往水里加盐，搅拌溶解——鸡蛋浮起来了！</li>
+    <li>盐水的密度增大到超过鸡蛋的密度时，鸡蛋就上浮了</li>
+  </ol>
+  <p style="font-size:0.85em;opacity:0.7;">💡 小提示：海水比淡水密度大，所以在海里游泳比在游泳池里更容易浮起来！</p>
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：鉴别金属</div>
+  <p>一块金属的质量是 89g，用排水法测出体积是 10cm³。请问这是什么金属？（已知：ρ铁=7.9g/cm³，ρ铝=2.7g/cm³，ρ铜=8.9g/cm³）</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v4c1-q1" value="a" data-correct="true"> 铜（ρ = 8.9 g/cm³）</label>
+    <label><input type="radio" name="quiz-v4c1-q1" value="b"> 铁（ρ = 7.9 g/cm³）</label>
+    <label><input type="radio" name="quiz-v4c1-q1" value="c"> 铝（ρ = 2.7 g/cm³）</label>
+    <label><input type="radio" name="quiz-v4c1-q1" value="d"> 无法确定</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：密度与浮沉</div>
+  <p>把三个体积相同的球放入水中：A球（ρ=0.8g/cm³）浮在水面，B球（ρ=1.0g/cm³）悬浮在水中，C球（ρ=1.2g/cm³）沉到底部。以下说法正确的是？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v4c1-q2" value="a"> 三个球受到的浮力一样大</label>
+    <label><input type="radio" name="quiz-v4c1-q2" value="b" data-correct="true"> C球受到的浮力最大（排开水的体积最大）</label>
+    <label><input type="radio" name="quiz-v4c1-q2" value="c"> A球受到的浮力最大（因为它浮起来了）</label>
+    <label><input type="radio" name="quiz-v4c1-q2" value="d"> B球不受浮力（因为悬浮）</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
 <div style="text-align:center;margin:40px 0;">
   <p style="font-size:1.2em;font-weight:700;color:#6a1b9a;">
     —— 进入元塔，密度共振器的秘密即将揭晓 ——
@@ -284,6 +354,171 @@ body.night-mode .floating-demo .ice { background:linear-gradient(135deg,#01579b,
 <script src="../../scripts/reader.js"></script>
 <script>
 (function() {
+
+  // ===== 🔬 Density measurement simulator =====
+  (function() {
+    const canvas = document.getElementById('densityCanvas');
+    if (!canvas) return;
+    const metalSelect = document.getElementById('metalSelect');
+    const massDisplay = document.getElementById('massDisplay');
+    const volDisplay = document.getElementById('volDisplay');
+    const measureBtn = document.getElementById('measureBtn');
+    const resetBtn = document.getElementById('resetDensity');
+    const resultDiv = document.getElementById('densityResult');
+
+    // Metal data: { name, mass(g), volume(cm3), density(g/cm3), trueName }
+    const metals = [
+      { name: '金属A', mass: 105, vol: 10, density: 10.5, trueName: '银（纯银）' },
+      { name: '金属B', mass: 79, vol: 10, density: 7.9, trueName: '铁' },
+      { name: '金属C', mass: 27, vol: 10, density: 2.7, trueName: '铝' }
+    ];
+
+    // colors for each metal
+    const colors = ['#c0c0c0', '#808080', '#a8a8a8'];
+    const names = ['金属A', '金属B', '金属C'];
+
+    let selectedIdx = 0;
+    let animId = 0;
+    let dropY = 0;
+    let dropping = false;
+
+    function drawMetalBlock(ctx, w, h, idx) {
+      const cw = w, ch = h;
+      const blockW = 80, blockH = 60;
+      const bx = cw / 2 - blockW / 2, by = 20;
+
+      // Shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.1)';
+      ctx.fillRect(bx + 3, by + 3, blockW, blockH);
+
+      // Metal block
+      const grad = ctx.createLinearGradient(bx, by, bx, by + blockH);
+      grad.addColorStop(0, colors[idx]);
+      grad.addColorStop(1, colors[idx === 0 ? 0 : idx]);
+      ctx.fillStyle = grad;
+      ctx.shadowColor = 'rgba(0,0,0,0.2)';
+      ctx.shadowBlur = 6;
+      ctx.fillRect(bx, by, blockW, blockH);
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = '#666';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(bx, by, blockW, blockH);
+
+      // Label on block
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 16px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(names[idx], bx + blockW/2, by + blockH/2);
+
+      // Scale (bottom left)
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillRect(30, ch - 80, 90, 60);
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(30, ch - 80, 90, 60);
+      ctx.fillStyle = '#333';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('⚖️ 电子秤', 75, ch - 76);
+      ctx.font = 'bold 14px sans-serif';
+      ctx.fillText(metals[idx].mass + ' g', 75, ch - 56);
+
+      // Graduated cylinder (bottom right)
+      const cylX = cw - 100, cylW = 70, cylH = 120;
+      const waterLevel = 0.6;
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillRect(cylX, ch - 20 - cylH, cylW, cylH);
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(cylX, ch - 20 - cylH, cylW, cylH);
+
+      // Water
+      const waterTop = ch - 20 - cylH * waterLevel;
+      ctx.fillStyle = 'rgba(66,165,245,0.4)';
+      ctx.fillRect(cylX + 1, waterTop, cylW - 2, cylH * waterLevel - 1);
+
+      // Water level labels
+      ctx.fillStyle = '#333';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(metals[idx].vol + ' cm³', cylX - 4, ch - 20 - cylH * waterLevel / 2);
+
+      ctx.textAlign = 'left';
+      ctx.fillText('📏 量筒', cylX + 4, ch - 20 - cylH + 4);
+
+      // Water surface line
+      ctx.strokeStyle = '#42a5f5';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(cylX + 1, waterTop);
+      ctx.lineTo(cylX + cylW - 1, waterTop);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function draw() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.max(rect.width, 300);
+      const h = 340;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.height = h + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Background
+      ctx.fillStyle = '#f0f4f8';
+      ctx.fillRect(0, 0, w, h);
+
+      // Draw the metal block and measuring tools
+      drawMetalBlock(ctx, w, h, selectedIdx);
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    function start() { cancelAnimationFrame(animId); draw(); }
+
+    metalSelect.addEventListener('change', function() {
+      selectedIdx = parseInt(this.value);
+      massDisplay.textContent = metals[selectedIdx].mass;
+      volDisplay.textContent = metals[selectedIdx].vol;
+      resultDiv.textContent = '';
+      start();
+    });
+
+    measureBtn.addEventListener('click', function() {
+      const m = metals[selectedIdx];
+      const density = m.mass / m.vol;
+      resultDiv.innerHTML = '🧪 密度 ρ = ' + m.mass + 'g ÷ ' + m.vol + 'cm³ = <strong>' + density.toFixed(1) + ' g/cm³</strong> → 这是 <strong>' + m.trueName + '</strong>！';
+    });
+
+    resetBtn.addEventListener('click', function() {
+      selectedIdx = 0;
+      metalSelect.value = '0';
+      massDisplay.textContent = metals[0].mass;
+      volDisplay.textContent = metals[0].vol;
+      resultDiv.textContent = '';
+      start();
+    });
+
+    // Initialize
+    massDisplay.textContent = metals[0].mass;
+    volDisplay.textContent = metals[0].vol;
+    start();
+
+    // Handle resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(start, 200);
+    });
+  })();
   // Theme toggle
   document.getElementById('themeToggle').addEventListener('click', function() {
     document.body.classList.toggle('night-mode');

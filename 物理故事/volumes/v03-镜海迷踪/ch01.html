@@ -214,6 +214,87 @@
 
 <p>他知道下一次攻击会从哪里来了。</p>
 
+<!-- ===== 🔬 交互实验：光的反射模拟器 ===== -->
+<h3>🔬 互动实验：光的反射模拟器</h3>
+<p class="no-indent">拖动滑块调整入射角，观察光的反射规律。入射角 = 反射角，这个定律在任何角度下都成立！</p>
+
+<div class="canvas-container">
+  <canvas id="reflectionCanvas" style="height:360px;"></canvas>
+  <div class="controls">
+    <label>入射角：<input type="range" id="incidentAngle" min="5" max="85" value="45" step="1"> <span id="incidentAngleVal">45°</span></label>
+    <label>镜面类型：
+      <select id="mirrorType">
+        <option value="plane">平面镜</option>
+        <option value="convex">凸面镜</option>
+        <option value="concave">凹面镜</option>
+      </select>
+    </label>
+    <button id="resetReflection">🔄 重置</button>
+  </div>
+  <div class="legend">🔴 入射光线 &nbsp;&nbsp;🔵 反射光线 &nbsp;&nbsp;⚪ 法线（虚线）</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：镜子的秘密</h3>
+<div class="experiment-box">
+  <div class="exp-title">🪞 实验1：两面镜子看世界</div>
+  <ol class="exp-steps">
+    <li>拿两面小镜子（化妆镜即可），将它们的边缘用胶带固定在一起，做成一个可开合的书本形状</li>
+    <li>把两面镜子打开成90度角，在中间放一个小物体（如钥匙）</li>
+    <li>从镜子中看——你会发现物体的像变成3个！这就是<strong>多次反射</strong>的效果</li>
+    <li>调整夹角变小（60°、45°），像会越来越多，形成<strong>万花筒</strong>效果</li>
+  </ol>
+</div>
+
+<div class="experiment-box">
+  <div class="exp-title">🪞 实验2：硬币消失术</div>
+  <ol class="exp-steps">
+    <li>在杯子底部放一枚硬币</li>
+    <li>把杯子放在桌上，人慢慢后退，直到刚好看不到杯底的硬币</li>
+    <li>保持姿势不动，让另一个人往杯子里缓缓倒水</li>
+    <li>神奇的事情发生了——硬币又"出现"了！这是<strong>光的折射</strong>在起作用（下一章会学到）</li>
+  </ol>
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：入射角与反射角</div>
+  <p>一束光射到平面镜上，入射角为30°。反射角是多少度？入射光线和反射光线的夹角是多少度？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v3c1-q1" value="a" data-correct="true"> 反射角30°，两光线夹角60°</label>
+    <label><input type="radio" name="quiz-v3c1-q1" value="b"> 反射角30°，两光线夹角30°</label>
+    <label><input type="radio" name="quiz-v3c1-q1" value="c"> 反射角60°，两光线夹角90°</label>
+    <label><input type="radio" name="quiz-v3c1-q1" value="d"> 反射角60°，两光线夹角120°</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：平面镜成像</div>
+  <p>一个人站在平面镜前1.5米处。他的像距离镜子多远？如果他向镜子走近0.5米，像和他之间距离会变化多少？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v3c1-q2" value="a"> 像距1.5米，走近后距离减小0.5米</label>
+    <label><input type="radio" name="quiz-v3c1-q2" value="b" data-correct="true"> 像距1.5米，走近后距离减少1米</label>
+    <label><input type="radio" name="quiz-v3c1-q2" value="c"> 像距3米，走近后距离减少1米</label>
+    <label><input type="radio" name="quiz-v3c1-q2" value="d"> 像距3米，走近后距离减少0.5米</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题3：镜面反射与漫反射</div>
+  <p>为什么我们能在各个方向看到不发光的桌子，却只能在特定方向看到不发光的镜子？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v3c1-q3" value="a"> 桌子反射光的能力比镜子更强</label>
+    <label><input type="radio" name="quiz-v3c1-q3" value="b" data-correct="true"> 桌面发生漫反射（光向各个方向反射），镜面发生镜面反射（只朝一个方向反射）</label>
+    <label><input type="radio" name="quiz-v3c1-q3" value="c"> 桌子自己会发光，镜子不会</label>
+    <label><input type="radio" name="quiz-v3c1-q3" value="d"> 桌子表面光滑，镜子表面粗糙</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
 <p style="text-align:center;margin:30px 0;"><strong>—— 第1章 完 ——</strong></p>
 <p class="no-indent" style="text-align:center;margin:20px 0;">
   <a href="ch02.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 继续阅读第2章：幻境深处 →</a>
@@ -239,6 +320,176 @@
     const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
     if (p[key]) { const b = document.getElementById('completeBadge'); if (b) b.style.display = 'inline-block'; }
   })();
+})();
+</script>
+
+
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('reflectionCanvas');
+  if (!canvas) return;
+  var parent = canvas.parentElement;
+  var width = parent.clientWidth - 32 || 680;
+  var height = 360;
+  var dpr = window.devicePixelRatio || 1;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  var cx = width / 2;
+  var mirrorTop = 40;
+  var mirrorBottom = height - 40;
+
+  var incidentAngle = document.getElementById('incidentAngle');
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Mirror
+    ctx.strokeStyle = '#78909c';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx, mirrorTop);
+    ctx.lineTo(cx, mirrorBottom);
+    ctx.stroke();
+    // Mirror hatch marks
+    for (var y = mirrorTop + 10; y < mirrorBottom; y += 14) {
+      ctx.beginPath();
+      ctx.moveTo(cx - 8, y);
+      ctx.lineTo(cx + 8, y + 6);
+      ctx.strokeStyle = '#b0bec5';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    // Normal line (dashed)
+    ctx.setLineDash([6, 4]);
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, mirrorTop - 20);
+    ctx.lineTo(cx, mirrorBottom + 20);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Angle calculation
+    var theta = parseFloat(incidentAngle.value) * Math.PI / 180;
+    var rayLen = Math.min(width * 0.4, 240);
+    var incX = cx - rayLen * Math.cos(theta);
+    var incY = mirrorTop + (mirrorBottom - mirrorTop) / 2 + rayLen * Math.sin(theta);
+    var refX = cx + rayLen * Math.cos(theta);
+    var refY = mirrorTop + (mirrorBottom - mirrorTop) / 2 + rayLen * Math.sin(theta);
+    var centerY = (mirrorTop + mirrorBottom) / 2;
+
+    // Incident ray
+    ctx.strokeStyle = '#ef5350';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(incX, incY);
+    ctx.lineTo(cx, centerY);
+    ctx.stroke();
+    // Arrow on incident ray (pointing toward mirror)
+    var incMid = 0.55;
+    var ax1 = cx - (cx - incX) * incMid;
+    var ay1 = centerY - (centerY - incY) * incMid;
+    var ang = Math.atan2(centerY - incY, cx - incX);
+    ctx.fillStyle = '#ef5350';
+    ctx.beginPath();
+    ctx.moveTo(ax1, ay1);
+    ctx.lineTo(ax1 - 8 * Math.cos(ang - 0.4), ay1 - 8 * Math.sin(ang - 0.4));
+    ctx.lineTo(ax1 - 8 * Math.cos(ang + 0.4), ay1 - 8 * Math.sin(ang + 0.4));
+    ctx.closePath();
+    ctx.fill();
+
+    // Reflected ray
+    ctx.strokeStyle = '#42a5f5';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, centerY);
+    ctx.lineTo(refX, refY);
+    ctx.stroke();
+    // Arrow on reflected ray (pointing away from mirror)
+    var refMid = 0.55;
+    var rx1 = cx + (refX - cx) * refMid;
+    var ry1 = centerY + (refY - centerY) * refMid;
+    var rang = Math.atan2(refY - centerY, refX - cx);
+    ctx.fillStyle = '#42a5f5';
+    ctx.beginPath();
+    ctx.moveTo(rx1, ry1);
+    ctx.lineTo(rx1 - 8 * Math.cos(rang - 0.4), ry1 - 8 * Math.sin(rang - 0.4));
+    ctx.lineTo(rx1 - 8 * Math.cos(rang + 0.4), ry1 - 8 * Math.sin(rang + 0.4));
+    ctx.closePath();
+    ctx.fill();
+
+    // Angle arcs
+    var arcR = 40;
+    // Incident angle arc
+    ctx.strokeStyle = '#ef5350';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(cx, centerY, arcR, -Math.PI/2 - theta, -Math.PI/2);
+    ctx.stroke();
+    // Reflected angle arc
+    ctx.strokeStyle = '#42a5f5';
+    ctx.beginPath();
+    ctx.arc(cx, centerY, arcR, -Math.PI/2, -Math.PI/2 + theta);
+    ctx.stroke();
+
+    // Labels
+    ctx.font = '13px "PingFang SC", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ef5350';
+    var labelR = arcR + 18;
+    ctx.fillText('θ₁ = ' + incidentAngle.value + '°', cx - labelR * Math.sin(theta/2), centerY - labelR * Math.cos(theta/2) + 5);
+    ctx.fillStyle = '#42a5f5';
+    ctx.fillText('θ₂ = ' + incidentAngle.value + '°', cx + labelR * Math.sin(theta/2), centerY - labelR * Math.cos(theta/2) + 5);
+
+    // Labels: "入射光线" and "反射光线"
+    ctx.font = '12px "PingFang SC", sans-serif';
+    ctx.fillStyle = '#ef5350';
+    ctx.textAlign = 'right';
+    ctx.fillText('入射光线', incX - 10, incY + 5);
+    ctx.fillStyle = '#42a5f5';
+    ctx.textAlign = 'left';
+    ctx.fillText('反射光线', refX + 10, refY + 5);
+
+    // Label: 法线
+    ctx.fillStyle = '#90a4ae';
+    ctx.textAlign = 'center';
+    ctx.fillText('法线', cx, mirrorTop - 28);
+
+    // Label: 镜面
+    ctx.fillStyle = '#78909c';
+    ctx.textAlign = 'center';
+    ctx.fillText('镜  面', cx, mirrorBottom + 18);
+  }
+
+  incidentAngle.addEventListener('input', function() {
+    document.getElementById('incidentAngleVal').textContent = this.value + '°';
+    draw();
+  });
+
+  document.getElementById('resetReflection').addEventListener('click', function() {
+    incidentAngle.value = '45';
+    document.getElementById('incidentAngleVal').textContent = '45°';
+    draw();
+  });
+
+  draw();
+
+  window.addEventListener('resize', function() {
+    width = parent.clientWidth - 32 || 680;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    cx = width / 2;
+    draw();
+  });
 })();
 </script>
 

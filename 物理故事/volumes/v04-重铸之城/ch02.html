@@ -309,6 +309,75 @@ body.night-mode .timeline-item::before { border-color:#1a1a2e; }
   </div>
 </div>
 
+<!-- ===== 🔬 交互实验：排水法测体积 ===== -->
+<h3>🔬 互动实验：排水法测体积</h3>
+<p class="no-indent">用排水法测量不规则物体的体积，计算密度。看看不同材料在水中是沉是浮！</p>
+
+<div class="canvas-container">
+  <canvas id="archimedesCanvas" style="height:340px;"></canvas>
+  <div class="controls">
+    <label>选择物体：<select id="objectSelect">
+      <option value="0">石块（暗灰色）</option>
+      <option value="1">木块（棕色）</option>
+      <option value="2">铁块（银灰色）</option>
+      <option value="3">蜡块（白色）</option>
+    </select></label>
+    <label>物体质量：<span id="objMass">0</span> g</label>
+    <label>物体密度：<span id="objDensity">0</span> g/cm³</label>
+    <button id="lowerBtn">⬇️ 放入水中</button>
+    <button id="raiseBtn">⬆️ 取出</button>
+    <button id="resetArchimedes">🔄 重置</button>
+  </div>
+  <div id="archResult" style="margin-top:8px;text-align:center;font-weight:700;min-height:24px;"></div>
+  <div class="legend">💧 量筒中水位变化 = 物体排开水的体积</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：阿基米德实验在家做</h3>
+<div class="experiment-box">
+  <div class="exp-title">🛁 实验1：验证浮力原理</div>
+  <ol class="exp-steps">
+    <li>在盆中装满水，放入一个塑料盆或碗——它浮在水面</li>
+    <li>在漂浮的碗中逐渐加小石子或硬币，观察水位变化</li>
+    <li>加东西越多，碗浸入水中的体积越大，排开的水越多</li>
+    <li>当总重量超过浮力极限时——碗就沉了！</li>
+  </ol>
+  <div class="exp-title" style="margin-top:16px;">🍊 实验2：橘子的浮沉</div>
+  <ol class="exp-steps">
+    <li>把一个带皮的橘子放入水中——它浮起来了</li>
+    <li>把橘子皮剥掉，再放入水中——它沉下去了！</li>
+    <li>原因：橘子皮中有空气，整体密度小于水；去掉皮后果肉的密度大于水</li>
+  </ol>
+  <p style="font-size:0.85em;opacity:0.7;">💡 阿基米德在浴缸里发现浮力定律时，兴奋得光着身子跑到街上大喊"尤里卡"（我找到了）！</p>
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：排水法计算体积</div>
+  <p>把一个不规则石块放入装有水的量筒中，水面从 30mL 上升到 45mL。石头的质量是 40.5g。这块石头的密度是多少？它可能是什么？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v4c2-q1" value="a"> 1.11 g/cm³，可能是玻璃</label>
+    <label><input type="radio" name="quiz-v4c2-q1" value="b" data-correct="true"> 2.7 g/cm³，可能是花岗岩/石英</label>
+    <label><input type="radio" name="quiz-v4c2-q1" value="c"> 0.9 g/cm³，可能是蜡块</label>
+    <label><input type="radio" name="quiz-v4c2-q1" value="d"> 8.9 g/cm³，可能是铜</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：混合密度</div>
+  <p>工匠把 100g 的银（ρ=10.5g/cm³）和 50g 的铜（ρ=8.9g/cm³）熔在一起做成合金。忽略体积变化，合金的密度大约是多少？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v4c2-q2" value="a" data-correct="true"> 约 10.0 g/cm³（总质量÷总体积）</label>
+    <label><input type="radio" name="quiz-v4c2-q2" value="b"> 9.7 g/cm³（两种密度的平均值）</label>
+    <label><input type="radio" name="quiz-v4c2-q2" value="c"> 19.4 g/cm³（两种密度相加）</label>
+    <label><input type="radio" name="quiz-v4c2-q2" value="d"> 10.5 g/cm³（银的密度，因为银更多）</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
 <p style="text-align:center;margin:40px 0 20px;font-size:1.1em;font-weight:700;color:#00838f;">
   —— 第4卷 · 完 ——
 </p>
@@ -322,6 +391,232 @@ body.night-mode .timeline-item::before { border-color:#1a1a2e; }
 <script src="../../scripts/reader.js"></script>
 <script>
 (function() {
+
+  // ===== 🔬 Archimedes / 排水法模拟器 =====
+  (function() {
+    const canvas = document.getElementById('archimedesCanvas');
+    if (!canvas) return;
+    const objectSelect = document.getElementById('objectSelect');
+    const objMass = document.getElementById('objMass');
+    const objDensity = document.getElementById('objDensity');
+    const lowerBtn = document.getElementById('lowerBtn');
+    const raiseBtn = document.getElementById('raiseBtn');
+    const resetBtn = document.getElementById('resetArchimedes');
+    const resultDiv = document.getElementById('archResult');
+
+    // Objects data: { name, mass(g), vol(cm3), density(g/cm3), color, label }
+    const objects = [
+      { name: '石块', mass: 120, vol: 44, density: 2.73, color: '#78909c', label: '🪨 石块' },
+      { name: '木块', mass: 30, vol: 60, density: 0.50, color: '#a1887f', label: '🪵 木块' },
+      { name: '铁块', mass: 158, vol: 20, density: 7.90, color: '#546e7a', label: '🔩 铁块' },
+      { name: '蜡块', mass: 27, vol: 30, density: 0.90, color: '#eceff1', label: '🕯️ 蜡块' }
+    ];
+
+    let selectedIdx = 0;
+    let inWater = false;
+    let animId = 0;
+    let animProgress = 0; // 0 = out, 1 = in
+    let animating = false;
+
+    function draw() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.max(rect.width, 300);
+      const h = 340;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.height = h + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Background
+      ctx.fillStyle = '#f0f4f8';
+      ctx.fillRect(0, 0, w, h);
+
+      const obj = objects[selectedIdx];
+
+      // --- Graduated cylinder ---
+      const cylX = w / 2 - 30;
+      const cylY = 20;
+      const cylW = 120;
+      const cylH = 220;
+
+      drawCylinder(ctx, cylX, cylY, cylW, cylH, obj, inWater);
+
+      // --- Object on scale (left side) ---
+      const scaleX = 20;
+      const scaleY = cylY + cylH - 60;
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillRect(scaleX, scaleY, 100, 50);
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(scaleX, scaleY, 100, 50);
+      ctx.fillStyle = '#333';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('⚖️ 电子秤', scaleX + 50, scaleY + 4);
+      ctx.font = 'bold 14px sans-serif';
+      ctx.fillText(obj.mass + ' g', scaleX + 50, scaleY + 24);
+
+      // Object pictured beside the scale
+      const objX = scaleX + 50;
+      const objY = scaleY - 22;
+      ctx.fillStyle = obj.color;
+      ctx.strokeStyle = '#666';
+      ctx.lineWidth = 1;
+      ctx.fillRect(objX - 12, objY, 24, 20);
+      ctx.strokeRect(objX - 12, objY, 24, 20);
+      ctx.fillStyle = '#333';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(obj.label, objX, objY - 2);
+
+      // Info text
+      ctx.fillStyle = '#333';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'bottom';
+      const infoY = h - 8;
+      ctx.fillText('📊 m = ' + obj.mass + 'g, V = ' + obj.vol + 'cm³, ρ = ' + obj.density.toFixed(2) + ' g/cm³', 12, infoY);
+
+      if (inWater) {
+        ctx.fillStyle = '#1565c0';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillText('✅ 已浸入水中，排开水的体积 = ' + obj.vol + ' cm³', 12, infoY - 18);
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    function drawCylinder(ctx, x, y, w, h, obj, isInWater) {
+      // Cylinder body
+      ctx.fillStyle = '#e3f2fd';
+      ctx.fillRect(x, y, w, h);
+      ctx.strokeStyle = '#90caf9';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x, y, w, h);
+
+      // Water fill (initially 40% full)
+      const waterPct = 0.4;
+      const waterTop = y + h * (1 - waterPct);
+
+      // Calculate new water level when object is immersed
+      const objVolPct = obj.vol / (w * h * waterPct);
+      const newWaterTop = isInWater ? Math.min(waterTop - h * waterPct * Math.min(objVolPct, 0.4), y + 10) : waterTop;
+
+      // Draw water
+      ctx.fillStyle = 'rgba(66,165,245,0.35)';
+      ctx.fillRect(x + 2, newWaterTop, w - 4, (y + h) - newWaterTop - 2);
+
+      // Water surface line
+      ctx.strokeStyle = '#42a5f5';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(x + 2, newWaterTop);
+      ctx.lineTo(x + w - 2, newWaterTop);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Water level labels
+      ctx.fillStyle = '#1565c0';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+
+      const baseVol = Math.round(w * h * waterPct * 0.1 / 10) * 10;
+      ctx.fillText(baseVol + ' mL', x - 4, waterTop);
+
+      if (isInWater) {
+        const newVol = baseVol + obj.vol;
+        ctx.fillStyle = '#d32f2f';
+        ctx.fillText(newVol + ' mL', x - 4, newWaterTop);
+        ctx.strokeStyle = '#d32f2f';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(x + w + 4, newWaterTop);
+        ctx.lineTo(x + w + 14, newWaterTop);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Draw object inside water
+        ctx.fillStyle = obj.color;
+        ctx.strokeStyle = '#666';
+        ctx.lineWidth = 1;
+        const objDrawX = x + w / 2 - 12;
+        const objDrawY = newWaterTop + 8;
+        ctx.fillRect(objDrawX, objDrawY, 24, 16);
+        ctx.strokeRect(objDrawX, objDrawY, 24, 16);
+        ctx.fillStyle = '#333';
+        ctx.font = '9px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(obj.name, x + w / 2, objDrawY - 2);
+      }
+
+      // Scale markings on cylinder
+      ctx.fillStyle = '#bbb';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'left';
+      for (let i = 0; i <= 4; i++) {
+        const markY = y + h - 10 - i * (h - 20) / 4;
+        ctx.fillRect(x + w + 2, markY, 6, 1);
+        ctx.fillText((i * 25) + 'mL', x + w + 10, markY + 3);
+      }
+    }
+
+    function start() {
+      if (animId) cancelAnimationFrame(animId);
+      animId = requestAnimationFrame(draw);
+    }
+
+    objectSelect.addEventListener('change', function() {
+      selectedIdx = parseInt(this.value);
+      inWater = false;
+      resultDiv.textContent = '';
+      objMass.textContent = objects[selectedIdx].mass;
+      objDensity.textContent = objects[selectedIdx].density.toFixed(2);
+      start();
+    });
+
+    lowerBtn.addEventListener('click', function() {
+      if (inWater) return;
+      inWater = true;
+      resultDiv.innerHTML = '⬇️ ' + objects[selectedIdx].name + '浸入水中 — 排开水体积 = <strong>' + objects[selectedIdx].vol + ' cm³</strong> ✅';
+      start();
+    });
+
+    raiseBtn.addEventListener('click', function() {
+      if (!inWater) return;
+      inWater = false;
+      resultDiv.innerHTML = '⬆️ 取出物体，水位恢复';
+      start();
+    });
+
+    resetBtn.addEventListener('click', function() {
+      selectedIdx = 0;
+      objectSelect.value = '0';
+      inWater = false;
+      objMass.textContent = objects[0].mass;
+      objDensity.textContent = objects[0].density.toFixed(2);
+      resultDiv.textContent = '';
+      start();
+    });
+
+    // Initialize
+    objMass.textContent = objects[0].mass;
+    objDensity.textContent = objects[0].density.toFixed(2);
+    start();
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(start, 200);
+    });
+  })();
   // Theme toggle
   document.getElementById('themeToggle').addEventListener('click', function() {
     document.body.classList.toggle('night-mode');

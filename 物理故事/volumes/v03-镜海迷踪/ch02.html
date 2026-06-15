@@ -214,6 +214,97 @@
 
 <p>他把光耀之石握在手中，感受着光的温度。"走吧。下一站——重铸之城。"</p>
 
+<!-- ===== 🔬 交互实验：光的折射模拟器 ===== -->
+<h3>🔬 互动实验：光的折射模拟器</h3>
+<p class="no-indent">调整入射角，观察光线从空气斜射入水中时发生的偏折。为什么光在水中的速度变慢了？</p>
+
+<div class="canvas-container">
+  <canvas id="refractionCanvas" style="height:380px;"></canvas>
+  <div class="controls">
+    <label>入射角：<input type="range" id="refrAngle" min="0" max="85" value="45" step="1"> <span id="refrAngleVal">45°</span></label>
+    <label>介质选择：
+      <select id="mediumSelect">
+        <option value="water">水（n=1.33）</option>
+        <option value="glass">玻璃（n=1.50）</option>
+        <option value="diamond">钻石（n=2.42）</option>
+      </select>
+    </label>
+    <button id="resetRefr">🔄 重置</button>
+  </div>
+  <div class="legend">🔴 入射光线（空气） &nbsp;&nbsp;🟢 折射光线（介质） &nbsp;&nbsp;⚪ 法线（虚线）</div>
+</div>
+
+<!-- ===== 🧪 动手探索 ===== -->
+<h3>🧪 动手探索：光的折射实验</h3>
+<div class="experiment-box">
+  <div class="exp-title">💧 实验1：水中的筷子</div>
+  <ol class="exp-steps">
+    <li>拿一个透明玻璃杯，装满水</li>
+    <li>把一根筷子或吸管斜着插入水中</li>
+    <li>从侧面观察——你会发现筷子在水面处"弯折"了！这就是<strong>光的折射</strong>现象</li>
+    <li>改变插入角度，观察弯折程度如何变化</li>
+  </ol>
+</div>
+
+<div class="experiment-box">
+  <div class="exp-title">🔍 实验2：自制放大镜</div>
+  <ol class="exp-steps">
+    <li>找一个透明的圆形塑料瓶或玻璃瓶</li>
+    <li>装满水，拧紧瓶盖</li>
+    <li>把它放在文字上方——你会发现文字被放大了！<strong>装满水的圆柱瓶就是一个凸透镜</strong></li>
+    <li>试试看，瓶子离文字不同距离时，放大效果有什么变化？</li>
+  </ol>
+</div>
+
+<div class="experiment-box">
+  <div class="exp-title">🌈 实验3：制造彩虹</div>
+  <ol class="exp-steps">
+    <li>有阳光的下午，拿一个玻璃杯装满水</li>
+    <li>把杯子放在窗台边，让阳光穿过杯子</li>
+    <li>在地面上放一张白纸，调整角度</li>
+    <li>你会看到一道小小的<strong>彩虹</strong>——白光经过水杯时发生了色散（不同色光的折射角度不同）</li>
+  </ol>
+</div>
+
+<!-- ===== 💡 脑力挑战 ===== -->
+<h3>💡 脑力挑战</h3>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题1：光的折射规律</div>
+  <p>光从空气斜射入水中时，折射角与入射角相比如何变化？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v3c2-q1" value="a" data-correct="true"> 折射角小于入射角（光线向法线方向偏折）</label>
+    <label><input type="radio" name="quiz-v3c2-q1" value="b"> 折射角大于入射角（光线远离法线偏折）</label>
+    <label><input type="radio" name="quiz-v3c2-q1" value="c"> 折射角等于入射角</label>
+    <label><input type="radio" name="quiz-v3c2-q1" value="d"> 折射角与入射角没有固定关系</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题2：凸透镜成像</div>
+  <p>凸透镜的焦距是10cm。把物体放在离透镜25cm处，成什么像？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v3c2-q2" value="a"> 正立放大的虚像</label>
+    <label><input type="radio" name="quiz-v3c2-q2" value="b" data-correct="true"> 倒立缩小的实像</label>
+    <label><input type="radio" name="quiz-v3c2-q2" value="c"> 倒立等大的实像</label>
+    <label><input type="radio" name="quiz-v3c2-q2" value="d"> 倒立放大的实像</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="challenge-box">
+  <div class="challenge-title">🧠 问题3：海市蜃楼</div>
+  <p>海市蜃楼是由于光的什么现象造成的？</p>
+  <div class="challenge-options">
+    <label><input type="radio" name="quiz-v3c2-q3" value="a"> 光的直线传播</label>
+    <label><input type="radio" name="quiz-v3c2-q3" value="b"> 光的反射</label>
+    <label><input type="radio" name="quiz-v3c2-q3" value="c" data-correct="true"> 光的折射（空气密度不均匀导致光路弯曲）</label>
+    <label><input type="radio" name="quiz-v3c2-q3" value="d"> 光的色散</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
 <p style="text-align:center;margin:30px 0;"><strong>—— 第3卷·完 ——</strong></p>
 <p class="no-indent" style="text-align:center;margin:10px 0;opacity:0.7;">
   👉 下一站：<strong>重铸之城</strong>——一座金属浮空、木头沉地的混乱之城。密度和质量的知识即将登场！
@@ -242,6 +333,188 @@
     const p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
     if (p[key]) { const b = document.getElementById('completeBadge'); if (b) b.style.display = 'inline-block'; }
   })();
+})();
+</script>
+
+
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('refractionCanvas');
+  if (!canvas) return;
+  var parent = canvas.parentElement;
+  var width = parent.clientWidth - 32 || 680;
+  var height = 380;
+  var dpr = window.devicePixelRatio || 1;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  var cx = width / 2;
+  var surfaceY = height / 2;
+
+  var nValues = { water: 1.33, glass: 1.50, diamond: 2.42 };
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Water/glass region
+    var grad = ctx.createLinearGradient(0, surfaceY, 0, height);
+    grad.addColorStop(0, 'rgba(33,150,243,0.08)');
+    grad.addColorStop(1, 'rgba(33,150,243,0.2)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, surfaceY, width, height - surfaceY);
+    ctx.strokeStyle = '#42a5f5';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, surfaceY);
+    ctx.lineTo(width, surfaceY);
+    ctx.stroke();
+
+    // Labels: 空气 / 介质
+    ctx.font = '14px "PingFang SC", sans-serif';
+    ctx.fillStyle = '#78909c';
+    ctx.textAlign = 'center';
+    ctx.fillText('空  气', cx, surfaceY - 14);
+    ctx.fillStyle = '#42a5f5';
+    ctx.fillText(document.getElementById('mediumSelect').value === 'water' ? '水' : document.getElementById('mediumSelect').value === 'glass' ? '玻  璃' : '钻  石', cx, surfaceY + 24);
+
+    // Normal line
+    ctx.setLineDash([6, 4]);
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, 20);
+    ctx.lineTo(cx, height - 20);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Calculate
+    var theta = parseFloat(document.getElementById('refrAngle').value) * Math.PI / 180;
+    var n = nValues[document.getElementById('mediumSelect').value];
+    var sinTheta2 = Math.sin(theta) / n;
+    var theta2 = sinTheta2 > 1 ? Math.PI/2 : Math.asin(sinTheta2);
+    if (document.getElementById('refrAngle').value == 0) theta2 = 0;
+
+    var rayLen = Math.min(width * 0.38, 220);
+
+    // Incident ray (from above)
+    ctx.strokeStyle = '#ef5350';
+    ctx.lineWidth = 2.5;
+    var incX = cx - rayLen * Math.sin(theta);
+    var incY = surfaceY - rayLen * Math.cos(theta);
+    ctx.beginPath();
+    ctx.moveTo(incX, incY);
+    ctx.lineTo(cx, surfaceY);
+    ctx.stroke();
+    // Arrow
+    if (theta > 0.05) {
+      var imid = 0.5;
+      var iax = cx - (cx - incX) * imid;
+      var iay = surfaceY - (surfaceY - incY) * imid;
+      var iang = Math.atan2(surfaceY - incY, cx - incX);
+      ctx.fillStyle = '#ef5350';
+      ctx.beginPath();
+      ctx.moveTo(iax, iay);
+      ctx.lineTo(iax - 8 * Math.cos(iang - 0.4), iay - 8 * Math.sin(iang - 0.4));
+      ctx.lineTo(iax - 8 * Math.cos(iang + 0.4), iay - 8 * Math.sin(iang + 0.4));
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Refracted ray (in medium)
+    ctx.strokeStyle = '#66bb6a';
+    ctx.lineWidth = 2.5;
+    var refrX = cx + rayLen * Math.sin(theta2);
+    var refrY = surfaceY + rayLen * Math.cos(theta2);
+    ctx.beginPath();
+    ctx.moveTo(cx, surfaceY);
+    ctx.lineTo(refrX, refrY);
+    ctx.stroke();
+    // Arrow
+    if (theta2 > 0.05) {
+      var rmid = 0.5;
+      var rax = cx + (refrX - cx) * rmid;
+      var rayY = surfaceY + (refrY - surfaceY) * rmid;
+      var rang = Math.atan2(refrY - surfaceY, refrX - cx);
+      ctx.fillStyle = '#66bb6a';
+      ctx.beginPath();
+      ctx.moveTo(rax, rayY);
+      ctx.lineTo(rax - 8 * Math.cos(rang - 0.4), rayY - 8 * Math.sin(rang - 0.4));
+      ctx.lineTo(rax - 8 * Math.cos(rang + 0.4), rayY - 8 * Math.sin(rang + 0.4));
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Reflected ray (if total internal reflection)
+    if (sinTheta1 > 1/n) {
+      // Show reflection
+    }
+
+    // Angle arcs
+    var arcR = 35;
+    if (theta > 0.05) {
+      ctx.strokeStyle = '#ef5350';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(cx, surfaceY, arcR, -Math.PI/2 - theta, -Math.PI/2);
+      ctx.stroke();
+    }
+    if (theta2 > 0.05) {
+      ctx.strokeStyle = '#66bb6a';
+      ctx.beginPath();
+      ctx.arc(cx, surfaceY, arcR, Math.PI/2, Math.PI/2 + theta2);
+      ctx.stroke();
+    }
+
+    // Labels
+    ctx.font = '13px "PingFang SC", sans-serif';
+    ctx.textAlign = 'center';
+    if (theta > 0.05) {
+      var lr = arcR + 18;
+      ctx.fillStyle = '#ef5350';
+      ctx.fillText('θ₁=' + document.getElementById('refrAngle').value + '°', cx - lr * Math.sin(theta/2), surfaceY - lr * Math.cos(theta/2) + 5);
+    }
+    if (theta2 > 0.05) {
+      var lr2 = arcR + 18;
+      var deg2 = (theta2 * 180 / Math.PI).toFixed(1);
+      ctx.fillStyle = '#66bb6a';
+      ctx.fillText('θ₂=' + deg2 + '°', cx + lr2 * Math.sin(theta2/2), surfaceY + lr2 * Math.cos(theta2/2) + 5);
+    }
+
+    // Label: 法线
+    ctx.fillStyle = '#90a4ae';
+    ctx.textAlign = 'center';
+    ctx.font = '12px "PingFang SC", sans-serif';
+    ctx.fillText('法线', cx, 14);
+  }
+
+  document.getElementById('refrAngle').addEventListener('input', function() {
+    document.getElementById('refrAngleVal').textContent = this.value + '°';
+    draw();
+  });
+  document.getElementById('mediumSelect').addEventListener('change', draw);
+  document.getElementById('resetRefr').addEventListener('click', function() {
+    document.getElementById('refrAngle').value = '45';
+    document.getElementById('refrAngleVal').textContent = '45°';
+    document.getElementById('mediumSelect').value = 'water';
+    draw();
+  });
+
+  draw();
+
+  window.addEventListener('resize', function() {
+    width = parent.clientWidth - 32 || 680;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    cx = width / 2;
+    draw();
+  });
 })();
 </script>
 

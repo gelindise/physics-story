@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：归途 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.generator-canvas { width:100%; max-width:520px; height:300px; background:#f3e5f5; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.generator-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row input[type="range"] { width:120px; vertical-align:middle; }
+.ctrl-row button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; }
+.generator-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.generator-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .generator-info span { background:rgba(255,255,255,0.08); }
+.end-credit { text-align:center; padding:40px 20px; margin-top:40px; border-top:2px solid #e0e0e0; }
+.end-credit h2 { color:#1a237e; font-size:1.8em; border:none; }
+.end-credit p { font-size:1.1em; line-height:2; text-indent:0; }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第10卷</button>
+  <span class="chapter-title">最终章 · 归途</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>最终章：归途</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：磁生电 · 发电机 · 能源与可持续发展</p>
+  <hr>
+
+  <p>磁之秘境的核心稳定后，暗影带着林小宇和凌音走向能量塔的最高层。</p>
+  <p>在那里，林小宇看到了一个巨大的盘状装置——它漂浮在空中，缓慢旋转着。装置的表面雕刻着复杂的纹路，散发出柔和的蓝光。</p>
+  <p>"这是元界的<strong>发电机</strong>。"暗影说，"它利用<strong>电磁感应</strong>原理——闭合电路的一部分导体在磁场中做切割磁感线运动时，导体中就会产生感应电流。简单地说，就是<strong>磁能生电</strong>。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：电磁感应</div>
+    <div class="card-body">
+      <p><strong>电磁感应（法拉第发现）：</strong></p>
+      <p>闭合电路的一部分导体在磁场中做切割磁感线运动时，导体中就会产生感应电流。</p>
+      <p>• <strong>发电机</strong>就是利用电磁感应原理工作的</p>
+      <p>• 机械能 → 电能</p>
+      <p>• 感应电流的方向与<strong>导体运动方向</strong>和<strong>磁场方向</strong>有关</p>
+      <p><strong>发电机与电动机的区别：</strong></p>
+      <p>• 电动机：电能 → 机械能（通电导体在磁场中受力）</p>
+      <p>• 发电机：机械能 → 电能（电磁感应）</p>
+      <p>两者的构造非常相似，但原理刚好相反。</p>
+    </div>
+  </div>
+
+  <p>"那个科学家——他到底做了什么？"林小宇问暗影。</p>
+  <p>暗影叹了口气："他发现了元界的存在，并试图用元界的能量来满足你们世界的能源需求。但他不知道的是，元界的能量是有限的。过度抽取会导致法则崩坏——就像现在这样。"</p>
+  <p>"那我的世界——"林小宇想到了自己的家。</p>
+  <p>"你的世界和元界是相连的。如果元界毁灭，你的世界也会受到波及。"暗影看着他，"所以我才一路引导你。只有你能修复核心。"</p>
+  <p>"但是我——"林小宇犹豫了一下，"我该怎么回去？"</p>
+  <p>暗影指向发电机装置的中央："站到那里。当核心完全修复后，它会打开一道通往你世界的门。但有一个条件——"</p>
+  <p>"什么条件？"</p>
+  <p>暗影看着凌音："你——要他走吗？"</p>
+  <p>凌音沉默了一瞬，然后笑了："他属于那个世界。我们都有自己的归途。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：能源与可持续发展</div>
+    <div class="card-body">
+      <p><strong>能源分类：</strong></p>
+      <p>• <strong>一次能源</strong>：直接来自自然界（煤、石油、天然气、风能、水能、太阳能）</p>
+      <p>• <strong>二次能源</strong>：由一次能源加工转化而来（电能、汽油、氢气）</p>
+      <p>• <strong>可再生能源</strong>：可循环再生（太阳能、风能、水能、地热能、潮汐能）</p>
+      <p>• <strong>不可再生能源</strong>：用一点少一点（煤、石油、天然气、核燃料）</p>
+      <p><strong>能源危机：</strong></p>
+      <p>化石能源（煤、石油、天然气）是亿万年前生物的能量转化而来，消耗速度远大于生成速度。</p>
+      <p><strong>可持续发展：</strong></p>
+      <p>• 开发新能源（太阳能、风能、核能）</p>
+      <p>• 节约能源、提高能源利用效率</p>
+      <p>• 保护环境，减少温室气体排放</p>
+    </div>
+  </div>
+
+  <p>林小宇走向发电机装置的中心。周围的磁场越来越强，他的头发因静电而立了起来。</p>
+  <p>他闭上眼睛，最后一次使用"法则视觉"。他看到所有的物理法则在周围交织——磁感线穿过线圈，发电机将机械能转化为电能，电流沿着导线流向能量核心的各处……</p>
+  <p>他伸出手，调整了几个关键节点的连接。发电机的转速逐渐平稳，能量核心发出了耀眼的蓝白色光芒。</p>
+  <p>一道门——由纯粹的光构成——在装置中央打开了。</p>
+  <p>"该走了。"暗影说。</p>
+  <p>林小宇转过身，看着凌音。这个一路陪伴他的女孩，从漂移之原开始，一起经历了炎寒谷、镜海、重铸之城、力之试炼场、深渊之底、齿轮森林、炎熔之心、雷霆城——直到现在的磁之秘境。</p>
+  <p>"谢谢。"千言万语化为两个字。</p>
+  <p>凌音微笑着挥了挥手："走吧，物理解码者。别忘了你在这里学到的一切。"</p>
+  <p>林小宇深吸一口气，跨进了光门——</p>
+
+  <p style="text-align:center;padding:30px;font-style:italic;font-size:1.2em;color:#1a237e;">
+    教室中，林小宇猛地抬起头。<br>
+    窗外阳光正好，黑板上写着下节课的内容。<br>
+    他低头看着自己的手——一本物理课本。<br>
+    他翻开封面，第一页写着：<br><br>
+    <strong>"给所有觉得物理很难的人——<br>
+    其实，你只是还没找到理解它的方式。"</strong>
+  </p>
+
+  <!-- ===== 🔬 交互实验：发电机模拟器 ===== -->
+  <h3>🔬 互动实验：发电机模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">转动线圈，观察电磁感应产生的电流。</p>
+
+  <canvas id="generatorCanvas" class="generator-canvas" width="520" height="300"></canvas>
+
+  <div class="ctrl-row">
+    <button id="spinBtn" style="background:#6a1b9a;color:#fff;">▶ 转动线圈</button>
+    <label>转速：<input type="range" id="speedSlider" min="1" max="10" value="5"> <span id="speedLabel">5</span></label>
+    <label>磁场强度：<input type="range" id="fieldSlider2" min="1" max="10" value="5"> <span id="fieldLabel2">5</span></label>
+  </div>
+
+  <div class="generator-info">
+    <span>转速：<strong id="rpmVal">0</strong> rps</span>
+    <span>感应电流：<strong id="genIVal">0</strong> A</span>
+    <span>输出电压：<strong id="genUVal">0</strong> V</span>
+    <span>灯泡：<strong id="bulbGenState" style="color:#f44336;">● 灭</strong></span>
+  </div>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：能源与未来</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">💡 实验1：简单发电机</div>
+    <p><strong>目标：</strong>用简单材料模拟发电机原理。</p>
+    <p><strong>材料：</strong>一个指南针、一根约1m长的漆包线、一个纸杯、胶带。</p>
+    <ol class="exp-steps">
+      <li>把漆包线绕成一个大线圈（直径约15cm），绕20圈</li>
+      <li>把线圈的两端连接到一个灵敏的电流计（或者用指南针代替）</li>
+      <li>把线圈放在纸杯上固定好</li>
+      <li>用一块磁铁在线圈中快速来回移动</li>
+      <li>观察指南针的偏转——这证明线圈中产生了<strong>感应电流</strong></li>
+    </ol>
+    <p><strong>原理：</strong>磁铁在线圈中运动时，线圈切割磁感线，产生感应电流。这就是所有发电机的核心原理！</p>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🌱 实验2：家庭能源审计</div>
+    <p><strong>目标：</strong>了解家庭能源消耗，培养节能意识。</p>
+    <p><strong>材料：</strong>一张纸、一支笔、一个月的家庭电费单。</p>
+    <ol class="exp-steps">
+      <li>查看家中的电表，记录每天的用电量（千瓦时kWh）</li>
+      <li>列出家中主要电器及其功率（通常在铭牌上标注）</li>
+      <li>估算每个电器每天的使用时间</li>
+      <li>计算每个电器的日耗电量：W = P × t</li>
+      <li>找出耗电量最大的三个电器</li>
+      <li>思考：如何减少家庭用电？</li>
+    </ol>
+    <div class="exp-table">
+      <table>
+        <tr><th>电器</th><th>功率（W）</th><th>日使用时间（h）</th><th>日耗电（kWh）</th></tr>
+        <tr><td>冰箱</td><td></td><td></td><td></td></tr>
+        <tr><td>空调</td><td></td><td></td><td></td></tr>
+        <tr><td>电视</td><td></td><td></td><td></td></tr>
+        <tr><td>电脑</td><td></td><td></td><td></td></tr>
+        <tr><td>电灯</td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：电磁感应</div>
+    <p>发现电磁感应现象的科学家是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v10c2-q1" value="a"> 牛顿</label>
+      <label><input type="radio" name="quiz-v10c2-q1" value="b"> 欧姆</label>
+      <label><input type="radio" name="quiz-v10c2-q1" value="c" data-correct="true"> 法拉第</label>
+      <label><input type="radio" name="quiz-v10c2-q1" value="d"> 焦耳</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：发电机</div>
+    <p>发电机工作时，能量转化过程是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v10c2-q2" value="a"> 电能 → 机械能</label>
+      <label><input type="radio" name="quiz-v10c2-q2" value="b" data-correct="true"> 机械能 → 电能</label>
+      <label><input type="radio" name="quiz-v10c2-q2" value="c"> 内能 → 电能</label>
+      <label><input type="radio" name="quiz-v10c2-q2" value="d"> 电能 → 光能</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：可再生能源</div>
+    <p>下列能源中，属于可再生能源的是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v10c2-q3" value="a"> 煤炭</label>
+      <label><input type="radio" name="quiz-v10c2-q3" value="b"> 石油</label>
+      <label><input type="radio" name="quiz-v10c2-q3" value="c" data-correct="true"> 太阳能</label>
+      <label><input type="radio" name="quiz-v10c2-q3" value="d"> 天然气</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 全文完 ——</strong></p>
+
+  <div class="end-credit">
+    <h2>🏆 物理解码者：异世法则</h2>
+    <p>
+      <strong>全十卷 · 完</strong><br><br>
+      覆盖初中物理全部核心知识点：<br>
+      机械运动 · 声现象 · 物态变化 · 光现象 · 透镜 · 质量与密度 ·<br>
+      力与运动 · 压强 · 浮力 · 简单机械 · 功与机械能 · 内能 · 热机 ·<br>
+      电路 · 欧姆定律 · 电功率 · 电与磁 · 能源与可持续发展<br><br>
+      共 20 章 · 20+ 个交互实验 · 60+ 道挑战题 · 40+ 个家庭实验<br><br>
+      <em style="opacity:0.7;">献给每一个觉得物理很难的人——<br>
+      物理不是公式和数字，而是理解世界的语言。</em>
+    </p>
+  </div>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('generatorCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 300;
+
+  var spinBtn = document.getElementById('spinBtn');
+  var speedSlider = document.getElementById('speedSlider');
+  var fieldSlider2 = document.getElementById('fieldSlider2');
+  var speedLabel = document.getElementById('speedLabel');
+  var fieldLabel2 = document.getElementById('fieldLabel2');
+  var rpmVal = document.getElementById('rpmVal');
+  var genIVal = document.getElementById('genIVal');
+  var genUVal = document.getElementById('genUVal');
+  var bulbGenState = document.getElementById('bulbGenState');
+
+  var spinning = false;
+  var angle = 0;
+  var animId = null;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var speed = parseFloat(speedSlider.value);
+    var field = parseFloat(fieldSlider2.value);
+    speedLabel.textContent = speed;
+    fieldLabel2.textContent = field;
+
+    if (spinning) {
+      angle += speed * 0.02;
+    }
+
+    // Magnet N and S
+    ctx.fillStyle = '#e53935';
+    ctx.fillRect(80, 90, 40, 120);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 18px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('N', 100, 155);
+
+    ctx.fillStyle = '#1565c0';
+    ctx.fillRect(380, 90, 40, 120);
+    ctx.fillStyle = '#fff';
+    ctx.fillText('S', 400, 155);
+
+    // Magnetic field lines
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = 'rgba(156,39,176,' + (0.1 + field * 0.04) + ')';
+    ctx.lineWidth = 1.5;
+    for (var l = 0; l < 5; l++) {
+      ctx.beginPath();
+      var startY = 100 + l * 25;
+      ctx.moveTo(120, startY);
+      ctx.lineTo(380, startY);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
+    // Generator coil
+    var cx = 250, cy = 150;
+    var coilW = 60, coilH = 70;
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+
+    // Coil frame
+    ctx.strokeStyle = '#ff8f00';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(-coilW/2, -coilH/2, coilW, coilH);
+
+    // Winding
+    ctx.strokeStyle = '#ff6f00';
+    ctx.lineWidth = 1.5;
+    for (var i = 0; i < 5; i++) {
+      var wy = -coilH/2 + 6 + i * (coilH - 12) / 5;
+      ctx.beginPath();
+      ctx.moveTo(-coilW/2 - 2, wy);
+      ctx.lineTo(coilW/2 + 2, wy + 4);
+      ctx.stroke();
+    }
+
+    // Shaft (axle)
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(-coilW/2 - 30, 0);
+    ctx.lineTo(coilW/2 + 30, 0);
+    ctx.stroke();
+
+    ctx.restore();
+
+    // Coil rotation indicator
+    ctx.fillStyle = '#ff6f00';
+    ctx.beginPath();
+    ctx.arc(cx + 15 * Math.cos(angle), cy + 15 * Math.sin(angle), 4, 0, Math.PI*2);
+    ctx.fill();
+
+    // Current generated
+    var inducedI = Math.abs(Math.sin(angle)) * speed * field * 0.1;
+    var inducedU = inducedI * 20;
+
+    // Bulb
+    var bx = 280, by = 50;
+    if (inducedI > 0.3) {
+      ctx.shadowColor = '#ffeb3b';
+      ctx.shadowBlur = 20;
+      ctx.fillStyle = '#fff9c4';
+      ctx.beginPath();
+      ctx.arc(bx, by, 16, 0, Math.PI*2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = '#ffeb3b';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(bx, by, 16, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.fillStyle = '#ff9800';
+      ctx.beginPath();
+      ctx.moveTo(bx - 5, by - 5);
+      ctx.quadraticCurveTo(bx, by - 1, bx + 5, by - 5);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = '#e0e0e0';
+      ctx.beginPath();
+      ctx.arc(bx, by, 16, 0, Math.PI*2);
+      ctx.fill();
+      ctx.strokeStyle = '#bdbdbd';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(bx, by, 16, 0, Math.PI*2);
+      ctx.stroke();
+    }
+
+    // Light glow
+    if (inducedI > 0.5) {
+      var glowA = Math.min(inducedI / 5, 0.3);
+      ctx.fillStyle = 'rgba(255,235,59,' + glowA + ')';
+      ctx.beginPath();
+      ctx.arc(bx, by, 35, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // Wire from coil to bulb
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx + 60, cy);
+    ctx.lineTo(bx - 16, by);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - 60, cy);
+    ctx.lineTo(bx + 16, by);
+    ctx.stroke();
+
+    // Labels
+    rpmVal.textContent = spinning ? speed.toFixed(0) : '0';
+    genIVal.textContent = inducedI.toFixed(2);
+    genUVal.textContent = inducedU.toFixed(1);
+    if (inducedI > 0.3) {
+      bulbGenState.textContent = '● 亮';
+      bulbGenState.style.color = '#4caf50';
+    } else if (spinning) {
+      bulbGenState.textContent = '● 微亮';
+      bulbGenState.style.color = '#ff9800';
+    } else {
+      bulbGenState.textContent = '● 灭';
+      bulbGenState.style.color = '#f44336';
+    }
+
+    if (spinning) animId = requestAnimationFrame(draw);
+  }
+
+  spinBtn.addEventListener('click', function() {
+    spinning = !spinning;
+    spinBtn.textContent = spinning ? '⏹ 停止' : '▶ 转动线圈';
+    if (spinning) {
+      draw();
+    } else {
+      if (animId) cancelAnimationFrame(animId);
+      draw();
+    }
+  });
+
+  speedSlider.addEventListener('input', function() {
+    if (!spinning) draw();
+  });
+  fieldSlider2.addEventListener('input', function() {
+    if (!spinning) draw();
+  });
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v10ch02) { p.v10ch02 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

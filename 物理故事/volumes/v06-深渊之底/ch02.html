@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：浮生之战 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.buoyancy-canvas { width:100%; max-width:520px; height:360px; background:linear-gradient(180deg,#e3f2fd 0%,#90caf9 100%); border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.buoyancy-canvas { background:linear-gradient(180deg,#1a237e 0%,#0d47a1 100%); }
+.control-group { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin:16px 0; }
+.control-group label { font-size:0.9em; }
+.control-group input[type="range"] { width:130px; vertical-align:middle; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:8px 0; }
+.ctrl-row button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; font-size:0.95em; }
+.ctrl-row .btn-start { background:#43a047; color:#fff; }
+.ctrl-row .btn-start:disabled { background:#9e9e9e; }
+.info-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin:12px 0; text-align:center; }
+.info-grid div { background:rgba(0,0,0,0.05); padding:8px; border-radius:8px; font-size:0.85em; }
+body.night-mode .info-grid div { background:rgba(255,255,255,0.08); }
+.status-badge { display:inline-block; padding:4px 16px; border-radius:20px; font-weight:700; font-size:0.9em; }
+.status-up { background:#c8e6c9; color:#2e7d32; }
+.status-down { background:#ffcdd2; color:#c62828; }
+.status-suspend { background:#fff3e0; color:#e65100; }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第6卷</button>
+  <span class="chapter-title">第2章 · 浮生之战</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第2章：浮生之战</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：浮力 · 阿基米德原理 · 浮沉条件</p>
+  <hr>
+
+  <p>修理好调培塔后，林小宇和凌音在城中休整了一夜。第二天一早，老雷带来了一个令人不安的消息——深渊底部的能量波动越来越强，整座城市的地基都在微微震动。</p>
+  <p>"深渊巨兽——如果它真的苏醒了，我们需要启动'浮力锚'。"老雷说。</p>
+  <p>"浮力锚？"林小宇好奇地问。</p>
+  <p>"那是古代建造者留下的终极防御系统。它的核心是一排巨大的浮力舱——当城市某处受到巨大压力或下沉威胁时，浮力舱可以产生足够大的<strong>浮力</strong>，把整座城市托住。"老雷叹了口气，"但是浮力锚也已经损坏了。我们谁都不懂怎么修。"</p>
+  <p>"带我去看看。"林小宇说。</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：浮力</div>
+    <div class="card-body">
+      <p><strong>浮力</strong>是浸在液体（或气体）中的物体受到的向上的托力。</p>
+      <p>浮力的方向：<strong>竖直向上</strong>。</p>
+      <p>浮力产生的原因：液体对物体上下表面的压力差。</p>
+      <p><strong>阿基米德原理：</strong></p>
+      <p style="text-align:center;font-size:1.3em;font-weight:700;">F<sub>浮</sub> = G<sub>排</sub> = ρ<sub>液</sub> g V<sub>排</sub></p>
+      <p>浸在液体中的物体所受的浮力，<strong>等于它排开的液体所受的重力</strong>。</p>
+      <p>这个故事传说中，阿基米德在浴缸里发现这个原理时，激动得光着身子跑上大街大喊"尤里卡！"（我找到了！）</p>
+    </div>
+  </div>
+
+  <p>浮力锚位于城市底部的一座穹顶大厅中。一排巨大的金属舱体悬浮在一个深水池中——或者说，原本应该悬浮着。现在大多数舱体都沉在了池底，只有少数几个还漂在水面上。</p>
+  <p>"看这个——"凌音走到一个控制台前，上面显示着一组读数。"每个浮力舱的排开水量都变了。原来设计的时候，每个舱体排开的水的体积正好能产生足够的上浮力，但现在——"</p>
+  <p>林小宇走近一个沉底的舱体，把手放在上面。他闭上眼睛，脑海中出现了这个舱体的"受力分析"：</p>
+  <p>舱体受到向下的重力（G）和向上的浮力（F<sub>浮</sub>）。当 G > F<sub>浮</sub> 时下沉，G < F<sub>浮</sub> 时上浮，G = F<sub>浮</sub> 时悬浮。</p>
+  <p>"这个舱体进水了。"林小宇睁开眼，"它内部被灌入了水，使得整体的重量变大，重力超过了浮力，所以就沉下去了。"</p>
+  <p>"那只要把水排出来就行？"凌音问。</p>
+  <p>"对！但我们需要找到每个舱体的排水阀，而且要确保排完水后浮力足够大。"林小宇走向下一个舱体，"同时我们还要调整一些舱体的体积——V<sub>排</sub> 越大，浮力越大。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：浮沉条件</div>
+    <div class="card-body">
+      <p>浸在液体中的物体的浮沉取决于物体所受浮力和重力的大小关系：</p>
+      <p>🔴 <strong>下沉</strong>：F<sub>浮</sub> &lt; G → ρ<sub>液</sub> &lt; ρ<sub>物</sub>（如铁块在水中下沉）</p>
+      <p>🟢 <strong>上浮</strong>：F<sub>浮</sub> &gt; G → ρ<sub>液</sub> &gt; ρ<sub>物</sub>（如木块在水中上浮）</p>
+      <p>🟡 <strong>悬浮</strong>：F<sub>浮</sub> = G → ρ<sub>液</sub> = ρ<sub>物</sub>（如悬浮在水中的鱼）</p>
+      <p>🔵 <strong>漂浮</strong>：F<sub>浮</sub> = G，但 V<sub>排</sub> &lt; V<sub>物</sub> → ρ<sub>液</sub> &gt; ρ<sub>物</sub>（如船浮在水面）</p>
+      <p><strong>应用举例：</strong></p>
+      <p>• 潜水艇：通过改变自身<strong>重力</strong>来实现浮沉（向水舱注水/排水）</p>
+      <p>• 热气球：通过改变<strong>空气密度</strong>（加热气体）来改变浮力</p>
+      <p>• 轮船：用"空心"的方法增大 V<sub>排</sub>，从而获得更大的浮力</p>
+    </div>
+  </div>
+
+  <p>林小宇和凌音花了大半天时间，挨个检查了十二个浮力舱。他们排出了进水的舱体，修复了几个破损的阀门，还调整了一个舱体的大小以增大浮力。</p>
+  <p>当最后一个舱体被修复完毕，浮力锚系统重新启动时，整座城市发出了轻微的震动——然后稳定了下来。深渊底部的能量波动似乎也被压制住了。</p>
+  <p>"干得好。"一个陌生的声音从身后传来。</p>
+  <p>林小宇和凌音猛地转身。一个全身笼罩在暗紫色斗篷中的人影站在穹顶入口处——<strong>暗影使徒</strong>。</p>
+  <p>"就是你把调培塔破坏的？"林小宇质问道。</p>
+  <p>"破坏？"暗影使徒轻笑了一声，"我只是加速了一个必然的过程。深渊之底的能量不是你想象的那样简单——不过，你已经证明了自己的实力。"</p>
+  <p>他伸出手，掌心出现一个旋转的暗紫色光球："我在齿轮森林等你。如果你想了解这个世界的真相——就来吧。"</p>
+  <p>说完，暗影使徒化作一道暗影消失了。</p>
+  <p>"他到底想干什么？"凌音皱起眉头。</p>
+  <p>"不管他想干什么——"林小宇握紧拳头，"我们必须去齿轮森林。他说得对，这个世界的真相，我必须搞清楚。"</p>
+
+  <!-- ===== 🔬 交互实验：浮力模拟器 ===== -->
+  <h3>🔬 互动实验：浮力与浮沉模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">选择不同物体和液体，观察物体的浮沉状态和浮力大小。</p>
+
+  <canvas id="buoyancyCanvas" class="buoyancy-canvas" width="520" height="360"></canvas>
+
+  <div class="info-grid">
+    <div>物体：<strong id="objectName">木块</strong></div>
+    <div>重力：<strong id="gravityVal">-</strong></div>
+    <div>浮力：<strong id="buoyancyVal">-</strong></div>
+    <div>液体：<strong id="liquidName2">水</strong></div>
+    <div>密度(物)：<strong id="objDensity">0.6 g/cm³</strong></div>
+    <div>密度(液)：<strong id="liqDensity">1.0 g/cm³</strong></div>
+    <div>状态：<strong><span id="statusBadge" class="status-badge status-up">上浮</span></strong></div>
+    <div>排开液体体积：<strong id="displacedVol">-</strong></div>
+    <div>F浮/G：<strong id="ratioDisplay">-</strong></div>
+  </div>
+
+  <div class="control-group">
+    <label>物体：
+      <select id="objectSelect">
+        <option value="0.6">木块 (0.6 g/cm³)</option>
+        <option value="0.92">冰 (0.92 g/cm³)</option>
+        <option value="1.0">水(悬浮) (1.0 g/cm³)</option>
+        <option value="2.7">铝块 (2.7 g/cm³)</option>
+        <option value="7.9">铁块 (7.9 g/cm³)</option>
+        <option value="13.6">汞珠 (13.6 g/cm³)</option>
+      </select>
+    </label>
+    <label>液体：
+      <select id="liquidSelect2">
+        <option value="0.8">油 (0.8 g/cm³)</option>
+        <option value="1.0">水 (1.0 g/cm³)</option>
+        <option value="1.03">海水 (1.03 g/cm³)</option>
+        <option value="1.26">甘油 (1.26 g/cm³)</option>
+        <option value="13.6">水银 (13.6 g/cm³)</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：浮力的奥秘</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🥚 实验1：鸡蛋的浮沉</div>
+    <p><strong>目标：</strong>通过改变液体密度来改变浮力，让鸡蛋浮起来。</p>
+    <p><strong>材料：</strong>生鸡蛋、透明杯子（或玻璃瓶）、水、盐、勺子、筷子。</p>
+    <ol class="exp-steps">
+      <li>在杯子里装大半杯水，轻轻放入鸡蛋——<strong>鸡蛋沉入水底</strong></li>
+      <li>向水中逐渐加盐，用筷子搅拌溶解</li>
+      <li>加到一定程度时，鸡蛋会慢慢浮起来——最终<strong>悬浮</strong>在水中</li>
+      <li>继续加盐，鸡蛋会<strong>浮到水面</strong>上</li>
+    </ol>
+    <p><strong>原理：</strong>加盐增大了水的密度（ρ液增大），使 F浮 = ρ液gV排 增大。当 F浮 > G 时，鸡蛋上浮。</p>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🛳️ 实验2：橡皮泥船</div>
+    <p><strong>目标：</strong>理解"空心法"增大浮力的原理。</p>
+    <p><strong>材料：</strong>一块橡皮泥（或黏土）、盆子、水、几枚硬币。</p>
+    <ol class="exp-steps">
+      <li>把橡皮泥揉成球状，放入水中——它会<strong>沉入水底</strong></li>
+      <li>把橡皮泥捏成碗状或船形（尽量捏薄，边缘捏高）</li>
+      <li>再次放入水中——它会<strong>浮在水面</strong>上</li>
+      <li>往"船"里慢慢放硬币，看看最多能放几枚硬币才沉没</li>
+    </ol>
+    <p><strong>原理：</strong>同样重量的橡皮泥，做成船形后排开的水更多（V排更大），产生的浮力更大。这就是为什么钢铁造的轮船能浮在水面上！</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：阿基米德原理</div>
+    <p>一个物体浸没在水中时，排开的水重为5N。则它所受的浮力为？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v6c2-q1" value="a"> 0N（排开的水重不是浮力）</label>
+      <label><input type="radio" name="quiz-v6c2-q1" value="b" data-correct="true"> 5N</label>
+      <label><input type="radio" name="quiz-v6c2-q1" value="c"> 10N</label>
+      <label><input type="radio" name="quiz-v6c2-q1" value="d"> 2.5N</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：浮沉条件</div>
+    <p>潜水艇在水中下潜时，是通过改变什么来实现的？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v6c2-q2" value="a" data-correct="true"> 自身的重力（向水舱注水）</label>
+      <label><input type="radio" name="quiz-v6c2-q2" value="b"> 自身的体积</label>
+      <label><input type="radio" name="quiz-v6c2-q2" value="c"> 水的密度</label>
+      <label><input type="radio" name="quiz-v6c2-q2" value="d"> 所处的深度</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：浮力的应用</div>
+    <p>一艘轮船从河里驶入海里（海水密度大于河水），它受到的浮力如何变化？船身会怎样变化？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v6c2-q3" value="a"> 浮力变大，船身上浮一些</label>
+      <label><input type="radio" name="quiz-v6c2-q3" value="b" data-correct="true"> 浮力不变，船身上浮一些（排开水的体积变小）</label>
+      <label><input type="radio" name="quiz-v6c2-q3" value="c"> 浮力变小，船身下沉一些</label>
+      <label><input type="radio" name="quiz-v6c2-q3" value="d"> 浮力不变，船身下沉一些</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第2章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="../v07-齿轮森林与通天塔/index.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 下一卷：齿轮森林与通天塔 →</a>
+  </p>
+</div>
+
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('buoyancyCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 360;
+
+  var objSelect = document.getElementById('objectSelect');
+  var liqSelect = document.getElementById('liquidSelect2');
+  var objName = document.getElementById('objectName');
+  var gravityVal = document.getElementById('gravityVal');
+  var buoyancyVal = document.getElementById('buoyancyVal');
+  var liquidName2 = document.getElementById('liquidName2');
+  var objDensity = document.getElementById('objDensity');
+  var liqDensity = document.getElementById('liqDensity');
+  var statusBadge = document.getElementById('statusBadge');
+  var displacedVol = document.getElementById('displacedVol');
+  var ratioDisplay = document.getElementById('ratioDisplay');
+
+  var g = 10;
+  var objNames = { '0.6':'木块','0.92':'冰','1.0':'水(悬浮)','2.7':'铝块','7.9':'铁块','13.6':'汞珠' };
+  var liqNames = { '0.8':'油','1.0':'水','1.03':'海水','1.26':'甘油','13.6':'水银' };
+
+  var animY = 0, targetY = 0;
+  var animFrame = null;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var rhoObj = parseFloat(objSelect.value);
+    var rhoLiq = parseFloat(liqSelect.value);
+    var objNameText = objNames[objSelect.value] || '物体';
+    var liqNameText = liqNames[liqSelect.value] || '液体';
+
+    // Container
+    var cx = 260, cy = 260;
+    var cw = 200, ch = 200;
+    ctx.fillStyle = 'rgba(0,0,0,0.06)';
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 2;
+    roundRect(ctx, cx - cw/2, cy - ch/2, cw, ch, 8);
+    ctx.stroke();
+    ctx.fill();
+
+    // Liquid fill
+    var liqH = ch - 20;
+    var grad = ctx.createLinearGradient(0, cy - ch/2, 0, cy - ch/2 + liqH);
+    if (rhoLiq > 5) {
+      grad.addColorStop(0, '#b0bec5'); grad.addColorStop(1, '#607d8b');
+    } else {
+      grad.addColorStop(0, '#bbdefb'); grad.addColorStop(1, '#42a5f5');
+    }
+    ctx.fillStyle = grad;
+    ctx.fillRect(cx - cw/2 + 2, cy - ch/2 + ch - liqH, cw - 4, liqH);
+
+    // Water surface
+    ctx.strokeStyle = '#29b6f6';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(cx - cw/2 + 2, cy - ch/2 + ch - liqH);
+    ctx.lineTo(cx + cw/2 - 2, cy - ch/2 + ch - liqH);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Object properties
+    var V = 100; // cm³
+    var G = rhoObj * V * g / 1000 * 100; // scale for display
+    var Fb = rhoLiq * V * g / 1000 * 100;
+    var sinkRatio = G / (Fb || 0.001); // >1 sink, <1 float
+
+    // Determine status and target Y
+    if (sinkRatio > 1.05) {
+      // Sink - at bottom
+      targetY = cy - ch/2 + ch - liqH * 0.15 - 20;
+      statusBadge.className = 'status-badge status-down';
+      statusBadge.textContent = '⬇ 下沉';
+    } else if (sinkRatio < 0.95) {
+      // Float - at surface
+      targetY = cy - ch/2 + ch - liqH + 25;
+      statusBadge.className = 'status-badge status-up';
+      statusBadge.textContent = '⬆ 上浮';
+    } else {
+      // Suspend - in middle
+      targetY = cy - ch/2 + ch - liqH * 0.5;
+      statusBadge.className = 'status-badge status-suspend';
+      statusBadge.textContent = '⏸ 悬浮';
+    }
+
+    // Animate toward target
+    animY += (targetY - animY) * 0.08;
+
+    // Draw object
+    var oSize = Math.min(rhoObj, 8) * 4 + 10;
+    oSize = Math.min(oSize, 50);
+    oSize = Math.max(oSize, 24);
+
+    ctx.fillStyle = '#5d4037';
+    ctx.shadowColor = 'rgba(0,0,0,0.2)';
+    ctx.shadowBlur = 6;
+    ctx.beginPath();
+    if (rhoObj > 5) {
+      // Metal - square
+      ctx.fillRect(cx - oSize/2, animY - oSize/2, oSize, oSize);
+    } else if (rhoObj < 1.1) {
+      // Float - round
+      ctx.arc(cx, animY, oSize/2, 0, Math.PI*2);
+      ctx.fill();
+    } else {
+      // cylinder
+      roundRect(ctx, cx - oSize/2, animY - oSize/3, oSize, oSize*0.66, 4);
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+
+    // Force arrows
+    var arrowLen = Math.min(Math.abs(G - Fb) * 0.15 + 10, 60);
+
+    // Gravity arrow (down, red)
+    ctx.strokeStyle = '#ef5350';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, animY + oSize/2 + 5);
+    ctx.lineTo(cx, animY + oSize/2 + 5 + arrowLen);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, animY + oSize/2 + 5 + arrowLen);
+    ctx.lineTo(cx - 5, animY + oSize/2 + 5 + arrowLen - 10);
+    ctx.lineTo(cx + 5, animY + oSize/2 + 5 + arrowLen - 10);
+    ctx.closePath();
+    ctx.fillStyle = '#ef5350';
+    ctx.fill();
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ef5350';
+    ctx.fillText('G', cx, animY + oSize/2 + 5 + arrowLen + 14);
+
+    // Buoyancy arrow (up, blue)
+    ctx.strokeStyle = '#42a5f5';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx + 20, animY - oSize/2 - 5);
+    ctx.lineTo(cx + 20, animY - oSize/2 - 5 - arrowLen);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx + 20, animY - oSize/2 - 5 - arrowLen);
+    ctx.lineTo(cx + 15, animY - oSize/2 - 5 - arrowLen + 10);
+    ctx.lineTo(cx + 25, animY - oSize/2 - 5 - arrowLen + 10);
+    ctx.closePath();
+    ctx.fillStyle = '#42a5f5';
+    ctx.fill();
+    ctx.fillStyle = '#42a5f5';
+    ctx.fillText('F浮', cx + 20, animY - oSize/2 - 5 - arrowLen - 6);
+
+    // Update info
+    objName.textContent = objNameText;
+    liquidName2.textContent = liqNameText;
+    objDensity.textContent = rhoObj + ' g/cm³';
+    liqDensity.textContent = rhoLiq + ' g/cm³';
+    gravityVal.textContent = G.toFixed(1) + ' (相对)';
+    buoyancyVal.textContent = Fb.toFixed(1) + ' (相对)';
+    var ratio = (Fb === 0 ? 0 : G / Fb);
+    ratioDisplay.textContent = ratio.toFixed(2);
+
+    // V displaced
+    if (sinkRatio > 1) {
+      // Fully submerged
+      displacedVol.textContent = V + ' cm³ (完全浸没)';
+    } else {
+      // Partially submerged
+      var vDisp = V * (rhoObj / rhoLiq);
+      displacedVol.textContent = vDisp.toFixed(1) + ' cm³ (部分浸入)';
+    }
+
+    animFrame = requestAnimationFrame(draw);
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  objSelect.addEventListener('change', function() { animY = targetY; });
+  liqSelect.addEventListener('change', function() { animY = targetY; });
+  animY = 150;
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v06ch02) { p.v06ch02 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

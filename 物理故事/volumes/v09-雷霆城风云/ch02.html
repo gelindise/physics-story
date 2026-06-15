@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：暗影总部 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.ohms-canvas { width:100%; max-width:520px; height:300px; background:#e8eaf6; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.ohms-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row input[type="range"] { width:120px; vertical-align:middle; }
+.ctrl-row button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; }
+.ohms-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.ohms-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .ohms-info span { background:rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第9卷</button>
+  <span class="chapter-title">第2章 · 暗影总部</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第2章：暗影总部</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：欧姆定律 · 电功率 · 焦耳定律</p>
+  <hr>
+
+  <p>通过城门后，林小宇和凌音进入了雷霆城的内城区。这里的建筑更加高大精密，空气中充满了电流的嗡嗡声。</p>
+  <p>城市中央矗立着一座黑色的高塔——暗影使徒的总部。塔的周围环绕着高压电网，发出噼啪的电弧声。</p>
+  <p>"我们需要关闭电网才能进入。"凌音观察着电网的供电系统，"那有一个控制箱。"</p>
+  <p>他们走近控制箱。箱子上显示着电压和电流的读数，旁边有一个需要调节的旋钮。</p>
+  <p>林小宇看着读数："电压U=220V，电阻R=……不知道。但我们可以用<strong>欧姆定律</strong>来计算电流。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：欧姆定律</div>
+    <div class="card-body">
+      <p><strong>欧姆定律：</strong>导体中的电流，跟导体两端的电压成正比，跟导体的电阻成反比。</p>
+      <p style="text-align:center;font-size:1.3em;font-weight:700;">I = U / R</p>
+      <p>I 是电流（A），U 是电压（V），R 是电阻（Ω）。</p>
+      <p><strong>电阻（R）：</strong>导体对电流的阻碍作用。</p>
+      <p>• 单位：欧姆（Ω），千欧（kΩ），兆欧（MΩ）</p>
+      <p>• 电阻是导体本身的属性，与电压和电流无关</p>
+      <p>• 影响电阻大小的因素：材料、长度、横截面积、温度</p>
+      <p>• 同种材料：长度越长电阻越大，横截面积越大电阻越小</p>
+      <p><strong>串联电路（等效电阻）：</strong>R = R₁ + R₂ + …</p>
+      <p><strong>并联电路（等效电阻）：</strong>1/R = 1/R₁ + 1/R₂ + …</p>
+    </div>
+  </div>
+
+  <p>凌音指着控制箱内的一组电阻说："这是一个<strong>串联电路</strong>——两个电阻串联后接入220V电路。总电阻等于两个电阻之和。如果我们改变接入电路的电阻值，就能控制电流的大小。"</p>
+  <p>林小宇调整了旋钮，改变了电路中的电阻，电流随之变化。控制箱上的红灯变成了绿灯——电网的功率降低了。</p>
+  <p>"现在我们进去吧。"凌音说。</p>
+
+  <p>他们走进黑塔。塔内是暗影使徒的实验室，到处是精密的电子设备和仪器。墙上挂满了电路图和能量流动图。</p>
+  <p>在实验室的中央，林小宇看到了一个巨大的机器——一个散发着暗紫色光芒的能量核心。</p>
+  <p>"你终于来了。"暗影使徒的声音从背后响起。</p>
+  <p>林小宇和凌音转过身。暗影使徒摘下了兜帽——露出一张年轻的脸，看起来很疲惫。</p>
+  <p>"你……"林小宇惊讶地说不出话来。</p>
+  <p>"我叫暗影——或者你可以叫我……曾经的元界守护者。"他苦笑着说，"你们一定有很多问题。"</p>
+  <p>"为什么你一直在暗中引导我们？"凌音问道。</p>
+  <p>"因为我在修复一个错误。"暗影走向能量核心，"元界的能量系统正在崩溃——所有物理法则都在逐渐失效。如果不在完全崩坏之前修复核心，整个元界都会毁灭。而我——"他看向林小宇，"需要你的帮助。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：电功率与焦耳定律</div>
+    <div class="card-body">
+      <p><strong>电功率（P）：</strong>电流做功的快慢。</p>
+      <p style="text-align:center;font-size:1.2em;font-weight:700;">P = UI</p>
+      <p>P 是电功率（瓦特 W），U 是电压（V），I 是电流（A）。</p>
+      <p>还可以推导出：P = I²R = U²/R</p>
+      <p><strong>额定电压与额定功率：</strong></p>
+      <p>用电器上标明的电压和功率，如"220V 100W"。</p>
+      <p><strong>焦耳定律：</strong>电流通过导体产生的热量。</p>
+      <p style="text-align:center;font-size:1.2em;font-weight:700;">Q = I²Rt</p>
+      <p>Q 是热量（J），I 是电流（A），R 是电阻（Ω），t 是时间（s）。</p>
+      <p>这就是电热器（电热水壶、电饭锅）的原理：利用电流的热效应。</p>
+    </div>
+  </div>
+
+  <p>"元界为什么会崩坏？"林小宇问。</p>
+  <p>"因为有人——一个来自你们世界的科学家——发现了元界的存在，并试图抽取元界的能量。他破坏了法则核心。"暗影看着能量核心，"我的力量不足以修复它，但你可以。你是唯一能看到物理法则的人。"</p>
+  <p>"我需要做什么？"林小宇问。</p>
+  <p>暗影指向能量核心周围的一组装置："这些装置控制着元界的物理常数。它们需要按照正确的<strong>电功率</strong>运行——太大或太小都会导致能量不稳定。我必须精确计算出每个装置需要的功率。"</p>
+  <p>林小宇走上前。他看到每个装置上都标有电压和电阻。他默默地计算着：</p>
+  <p>P = U²/R —— 知道了电压和电阻，就能算出功率。知道了功率，就能判断装置是否需要调整。</p>
+  <p>他花了几个小时，一个接一个地调整了所有装置。当最后一个装置调整完毕时，能量核心发出了稳定而明亮的光芒。</p>
+  <p>"完成了。"林小宇松了一口气。</p>
+  <p>暗影点了点头："还有最后一件事——去磁之秘境。那里是元界的能量之源，也是你回家的唯一通道。"</p>
+
+  <!-- ===== 🔬 交互实验：欧姆定律与电功率模拟器 ===== -->
+  <h3>🔬 互动实验：欧姆定律与电功率模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">调节电压和电阻，观察电流和电功率的变化。</p>
+
+  <canvas id="ohmsCanvas" class="ohms-canvas" width="520" height="300"></canvas>
+
+  <div class="ctrl-row">
+    <label>电压 U：<input type="range" id="voltageSlider" min="0" max="220" value="110"> <span id="voltageLabel">110</span>V</label>
+    <label>电阻 R：<input type="range" id="resistanceSlider" min="10" max="500" value="100" step="10"> <span id="resistanceLabel">100</span>Ω</label>
+  </div>
+
+  <div class="ohms-info">
+    <span>电压 U = <strong id="uVal">110</strong>V</span>
+    <span>电阻 R = <strong id="rVal">100</strong>Ω</span>
+    <span>电流 I = <strong id="iVal">1.10</strong>A</span>
+    <span>电功率 P = <strong id="pVal">121</strong>W</span>
+    <span>产热 Q = <strong id="qVal2">121</strong>J/s</span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 欧姆定律：I = U/R。电功率：P = UI = I²R = U²/R。</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：电学实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">💡 实验1：灯泡亮度的秘密</div>
+    <p><strong>目标：</strong>理解电功率与灯泡亮度的关系。</p>
+    <p><strong>材料：</strong>两个额定电压相同但额定功率不同的灯泡（如"2.5V 0.3A"和"2.5V 0.5A"）、两节电池、导线、开关。</p>
+    <ol class="exp-steps">
+      <li>分别将两个灯泡接入相同的电路中</li>
+      <li>闭合开关，观察两个灯泡的亮度差别</li>
+      <li>哪个灯泡更亮？——<strong>额定功率更大的灯泡更亮</strong></li>
+      <li>如果条件允许，将两个灯泡<strong>串联</strong>接入电路，观察亮度变化</li>
+    </ol>
+    <p><strong>原理：</strong>灯泡的亮度由实际功率决定。P = UI，电流越大或电压越大，功率越大，灯泡越亮。</p>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🌡️ 实验2：电流的热效应</div>
+    <p><strong>目标：</strong>观察电流通过导体时产生热量的现象。</p>
+    <p><strong>材料：</strong>一段细铁丝（或电阻丝）、两节电池、导线、一小段火柴梗或牙签。</p>
+    <ol class="exp-steps">
+      <li>把细铁丝的两端连接到电池的正负极上（注意：铁丝会发热！）</li>
+      <li>用手小心地感受铁丝的"附近"温度（不要直接触摸，以免烫伤）</li>
+      <li>在铁丝上放一小段牙签或火柴梗，观察它是否会冒烟</li>
+      <li>尝试用更细的铁丝或更多节电池，观察发热的变化</li>
+    </ol>
+    <p><strong>原理：</strong>Q = I²Rt。电流越大、电阻越大、时间越长，产生的热量越多。这就是电热毯、电热水壶的原理。</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：欧姆定律计算</div>
+    <p>一个定值电阻两端加6V电压时，通过它的电流为0.3A。它的电阻是多少？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v9c2-q1" value="a"> 1.8Ω</label>
+      <label><input type="radio" name="quiz-v9c2-q1" value="b" data-correct="true"> 20Ω</label>
+      <label><input type="radio" name="quiz-v9c2-q1" value="c"> 0.05Ω</label>
+      <label><input type="radio" name="quiz-v9c2-q1" value="d"> 18Ω</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：电功率</div>
+    <p>一个标有"220V 100W"的电灯泡正常工作时，通过它的电流约为多少？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v9c2-q2" value="a"> 2.2A</label>
+      <label><input type="radio" name="quiz-v9c2-q2" value="b" data-correct="true"> 0.45A（I=P/U=100W/220V≈0.45A）</label>
+      <label><input type="radio" name="quiz-v9c2-q2" value="c"> 0.22A</label>
+      <label><input type="radio" name="quiz-v9c2-q2" value="d"> 4.5A</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：焦耳定律</div>
+    <p>电熨斗工作时，为什么熨斗底部的温度很高，而连接熨斗的导线却几乎不发热？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v9c2-q3" value="a"> 导线中的电流更小</label>
+      <label><input type="radio" name="quiz-v9c2-q3" value="b" data-correct="true"> 导线的电阻远比发热体的电阻小，根据Q=I²Rt，导线产生的热量很少</label>
+      <label><input type="radio" name="quiz-v9c2-q3" value="c"> 导线散热更快</label>
+      <label><input type="radio" name="quiz-v9c2-q3" value="d"> 导线电压更高</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第2章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="../v10-磁之秘境与归途/index.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 最后一卷：磁之秘境与归途 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('ohmsCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 300;
+
+  var vSlider = document.getElementById('voltageSlider');
+  var rSlider = document.getElementById('resistanceSlider');
+  var vLabel = document.getElementById('voltageLabel');
+  var rLabel = document.getElementById('resistanceLabel');
+  var uVal = document.getElementById('uVal');
+  var rVal = document.getElementById('rVal');
+  var iVal = document.getElementById('iVal');
+  var pVal = document.getElementById('pVal');
+  var qVal2 = document.getElementById('qVal2');
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var U = parseFloat(vSlider.value);
+    var R = parseFloat(rSlider.value);
+    var I = U / R;
+    var P = U * I;
+    var Q = I * I * R; // per second
+
+    vLabel.textContent = U;
+    rLabel.textContent = R;
+
+    // Draw circuit diagram
+    var cx = 260, cy = 80;
+
+    // Battery (left)
+    ctx.fillStyle = '#4caf50';
+    ctx.fillRect(cx - 180, cy - 20, 30, 40);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(cx - 178, cy - 18, 26, 36);
+    ctx.fillStyle = '#e53935';
+    ctx.fillRect(cx - 172, cy - 16, 14, 32);
+    ctx.fillStyle = '#1a237e';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('+', cx - 175, cy - 4);
+    ctx.fillText('−', cx - 158, cy - 4);
+    ctx.fillText(U.toFixed(0) + 'V', cx - 165, cy + 38);
+
+    // Wire
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx - 150, cy);
+    ctx.lineTo(cx - 80, cy);
+    ctx.stroke();
+
+    // Resistor
+    ctx.fillStyle = '#795548';
+    ctx.fillRect(cx - 80, cy - 14, 50, 28);
+    ctx.fillStyle = '#a1887f';
+    for (var i = 0; i < 4; i++) {
+      ctx.fillRect(cx - 75 + i * 12, cy - 8, 6, 16);
+    }
+    ctx.fillStyle = '#37474f';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('R=' + R.toFixed(0) + 'Ω', cx - 55, cy + 40);
+
+    // Wire
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx - 30, cy);
+    ctx.lineTo(cx + 40, cy);
+    ctx.stroke();
+
+    // Ammeter (I)
+    ctx.fillStyle = '#e3f2fd';
+    ctx.strokeStyle = '#1565c0';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx + 60, cy, 20, 0, Math.PI*2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = '#1565c0';
+    ctx.font = 'bold 10px sans-serif';
+    ctx.fillText('A', cx + 60, cy + 4);
+    ctx.font = '9px sans-serif';
+    ctx.fillText(I.toFixed(2), cx + 60, cy + 18);
+
+    // Wire
+    ctx.beginPath();
+    ctx.moveTo(cx + 80, cy);
+    ctx.lineTo(cx + 140, cy);
+    ctx.stroke();
+
+    // Switch
+    if (U > 0) {
+      // Switch closed
+      ctx.beginPath();
+      ctx.moveTo(cx + 140, cy);
+      ctx.lineTo(cx + 160, cy);
+      ctx.stroke();
+      ctx.fillStyle = '#4caf50';
+      ctx.fillRect(cx + 155, cy - 6, 8, 12);
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(cx + 140, cy);
+      ctx.lineTo(cx + 155, cy - 10);
+      ctx.stroke();
+      ctx.fillStyle = '#f44336';
+      ctx.fillRect(cx + 155, cy - 6, 8, 12);
+    }
+
+    // Wire back to battery
+    ctx.beginPath();
+    ctx.moveTo(cx + 163, cy);
+    ctx.lineTo(cx + 180, cy);
+    ctx.lineTo(cx + 180, cy + 80);
+    ctx.lineTo(cx - 180, cy + 80);
+    ctx.lineTo(cx - 180, cy + 20);
+    ctx.stroke();
+
+    // Current flow animation
+    if (I > 0.01) {
+      var now = Date.now() / 500;
+      for (var p = 0; p < 5; p++) {
+        var phase = (now + p * 0.2) % 1;
+        var pathX = -180 + phase * 360;
+        ctx.fillStyle = phase < 0.5 ? '#ffeb3b' : '#ff9800';
+        ctx.beginPath();
+        ctx.arc(cx + pathX, cy + 90, 3, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    // Power bar
+    var maxP = 500;
+    var barW = Math.min(P / maxP * 200, 200);
+    ctx.fillStyle = '#e0e0e0';
+    ctx.fillRect(50, 230, 200, 20);
+    var barGrad = ctx.createLinearGradient(50, 0, 250, 0);
+    barGrad.addColorStop(0, '#66bb6a');
+    barGrad.addColorStop(0.5, '#ffa726');
+    barGrad.addColorStop(1, '#ef5350');
+    ctx.fillStyle = barGrad;
+    ctx.fillRect(50, 230, barW, 20);
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(50, 230, 200, 20);
+    ctx.fillStyle = '#37474f';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('电功率: ' + P.toFixed(1) + 'W', 150, 262);
+
+    // Update displays
+    uVal.textContent = U.toFixed(0) + 'V';
+    rVal.textContent = R.toFixed(0) + 'Ω';
+    iVal.textContent = I.toFixed(2) + 'A';
+    pVal.textContent = P.toFixed(1) + 'W';
+    qVal2.textContent = Q.toFixed(1) + 'J/s';
+  }
+
+  vSlider.addEventListener('input', draw);
+  rSlider.addEventListener('input', draw);
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v09ch02) { p.v09ch02 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

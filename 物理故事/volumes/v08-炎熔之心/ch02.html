@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：锻造之力 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.engine-canvas { width:100%; max-width:520px; height:300px; background:#fbe9e7; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.engine-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; }
+.btn-run { background:#bf360c; color:#fff; }
+.btn-run:disabled { background:#9e9e9e; }
+.engine-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.engine-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .engine-info span { background:rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第8卷</button>
+  <span class="chapter-title">第2章 · 锻造之力</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第2章：锻造之力</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：热机 · 热值 · 能量守恒定律</p>
+  <hr>
+
+  <p>更换了导热介质后，炎熔城的地热引擎恢复了运转。但火须告诉林小宇，这只是治标不治本。</p>
+  <p>"跟我来。"火须带领他们穿过城市的底层，走进一个巨大的地下车间。车间中央矗立着一台庞大的机器——由汽缸、活塞、飞轮和管道组成。</p>
+  <p>"这是炎熔城的<strong>蒸汽机</strong>——我们最主要的动力来源。"火须拍了拍机器的外壳，"它利用岩浆的热量加热水，产生高温高压的水蒸气，水蒸气推动活塞做功，然后带动飞轮旋转。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：热机</div>
+    <div class="card-body">
+      <p><strong>热机：</strong>把内能转化为机械能的机器。</p>
+      <p><strong>蒸汽机的工作过程（四个冲程）：</strong></p>
+      <p>1. <strong>吸气冲程</strong>：活塞下行，进气阀打开，吸入蒸汽</p>
+      <p>2. <strong>压缩冲程</strong>：活塞上行，压缩蒸汽，温度升高</p>
+      <p>3. <strong>做功冲程</strong>：高温高压蒸汽推动活塞下行，<strong>内能→机械能</strong></p>
+      <p>4. <strong>排气冲程</strong>：活塞上行，排气阀打开，排出废气</p>
+      <p>内燃机（汽油机/柴油机）也遵循类似的四个冲程。</p>
+      <p><strong>热值（q）：</strong>单位质量的燃料完全燃烧放出的热量。</p>
+      <p style="text-align:center;font-size:1.1em;font-weight:700;">Q = mq</p>
+      <p>q 是热值（J/kg），m 是燃料质量（kg）。</p>
+    </div>
+  </div>
+
+  <p>"这台蒸汽机最近效率越来越低了。"火须指着机器上的一排仪表，"我们加入的燃料越来越多，但输出的机械能却在减少。很多能量都散失了。"</p>
+  <p>林小宇走到机器前，仔细观察。他闭上眼睛，用"法则视觉"来观察能量流动——</p>
+  <p>他能看到燃料中的化学能通过燃烧转化为内能（热能），内能通过蒸汽推动活塞转化为机械能。但在每一步转化中，都有大量能量以热能的形式散失到周围环境中。</p>
+  <p>"这就是<strong>能量守恒定律</strong>。"林小宇睁开眼，"能量不会凭空产生，也不会凭空消失，它只会从一种形式转化为另一种形式。但是——转化的过程中，总有一部分能量变成无用的热能散失掉。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：能量守恒定律</div>
+    <div class="card-body">
+      <p><strong>能量守恒定律：</strong>能量既不会凭空消灭，也不会凭空产生，它只会从一种形式转化为其他形式，或者从一个物体转移到其他物体，而在转化和转移的过程中，能量的总量保持不变。</p>
+      <p><strong>各种形式的能量：</strong></p>
+      <p>机械能、内能（热能）、电能、光能、化学能、核能……</p>
+      <p><strong>能量的转化：</strong></p>
+      <p>• 摩擦生热：机械能 → 内能</p>
+      <p>• 电灯发光：电能 → 光能 + 内能</p>
+      <p>• 光合作用：光能 → 化学能</p>
+      <p>• 电池放电：化学能 → 电能</p>
+      <p><strong>能量转化和转移的方向性：</strong></p>
+      <p>热量可以自发地从高温物体传到低温物体，但不能自发地从低温物体传到高温物体。这就是<strong>能量耗散</strong>——虽然能量总量不变，但可用的能量减少了。</p>
+    </div>
+  </div>
+
+  <p>"所以我们的问题不是能量不够——而是可用的能量不够。"林小宇总结道。</p>
+  <p>"对！"火须点头，"你能不能帮我们改进这台机器？"</p>
+  <p>林小宇再次闭上眼睛。他看到了蒸汽管道中的热量流失，看到了活塞与缸壁之间的摩擦损耗。他调整了几个阀门的角度，减少了管道中的热损失；又在活塞上添加了更有效的润滑，减少了摩擦。</p>
+  <p>"试试看。"他说。</p>
+  <p>火须启动了机器。蒸汽机发出了比以前更平稳的轰鸣声——同样多的燃料，飞轮的转速却更快了。</p>
+  <p>"效率提高了至少20%！"火须激动地说，"你真是个奇迹小子！"</p>
+  <p>凌音却突然警觉地转身——车间入口处，一个暗紫色的身影再次出现。</p>
+  <p>"暗影使徒。"凌音冷冷地说。</p>
+  <p>"你们又进步了。"暗影使徒的语气中带着一丝赞赏，"理解内能、热量、能量守恒——你们离真相又近了一步。下一站，雷霆城。那里，才是真正的考验。"</p>
+  <p>"等等！"林小宇喊道，"你到底想干什么？为什么要帮助我们？"</p>
+  <p>暗影使徒停顿了一下："因为——我需要一个能真正理解这个世界的人。"他消失在暗影中，留下一个模糊的尾音，"雷霆城——电能的世界。做好准备吧。"</p>
+
+  <!-- ===== 🔬 交互实验：蒸汽机模拟器 ===== -->
+  <h3>🔬 互动实验：蒸汽机模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">观察蒸汽机四冲程工作过程，感受内能转化为机械能。</p>
+
+  <canvas id="engineCanvas" class="engine-canvas" width="520" height="300"></canvas>
+
+  <div class="ctrl-row">
+    <button id="runEngineBtn" class="btn-run">▶ 启动蒸汽机</button>
+    <label>燃料量：<input type="range" id="fuelSlider" min="10" max="100" value="50"> <span id="fuelLabel">50</span></label>
+  </div>
+
+  <div class="engine-info">
+    <span>燃料化学能：<strong id="chemE">5000</strong> J</span>
+    <span>输出机械能：<strong id="mechE">0</strong> J</span>
+    <span>散失热量：<strong id="wasteE">0</strong> J</span>
+    <span>效率：<strong id="efficiency">0</strong>%</span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 能量守恒：E<sub>化学</sub> = E<sub>机械</sub> + E<sub>散失</sub>。蒸汽机的效率通常在15%~30%之间。</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：热能的实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🔥 实验1：小孔成像"蒸汽机"</div>
+    <p><strong>目标：</strong>模拟热机的工作原理——热能转化为动能。</p>
+    <p><strong>材料：</strong>一个空的易拉罐、水、蜡烛（或酒精灯）、一个瓶盖、铁丝、胶带。</p>
+    <ol class="exp-steps">
+      <li>在易拉罐中倒入少量水（约1cm高）</li>
+      <li>把易拉罐倾斜架在蜡烛上（注意安全，在大人的陪伴下进行）</li>
+      <li>加热几分钟后，水沸腾变成水蒸气，从罐口喷出</li>
+      <li>观察水蒸气喷出的力量——这就是最简单的"热机"原理</li>
+    </ol>
+    <p><strong>提示：</strong>这个实验必须在成人监护下进行，注意防火安全。也可以用纸杯代替易拉罐，但纸杯会烧坏。</p>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🌍 实验2：能量转化连环看</div>
+    <p><strong>目标：</strong>在生活中追踪能量的转化路径。</p>
+    <p><strong>材料：</strong>一张纸、一支笔，在日常生活中观察和记录。</p>
+    <ol class="exp-steps">
+      <li>找一台电风扇或吹风机，观察它工作时能量转化的路径</li>
+      <li>找一个手电筒或灯泡，画出能量转化的流程图</li>
+      <li>观察汽车、自行车、微波炉等各种家用设备，列出它们的能量转化过程</li>
+    </ol>
+    <p><strong>记录示例：</strong>电灯：电能 → 光能 + 内能（热能）</p>
+    <div class="exp-table">
+      <table>
+        <tr><th>设备</th><th>能量转化过程</th></tr>
+        <tr><td>电风扇</td><td></td></tr>
+        <tr><td>电灯</td><td></td></tr>
+        <tr><td>手机充电</td><td></td></tr>
+        <tr><td>用燃气灶烧水</td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：热机冲程</div>
+    <p>在汽油机的工作循环中，将内能转化为机械能的是哪个冲程？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v8c2-q1" value="a"> 吸气冲程</label>
+      <label><input type="radio" name="quiz-v8c2-q1" value="b"> 压缩冲程</label>
+      <label><input type="radio" name="quiz-v8c2-q1" value="c" data-correct="true"> 做功冲程</label>
+      <label><input type="radio" name="quiz-v8c2-q1" value="d"> 排气冲程</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：热值计算</div>
+    <p>完全燃烧2kg的煤炭可以放出多少热量？（煤炭的热值q=3×10⁷J/kg）</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v8c2-q2" value="a"> 3×10⁷ J</label>
+      <label><input type="radio" name="quiz-v8c2-q2" value="b"> 1.5×10⁷ J</label>
+      <label><input type="radio" name="quiz-v8c2-q2" value="c" data-correct="true"> 6×10⁷ J</label>
+      <label><input type="radio" name="quiz-v8c2-q2" value="d"> 6×10⁶ J</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：能量守恒</div>
+    <p>下列有关能量守恒的说法，错误的是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v8c2-q3" value="a"> 能量守恒定律是自然界最普遍、最重要的基本定律之一</label>
+      <label><input type="radio" name="quiz-v8c2-q3" value="b" data-correct="true"> 能量守恒定律告诉我们，能量用完后还可以再创造出来</label>
+      <label><input type="radio" name="quiz-v8c2-q3" value="c"> 能量的转化和转移具有方向性</label>
+      <label><input type="radio" name="quiz-v8c2-q3" value="d"> 任何机器都不能创造能量，只能转化能量</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第2章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="../v09-雷霆城风云/index.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 下一卷：雷霆城风云 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('engineCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 300;
+
+  var runBtn = document.getElementById('runEngineBtn');
+  var fuelSlider = document.getElementById('fuelSlider');
+  var fuelLabel = document.getElementById('fuelLabel');
+  var chemE = document.getElementById('chemE');
+  var mechE = document.getElementById('mechE');
+  var wasteE = document.getElementById('wasteE');
+  var efficiency = document.getElementById('efficiency');
+
+  var running = false;
+  var pistonY = 0;
+  var cyclePhase = 0; // 0-1, 0=top, 0.5=bottom
+  var strokeNames = ['吸气', '压缩', '做功', '排气'];
+  var currentStroke = 0;
+  var totalMech = 0, totalWaste = 0;
+  var animId = null;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var fuel = parseFloat(fuelSlider.value);
+    var totalChem = fuel * 100;
+
+    // Cylinder
+    var cx = 260, cy = 60;
+    var cylW = 120, cylH = 180;
+
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 3;
+    roundRect(ctx, cx - cylW/2, cy, cylW, cylH, 6);
+    ctx.stroke();
+
+    // Cylinder head
+    ctx.fillStyle = '#455a64';
+    ctx.fillRect(cx - cylW/2, cy - 8, cylW, 8);
+
+    // Piston
+    var pistonRange = cylH - 40;
+    var pistonPos = cy + 30 + pistonRange * (0.5 - 0.5 * Math.cos(cyclePhase * Math.PI * 2));
+
+    // Piston body
+    ctx.fillStyle = '#78909c';
+    ctx.fillRect(cx - cylW/2 + 5, pistonPos - 15, cylW - 10, 20);
+    ctx.fillStyle = '#546e7a';
+    ctx.fillRect(cx - cylW/2 + 3, pistonPos + 5, cylW - 6, 10);
+
+    // Piston rod
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(cx, pistonPos + 15);
+    ctx.lineTo(cx, cy + cylH + 30);
+    ctx.stroke();
+
+    // Flywheel (crank)
+    var flyCX = cx, flyCY = cy + cylH + 30;
+    var crankAngle = cyclePhase * Math.PI * 2;
+    ctx.strokeStyle = '#37474f';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(flyCX, flyCY, 30, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.fillStyle = '#546e7a';
+    ctx.beginPath();
+    ctx.arc(flyCX, flyCY, 25, 0, Math.PI*2);
+    ctx.fill();
+
+    // Crank pin
+    var pinX = flyCX + 20 * Math.sin(crankAngle);
+    var pinY = flyCY - 20 * Math.cos(crankAngle);
+    ctx.fillStyle = '#ff6d00';
+    ctx.beginPath();
+    ctx.arc(pinX, pinY, 5, 0, Math.PI*2);
+    ctx.fill();
+
+    // Connecting rod from piston to crank
+    ctx.strokeStyle = '#78909c';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx, pistonPos + 15);
+    ctx.lineTo(pinX, pinY);
+    ctx.stroke();
+
+    // Steam/combustion visualization
+    var steamH = pistonPos - cy - 20;
+    if (steamH > 0) {
+      var alpha = 0.1 + (steamH / cylH) * 0.3;
+      if (currentStroke === 2) { // Power stroke - red
+        ctx.fillStyle = 'rgba(255,87,34,' + alpha + ')';
+      } else if (currentStroke === 0) { // Intake - blue
+        ctx.fillStyle = 'rgba(66,165,245,' + alpha * 0.5 + ')';
+      } else if (currentStroke === 1) { // Compression - orange
+        ctx.fillStyle = 'rgba(255,152,0,' + alpha + ')';
+      } else { // Exhaust - gray
+        ctx.fillStyle = 'rgba(158,158,158,' + alpha * 0.4 + ')';
+      }
+      ctx.fillRect(cx - cylW/2 + 6, cy + 6, cylW - 12, steamH);
+    }
+
+    // Stroke label
+    ctx.fillStyle = '#37474f';
+    ctx.font = 'bold 16px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(strokeNames[currentStroke] + '冲程', cx, cy + cylH + 65);
+
+    // Transition arrows (flywheel rotation)
+    ctx.fillStyle = '#ff6d00';
+    ctx.font = '20px sans-serif';
+    ctx.fillText('⟳', cx + 60, flyCY + 6);
+
+    // Steam exhaust
+    if (currentStroke === 3) {
+      ctx.fillStyle = 'rgba(200,200,200,0.4)';
+      for (var i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.arc(cx + cylW/2 + 15 + i * 12, cy + 20 + i * 8, 8 + i * 3, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    // Update energy
+    if (running) {
+      var mechPerStroke = totalChem * 0.002 * (0.2 + Math.random() * 0.15);
+      var wastePerStroke = totalChem * 0.004 * (0.5 + Math.random() * 0.3);
+      if (currentStroke === 2) {
+        totalMech += mechPerStroke;
+      }
+      if (currentStroke !== 2) {
+        totalWaste += wastePerStroke * 0.5;
+      } else {
+        totalWaste += wastePerStroke;
+      }
+    }
+
+    var eff = totalMech > 0 ? (totalMech / (totalMech + totalWaste) * 100) : 0;
+    chemE.textContent = Math.round(totalChem);
+    mechE.textContent = Math.round(totalMech);
+    wasteE.textContent = Math.round(totalWaste);
+    efficiency.textContent = eff.toFixed(1);
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  function animate() {
+    if (!running) return;
+
+    cyclePhase += 0.008;
+    if (cyclePhase >= 1) cyclePhase -= 1;
+
+    var newStroke = Math.floor(cyclePhase * 4) % 4;
+    currentStroke = newStroke;
+
+    draw();
+    if (running) animId = requestAnimationFrame(animate);
+  }
+
+  runBtn.addEventListener('click', function() {
+    if (!running) {
+      running = true;
+      runBtn.textContent = '⏹ 停止';
+      animate();
+    } else {
+      running = false;
+      runBtn.textContent = '▶ 启动蒸汽机';
+    }
+  });
+
+  fuelSlider.addEventListener('input', function() {
+    fuelLabel.textContent = fuelSlider.value;
+    if (!running) draw();
+  });
+
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v08ch02) { p.v08ch02 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

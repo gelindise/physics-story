@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2章：通天塔之巅 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.energy-canvas { width:100%; max-width:520px; height:320px; background:#fff8e1; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.energy-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row input[type="range"] { width:120px; vertical-align:middle; }
+.ctrl-row button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; }
+.btn-go { background:#e65100; color:#fff; }
+.energy-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.energy-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .energy-info span { background:rgba(255,255,255,0.08); }
+.energy-bar-container { display:flex; gap:12px; justify-content:center; align-items:flex-end; height:80px; margin:12px 0; }
+.energy-bar { width:40px; border-radius:6px 6px 0 0; transition:height 0.3s; text-align:center; font-size:0.75em; padding-top:4px; color:#fff; }
+.bar-kinetic { background:linear-gradient(180deg,#ff8a65,#e64a19); }
+.bar-potential { background:linear-gradient(180deg,#81d4fa,#1565c0); }
+.bar-total { background:linear-gradient(180deg,#a5d6a7,#2e7d32); }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第7卷</button>
+  <span class="chapter-title">第2章 · 通天塔之巅</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第2章：通天塔之巅</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：机械效率 · 功率 · 机械能及其转化</p>
+  <hr>
+
+  <p>进入通天塔后，林小宇和凌音发现塔内是一座巨大的垂直迷宫。每一层都有不同的机械挑战等着他们。</p>
+  <p>第一层是一个巨大的齿轮传动室。一面墙上有无数个大小齿轮相互咬合，一直延伸到塔顶。室内的地面上刻着几行字：</p>
+  <p style="text-align:center;font-style:italic;background:rgba(0,0,0,0.03);padding:16px;border-radius:10px;">"从一楼到塔顶，总高度为H。<br>一台机器在时间t内将重物送到塔顶，<br>求机器的<strong>功率</strong>。"</p>
+  <p>"功率……"林小宇沉思了一下，"我记得功率是表示做功快慢的物理量。功率越大，做功越快。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：功率与机械效率</div>
+    <div class="card-body">
+      <p><strong>功率：</strong>表示做功的快慢。</p>
+      <p style="text-align:center;font-size:1.3em;font-weight:700;">P = W / t</p>
+      <p>P 是功率（瓦特 W），W 是功（J），t 是时间（s）。</p>
+      <p>1 W = 1 J/s。常用单位还有千瓦（kW），1 kW = 1000 W。</p>
+      <p><strong>机械效率：</strong></p>
+      <p>使用机械时，有用功与总功的比值。</p>
+      <p style="text-align:center;font-size:1.2em;font-weight:700;">η = W<sub>有</sub> / W<sub>总</sub> × 100%</p>
+      <p>• <strong>有用功（W<sub>有</sub>）</strong>：对人们有用的功</p>
+      <p>• <strong>额外功（W<sub>额</sub>）</strong>：不需要但又不得不做的功（如克服摩擦、提起机械自重）</p>
+      <p>• <strong>总功（W<sub>总</sub>）</strong>：有用功 + 额外功</p>
+      <p>机械效率 η 永远小于 100%（因为额外功永远存在）。</p>
+    </div>
+  </div>
+
+  <p>"明白了！"林小宇说，"如果要在相同时间内做更多的功，就需要更高的功率。如果做相同的功，时间越短，功率越高。"</p>
+  <p>他走到墙边，找到了一个控制杆。拉动控制杆后，一组齿轮开始转动，一座升降平台缓缓降了下来。他们站上平台，齿轮传动系统将他们快速送往上一层。</p>
+
+  <p>第二层是一个巨大的摆锤厅。一颗颗巨大的金属球悬挂在天花板上，左右摆动。地面上写着：</p>
+  <p style="text-align:center;font-style:italic;background:rgba(0,0,0,0.03);padding:16px;border-radius:10px;">"摆锤在最高点时，<strong>势能</strong>最大；<br>摆锤在最低点时，<strong>动能</strong>最大。<br>在无摩擦的情况下，机械能总量<strong>守恒</strong>。"</p>
+  <p>林小宇看着摆动的金属球，眼睛发亮："动能和势能——它们可以相互转化！"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：机械能</div>
+    <div class="card-body">
+      <p><strong>动能：</strong>物体运动时具有的能量。</p>
+      <p style="text-align:center;font-size:1.1em;font-weight:700;">E<sub>k</sub> = ½mv²</p>
+      <p>质量 m 越大、速度 v 越大，动能越大。</p>
+      <p><strong>重力势能：</strong>物体被举高时具有的能量。</p>
+      <p style="text-align:center;font-size:1.1em;font-weight:700;">E<sub>p</sub> = mgh</p>
+      <p>质量 m 越大、高度 h 越高，重力势能越大。</p>
+      <p><strong>弹性势能：</strong>物体发生弹性形变时具有的能量。</p>
+      <p><strong>机械能守恒定律：</strong></p>
+      <p>如果只有动能和势能相互转化（没有摩擦等阻力），<strong>机械能总量保持不变</strong>。</p>
+      <p>• 自由落体：势能 ↓ → 动能 ↑（总量不变）</p>
+      <p>• 竖直上抛：动能 ↓ → 势能 ↑（最高点动能为零）</p>
+      <p>• 摆锤：势能↔动能不断转化</p>
+      <p>• 过山车：下降时动能增加，上升时势能增加</p>
+    </div>
+  </div>
+
+  <p>凌音指了指厅中一条狭窄的通道："要穿过这个厅，我们必须等到摆锤摆动到一侧，然后快速通过。如果时机不对，就会被撞到。"</p>
+  <p>林小宇观察了几个摆动周期："摆锤每次摆动的时间（周期）是固定的。最高点速度为零——那是势能最大、动能最小的时刻。最低点速度最快——那是动能最大、势能最小的时刻。"</p>
+  <p>他们等待摆锤荡到最高点，抓住时机穿过了通道。</p>
+
+  <p>第三层——也是最顶层——是一个巨大的机械核心。整座塔的所有齿轮都汇聚于此，驱动着一个悬浮在空中的光球。</p>
+  <p>暗影使徒正站在光球前，背对着他们。</p>
+  <p>"你们来了。"他没有转身，"你知道这个光球是什么吗？"</p>
+  <p>林小宇摇摇头。</p>
+  <p>"它是元界的<strong>机械能核心</strong>——维持这个世界运转的能量来源之一。"暗影使徒终于转过身来，"但它在衰减。齿轮森林和通天塔在千百年的运转中，因为摩擦和损耗，<strong>机械效率</strong>越来越低。大部分能量都以热能散失了。"</p>
+  <p>"那要怎么办？"凌音问。</p>
+  <p>"需要重新调节传动系统，减少无用的摩擦，提高效率。"暗影使徒看向林小宇，"但能做到这件事的，只有能看到物理法则的人——也就是你。"</p>
+  <p>林小宇走上前，闭上眼睛。他看到了——能量在齿轮和传动轴中传递，有些地方因为摩擦变成了热量流失了，有些地方因为齿轮啮合不精确产生了多余的震动。他伸出手，开始调整那些松动的连接，润滑干涩的轴承……</p>
+  <p>光球渐渐变亮。整座塔重新焕发了活力。</p>
+  <p>"你很出色。"暗影使徒说，"下一站——炎熔之心。在那里，你会学到热能的真正威力。"他再次化作暗影消失了。</p>
+
+  <!-- ===== 🔬 交互实验：机械能转化模拟器 ===== -->
+  <h3>🔬 互动实验：机械能转化模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">点击"释放"让小球从斜坡上滚下，观察动能和势能的变化。</p>
+
+  <canvas id="energyCanvas" class="energy-canvas" width="520" height="320"></canvas>
+
+  <div class="ctrl-row">
+    <label>质量：<input type="range" id="massSlider" min="0.5" max="5" value="2" step="0.1"> <span id="massLabel">2.0</span> kg</label>
+    <label>初始高度：<input type="range" id="heightSlider" min="1" max="10" value="5" step="0.5"> <span id="heightLabel">5.0</span> m</label>
+    <button id="releaseBtn" class="btn-go">▶ 释放</button>
+    <button id="resetBtn" style="padding:8px 16px;background:#78909c;color:#fff;border:none;border-radius:8px;cursor:pointer;">↺ 重置</button>
+  </div>
+
+  <div class="energy-bar-container">
+    <div class="energy-bar bar-kinetic" id="kineticBar" style="height:4px;">0 J</div>
+    <div class="energy-bar bar-potential" id="potentialBar" style="height:200px;">0 J</div>
+    <div class="energy-bar bar-total" id="totalBar" style="height:200px;">0 J</div>
+  </div>
+  <div style="display:flex;justify-content:center;gap:24px;font-size:0.8em;margin-bottom:8px;">
+    <span style="color:#e64a19;">■ 动能</span>
+    <span style="color:#1565c0;">■ 势能</span>
+    <span style="color:#2e7d32;">■ 总机械能</span>
+  </div>
+
+  <div class="energy-info">
+    <span>高度：<strong id="ballHeight">5.0</strong>m</span>
+    <span>速度：<strong id="ballSpeed">0</strong>m/s</span>
+    <span>动能：<strong id="keDisplay">0</strong>J</span>
+    <span>势能：<strong id="peDisplay">98</strong>J</span>
+    <span>总机械能：<strong id="meDisplay">98</strong>J</span>
+  </div>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：能量转化的实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🎢 实验1：滚下的斜坡</div>
+    <p><strong>目标：</strong>观察势能转化为动能的过程。</p>
+    <p><strong>材料：</strong>一块长木板（或硬纸板做斜坡）、一个小球（弹珠或乒乓球）、几本书（垫高斜坡）、尺子、胶带。</p>
+    <ol class="exp-steps">
+      <li>用书把木板的一端垫高，做成一个斜坡</li>
+      <li>用胶带在斜坡底部的桌面上标记小球滚落后的停止位置</li>
+      <li>先把小球放在斜坡中间位置，释放后观察它滚出多远，用尺子测量距离</li>
+      <li>把小球放在斜坡顶端，再次释放并测量滚出距离</li>
+      <li>比较两次的距离——<strong>高度越高，势能越大，转化成的动能也越大</strong>，小球滚得越远</li>
+    </ol>
+    <div class="exp-table">
+      <table>
+        <tr><th>小球起始高度</th><th>滚落距离（cm）</th></tr>
+        <tr><td>斜坡中间</td><td></td></tr>
+        <tr><td>斜坡顶端</td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🏓 实验2：弹跳的球</div>
+    <p><strong>目标：</strong>观察弹性势能与动能的转化。</p>
+    <p><strong>材料：</strong>一个篮球（或比较有弹性的球）、尺子（或卷尺）。</p>
+    <ol class="exp-steps">
+      <li>把篮球举到一定高度（如1米），释放让它自由落下</li>
+      <li>观察它弹起的高度——你会发现它弹起的高度<strong>低于</strong>释放高度</li>
+      <li>用尺子测量弹起的高度，记录下来</li>
+      <li>试着在不同地面（水泥地、木板、地毯）上做同样的实验，比较弹起高度</li>
+    </ol>
+    <p><strong>原理：</strong>撞击地面时，动能转化为弹性势能，然后弹性势能再转化为动能。但因为部分机械能转化为内能（热能），所以机械能不守恒，球弹起的高度越来越低。</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：功率计算</div>
+    <p>一台起重机在10秒内将质量为500kg的物体匀速提升了2m（g取10N/kg）。起重机做的功和功率分别是多少？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v7c2-q1" value="a"> 功10000J，功率1000W</label>
+      <label><input type="radio" name="quiz-v7c2-q1" value="b" data-correct="true"> 功10000J，功率1000W</label>
+      <label><input type="radio" name="quiz-v7c2-q1" value="c"> 功5000J，功率500W</label>
+      <label><input type="radio" name="quiz-v7c2-q1" value="d"> 功10000J，功率100W</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：动能与速度</div>
+    <p>一辆汽车的质量为1吨，速度为20m/s。若速度增加到40m/s（翻倍），动能变为原来的几倍？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v7c2-q2" value="a"> 2倍</label>
+      <label><input type="radio" name="quiz-v7c2-q2" value="b" data-correct="true"> 4倍</label>
+      <label><input type="radio" name="quiz-v7c2-q2" value="c"> 8倍</label>
+      <label><input type="radio" name="quiz-v7c2-q2" value="d"> 不变</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：机械能守恒</div>
+    <p>一个质量为0.5kg的小球从高度为20m的塔顶自由落下（不计空气阻力，g取10N/kg），落地的瞬间动能是多少？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v7c2-q3" value="a"> 50J</label>
+      <label><input type="radio" name="quiz-v7c2-q3" value="b" data-correct="true"> 100J</label>
+      <label><input type="radio" name="quiz-v7c2-q3" value="c"> 200J</label>
+      <label><input type="radio" name="quiz-v7c2-q3" value="d"> 10J</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第2章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="../v08-炎熔之心/index.html" style="display:inline-block;padding:12px 30px;background:#1a237e;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 下一卷：炎熔之心 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('energyCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 320;
+
+  var massSlider = document.getElementById('massSlider');
+  var heightSlider = document.getElementById('heightSlider');
+  var massLabel = document.getElementById('massLabel');
+  var heightLabel = document.getElementById('heightLabel');
+  var releaseBtn = document.getElementById('releaseBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var ballHeight = document.getElementById('ballHeight');
+  var ballSpeed = document.getElementById('ballSpeed');
+  var keDisplay = document.getElementById('keDisplay');
+  var peDisplay = document.getElementById('peDisplay');
+  var meDisplay = document.getElementById('meDisplay');
+  var kineticBar = document.getElementById('kineticBar');
+  var potentialBar = document.getElementById('potentialBar');
+  var totalBar = document.getElementById('totalBar');
+
+  var g = 9.8;
+  var running = false;
+  var posX = 60, posY = 60;
+  var velX = 0, velY = 0;
+  var startX = 60, startY = 60;
+  var mass = 2, totalH = 5;
+  var animId = null;
+
+  function reset() {
+    running = false;
+    releaseBtn.disabled = false;
+    mass = parseFloat(massSlider.value);
+    totalH = parseFloat(heightSlider.value);
+    posX = startX;
+    posY = startY;
+    velX = 0; velY = 0;
+    massLabel.textContent = mass.toFixed(1);
+    heightLabel.textContent = totalH.toFixed(1);
+    draw();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Ground
+    ctx.fillStyle = '#795548';
+    ctx.fillRect(0, H - 30, W, 30);
+
+    // Ramp
+    var rampEndX = W - 60, rampEndY = H - 30;
+    var rampStartX = startX, rampStartY = startY;
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 12;
+    ctx.beginPath();
+    ctx.moveTo(rampStartX, rampStartY);
+    ctx.lineTo(rampEndX, rampEndY);
+    ctx.stroke();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#78909c';
+    ctx.beginPath();
+    ctx.moveTo(rampStartX, rampStartY);
+    ctx.lineTo(rampEndX, rampEndY);
+    ctx.stroke();
+
+    // Position on ramp
+    var distOnRamp;
+    if (!running) {
+      distOnRamp = 0;
+    } else {
+      var totalDist = Math.sqrt(Math.pow(rampEndX - rampStartX, 2) + Math.pow(rampEndY - rampStartY, 2));
+      var traveled = Math.sqrt(Math.pow(posX - rampStartX, 2) + Math.pow(posY - rampStartY, 2));
+      distOnRamp = traveled / totalDist;
+      if (distOnRamp > 1) distOnRamp = 1;
+    }
+
+    var currentX, currentY;
+    if (!running || distOnRamp < 1) {
+      // Ball on ramp
+      var t = running ? distOnRamp : 0;
+      currentX = rampStartX + t * (rampEndX - rampStartX);
+      currentY = rampStartY + t * (rampEndY - rampStartY);
+    } else {
+      // Ball in flight - parabola
+      currentX = posX;
+      currentY = posY;
+    }
+
+    // Ball
+    var h = totalH * (1 - distOnRamp);
+    if (running && distOnRamp >= 1) {
+      h = 0;
+    }
+
+    // Energy calculations
+    var ke, pe;
+    if (running && distOnRamp >= 1) {
+      // Free fall or rolling
+      var speed = Math.sqrt(velX * velX + velY * velY);
+      ke = 0.5 * mass * speed * speed;
+      var ballH = (H - 30 - currentY) / (H - 30 - startY) * totalH;
+      if (ballH < 0) ballH = 0;
+      pe = mass * g * ballH;
+    } else {
+      var currH = totalH * (1 - distOnRamp);
+      var speed = Math.sqrt(2 * g * (totalH - currH));
+      ke = 0.5 * mass * speed * speed;
+      pe = mass * g * currH;
+    }
+    var totalE = mass * g * totalH;
+
+    // Ball drawing
+    ctx.shadowColor = 'rgba(0,0,0,0.2)';
+    ctx.shadowBlur = 8;
+    var gradient = ctx.createRadialGradient(currentX - 5, currentY - 5, 2, currentX, currentY, 15);
+    gradient.addColorStop(0, '#ff8a65');
+    gradient.addColorStop(1, '#bf360c');
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(currentX, currentY, 12, 0, Math.PI*2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Energy bars
+    var maxBarH = 200;
+    var kePct = Math.min(ke / totalE, 1);
+    var pePct = Math.min(pe / totalE, 1);
+    kineticBar.style.height = (kePct * maxBarH) + 'px';
+    kineticBar.textContent = Math.round(ke) + 'J';
+    potentialBar.style.height = (pePct * maxBarH) + 'px';
+    potentialBar.textContent = Math.round(pe) + 'J';
+    totalBar.style.height = 200 + 'px';
+    totalBar.textContent = Math.round(totalE) + 'J';
+
+    // Labels
+    var displayH = running && distOnRamp < 1 ? totalH * (1 - distOnRamp) : (running ? (H - 30 - currentY) / (H - 30 - startY) * totalH : totalH);
+    if (displayH < 0) displayH = 0;
+    var v = running && distOnRamp < 1 ? Math.sqrt(2 * g * (totalH - displayH)) : (running ? Math.sqrt(velX*velX + velY*velY) : 0);
+    ballHeight.textContent = displayH.toFixed(1);
+    ballSpeed.textContent = v.toFixed(1);
+    keDisplay.textContent = Math.round(ke);
+    peDisplay.textContent = Math.round(pe);
+    meDisplay.textContent = Math.round(totalE);
+
+    // Height marker
+    if (displayH > 0.5) {
+      ctx.setLineDash([3, 3]);
+      ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(currentX, currentY);
+      ctx.lineTo(currentX, H - 30);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('h=' + displayH.toFixed(1) + 'm', currentX + 30, (currentY + H - 30) / 2 + 4);
+    }
+  }
+
+  function animate() {
+    if (!running) return;
+    mass = parseFloat(massSlider.value);
+    totalH = parseFloat(heightSlider.value);
+
+    var rampEndX = W - 60, rampEndY = H - 30;
+    var rampStartX = startX, rampStartY = startY;
+    var totalDist = Math.sqrt(Math.pow(rampEndX - rampStartX, 2) + Math.pow(rampEndY - rampStartY, 2));
+    var traveled = Math.sqrt(Math.pow(posX - rampStartX, 2) + Math.pow(posY - rampStartY, 2));
+    var distOnRamp = traveled / totalDist;
+
+    if (distOnRamp < 1) {
+      // On ramp
+      var speed = Math.sqrt(2 * g * totalH * distOnRamp);
+      posX += (rampEndX - rampStartX) / totalDist * speed * 0.04;
+      posY += (rampEndY - rampStartY) / totalDist * speed * 0.04;
+    } else {
+      // Free fall after ramp
+      if (distOnRamp < 1.01) {
+        // Just left ramp
+        var angle = Math.atan2(rampEndY - rampStartY, rampEndX - rampStartX);
+        var launchSpeed = Math.sqrt(2 * g * totalH);
+        velX = launchSpeed * Math.cos(angle);
+        velY = launchSpeed * Math.sin(angle);
+        posX = rampEndX;
+        posY = rampEndY;
+      }
+      velY += g * 0.04;
+      posX += velX * 0.04;
+      posY += velY * 0.04;
+
+      if (posY >= H - 30 - 12) {
+        posY = H - 30 - 12;
+        velX *= 0.8;
+        velY = -velY * 0.6;
+        if (Math.abs(velY) < 1) {
+          running = false;
+          releaseBtn.disabled = false;
+        }
+      }
+    }
+
+    draw();
+    if (running) animId = requestAnimationFrame(animate);
+  }
+
+  releaseBtn.addEventListener('click', function() {
+    if (running) return;
+    reset();
+    running = true;
+    releaseBtn.disabled = true;
+    animate();
+  });
+
+  resetBtn.addEventListener('click', function() {
+    if (animId) cancelAnimationFrame(animId);
+    reset();
+  });
+
+  massSlider.addEventListener('change', reset);
+  heightSlider.addEventListener('change', reset);
+  reset();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v07ch02) { p.v07ch02 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

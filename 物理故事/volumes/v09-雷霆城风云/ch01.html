@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章：雷霆街巷 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.circuit-canvas { width:100%; max-width:520px; height:320px; background:#e8eaf6; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.circuit-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row label input { vertical-align:middle; }
+.circuit-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.circuit-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .circuit-info span { background:rgba(255,255,255,0.08); }
+.bulb { width:30px; height:30px; border-radius:50%; display:inline-block; vertical-align:middle; transition:all 0.3s; }
+.bulb-off { background:#e0e0e0; box-shadow:none; }
+.bulb-on { background:#fff9c4; box-shadow:0 0 20px #ffeb3b, 0 0 40px #ff9800; }
+.switch-icon { display:inline-block; width:40px; height:20px; background:#e0e0e0; border-radius:10px; cursor:pointer; transition:0.3s; vertical-align:middle; position:relative; }
+.switch-icon.on { background:#43a047; }
+.switch-icon::after { content:''; position:absolute; top:2px; left:2px; width:16px; height:16px; background:#fff; border-radius:50%; transition:0.3s; }
+.switch-icon.on::after { left:22px; }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第9卷</button>
+  <span class="chapter-title">第1章 · 雷霆街巷</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第1章：雷霆街巷</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：电路 · 电流 · 电压</p>
+  <hr>
+
+  <p>雷霆城是林小宇在元界见过的最大的城市。高耸的金属塔楼林立，街道两旁排列着发出柔和蓝光的灯柱。整座城市笼罩在一层若有若无的电磁场中，空气中弥漫着臭氧的味道。</p>
+  <p>"这座城市完全由电力驱动。"凌音看着周围说，"所有的灯、交通工具、建筑——都用电。"</p>
+  <p>他们沿着主街前进。街边的一些店铺门口悬挂着奇怪的装置——<strong>开关</strong>。林小宇好奇地按下一个开关，店铺门口的灯亮了，然后又按了一下，灯灭了。</p>
+  <p>"这是最简单的电路——开关控制电流的通断。"林小宇说，"当开关闭合时，电流从电池的正极出发，经过导线、开关和用电器（灯泡），回到负极，形成一个<strong>闭合回路</strong>。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：电路</div>
+    <div class="card-body">
+      <p><strong>电路</strong>由四个基本部分组成：</p>
+      <p>• <strong>电源</strong>：提供电能（如电池、发电机）</p>
+      <p>• <strong>用电器</strong>：消耗电能（如灯泡、电动机）</p>
+      <p>• <strong>开关</strong>：控制电路的通断</p>
+      <p>• <strong>导线</strong>：连接电路元件，传输电流</p>
+      <p><strong>电流（I）：</strong>电荷的定向移动形成电流。</p>
+      <p>• 单位：安培（A）</p>
+      <p>• 方向：从电源正极流向负极（外部电路）</p>
+      <p>• <strong>串联电路</strong>：电流只有一条路径，各用电器相互影响</p>
+      <p>• <strong>并联电路</strong>：电流有多条路径，各用电器互不影响</p>
+      <p><strong>电压（U）：</strong>使电荷定向移动形成电流的原因。</p>
+      <p>• 单位：伏特（V）</p>
+      <p>• 一节干电池的电压：1.5V</p>
+      <p>• 家庭电路电压：220V</p>
+    </div>
+  </div>
+
+  <p>"你看这条街。"凌音指着前方，"整条街的灯都是<strong>并联</strong>的。如果一盏灯坏了，其他灯还在亮。如果是<strong>串联</strong>，一盏灯坏了，整条街就全黑了。"</p>
+  <p>林小宇点头："串联就是一根绳子上的蚂蚱——要么一起亮，要么一起灭。并联就是各有各的路——互不影响。"</p>
+
+  <p>他们继续向城市中心走去。街道两旁的建筑物越来越高大，电力也越来越密集。一些建筑物表面覆盖着密密麻麻的导线，像是一张巨大的电网。</p>
+  <p>在一处广场上，他们看到了一个巨大的电子显示屏，上面显示着城市的电力分配图。图中标出了各个区域的电流和电压数值。</p>
+  <p>"城市中心——也就是暗影使徒的总部——那里消耗的电流是其他区域的几十倍。"凌音指着一个跳动的数据说。</p>
+  <p>林小宇盯着屏幕，若有所思："电流这么大……用电功率肯定也很高。暗影使徒到底在用这么多电做什么？"</p>
+  <p>"只有去了才知道。"凌音说，"但我们需要先通过城市外围的电力关卡。"</p>
+
+  <p>他们来到城门口，发现入口处有一个巨大的电子门。门上写着：</p>
+  <p style="text-align:center;font-style:italic;background:rgba(0,0,0,0.03);padding:16px;border-radius:10px;">"请连接正确的电路：<br>用一节电池（1.5V）和两个小灯泡，<br>设计一个电路，让两个灯泡都能正常发光。"</p>
+  <p>林小宇笑了笑——这是串联和并联的基础知识。他轻松地接好了电路，大门打开了。</p>
+
+  <!-- ===== 🔬 交互实验：电路模拟器 ===== -->
+  <h3>🔬 互动实验：电路模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">切换开关，观察串联和并联电路的区别。</p>
+
+  <canvas id="circuitCanvas" class="circuit-canvas" width="520" height="320"></canvas>
+
+  <div class="ctrl-row">
+    <label style="display:flex;align-items:center;gap:6px;">
+      <span class="switch-icon on" id="switch1Icon"></span>
+      <input type="checkbox" id="switch1" checked hidden> 开关S₁
+    </label>
+    <label style="display:flex;align-items:center;gap:6px;">
+      <span class="switch-icon on" id="switch2Icon"></span>
+      <input type="checkbox" id="switch2" checked hidden> 开关S₂
+    </label>
+    <label>
+      <select id="circuitType">
+        <option value="series">串联电路</option>
+        <option value="parallel">并联电路</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="circuit-info">
+    <span>灯泡 L₁：<span id="bulb1State" style="color:#4caf50;">● 亮</span></span>
+    <span>灯泡 L₂：<span id="bulb2State" style="color:#4caf50;">● 亮</span></span>
+    <span>电源电压：<strong id="voltageDisplay">3V</strong></span>
+    <span>总电流：<strong id="currentDisplay">—</strong></span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 串联：电流处处相等。并联：各支路电压等于电源电压。</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：电路实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">💡 实验1：串联和并联</div>
+    <p><strong>目标：</strong>亲身体会串联和并联电路的区别。</p>
+    <p><strong>材料：</strong>两节电池（1.5V）、两个小灯泡（2.5V或3.8V）、导线若干、一个开关。</p>
+    <ol class="exp-steps">
+      <li><strong>串联：</strong>把两个灯泡首尾相连，和电池、开关接成一个回路</li>
+      <li>闭合开关，两个灯泡都亮——亮度如何？拆下一个灯泡，另一个会怎样？</li>
+      <li><strong>并联：</strong>把两个灯泡的两端分别连接到一起，再和电池、开关接起来</li>
+      <li>闭合开关，两个灯泡都亮——亮度比串联时如何？拆下一个，另一个还亮吗？</li>
+      <li>在并联电路中，分别在干路和各支路接入电流表，测量电流的关系</li>
+    </ol>
+    <div class="exp-table">
+      <table>
+        <tr><th>电路类型</th><th>灯泡亮度</th><th>拆下一个灯泡</th></tr>
+        <tr><td>串联</td><td></td><td></td></tr>
+        <tr><td>并联</td><td></td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🔋 实验2：水果电池</div>
+    <p><strong>目标：</strong>用水果制造电池，感受化学能转化为电能。</p>
+    <p><strong>材料：</strong>柠檬（或土豆）2-3个、铜片（或回形针）、锌片（或镀锌钉）、导线、小LED灯（或电子表）。</p>
+    <ol class="exp-steps">
+      <li>在每个柠檬上分别插入一片铜片和一片锌片（相距1-2cm）</li>
+      <li>用导线将第一个柠檬的铜片连接到第二个柠檬的锌片</li>
+      <li>将第二个柠檬的铜片连接到第三个柠檬的锌片</li>
+      <li>将第一个柠檬的锌片和最后一个柠檬的铜片连接到LED灯的两端</li>
+      <li>观察LED灯是否发光——这就是"水果电池"！</li>
+    </ol>
+    <p><strong>原理：</strong>铜片和锌片在酸性果汁中发生化学反应，产生电压。多个水果串联可以增加总电压。</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：串联电路</div>
+    <p>两个相同的小灯泡串联在电路中，闭合开关后它们都发光。如果其中一个灯丝烧断了，另一个会怎样？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v9c1-q1" value="a" data-correct="true"> 也熄灭（串联电路断路，所有用电器都停止工作）</label>
+      <label><input type="radio" name="quiz-v9c1-q1" value="b"> 变得更亮</label>
+      <label><input type="radio" name="quiz-v9c1-q1" value="c"> 不变（另一个仍然正常发光）</label>
+      <label><input type="radio" name="quiz-v9c1-q1" value="d"> 变得忽明忽暗</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：并联电路</div>
+    <p>教室里有6盏灯并联在电路中，每盏灯的开关都独立控制。如果熄灭其中一盏灯，其他5盏灯的亮度会怎样？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v9c1-q2" value="a"> 都变暗一些</label>
+      <label><input type="radio" name="quiz-v9c1-q2" value="b"> 都变亮一些</label>
+      <label><input type="radio" name="quiz-v9c1-q2" value="c" data-correct="true"> 亮度不变（各支路互不影响）</label>
+      <label><input type="radio" name="quiz-v9c1-q2" value="d"> 全部熄灭</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：电流与电压</div>
+    <p>下列关于电流和电压的说法中，正确的是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v9c1-q3" value="a"> 电路中有电流就一定有电压</label>
+      <label><input type="radio" name="quiz-v9c1-q3" value="b"> 电路中有电压就一定有电流</label>
+      <label><input type="radio" name="quiz-v9c1-q3" value="c" data-correct="true"> 电压是形成电流的原因，但电路中有电压不一定有电流（还需要闭合回路）</label>
+      <label><input type="radio" name="quiz-v9c1-q3" value="d"> 电流是形成电压的原因</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第1章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="ch02.html" style="display:inline-block;padding:12px 30px;background:#283593;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 继续阅读第2章：暗影总部 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('circuitCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 320;
+
+  var switch1 = document.getElementById('switch1');
+  var switch2 = document.getElementById('switch2');
+  var switch1Icon = document.getElementById('switch1Icon');
+  var switch2Icon = document.getElementById('switch2Icon');
+  var circuitType = document.getElementById('circuitType');
+  var bulb1State = document.getElementById('bulb1State');
+  var bulb2State = document.getElementById('bulb2State');
+  var voltageDisplay = document.getElementById('voltageDisplay');
+  var currentDisplay = document.getElementById('currentDisplay');
+
+  function toggleSwitch(s) {
+    s.checked = !s.checked;
+    draw();
+  }
+
+  switch1Icon.addEventListener('click', function() { toggleSwitch(switch1); });
+  switch2Icon.addEventListener('click', function() { toggleSwitch(switch2); });
+  switch1.addEventListener('change', draw);
+  switch2.addEventListener('change', draw);
+  circuitType.addEventListener('change', draw);
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var s1 = switch1.checked;
+    var s2 = switch2.checked;
+    var isSeries = circuitType.value === 'series';
+
+    switch1Icon.className = 'switch-icon ' + (s1 ? 'on' : '');
+    switch2Icon.className = 'switch-icon ' + (s2 ? 'on' : '');
+
+    var bulb1On, bulb2On;
+    if (isSeries) {
+      bulb1On = s1 && s2;
+      bulb2On = s1 && s2;
+    } else {
+      bulb1On = s1;
+      bulb2On = s2;
+    }
+
+    // Draw circuit
+    ctx.lineWidth = 2;
+
+    // Battery
+    ctx.strokeStyle = '#37474f';
+    var bx = 50, by = 160;
+    ctx.fillStyle = '#4caf50';
+    ctx.fillRect(bx - 12, by - 25, 24, 50);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(bx - 10, by - 23, 20, 46);
+    ctx.fillStyle = '#e53935';
+    ctx.fillRect(bx - 3, by - 20, 6, 40);
+    ctx.fillStyle = '#1a237e';
+    ctx.font = 'bold 10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('+', bx - 8, by - 12);
+    ctx.fillText('−', bx + 9, by - 12);
+    ctx.fillText('3V', bx, by + 38);
+
+    // Wire paths
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([]);
+
+    if (isSeries) {
+      // Series circuit: battery → S1 → L1 → S2 → L2 → battery
+      ctx.beginPath();
+      ctx.moveTo(bx, by + 25); // battery bottom
+      ctx.lineTo(bx, by + 80); // down
+      ctx.lineTo(130, by + 80);
+      ctx.stroke();
+
+      // L1 at (130, 160)
+      ctx.beginPath();
+      ctx.moveTo(130, by + 80);
+      ctx.lineTo(130, by + 50);
+      ctx.stroke();
+      drawBulb(ctx, 130, by + 35, bulb1On);
+      ctx.beginPath();
+      ctx.moveTo(130, by + 20);
+      ctx.lineTo(130, by - 40);
+      ctx.stroke();
+
+      // S1 at (130, by-55)
+      ctx.beginPath();
+      ctx.moveTo(130, by - 40);
+      ctx.lineTo(200, by - 70);
+      ctx.stroke();
+      drawSwitch(ctx, 200, by - 70, s1);
+      ctx.beginPath();
+      ctx.moveTo(250, by - 70);
+      ctx.lineTo(bx, by - 70);
+      ctx.lineTo(bx, by - 25); // battery top
+      ctx.stroke();
+
+      // L2 at (260, 160)
+      ctx.beginPath();
+      ctx.moveTo(130, by + 80);
+      ctx.lineTo(260, by + 80);
+      ctx.lineTo(260, by + 50);
+      ctx.stroke();
+      drawBulb(ctx, 260, by + 35, bulb2On);
+      ctx.beginPath();
+      ctx.moveTo(260, by + 20);
+      ctx.lineTo(260, by - 40);
+      ctx.stroke();
+
+      // S2 at (280, by-70)
+      ctx.beginPath();
+      ctx.moveTo(260, by - 40);
+      ctx.lineTo(310, by - 70);
+      ctx.lineTo(bx, by - 70);
+      ctx.stroke();
+
+      // Labels
+      ctx.fillStyle = '#37474f';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('L₁', 130, by + 65);
+      ctx.fillText('L₂', 260, by + 65);
+      ctx.textAlign = 'left';
+      ctx.fillText('S₁', 210, by - 56);
+      ctx.textAlign = 'right';
+      ctx.fillText('S₂', 305, by - 56);
+
+      // Current value
+      if (s1 && s2) {
+        currentDisplay.textContent = '0.3A（串联，电流处处相等）';
+      } else {
+        currentDisplay.textContent = '0A（电路断开）';
+      }
+
+    } else {
+      // Parallel circuit
+      ctx.beginPath();
+      ctx.moveTo(bx, by + 25);
+      ctx.lineTo(bx, by + 80);
+      ctx.stroke();
+
+      // Left branch: S1 → L1
+      ctx.beginPath();
+      ctx.moveTo(bx, by + 80);
+      ctx.lineTo(130, by + 80);
+      ctx.lineTo(130, by + 50);
+      ctx.stroke();
+      drawBulb(ctx, 130, by + 35, bulb1On);
+      ctx.beginPath();
+      ctx.moveTo(130, by + 20);
+      ctx.lineTo(130, by - 40);
+      ctx.stroke();
+
+      // S1
+      ctx.beginPath();
+      ctx.moveTo(130, by - 40);
+      ctx.lineTo(170, by - 70);
+      ctx.stroke();
+      drawSwitch(ctx, 170, by - 70, s1);
+      ctx.beginPath();
+      ctx.moveTo(210, by - 70);
+      ctx.lineTo(bx, by - 70);
+      ctx.lineTo(bx, by - 25);
+      ctx.stroke();
+
+      // Right branch: S2 → L2
+      ctx.beginPath();
+      ctx.moveTo(bx, by + 80);
+      ctx.lineTo(260, by + 80);
+      ctx.lineTo(260, by + 50);
+      ctx.stroke();
+      drawBulb(ctx, 260, by + 35, bulb2On);
+      ctx.beginPath();
+      ctx.moveTo(260, by + 20);
+      ctx.lineTo(260, by - 40);
+      ctx.stroke();
+
+      // S2
+      ctx.beginPath();
+      ctx.moveTo(260, by - 40);
+      ctx.lineTo(300, by - 70);
+      ctx.stroke();
+      drawSwitch(ctx, 300, by - 70, s2);
+      ctx.beginPath();
+      ctx.moveTo(340, by - 70);
+      ctx.lineTo(bx, by - 70);
+      ctx.lineTo(bx, by - 25);
+      ctx.stroke();
+
+      // Labels
+      ctx.fillStyle = '#37474f';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('L₁', 130, by + 65);
+      ctx.fillText('L₂', 260, by + 65);
+
+      if (s1 || s2) {
+        var totalI = (s1 ? 0.3 : 0) + (s2 ? 0.3 : 0);
+        currentDisplay.textContent = totalI.toFixed(1) + 'A（并联，干路电流=' + (s1 ? '0.3' : '0') + '+' + (s2 ? '0.3' : '0') + 'A）';
+      } else {
+        currentDisplay.textContent = '0A';
+      }
+    }
+
+    voltageDisplay.textContent = '3V';
+    bulb1State.textContent = bulb1On ? '● 亮' : '● 灭';
+    bulb1State.style.color = bulb1On ? '#4caf50' : '#f44336';
+    bulb2State.textContent = bulb2On ? '● 亮' : '● 灭';
+    bulb2State.style.color = bulb2On ? '#4caf50' : '#f44336';
+  }
+
+  function drawBulb(ctx, x, y, on) {
+    ctx.save();
+    ctx.strokeStyle = on ? '#ffeb3b' : '#bdbdbd';
+    ctx.fillStyle = on ? '#fff9c4' : '#f5f5f5';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(x, y, 14, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    if (on) {
+      ctx.shadowColor = '#ffeb3b';
+      ctx.shadowBlur = 20;
+      ctx.fillStyle = 'rgba(255,235,59,0.15)';
+      ctx.beginPath();
+      ctx.arc(x, y, 24, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    // Filament
+    ctx.strokeStyle = on ? '#ff9800' : '#9e9e9e';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x - 6, y - 4);
+    ctx.quadraticCurveTo(x, y - 1, x + 6, y - 4);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x - 6, y + 4);
+    ctx.quadraticCurveTo(x, y + 1, x + 6, y + 4);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawSwitch(ctx, x, y, closed) {
+    ctx.save();
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 3;
+
+    if (closed) {
+      ctx.beginPath();
+      ctx.moveTo(x - 14, y);
+      ctx.lineTo(x + 14, y);
+      ctx.stroke();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(x - 14, y);
+      ctx.lineTo(x, y - 10);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x + 14, y);
+      ctx.lineTo(x, y - 10);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v09ch01) { p.v09ch01 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

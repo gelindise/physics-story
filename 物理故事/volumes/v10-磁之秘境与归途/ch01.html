@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章：磁之秘境 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.magnet-canvas { width:100%; max-width:520px; height:320px; background:#f3e5f5; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.magnet-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row button { padding:8px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; }
+.btn-on { background:#6a1b9a; color:#fff; }
+.btn-off { background:#9e9e9e; color:#fff; }
+.magnet-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.magnet-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .magnet-info span { background:rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第10卷</button>
+  <span class="chapter-title">第1章 · 磁之秘境</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第1章：磁之秘境</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：磁现象 · 电生磁 · 电磁铁 · 电动机</p>
+  <hr>
+
+  <p>从雷霆城出发后，林小宇和凌音来到了元界的边缘——磁之秘境。</p>
+  <p>这里的地形完全不同——天空中漂浮着巨大的紫色和蓝色光带，像是极光一样变幻莫测。地面上布满了散发着微光的矿石，它们自然地排列成某种图案。</p>
+  <p>"这些矿石——"林小宇蹲下来捡起一块，"它们有<strong>磁性</strong>！"</p>
+  <p>他手中的矿石被另一块矿石吸引了過去。"这是天然磁石。古中国人发现了这种矿石，用它制成了最早的指南针——<strong>司南</strong>。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：磁现象</div>
+    <div class="card-body">
+      <p><strong>磁体：</strong>具有磁性的物体。</p>
+      <p>• 磁体上磁性最强的部分叫<strong>磁极</strong></p>
+      <p>• 每个磁体都有两个磁极：<strong>南极（S）</strong>和<strong>北极（N）</strong></p>
+      <p>• <strong>同名磁极相互排斥，异名磁极相互吸引</strong></p>
+      <p><strong>磁场：</strong>磁体周围存在的一种特殊物质。</p>
+      <p>• 磁场是看不见、摸不着的，但它是真实存在的</p>
+      <p>• 磁场中某点的磁场方向：放在该点的小磁针N极所指的方向</p>
+      <p>• 用磁感线来形象地描述磁场——从N极出发，回到S极</p>
+      <p><strong>地磁场：</strong>地球周围存在的磁场</p>
+      <p>• 地磁场的北极在地理南极附近</p>
+      <p>• 指南针（小磁针）就是利用地磁场来指示南北方向的</p>
+    </div>
+  </div>
+
+  <p>凌音从背包中取出指南针——指针疯狂地旋转，最终指向了一个方向。"那个方向的磁场最强。应该是磁之秘境的核心。"</p>
+  <p>他们朝着指针指示的方向前进。周围的景象越來越奇异——岩石形成了天然的拱门，上面覆盖着发出紫色光芒的苔藓。空气中有微弱的电流噼啪声。</p>
+  <p>在一个宽阔的山谷中，他们看到了元界能量之源——一座由纯粹的能量构成的巨塔，散发着蓝色和紫色的光芒。塔的周围环绕着巨大的环形装置。</p>
+  <p>"那就是元界的能量核心。"暗影的声音在他們身后响起。他这次没有隐身，直接現身了。"所有物理法则在这里交汇。但核心的磁场正在衰减——如果不及时修复，元界就会崩溃。"</p>
+  <p>林小宇走近核心。他看到环形装置上缠绕着密集的线圈——"这是<strong>电磁铁</strong>。"他触摸着线圈，"电流通过线圈时会产生磁场。电流越大、线圈匝数越多，磁场越强。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：电生磁</div>
+    <div class="card-body">
+      <p><strong>电流的磁效应（奥斯特实验）：</strong></p>
+      <p>通电导线的周围存在磁场——电流方向决定了磁场方向。</p>
+      <p><strong>通电螺线管：</strong>将导线绕成螺线管状通电后产生的磁场。</p>
+      <p>• 磁场分布与条形磁铁相似</li>
+      <p>• 用<strong>安培定则（右手螺旋定则）</strong>来判断磁场方向</p>
+      <p><strong>电磁铁：</strong>带铁芯的通电螺线管。</p>
+      <p>• 磁性有无由电流通断控制</p>
+      <p>• 磁性强弱由电流大小和线圈匝数控制</p>
+      <p>• 磁极方向由电流方向控制</p>
+      <p><strong>应用：</strong>电磁起重机、电磁继电器、电话听筒</p>
+    </div>
+  </div>
+
+  <p>暗影指着一組已经出现裂缝的环形装置："这个核心中的<strong>电动机</strong>装置正在损坏。电动机是把电能转化为机械能的设备——它利用通电线圈在磁场中受力转动的原理工作。"</p>
+  <p>林小宇走近装置。他闭上眼睛"看到"了——电流流过线圈，在磁场中受到<strong>安培力</strong>的作用，使线圈转动起来。轉动的线圈带动了整个能量核心的运转。</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：电动机</div>
+    <div class="card-body">
+      <p><strong>电动机：</strong>利用通电线圈在磁场中受力转动的原理制成。</p>
+      <p>• 电能 → 机械能</p>
+      <p>• 通电导体在磁场中受到力的作用</p>
+      <p>• 受力方向与<strong>电流方向</strong>和<strong>磁场方向</strong>有关</p>
+      <p><strong>换向器：</strong>当线圈转过平衡位置时自动改变电流方向，使线圈持续转动下去。</p>
+      <p><strong>生活中的电动机：</strong>电风扇、洗衣机、电动车、电梯……</p>
+    </div>
+  </div>
+
+  <p>林小宇小心翼翼地修复了几个断裂的线圈连接点，调整了一个换向器的位置。"试试启动。"他对暗影說。</p>
+  <p>暗影启动了核心——环形装置开始缓缓转动。最初有些卡顿，但随着转速平稳下来，整座能量塔重新发出了稳定的光芒。</p>
+  <p>"你做得很出色。"暗影说，"最后一步——在下一章，你将面对归途的最终挑战。"</p>
+
+  <!-- ===== 🔬 交互实验：电磁铁模拟器 ===== -->
+  <h3>🔬 互动实验：电磁铁模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">控制电流通断和大小，观察电磁铁磁场的变化。</p>
+
+  <canvas id="magnetCanvas" class="magnet-canvas" width="520" height="320"></canvas>
+
+  <div class="ctrl-row">
+    <button id="powerBtn" class="btn-off">🔌 通电</button>
+    <label>电流大小：<input type="range" id="currentSlider" min="0" max="5" value="2" step="0.5"> <span id="currentLabel">2.0</span>A</label>
+    <label>线圈匝数：<input type="range" id="coilSlider" min="10" max="50" value="30" step="5"> <span id="coilLabel">30</span></label>
+  </div>
+
+  <div class="magnet-info">
+    <span>电源：<strong id="powerState">断开</strong></span>
+    <span>电流：<strong id="currentVal">0</strong>A</span>
+    <span>线圈匝数：<strong id="coilVal">30</strong></span>
+    <span>磁场强度：<strong id="fieldVal">无</strong></span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 电磁铁的优点：磁性可控、强弱可调、极性可换。是现代工业中最重要的电磁装置之一。</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：电磁实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🧲 实验1：自制电磁铁</div>
+    <p><strong>目标：</strong>用简单材料制作一个电磁铁。</p>
+    <p><strong>材料：</strong>一根长铁钉（或大铁螺丝）、约1米的细漆包线、一节电池（1.5V）、回形针若干、胶带。</p>
+    <ol class="exp-steps">
+      <li>把漆包线整齐地绕在铁钉上（约20-30圈），两端留出约10cm的线头</li>
+      <li>用砂纸或小刀刮去两端的漆包线漆，露出铜线</li>
+      <li>用胶带把线头的两端固定在电池的正负极上</li>
+      <li>用铁钉的尖端去吸回形针——<strong>吸起来了！</strong>这就是电磁铁</li>
+      <li>断开电池连接——回形针掉落，磁性消失</li>
+    </ol>
+    <p><strong>探索：</strong>尝试多绕几圈（50圈），看吸力是否变大。尝试用两节电池串联，看看吸力有什么变化。</p>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🧭 实验2：自制指南针</div>
+    <p><strong>目标：</strong>用简单的材料制作一个指南针。</p>
+    <p><strong>材料：</strong>一根缝衣针、一小块磁铁、一碗水、一小片软木塞（或泡沫塑料）、一片树叶。</p>
+    <ol class="exp-steps">
+      <li>用磁铁的一端沿着同一方向反复摩擦缝衣针（约30次）——缝衣针就被<strong>磁化</strong>了</li>
+      <li>把软木塞放在水面上，把缝衣针放在软木塞上</li>
+      <li>缝衣针会慢慢旋转，最终<strong>指向南北方向</strong></li>
+      <li>你知道哪一端是N极、哪一端是S极吗？</li>
+    </ol>
+    <p><strong>原理：</strong>地球本身是一个大磁体，它的地磁场使磁化的缝衣针指向南北。</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：磁极间的作用</div>
+    <p>条形磁铁的一端靠近小磁针的N极时，发现小磁针的N极被排斥。则条形磁铁的这一端是什么极？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v10c1-q1" value="a"> S极</label>
+      <label><input type="radio" name="quiz-v10c1-q1" value="b" data-correct="true"> N极</label>
+      <label><input type="radio" name="quiz-v10c1-q1" value="c"> 无法判断</label>
+      <label><input type="radio" name="quiz-v10c1-q1" value="d"> 可能是N极也可能是S极</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：电磁铁</div>
+    <p>下列方法中，不能增强电磁铁磁性的是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v10c1-q2" value="a"> 增大电流</label>
+      <label><input type="radio" name="quiz-v10c1-q2" value="b"> 增加线圈匝数</label>
+      <label><input type="radio" name="quiz-v10c1-q2" value="c"> 插入铁芯</label>
+      <label><input type="radio" name="quiz-v10c1-q2" value="d" data-correct="true"> 改变电流方向</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：电动机</div>
+    <p>电动机工作时，能量转化过程是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v10c1-q3" value="a" data-correct="true"> 电能 → 机械能</label>
+      <label><input type="radio" name="quiz-v10c1-q3" value="b"> 机械能 → 电能</label>
+      <label><input type="radio" name="quiz-v10c1-q3" value="c"> 电能 → 内能</label>
+      <label><input type="radio" name="quiz-v10c1-q3" value="d"> 内能 → 电能</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第1章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="ch02.html" style="display:inline-block;padding:12px 30px;background:#6a1b9a;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 最终章：归途 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('magnetCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 320;
+
+  var powerBtn = document.getElementById('powerBtn');
+  var currentSlider = document.getElementById('currentSlider');
+  var coilSlider = document.getElementById('coilSlider');
+  var currentLabel = document.getElementById('currentLabel');
+  var coilLabel = document.getElementById('coilLabel');
+  var powerState = document.getElementById('powerState');
+  var currentVal = document.getElementById('currentVal');
+  var coilVal = document.getElementById('coilVal');
+  var fieldVal = document.getElementById('fieldVal');
+
+  var powered = false;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var I = powered ? parseFloat(currentSlider.value) : 0;
+    var N = parseFloat(coilSlider.value);
+    var field = I * N * 0.02;
+
+    currentLabel.textContent = I.toFixed(1);
+    coilLabel.textContent = N;
+
+    // Core (iron)
+    var coreX = 200, coreY = 120, coreW = 30, coreH = 100;
+    ctx.fillStyle = '#78909c';
+    ctx.shadowColor = 'rgba(0,0,0,0.2)';
+    ctx.shadowBlur = 6;
+    roundRect(ctx, coreX - coreW/2, coreY - coreH/2, coreW, coreH, 4);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Coils
+    for (var i = 0; i < 8; i++) {
+      var cy = coreY - coreH/2 + 10 + i * (coreH - 20) / 8;
+      ctx.strokeStyle = '#ff8f00';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(coreX - coreW/2 - 4, cy, 8 + Math.sin(i * 1.5) * 2, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.strokeStyle = '#ff6f00';
+      ctx.beginPath();
+      ctx.arc(coreX + coreW/2 + 4, cy, 8 + Math.cos(i * 1.5) * 2, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Power source
+    ctx.fillStyle = powered ? '#43a047' : '#e0e0e0';
+    ctx.fillRect(55, 130, 30, 40);
+    ctx.fillStyle = powered ? '#fff' : '#9e9e9e';
+    ctx.fillRect(57, 132, 26, 36);
+    ctx.fillStyle = powered ? '#e53935' : '#bdbdbd';
+    ctx.fillRect(60, 135, 20, 30);
+    ctx.fillStyle = powered ? '#1a237e' : '#9e9e9e';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('+', 63, 150);
+    ctx.fillText('−', 77, 150);
+
+    // Wire connections
+    ctx.strokeStyle = powered ? '#e53935' : '#bdbdbd';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(68, 170);
+    ctx.lineTo(68, 200);
+    ctx.lineTo(coreX - coreW/2 - 15, 200);
+    ctx.lineTo(coreX - coreW/2 - 15, coreY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(82, 130);
+    ctx.lineTo(82, 90);
+    ctx.lineTo(coreX + coreW/2 + 15, 90);
+    ctx.lineTo(coreX + coreW/2 + 15, coreY);
+    ctx.stroke();
+
+    // Magnetic field visualization
+    if (field > 0.5) {
+      var alpha = Math.min(field / 5, 0.6);
+      var color = 'rgba(156,39,176,' + alpha + ')';
+
+      // Field lines from N (right) to S (left)
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+      for (var l = 0; l < 6; l++) {
+        ctx.beginPath();
+        var startX = coreX + coreW/2 + 15;
+        var startY = coreY - 20 + l * 8;
+        var endX = coreX - coreW/2 - 15;
+        ctx.moveTo(startX, startY);
+        // Curve outward
+        ctx.quadraticCurveTo(startX + 40 + l * 10, startY - 30 + l * 10, endX, startY);
+        ctx.stroke();
+      }
+    }
+
+    // Paper clips attracted
+    if (field > 1) {
+      var numClips = Math.min(Math.floor(field), 8);
+      for (var c = 0; c < numClips; c++) {
+        var angle = (c / numClips) * Math.PI - Math.PI/2 + 0.3;
+        var dist = 25 + c * 4;
+        var cx2 = coreX + coreW/2 + 20 + dist * Math.cos(angle);
+        var cy2 = coreY + dist * Math.sin(angle) * 0.5;
+        ctx.strokeStyle = '#90a4ae';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(coreX + coreW/2 + 15, coreY);
+        ctx.lineTo(cx2, cy2);
+        ctx.stroke();
+        ctx.fillStyle = '#b0bec5';
+        ctx.beginPath();
+        ctx.arc(cx2, cy2, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Labels
+    var fieldStrength = field > 5 ? '强' : (field > 1 ? '中等' : (field > 0.1 ? '弱' : '无'));
+    if (powered && field > 0.1) {
+      ctx.fillStyle = '#6a1b9a';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('N', coreX + coreW/2 + 35, coreY - 10);
+      ctx.fillText('S', coreX - coreW/2 - 35, coreY - 10);
+    }
+
+    // Display N/S labels on coil
+    ctx.fillStyle = '#37474f';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+
+    // Update info
+    powerState.textContent = powered ? '通电' : '断开';
+    powerState.style.color = powered ? '#4caf50' : '#f44336';
+    currentVal.textContent = I.toFixed(1) + 'A';
+    coilVal.textContent = N;
+    fieldVal.textContent = fieldStrength + (field > 0.1 ? ' (' + field.toFixed(1) + ')' : '');
+    fieldVal.style.color = field > 2 ? '#6a1b9a' : (field > 0.5 ? '#9c27b0' : '#9e9e9e');
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  powerBtn.addEventListener('click', function() {
+    powered = !powered;
+    powerBtn.textContent = powered ? '🔌 断电' : '🔌 通电';
+    powerBtn.className = powered ? 'btn-on' : 'btn-off';
+    draw();
+  });
+
+  currentSlider.addEventListener('input', draw);
+  coilSlider.addEventListener('input', draw);
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v10ch01) { p.v10ch01 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

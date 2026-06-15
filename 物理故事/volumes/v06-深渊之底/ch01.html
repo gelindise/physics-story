@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章：深渊水压 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+.exp-steps { counter-reset: step; list-style:none; padding:0; }
+.exp-steps li { counter-increment: step; padding:6px 0 6px 36px; position:relative; line-height:1.7; }
+.exp-steps li::before { content: counter(step); position:absolute; left:0; top:6px; width:26px; height:26px; background:#1a237e; color:#fff; border-radius:50%; text-align:center; line-height:26px; font-size:13px; font-weight:700; }
+body.night-mode .exp-steps li::before { background:#5c6bc0; }
+canvas.pressure-canvas { width:100%; max-width:520px; height:300px; background:#e3f2fd; border-radius:12px; display:block; margin:0 auto; cursor:pointer; }
+body.night-mode canvas.pressure-canvas { background:#1a237e; }
+#pressureDisplay { text-align:center; margin:12px 0; font-size:1.1em; }
+.control-group { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin:16px 0; }
+.control-group label { font-size:0.9em; }
+.control-group input[type="range"] { width:140px; vertical-align:middle; }
+.pressure-values { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin:10px 0; font-size:0.95em; }
+.pressure-values span { background:rgba(0,0,0,0.05); padding:6px 14px; border-radius:8px; }
+body.night-mode .pressure-values span { background:rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第6卷</button>
+  <span class="chapter-title">第1章 · 深渊水压</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第1章：深渊水压</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：压强 · 液体压强</p>
+  <hr>
+
+  <p>林小宇和凌音沿着海底峡谷一路下潜。</p>
+  <p>周围的光线越来越暗，海水从浅蓝变成深蓝，最终化为墨黑色。只有头顶远方透下的一缕微光提醒他们，水面还在遥远的上方。</p>
+  <p>"你的耳朵有没有感觉不舒服？"凌音忽然问道。</p>
+  <p>林小宇揉了揉耳朵："确实有点闷闷的，像坐飞机降落时的感觉。"</p>
+  <p>"那是因为我们在下潜，<strong>水压</strong>变大了。"凌音指了指前方的巨型轮廓，"快到了——那就是深渊之城。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：压强</div>
+    <div class="card-body">
+      <p><strong>压强</strong>是压力作用效果的物理量。定义式为：</p>
+      <p style="text-align:center;font-size:1.3em;font-weight:700;">p = F / S</p>
+      <p>其中 p 是压强（单位：帕斯卡 Pa），F 是压力（N），S 是受力面积（m²）。</p>
+      <p>增大压强的方法：增大压力或减小受力面积（如针尖很尖、刀刃很薄）。</p>
+      <p>减小压强的方法：减小压力或增大受力面积（如书包带很宽、坦克履带）。</p>
+      <p><strong>水的压强</strong>也遵循同样的原理——当你潜入水中，上方所有的水都在压着你。压强随深度增加而增大：</p>
+      <p style="text-align:center;font-size:1.3em;font-weight:700;">p = ρgh</p>
+      <p>ρ 是液体密度（kg/m³），g 是重力常数（9.8 N/kg），h 是深度（m）。</p>
+    </div>
+  </div>
+
+  <p>他们降落在城市边缘的一处平台。眼前的景象让人震惊：整座城市笼罩在一个半透明的气泡护罩中，但护罩已经出现了多处裂缝。在一些裂缝处，<strong>水像高压水枪一样喷射进来</strong>，在街道上冲出一条条沟壑。</p>
+  <p>"压强调节塔！"一个穿着鳞甲的城市守卫跑过来，"你们是外面来的吗？调培塔坏了，城市快要被压碎了！"</p>
+  <p>林小宇抬头望去——城市中央有一座高塔，塔身布满了密密麻麻的管道和阀门，但顶部正冒着滚滚气泡。</p>
+  <p>"带我过去，我能修。"林小宇说。他说出这句话时自己都吓了一跳——但他确实感到自己能"看见"压强的分布。</p>
+
+  <p>守卫带领他们穿过城中的街道。沿路可以看到居民们用各种方式对抗水压：有的人把木板绑在脚上在泥地里行走（<strong>增大受力面积减小压强</strong>），有的人在修补房屋的裂缝时在钉子下面垫金属片。</p>
+  <p>"看那边。"凌音指着一座倾斜的建筑。它的地基已经下陷，一侧的墙壁出现了巨大的裂缝。"压强太大了，地基承受不住。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：液体压强的特点</div>
+    <div class="card-body">
+      <p>液体压强与固体不同，有以下几个重要特点：</p>
+      <p><strong>1. 液体内部向各个方向都有压强</strong></p>
+      <p>在同一深度，液体向各个方向的压强相等。</p>
+      <p><strong>2. 深度越大，压强越大</strong></p>
+      <p>这就是为什么深海潜水需要特殊的耐压潜水器——每下潜10米，压强增加约一个大气压（10⁵ Pa）。</p>
+      <p><strong>3. 液体压强与液体密度有关</strong></p>
+      <p>相同深度下，密度越大的液体产生的压强越大（p = ρgh）。</p>
+      <p><strong>4. 液体压强与容器的形状无关</strong></p>
+      <p>无论容器是什么形状，同一深度处的压强都相同。这就是<strong>连通器原理</strong>的基础。</p>
+    </div>
+  </div>
+
+  <p>他们来到调培塔的底部。这是一座百米高的巨型塔楼，底部是一个巨大的圆形大厅，大厅中央有一个控制台。</p>
+  <p>控制台前，几个工程师正在焦急地调试。看到守卫带来外人，一个白发工程师立刻走了过来。</p>
+  <p>"你们是增援吗？太好了！我是这里的主工程师——老雷。调节塔的核心是一个<strong>多级压强控制器</strong>，它通过调整管道中的液体深度来控制城市不同区域的压强。但现在——"他拍了拍控制台，"参数全部乱了！底层压强过大，顶层又几乎为零。"</p>
+  <p>林小宇闭上眼睛，用心感受。他"看"到了——塔内的结构中，压强像一层层的水波一样分布着。在一处管道连接处，压强分布出现了诡异的跳跃。</p>
+  <p>"第三管道组的那个阀门，位置不对。"林小宇睁开眼，"它被装在了一个错误的高度上。"</p>
+  <p>老雷瞪大眼睛："你怎么知道？那个阀门昨天被一个学徒拆下来清洗，装回去的时候可能——"</p>
+  <p>"因为压强和深度成正比。"林小宇走到控制台前，指着屏幕上一组数据，"阀门在每个深度应该产生对应的压强补偿。如果装错了位置，它给出的补偿就和实际深度不匹配。看这里——"他在触控屏上画了一条直线，"正常的压强-深度曲线应该是过原点的直线，但现在——"他画了一个折线，"在这里出现了拐点。"</p>
+
+  <!-- ===== 🔬 交互实验：液体压强模拟器 ===== -->
+  <h3>🔬 互动实验：液体压强模拟器</h3>
+
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">拖动滑块，观察液体压强随深度和密度的变化。</p>
+
+  <canvas id="pressureCanvas" class="pressure-canvas" width="520" height="300"></canvas>
+
+  <div id="pressureDisplay">
+    <span>当前深度：<strong id="depthDisplay">5m</strong></span>
+    <span>液体：<strong id="liquidDisplay">水</strong></span>
+    <span>压强：<strong id="pDisplay">49000 Pa</strong></span>
+  </div>
+
+  <div class="control-group">
+    <label>深度：<input type="range" id="depthSlider" min="0" max="30" value="5" step="0.5"> <span id="depthLabel">5m</span></label>
+    <label>液体：
+      <select id="liquidSelect">
+        <option value="1000">水</option>
+        <option value="800">油</option>
+        <option value="13600">水银</option>
+        <option value="1030">海水</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="pressure-values">
+    <span>水面上：p = 1 atm</span>
+    <span>当前深度水压：<strong id="currentP">49000 Pa</strong></span>
+    <span>总压强：<strong id="totalP">150000 Pa</strong></span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 观察：每下潜10米，水压增加约100,000 Pa（约1个大气压）。水银的密度是水的13.6倍，相同深度下水银产生的压强也大13.6倍！</p>
+
+  <p>在凌音的辅助下，林小宇和老雷一起拆卸了那个错误安装的阀门，重新装回了正确的位置。当最后一个螺栓拧紧的瞬间，控制台上的所有指示灯同时亮起——绿色。</p>
+  <p>整座调培塔发出低沉的轰鸣声，管道中的水流重新恢复了有序的循环。城市护罩上的裂缝开始以肉眼可见的速度愈合。</p>
+  <p>"成功了！"老雷兴奋地拍着林小宇的肩膀，"你真是个天才！"</p>
+  <p>但凌音的表情却没有放松。她盯着城市深处的一个方向。"那里——有一股很强的能量波动。和我们在重铸之城遇到的暗影使徒的气息一样。"</p>
+  <p>林小宇顺着她的目光望去。在城市的最深处，有一个巨大的黑暗深渊，似乎通向地心。那里的水格外幽暗，隐约可见一些巨大的阴影在游动。</p>
+  <p>"深渊之底。"守卫的声音带着恐惧，"那里是禁区。据说——下面镇压着一个古老的怪物，叫'深渊巨兽'。但最近，它似乎苏醒了。"</p>
+  <p>林小宇握紧了拳头。暗影使徒一定在那里。而且，他们还遇到了一个更深的谜题——调培塔的故障是怎么发生的？是意外，还是人为破坏？</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：水的压强实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🪣 实验1：水压与深度的关系</div>
+    <p><strong>目标：</strong>验证液体压强随深度增加而增大。</p>
+    <p><strong>材料：</strong>大矿泉水瓶、锥子（或钉子）、水、盆子、尺子。</p>
+    <ol class="exp-steps">
+      <li>在矿泉水瓶侧面从上到下戳三个小孔（分别在距瓶底 5cm、15cm、25cm 处）</li>
+      <li>用手指堵住小孔，将水灌满瓶子</li>
+      <li>将瓶子放在盆子上方（或水池上方），同时松开三个小孔</li>
+      <li>观察三股水柱的喷射距离——<strong>最下面的孔射得最远</strong>，说明越深处水压越大</li>
+      <li>用尺子量一量三股水柱的水平射程，记录下来</li>
+    </ol>
+    <div class="exp-table">
+      <table>
+        <tr><th>小孔位置（距瓶底）</th><th>水柱水平射程（cm）</th><th>结论</th></tr>
+        <tr><td>5 cm</td><td></td><td></td></tr>
+        <tr><td>15 cm</td><td></td><td></td></tr>
+        <tr><td>25 cm</td><td></td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">📏 实验2：压强与受力面积</div>
+    <p><strong>目标：</strong>感受压力相同时，受力面积越小压强越大。</p>
+    <p><strong>材料：</strong>一块软橡皮泥（或面粉团）、两块大小不同的木块（或书本）。</p>
+    <ol class="exp-steps">
+      <li>把橡皮泥压平铺在桌面上</li>
+      <li>分别用大木块和小木块的底面（或尖角）以相同的力度压橡皮泥</li>
+      <li>观察压痕的深度——<strong>受力面积越小，压痕越深</strong>，说明压强越大</li>
+      <li>试试用笔的圆头和笔尖以相同力度压橡皮泥，观察区别</li>
+    </ol>
+    <p><strong>生活应用：</strong>为什么图钉的钉尖很尖、钉帽却很大？刀为什么要磨得锋利？</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：压强的计算</div>
+    <p>一个质量为60kg的人站立在水平地面上，每只脚与地面的接触面积约为150cm²。他对地面的压强约为多少？（g取10N/kg）</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v6c1-q1" value="a"> 2000 Pa</label>
+      <label><input type="radio" name="quiz-v6c1-q1" value="b" data-correct="true"> 20000 Pa</label>
+      <label><input type="radio" name="quiz-v6c1-q1" value="c"> 4000 Pa</label>
+      <label><input type="radio" name="quiz-v6c1-q1" value="d"> 40000 Pa</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：液体压强</div>
+    <p>潜水员穿潜水服下潜到水下50m深处，他所受海水的压强约为多少？（海水密度ρ=1.03×10³kg/m³，g取10N/kg）</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v6c1-q2" value="a"> 5.15×10⁵ Pa</label>
+      <label><input type="radio" name="quiz-v6c1-q2" value="b" data-correct="true"> 5.15×10⁵ Pa（约5个大气压）</label>
+      <label><input type="radio" name="quiz-v6c1-q2" value="c"> 5.15×10⁴ Pa</label>
+      <label><input type="radio" name="quiz-v6c1-q2" value="d"> 5.15×10⁶ Pa</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：连通器原理</div>
+    <p>下列生活用品中，哪个不是利用连通器原理工作的？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v6c1-q3" value="a"> 茶壶的壶嘴与壶身</label>
+      <label><input type="radio" name="quiz-v6c1-q3" value="b"> 锅炉水位计</label>
+      <label><input type="radio" name="quiz-v6c1-q3" value="c" data-correct="true"> 吸盘挂钩</label>
+      <label><input type="radio" name="quiz-v6c1-q3" value="d"> 洗手池的下水管道（U形管）</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第1章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="ch02.html" style="display:inline-block;padding:12px 30px;background:#00695c;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 继续阅读第2章：浮生之战 →</a>
+  </p>
+</div>
+
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('pressureCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 300;
+
+  var depthSlider = document.getElementById('depthSlider');
+  var liquidSelect = document.getElementById('liquidSelect');
+  var depthLabel = document.getElementById('depthLabel');
+  var depthDisplay = document.getElementById('depthDisplay');
+  var liquidDisplay = document.getElementById('liquidDisplay');
+  var pDisplay = document.getElementById('pDisplay');
+  var currentP = document.getElementById('currentP');
+  var totalP = document.getElementById('totalP');
+
+  var g = 9.8;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var depth = parseFloat(depthSlider.value);
+    var rho = parseFloat(liquidSelect.value);
+    var liquidNames = { '1000':'水','800':'油','13600':'水银','1030':'海水' };
+    var liquidName = liquidNames[liquidSelect.value] || '水';
+
+    var maxDepth = 30;
+    var waterTop = 30;
+    var waterBottom = H - 20;
+    var waterH = waterBottom - waterTop;
+    var fillH = (depth / maxDepth) * waterH;
+
+    // Draw water
+    var grad = ctx.createLinearGradient(0, waterTop, 0, waterBottom);
+    if (rho > 5000) {
+      grad.addColorStop(0, '#b0bec5');
+      grad.addColorStop(1, '#455a64');
+    } else if (rho > 1000) {
+      grad.addColorStop(0, '#81d4fa');
+      grad.addColorStop(1, '#1565c0');
+    } else {
+      grad.addColorStop(0, '#bbdefb');
+      grad.addColorStop(1, '#42a5f5');
+    }
+    ctx.fillStyle = grad;
+    ctx.fillRect(20, waterTop + waterH - fillH, W - 40, fillH);
+
+    // Water surface
+    ctx.strokeStyle = '#29b6f6';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(20, waterTop + waterH - fillH);
+    ctx.lineTo(W - 20, waterTop + waterH - fillH);
+    ctx.stroke();
+    ctx.fillStyle = '#29b6f6';
+    ctx.font = '13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('水面', 40, waterTop + waterH - fillH - 6);
+
+    // Bottom
+    ctx.fillStyle = '#5d4037';
+    ctx.fillRect(20, waterBottom, W - 40, 6);
+
+    // Depth markings
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'right';
+    for (var d = 5; d <= maxDepth; d += 5) {
+      var y = waterTop + waterH - (d / maxDepth) * waterH;
+      ctx.fillRect(15, y, 5, 1);
+      ctx.fillText(d + 'm', 12, y + 4);
+    }
+
+    // Pressure indicator line
+    var px = W - 50;
+    var maxP = rho * g * maxDepth;
+    var curP = rho * g * depth;
+    var barH = (curP / maxP) * waterH;
+    ctx.fillStyle = '#ef5350';
+    ctx.fillRect(px, waterBottom - barH, 12, barH);
+    ctx.strokeStyle = '#c62828';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(px, waterBottom - barH, 12, barH);
+    ctx.fillStyle = '#ef5350';
+    ctx.textAlign = 'center';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('p', px + 6, waterBottom + 16);
+
+    // Submarine icon at depth
+    var subY = waterTop + waterH - fillH + 10;
+    if (subY < waterTop) subY = waterTop;
+    ctx.fillStyle = '#37474f';
+    ctx.beginPath();
+    ctx.ellipse(W/2, subY, 28, 12, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = '#90caf9';
+    ctx.beginPath();
+    ctx.ellipse(W/2, subY - 2, 18, 8, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(W/2 - 12, subY - 2, 3, 0, Math.PI*2);
+    ctx.arc(W/2, subY - 2, 3, 0, Math.PI*2);
+    ctx.arc(W/2 + 12, subY - 2, 3, 0, Math.PI*2);
+    ctx.fill();
+
+    // Pressure bubbles
+    for (var i = 0; i < depth * 0.3; i++) {
+      var bx = 40 + Math.random() * (W - 100);
+      var by = waterTop + waterH - fillH + Math.random() * fillH;
+      ctx.beginPath();
+      ctx.arc(bx, by, 2 + Math.random() * 3, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.1 + Math.random() * 0.2) + ')';
+      ctx.fill();
+    }
+
+    // Update labels
+    depthLabel.textContent = depth + 'm';
+    depthDisplay.textContent = depth + 'm';
+    liquidDisplay.textContent = liquidName;
+    var pVal = Math.round(rho * g * depth);
+    pDisplay.textContent = pVal.toLocaleString() + ' Pa';
+    currentP.textContent = pVal.toLocaleString() + ' Pa';
+    var totalPval = pVal + 101000;
+    totalP.textContent = totalPval.toLocaleString() + ' Pa (' + (totalPval/101325).toFixed(1) + ' atm)';
+  }
+
+  depthSlider.addEventListener('input', draw);
+  liquidSelect.addEventListener('change', draw);
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v06ch01) { p.v06ch01 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

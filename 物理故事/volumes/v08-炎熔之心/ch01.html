@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章：炎熔火山 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.heat-canvas { width:100%; max-width:520px; height:300px; background:#fbe9e7; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.heat-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row input[type="range"] { width:120px; vertical-align:middle; }
+.heat-info { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.heat-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .heat-info span { background:rgba(255,255,255,0.08); }
+.thermometer { display:inline-block; width:24px; background:#e0e0e0; border-radius:12px; position:relative; height:150px; vertical-align:middle; margin:0 6px; }
+.thermometer-fill { position:absolute; bottom:0; left:2px; right:2px; border-radius:0 0 12px 12px; transition:height 0.5s; }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第8卷</button>
+  <span class="chapter-title">第1章 · 炎熔火山</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第1章：炎熔火山</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：内能 · 热量 · 比热容</p>
+  <hr>
+
+  <p>离开齿轮森林后，空气变得越来越热。植被从郁郁葱葱的绿色变成焦黄的枯草，最终完全消失。大地变成了黑色和红色的混合色。</p>
+  <p>林小宇擦了擦额头上的汗："这个方向没错吧？"</p>
+  <p>凌音看着手中的指南针——指针在疯狂地旋转。"这里的磁场被干扰了——不对，应该是温度太高了，连指南针都无法正常工作。但这种热量——"她抬起头，望向远方，"是从那个方向来的。"</p>
+  <p>远处，一座巨大的火山矗立在地平线上。火山口冒出的不是烟——而是淡蓝色的光芒。整座山体上布满了发光的纹路，像是某种巨型生物的血脉。</p>
+  <p>"那就是炎熔之心。"凌音说。</p>
+
+  <p>他们走近火山脚下，发现了一座依山而建的城市。整座城市由黑色的火山岩建成，街道两旁流淌着滚烫的岩浆——但它们被精确地引导在沟渠中，成为城市的动力来源。</p>
+  <p>城市中心有一座巨大的熔炉。林小宇走近些，看到熔炉的侧壁上刻满了密密麻麻的符号和公式。</p>
+  <p>"这是……内能转换装置。"他伸出手摸了摸熔炉的外壁——很热，但不烫手。这说明熔炉的隔热做得很好。"<strong>热量</strong>从高温的岩浆传递到熔炉内部的物质，但不会散失到周围环境中。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：内能与热量</div>
+    <div class="card-body">
+      <p><strong>内能：</strong>物体内部所有分子热运动的动能和分子势能的总和。</p>
+      <p>• 一切物体都有内能（即使温度为0℃，分子也在运动）</p>
+      <p>• 温度越高，分子的热运动越剧烈，内能越大</p>
+      <p>• 质量越大，分子数量越多，内能也越大</p>
+      <p><strong>热量（Q）：</strong>在热传递过程中，传递内能的多少。</p>
+      <p>• 热量的单位：焦耳（J）</p>
+      <p>• 热量是过程量——不能说"物体含有热量"，只能说"物体吸收/放出热量"</p>
+      <p><strong>改变内能的两种方式：</strong></p>
+      <p>1. <strong>做功</strong>（摩擦生热、压缩气体）</p>
+      <p>2. <strong>热传递</strong>（传导、对流、辐射）</p>
+    </div>
+  </div>
+
+  <p>"你们是从外面来的？"一个沙哑的声音响起。林小宇转头看见一个满身煤灰的老者。"我是这里的首席熔炉师——火须。熔炉出问题了。"</p>
+  <p>"什么问题？"凌音问。</p>
+  <p>火须指了指熔炉顶部的指针："城市的地热引擎靠不同物质的<strong>比热容</strong>差异来工作。但我们最近更换了导热介质——新的介质吸收热量的速度太慢了，导致整个引擎的效率大幅下降。"</p>
+  <p>"比热容——物质吸收热量能力的物理量。"林小宇眼睛一亮，"不同的物质，升高相同温度所吸收的热量不同。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：比热容</div>
+    <div class="card-body">
+      <p><strong>比热容（c）：</strong>单位质量的某种物质，温度升高（或降低）1℃所吸收（或放出）的热量。</p>
+      <p style="text-align:center;font-size:1.2em;font-weight:700;">Q = cmΔt</p>
+      <p>Q 是热量（J），c 是比热容（J/(kg·℃)），m 是质量（kg），Δt 是温度变化（℃）。</p>
+      <p><strong>常见物质的比热容：</strong></p>
+      <p>• 水：4.2×10³ J/(kg·℃) —— 最大的常见物质比热容</p>
+      <p>• 酒精：2.4×10³</p>
+      <p>• 沙石：约 0.92×10³</p>
+      <p>• 铁：0.46×10³</p>
+      <p>• 铜：0.39×10³</p>
+      <p>• 水银：0.14×10³</p>
+      <p>水的比热容大——这就是为什么沿海地区昼夜温差小，内陆地区昼夜温差大。</p>
+    </div>
+  </div>
+
+  <p>"让我看看你们的介质。"林小宇说。火须带他们来到一个材料仓库，里面堆满了各种矿石和液体样品。</p>
+  <p>林小宇拿起一块样品，闭上眼睛。他"看到"了分子在其中的运动——温度升高时，分子运动加剧，吸收的热量转化为分子的动能。不同的物质，分子结构不同，吸收热量的能力也不同。</p>
+  <p>"这个——"他指着一块黑色的矿石，"它的比热容太低了。用它来做导热介质，温度升得快，但储存的热量太少。你们需要换一种比热容更大的物质。"</p>
+  <p>火须叹了口气："我们试过了，但城里的材料都用光了。"</p>
+  <p>林小宇想了想："水——你们有水源吗？水的比热容是常见物质中最大的。虽然用起来麻烦一些，但作为导热介质效果最好。"</p>
+  <p>火须眼睛一亮："地下河！炎熔山底下有一条地下河！"</p>
+
+  <!-- ===== 🔬 交互实验：比热容模拟器 ===== -->
+  <h3>🔬 互动实验：比热容模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">选择不同物质，比较它们在相同加热条件下的升温速度。</p>
+
+  <canvas id="heatCanvas" class="heat-canvas" width="520" height="300"></canvas>
+
+  <div class="ctrl-row">
+    <label>物质：
+      <select id="materialSelect">
+        <option value="4200">水</option>
+        <option value="2400">酒精</option>
+        <option value="920">沙石</option>
+        <option value="460">铁</option>
+        <option value="390">铜</option>
+        <option value="140">水银</option>
+      </select>
+    </label>
+    <label>质量：<input type="range" id="massSlider2" min="0.5" max="5" value="2" step="0.1"> <span id="massLabel2">2.0</span> kg</label>
+    <button id="heatBtn" style="padding:8px 20px;background:#bf360c;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">🔥 加热</button>
+    <button id="resetHeatBtn" style="padding:8px 16px;background:#78909c;color:#fff;border:none;border-radius:8px;cursor:pointer;">↺ 重置</button>
+  </div>
+
+  <div class="heat-info">
+    <span>当前温度：<strong id="tempDisplay">20</strong>°C</span>
+    <span>吸收热量：<strong id="qDisplay">0</strong> J</span>
+    <span>比热容：<strong id="cDisplay">4200</strong> J/(kg·℃)</span>
+    <span>质量：<strong id="mDisplay">2.0</strong> kg</span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 水的比热容最大，升温最慢；金属的比热容小，升温快。这就是为什么海边夏天凉爽、冬天温暖。</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：热能的实验</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🌊 实验1：水和沙子的吸热比赛</div>
+    <p><strong>目标：</strong>比较水和沙子的吸热能力（比热容大小）。</p>
+    <p><strong>材料：</strong>两个相同的小碗（或杯子）、水、沙子（或土）、温度计、保鲜膜、阳光（或台灯）。</p>
+    <ol class="exp-steps">
+      <li>在两个碗中分别装入等量的水和沙子（各约100g）</li>
+      <li>在碗口盖上保鲜膜，用温度计测量初始温度</li>
+      <li>将两个碗放在阳光下（或台灯下）晒30分钟</li>
+      <li>每10分钟记录一次温度，填入下方表格</li>
+    </ol>
+    <p><strong>预测：</strong>沙子升温更快（比热容小），水升温更慢（比热容大）。</p>
+    <div class="exp-table">
+      <table>
+        <tr><th>时间（分钟）</th><th>0</th><th>10</th><th>20</th><th>30</th></tr>
+        <tr><td>水的温度（°C）</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>沙子的温度（°C）</td><td></td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🧊 实验2：摩擦生热</div>
+    <p><strong>目标：</strong>通过做功（摩擦）改变内能，感受机械能转化为内能。</p>
+    <p><strong>材料：</strong>两根干燥的木棍（或一根铁钉和一块木板）、一小块布。</p>
+    <ol class="exp-steps">
+      <li>用手快速摩擦两根木棍（或快速搓手）——感觉温度的变化</li>
+      <li>用铁钉在木板上快速摩擦——摸一摸摩擦过的位置，感受温度</li>
+      <li>思考：钻木取火就是利用了这个原理——<strong>机械能→内能</strong></li>
+    </ol>
+    <p><strong>原理：</strong>摩擦时，克服摩擦力做功，机械能转化为内能，使物体温度升高。这是改变内能的两种方式之一——<strong>做功</strong>。</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：热量计算</div>
+    <p>把质量为2kg的水从20°C加热到100°C，需要吸收多少热量？（水的比热容c=4.2×10³J/(kg·℃)）</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v8c1-q1" value="a"> 6.72×10⁵ J</label>
+      <label><input type="radio" name="quiz-v8c1-q1" value="b" data-correct="true"> 6.72×10⁵ J</label>
+      <label><input type="radio" name="quiz-v8c1-q1" value="c"> 8.4×10⁵ J</label>
+      <label><input type="radio" name="quiz-v8c1-q1" value="d"> 3.36×10⁵ J</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：比热容的理解</div>
+    <p>下列有关比热容的说法中，正确的是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v8c1-q2" value="a"> 水的比热容是4.2×10³J/(kg·℃)，表示1kg的水温度升高1°C要吸收4.2×10³J的热量</label>
+      <label><input type="radio" name="quiz-v8c1-q2" value="b"> 物体温度越高，比热容越大</label>
+      <label><input type="radio" name="quiz-v8c1-q2" value="c" data-correct="true"> 比热容是物质的特性，与物体的质量和温度无关</label>
+      <label><input type="radio" name="quiz-v8c1-q2" value="d"> 比热容大的物质吸热一定多</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：内能的理解</div>
+    <p>关于内能，下列说法正确的是？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v8c1-q3" value="a"> 0°C的物体内能为零</label>
+      <label><input type="radio" name="quiz-v8c1-q3" value="b"> 温度高的物体一定比温度低的物体内能大</label>
+      <label><input type="radio" name="quiz-v8c1-q3" value="c" data-correct="true"> 一切物体在任何温度下都具有内能</label>
+      <label><input type="radio" name="quiz-v8c1-q3" value="d"> 物体的机械能越大，内能越大</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第1章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="ch02.html" style="display:inline-block;padding:12px 30px;background:#bf360c;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 继续阅读第2章：锻造之力 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('heatCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 300;
+
+  var matSelect = document.getElementById('materialSelect');
+  var massSlider2 = document.getElementById('massSlider2');
+  var massLabel2 = document.getElementById('massLabel2');
+  var heatBtn = document.getElementById('heatBtn');
+  var resetHeatBtn = document.getElementById('resetHeatBtn');
+  var tempDisplay = document.getElementById('tempDisplay');
+  var qDisplay = document.getElementById('qDisplay');
+  var cDisplay = document.getElementById('cDisplay');
+  var mDisplay = document.getElementById('mDisplay');
+
+  var matNames = { '4200':'水','2400':'酒精','920':'沙石','460':'铁','390':'铜','140':'水银' };
+  var temp = 20;
+  var q = 0;
+  var heating = false;
+  var animId = null;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var c = parseFloat(matSelect.value);
+    var m = parseFloat(massSlider2.value);
+    var matName = matNames[matSelect.value] || '未知';
+    var maxTemp = 100;
+
+    // Thermometer container
+    var tx = 60, ty = 40, tw = 40, th = 200;
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 2;
+    roundRect(ctx, tx - tw/2, ty, tw, th, 20);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(0,0,0,0.05)';
+    roundRect(ctx, tx - tw/2, ty, tw, th, 20);
+    ctx.fill();
+
+    // Mercury
+    var fillPct = Math.min(temp / maxTemp, 1);
+    var mercuryH = (th - 16) * fillPct;
+    var gradient = ctx.createLinearGradient(0, ty + th - 8 - mercuryH, 0, ty + th - 8);
+    gradient.addColorStop(0, '#ff6d00');
+    gradient.addColorStop(0.5, '#e53935');
+    gradient.addColorStop(1, '#c62828');
+    ctx.fillStyle = gradient;
+    roundRect(ctx, tx - tw/2 + 4, ty + th - 8 - mercuryH, tw - 8, mercuryH, 10);
+    ctx.fill();
+
+    // Bulb
+    ctx.fillStyle = '#c62828';
+    ctx.beginPath();
+    ctx.arc(tx, ty + th + 10, 14, 0, Math.PI*2);
+    ctx.fill();
+
+    // Temp scale
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'left';
+    for (var t = 0; t <= maxTemp; t += 20) {
+      var sy = ty + th - 8 - (t / maxTemp) * (th - 16);
+      ctx.fillRect(tx + tw/2 + 2, sy, 6, 1);
+      ctx.fillText(t + '°C', tx + tw/2 + 10, sy + 3);
+    }
+
+    // Heating vessel
+    var vx = 220, vy = 80, vw = 260, vh = 160;
+    ctx.fillStyle = 'rgba(0,0,0,0.04)';
+    ctx.strokeStyle = '#546e7a';
+    ctx.lineWidth = 2;
+    roundRect(ctx, vx, vy, vw, vh, 8);
+    ctx.stroke();
+    ctx.fill();
+
+    // Liquid in vessel
+    var liqPct = 0.7;
+    var liqH = vh * liqPct;
+    var liqGrad = ctx.createLinearGradient(0, vy + vh - liqH, 0, vy + vh);
+    if (c > 2000) {
+      liqGrad.addColorStop(0, '#bbdefb');
+      liqGrad.addColorStop(1, '#42a5f5');
+    } else if (c > 500) {
+      liqGrad.addColorStop(0, '#ffe0b2');
+      liqGrad.addColorStop(1, '#ff8a65');
+    } else {
+      liqGrad.addColorStop(0, '#e0e0e0');
+      liqGrad.addColorStop(1, '#9e9e9e');
+    }
+    ctx.fillStyle = liqGrad;
+    roundRect(ctx, vx + 4, vy + vh - liqH - 4, vw - 8, liqH, 4);
+    ctx.fill();
+
+    // Heating bubbles if > 40
+    if (temp > 40) {
+      var bubbles = Math.min(Math.floor((temp - 40) / 5), 15);
+      for (var i = 0; i < bubbles; i++) {
+        var bx = vx + 20 + Math.random() * (vw - 40);
+        var by = vy + vh - 10 - Math.random() * liqH * 0.6;
+        ctx.beginPath();
+        ctx.arc(bx, by, 2 + Math.random() * 4, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.2 + Math.random() * 0.3) + ')';
+        ctx.fill();
+      }
+    }
+
+    // Steam if near boiling
+    if (temp > 70) {
+      ctx.fillStyle = 'rgba(200,200,200,' + ((temp - 70) / 60 * 0.3) + ')';
+      for (var s = 0; s < 5; s++) {
+        ctx.beginPath();
+        ctx.arc(vx + 40 + s * 40 + Math.random() * 20, vy - 10 - Math.random() * 20, 8 + Math.random() * 10, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    // Fire below
+    if (heating) {
+      ctx.fillStyle = '#ff6f00';
+      ctx.beginPath();
+      ctx.moveTo(vx + 50, vy + vh + 10);
+      ctx.lineTo(vx + vw/2, vy + vh + 50 + Math.random() * 20);
+      ctx.lineTo(vx + vw - 50, vy + vh + 10);
+      ctx.fill();
+      ctx.fillStyle = '#e65100';
+      ctx.beginPath();
+      ctx.moveTo(vx + 80, vy + vh + 10);
+      ctx.lineTo(vx + vw/2, vy + vh + 35 + Math.random() * 15);
+      ctx.lineTo(vx + vw - 80, vy + vh + 10);
+      ctx.fill();
+    }
+
+    // Substance name
+    ctx.fillStyle = '#37474f';
+    ctx.font = 'bold 16px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(matName, vx + vw/2, vy + vh - 10);
+
+    // Update labels
+    tempDisplay.textContent = temp.toFixed(1);
+    qDisplay.textContent = Math.round(q);
+    cDisplay.textContent = c;
+    mDisplay.textContent = m.toFixed(1);
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  function animateHeat() {
+    if (!heating) return;
+    var c = parseFloat(matSelect.value);
+    var m = parseFloat(massSlider2.value);
+
+    q += c * 0.05;
+    var deltaT = q / (c * m);
+    temp = 20 + deltaT;
+
+    if (temp >= 100) {
+      temp = 100;
+      heating = false;
+      heatBtn.textContent = '🔥 加热';
+    }
+
+    draw();
+    if (heating) animId = requestAnimationFrame(animateHeat);
+  }
+
+  heatBtn.addEventListener('click', function() {
+    if (!heating) {
+      heating = true;
+      heatBtn.textContent = '⏹ 停止';
+      animateHeat();
+    } else {
+      heating = false;
+      heatBtn.textContent = '🔥 加热';
+    }
+  });
+
+  resetHeatBtn.addEventListener('click', function() {
+    if (animId) cancelAnimationFrame(animId);
+    heating = false;
+    heatBtn.textContent = '🔥 加热';
+    temp = 20;
+    q = 0;
+    draw();
+  });
+
+  matSelect.addEventListener('change', resetHeatBtn.click.bind(resetHeatBtn));
+  massSlider2.addEventListener('input', function() { massLabel2.textContent = parseFloat(massSlider2.value).toFixed(1); });
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v08ch01) { p.v08ch01 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

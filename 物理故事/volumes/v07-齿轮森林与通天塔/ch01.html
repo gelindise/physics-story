@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1章：齿轮森林 - 物理解码者</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+canvas.lever-canvas { width:100%; max-width:520px; height:300px; background:#fff3e0; border-radius:12px; display:block; margin:0 auto; }
+body.night-mode canvas.lever-canvas { background:#1a1a2e; }
+.ctrl-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:12px 0; }
+.ctrl-row label { font-size:0.9em; }
+.ctrl-row input[type="range"] { width:120px; vertical-align:middle; }
+.lever-info { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin:10px 0; font-size:0.9em; }
+.lever-info span { background:rgba(0,0,0,0.05); padding:5px 12px; border-radius:6px; }
+body.night-mode .lever-info span { background:rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div class="reader-header">
+  <button class="back-btn" onclick="location.href='index.html'">← 第7卷</button>
+  <span class="chapter-title">第1章 · 齿轮森林</span>
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+</div>
+<div class="reader-content">
+  <h1>第1章：齿轮森林</h1>
+  <p class="no-indent" style="text-indent:0;opacity:0.6;">知识点：杠杆 · 滑轮 · 功</p>
+  <hr>
+
+  <p>离开深渊之底的第二天，林小宇和凌音就踏上了前往齿轮森林的旅程。</p>
+  <p>通往齿轮森林的路是一条不断上升的山道。沿途的景象逐渐从湿润的海底植被变成了干旱的岩石地貌，又变成了一片由巨大金属部件组成的奇异景观。</p>
+  <p>齿轮森林名副其实——漫山遍野都是大大小小的齿轮，有的直径达数十米，有的小到只有巴掌大。它们相互咬合、转动，发出连绵不断的"咔嗒"声，像是一座永不停止的机械交响乐团。</p>
+  <p>"这太不可思议了。"凌音环顾四周，"这些齿轮是谁造的？它们为什么在转？"</p>
+  <p>林小宇蹲下来观察一根从地面伸出的杠杆——它连接着一个齿轮组。他试探性地按压杠杆的一端，另一端轻易地撬起了一块沉重的石板。</p>
+  <p>"好轻！"他惊讶地说，"这么大一块石头，我感觉就像在撬一块泡沫。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：杠杆</div>
+    <div class="card-body">
+      <p><strong>杠杆</strong>是在力的作用下能绕固定点转动的硬棒。</p>
+      <p>杠杆的五要素：</p>
+      <p>• <strong>支点</strong>（O）：杠杆绕其转动的固定点</p>
+      <p>• <strong>动力</strong>（F₁）：使杠杆转动的力</p>
+      <p>• <strong>阻力</strong>（F₂）：阻碍杠杆转动的力</p>
+      <p>• <strong>动力臂</strong>（l₁）：支点到动力作用线的距离</p>
+      <p>• <strong>阻力臂</strong>（l₂）：支点到阻力作用线的距离</p>
+      <p><strong>杠杆平衡条件（杠杆原理）：</strong></p>
+      <p style="text-align:center;font-size:1.3em;font-weight:700;">F₁ × l₁ = F₂ × l₂</p>
+      <p>• <strong>省力杠杆</strong>：l₁ > l₂（省力但费距离，如撬棍、瓶起子）</p>
+      <p>• <strong>费力杠杆</strong>：l₁ < l₂（费力但省距离，如镊子、钓鱼竿）</p>
+      <p>• <strong>等臂杠杆</strong>：l₁ = l₂（如天平）</p>
+    </div>
+  </div>
+
+  <p>"这就是杠杆原理！"林小宇兴奋地说，"阿基米德说过，给他一个支点，他就能撬动整个地球。"</p>
+  <p>"那我们需要一个很长的力臂，以及一个足够坚固的支点。"凌音笑了笑，"不过现在我们只需要通过这些齿轮机关。"</p>
+  <p>他们沿着齿轮森林中的小径前进。每前进一段距离就会遇到一个由杠杆和滑轮组成的机关——有的需要用力压下一根长杆来升起前方的吊桥，有的需要拉动一组滑轮来打开紧闭的大门。</p>
+  <p>在一处悬崖边，他们遇到了一个特别的装置：一个巨大的<strong>滑轮组</strong>悬挂在悬崖上方，绳索的一端系着一个巨大的吊篮，另一端垂在地面。</p>
+  <p>"这个应该能把我们吊上去。"凌音检查了一下装置，"但看起来需要很大的力。"</p>
+  <p>林小宇数了数滑轮的个数："等等——这不是单个滑轮。这是一个<strong>滑轮组</strong>，上面有三个定滑轮，下面有两个动滑轮。绳子穿过五段……这意味着，理论上只需要五分之一的力就能把重物提起来。"</p>
+
+  <div class="knowledge-card">
+    <div class="card-header">⚡ 法则笔记：滑轮</div>
+    <div class="card-body">
+      <p><strong>定滑轮</strong>：固定不动的滑轮。</p>
+      <p>• 特点：不省力（F = G），但可以改变力的方向</p>
+      <p>• 实质：<strong>等臂杠杆</strong></p>
+      <p><strong>动滑轮</strong>：随物体一起移动的滑轮。</p>
+      <p>• 特点：省一半力（F = G/2），但不能改变力的方向</p>
+      <p>• 实质：<strong>动力臂为阻力臂2倍的杠杆</strong></p>
+      <p><strong>滑轮组：</strong>定滑轮和动滑轮的组合。</p>
+      <p style="text-align:center;font-size:1.1em;font-weight:700;">F = G / n</p>
+      <p>n 是承担重物的绳子段数。n 越大越省力，但拉绳子的距离也越长。</p>
+      <p><strong>功的原理：</strong>使用任何机械都不能省功。</p>
+      <p style="text-align:center;font-size:1.1em;font-weight:700;">W = F × s</p>
+      <p>省力就费距离，省距离就费力——功的总量不变。</p>
+    </div>
+  </div>
+
+  <p>林小宇用力拉动绳索——果然，巨大的吊篮轻松地被提了起来。他们乘坐吊篮越过了悬崖，来到了齿轮森林的深处。</p>
+  <p>在那里，他们看到了齿轮森林的心脏——一座直入云霄的<strong>通天塔</strong>。</p>
+  <p>塔身由无数交错的齿轮和传动轴构成，像是一棵金属巨树。齿轮们以不同的速度转动着，有些快如闪电，有些慢如钟表。整座塔散发着一股古老而强大的气息。</p>
+  <p>塔的入口处有一块石碑，上面刻着字：</p>
+  <p style="text-align:center;font-style:italic;background:rgba(0,0,0,0.03);padding:20px;border-radius:10px;">"欲登此塔，必先领悟机械之真谛——<br>杠杆为骨，滑轮为筋，<strong>功</strong>为魂。<br>无做功之力，终是空转。"</p>
+  <p>林小宇看着石碑，若有所思。"功——W = F × s。没有位移，有力也没用。"</p>
+  <p>"就像你用力推一堵墙——墙没动，虽然你出了很多力，但从物理上说你没有做功。"凌音补充道。</p>
+  <p>"对！"林小宇点头，"所以这些齿轮虽然一直在转，但只有真正对外输出力并产生位移的齿轮才在做有用功。"</p>
+  <p>他们走进塔内。身后，齿轮森林的轰鸣声渐渐远去，取而代之的是塔内更加精密、更加复杂的机械声。</p>
+
+  <!-- ===== 🔬 交互实验：杠杆平衡模拟器 ===== -->
+  <h3>🔬 互动实验：杠杆平衡模拟器</h3>
+  <p style="text-indent:0;font-size:0.9em;opacity:0.7;">拖动滑块，调整动力臂和阻力臂，观察杠杆的平衡条件。</p>
+
+  <canvas id="leverCanvas" class="lever-canvas" width="520" height="300"></canvas>
+
+  <div class="ctrl-row">
+    <label>动力臂 l₁：<input type="range" id="arm1Slider" min="0.5" max="4" value="2" step="0.1"> <span id="arm1Label">2.0</span>m</label>
+    <label>阻力臂 l₂：<input type="range" id="arm2Slider" min="0.5" max="4" value="1" step="0.1"> <span id="arm2Label">1.0</span>m</label>
+    <label>阻力 F₂：<input type="range" id="f2Slider" min="10" max="200" value="100" step="5"> <span id="f2Label">100</span>N</label>
+  </div>
+
+  <div class="lever-info">
+    <span>动力臂 l₁ = <strong id="arm1Val">2.0</strong>m</span>
+    <span>阻力臂 l₂ = <strong id="arm2Val">1.0</strong>m</span>
+    <span>阻力 F₂ = <strong id="f2Val">100</strong>N</span>
+    <span>动力 F₁ = <strong id="f1Val">50</strong>N</span>
+    <span style="font-weight:700;">类型：<strong id="leverType" style="color:#e65100;">省力杠杆</strong></span>
+  </div>
+
+  <p style="text-indent:0;font-size:0.85em;opacity:0.6;">💡 F₁ × l₁ = F₂ × l₂，这就是杠杆平衡条件！</p>
+
+  <!-- ===== 🧪 动手探索 ===== -->
+  <h3>🧪 动手探索：身边的杠杆和滑轮</h3>
+
+  <div class="experiment-box">
+    <div class="exp-title">🔧 实验1：寻找身边的杠杆</div>
+    <p><strong>目标：</strong>发现生活中的杠杆，分析它们的省力/费力情况。</p>
+    <p><strong>材料：</strong>一把直尺（或木条）、一块橡皮（当支点）、几枚硬币、一个弹簧测力计（可选）。</p>
+    <ol class="exp-steps">
+      <li>用橡皮作支点，直尺作杠杆，模拟三种类型的杠杆</li>
+      <li><strong>省力杠杆：</strong>支点靠近硬币（阻力），远离手（动力）——很轻松撬起硬币</li>
+      <li><strong>费力杠杆：</strong>支点远离硬币，靠近手——感觉很费力</li>
+      <li><strong>等臂杠杆：</strong>支点在正中间——两边平衡，像天平一样</li>
+      <li>在家里找一找：指甲剪（省力）、镊子（费力）、剪刀（可省力可费力）、开瓶器（省力）</li>
+    </ol>
+    <div class="exp-table">
+      <table>
+        <tr><th>物品</th><th>支点在哪</th><th>省力/费力</th></tr>
+        <tr><td>指甲剪</td><td></td><td></td></tr>
+        <tr><td>镊子</td><td></td><td></td></tr>
+        <tr><td>剪刀</td><td></td><td></td></tr>
+        <tr><td>开瓶器</td><td></td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="experiment-box">
+    <div class="exp-title">🪢 实验2：自制滑轮</div>
+    <p><strong>目标：</strong>用身边的材料自制滑轮组，感受省力的效果。</p>
+    <p><strong>材料：</strong>一个线轴（或一卷胶带的空芯）、一根长绳（约2m）、一根圆珠笔、一个重物（如一瓶500ml的水）。</p>
+    <ol class="exp-steps">
+      <li>把线轴穿在圆珠笔上，作为动滑轮（注意要让线轴能自由转动）</li>
+      <li>把绳子穿过线轴，一端固定在高处（如门把手），另一端用手拉——这是动滑轮</li>
+      <li>用弹簧测力计（或用手感受）比较直接提升重物和用动滑轮提升的用力大小</li>
+      <li>如果有多个线轴，可以尝试做一个滑轮组</li>
+    </ol>
+    <p><strong>原理：</strong>动滑轮省一半力，但绳子要拉两倍的距离。使用任何机械都不能省功！</p>
+  </div>
+
+  <!-- ===== 💡 脑力挑战 ===== -->
+  <h3>💡 脑力挑战</h3>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题1：杠杆平衡</div>
+    <p>一根杠杆的动力臂是阻力臂的3倍，当阻力为150N时，动力为多少N时杠杆才能平衡？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v7c1-q1" value="a"> 150N</label>
+      <label><input type="radio" name="quiz-v7c1-q1" value="b" data-correct="true"> 50N</label>
+      <label><input type="radio" name="quiz-v7c1-q1" value="c"> 450N</label>
+      <label><input type="radio" name="quiz-v7c1-q1" value="d"> 75N</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题2：滑轮组</div>
+    <p>一个滑轮组有4段绳子承担物重（n=4），要提起200N的重物，理论上需要多大的拉力？（不计摩擦和滑轮自重）</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v7c1-q2" value="a"> 200N</label>
+      <label><input type="radio" name="quiz-v7c1-q2" value="b"> 100N</label>
+      <label><input type="radio" name="quiz-v7c1-q2" value="c" data-correct="true"> 50N</label>
+      <label><input type="radio" name="quiz-v7c1-q2" value="d"> 25N</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-title">🧠 问题3：功的计算</div>
+    <p>一个人用50N的水平推力，使重100N的箱子在水平地面上匀速移动了2m。他对箱子做的功是多少？</p>
+    <div class="challenge-options">
+      <label><input type="radio" name="quiz-v7c1-q3" value="a"> 200 J</label>
+      <label><input type="radio" name="quiz-v7c1-q3" value="b"> 100 J</label>
+      <label><input type="radio" name="quiz-v7c1-q3" value="c" data-correct="true"> 100 J</label>
+      <label><input type="radio" name="quiz-v7c1-q3" value="d"> 50 J</label>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <p style="text-align:center;margin:30px 0;"><strong>—— 第1章 完 ——</strong></p>
+  <p class="no-indent" style="text-align:center;margin:20px 0;">
+    <a href="ch02.html" style="display:inline-block;padding:12px 30px;background:#e65100;color:#fff;border-radius:10px;font-weight:700;font-size:1.1em;">📖 继续阅读第2章：通天塔之巅 →</a>
+  </p>
+</div>
+<script src="../../scripts/reader.js"></script>
+<script>
+(function() {
+  'use strict';
+  var canvas = document.getElementById('leverCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 520, H = 300;
+
+  var arm1Slider = document.getElementById('arm1Slider');
+  var arm2Slider = document.getElementById('arm2Slider');
+  var f2Slider = document.getElementById('f2Slider');
+  var arm1Label = document.getElementById('arm1Label');
+  var arm2Label = document.getElementById('arm2Label');
+  var f2Label = document.getElementById('f2Label');
+  var arm1Val = document.getElementById('arm1Val');
+  var arm2Val = document.getElementById('arm2Val');
+  var f2Val = document.getElementById('f2Val');
+  var f1Val = document.getElementById('f1Val');
+  var leverType = document.getElementById('leverType');
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var l1 = parseFloat(arm1Slider.value);
+    var l2 = parseFloat(arm2Slider.value);
+    var F2 = parseFloat(f2Slider.value);
+    var F1 = (l2 * F2) / (l1 || 0.1);
+
+    var scale = 50;
+    var cx = 260, cy = 180;
+
+    // Fulcrum (triangle)
+    ctx.fillStyle = '#795548';
+    ctx.beginPath();
+    ctx.moveTo(cx - 12, cy + 20);
+    ctx.lineTo(cx + 12, cy + 20);
+    ctx.lineTo(cx, cy);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#5d4037';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('支点 O', cx, cy + 38);
+
+    // Lever bar
+    var leftX = cx - l1 * scale;
+    var rightX = cx + l2 * scale;
+    ctx.strokeStyle = '#37474f';
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(leftX, cy);
+    ctx.lineTo(rightX, cy);
+    ctx.stroke();
+    ctx.strokeStyle = '#90a4ae';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(leftX, cy);
+    ctx.lineTo(rightX, cy);
+    ctx.stroke();
+
+    // Pivot circle
+    ctx.fillStyle = '#546e7a';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 6, 0, Math.PI*2);
+    ctx.fill();
+
+    // Force F1 (down on left)
+    var f1Len = Math.min(F1 * 0.6, 70);
+    ctx.strokeStyle = '#43a047';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(leftX, cy - 5);
+    ctx.lineTo(leftX, cy - 5 - f1Len);
+    ctx.stroke();
+    ctx.fillStyle = '#43a047';
+    ctx.beginPath();
+    ctx.moveTo(leftX, cy - 5 - f1Len);
+    ctx.lineTo(leftX - 6, cy - 5 - f1Len + 12);
+    ctx.lineTo(leftX + 6, cy - 5 - f1Len + 12);
+    ctx.closePath();
+    ctx.fill();
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#43a047';
+    ctx.fillText('F₁=' + F1.toFixed(1) + 'N', leftX, cy - 5 - f1Len - 8);
+
+    // Force F2 (down on right)
+    var f2Len = Math.min(F2 * 0.3, 70);
+    ctx.strokeStyle = '#e53935';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(rightX, cy - 5);
+    ctx.lineTo(rightX, cy - 5 - f2Len);
+    ctx.stroke();
+    ctx.fillStyle = '#e53935';
+    ctx.beginPath();
+    ctx.moveTo(rightX, cy - 5 - f2Len);
+    ctx.lineTo(rightX - 6, cy - 5 - f2Len + 12);
+    ctx.lineTo(rightX + 6, cy - 5 - f2Len + 12);
+    ctx.closePath();
+    ctx.fill();
+    ctx.font = 'bold 13px sans-serif';
+    ctx.fillStyle = '#e53935';
+    ctx.fillText('F₂=' + F2 + 'N', rightX, cy - 5 - f2Len - 8);
+
+    // Arm distances
+    ctx.setLineDash([3, 3]);
+    ctx.strokeStyle = '#ff8f00';
+    ctx.lineWidth = 1;
+    // l1
+    ctx.beginPath();
+    ctx.moveTo(leftX, cy + 12);
+    ctx.lineTo(cx, cy + 12);
+    ctx.stroke();
+    ctx.fillStyle = '#ff8f00';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('l₁=' + l1.toFixed(1) + 'm', (leftX + cx)/2, cy + 28);
+    // l2
+    ctx.beginPath();
+    ctx.moveTo(cx, cy + 12);
+    ctx.lineTo(rightX, cy + 12);
+    ctx.stroke();
+    ctx.fillText('l₂=' + l2.toFixed(1) + 'm', (cx + rightX)/2, cy + 28);
+    ctx.setLineDash([]);
+
+    // Torque balance visual
+    var leftTorque = F1 * l1;
+    var rightTorque = F2 * l2;
+    ctx.font = '11px sans-serif';
+    ctx.fillStyle = '#546e7a';
+    ctx.textAlign = 'center';
+    ctx.fillText('F₁×l₁ = ' + leftTorque.toFixed(1), cx, 30);
+    ctx.fillText('F₂×l₂ = ' + rightTorque.toFixed(1), cx, 46);
+    if (Math.abs(leftTorque - rightTorque) < 0.5) {
+      ctx.fillStyle = '#43a047';
+      ctx.fillText('✅ 平衡！', cx, 66);
+    } else {
+      ctx.fillStyle = '#e53935';
+      ctx.fillText((leftTorque > rightTorque ? '← 左偏' : '右偏 →'), cx, 66);
+    }
+
+    // Update labels
+    arm1Label.textContent = l1.toFixed(1);
+    arm2Label.textContent = l2.toFixed(1);
+    f2Label.textContent = F2;
+    arm1Val.textContent = l1.toFixed(1) + 'm';
+    arm2Val.textContent = l2.toFixed(1) + 'm';
+    f2Val.textContent = F2 + 'N';
+    f1Val.textContent = F1.toFixed(1) + 'N';
+
+    if (l1 > l2 + 0.05) leverType.textContent = '省力杠杆 ✅';
+    else if (l2 > l1 + 0.05) leverType.textContent = '费力杠杆 ⚠️';
+    else leverType.textContent = '等臂杠杆 ⏸';
+    leverType.style.color = l1 > l2 ? '#2e7d32' : (l2 > l1 ? '#c62828' : '#e65100');
+  }
+
+  arm1Slider.addEventListener('input', draw);
+  arm2Slider.addEventListener('input', draw);
+  f2Slider.addEventListener('input', draw);
+  draw();
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.8) {
+      var p = JSON.parse(localStorage.getItem('physics-story-progress') || '{}');
+      if (!p.v07ch01) { p.v07ch01 = true; localStorage.setItem('physics-story-progress', JSON.stringify(p)); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

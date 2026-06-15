@@ -67,7 +67,7 @@ const volsDone = JSON.parse(localStorage.getItem('physics-story-volumes') || '{}
 
 volumes.forEach((v, idx) => {
   const isFirst = idx === 0;
-  const isUnlocked = idx <= 3 || volsDone[idx];
+  const isUnlocked = true;
   const card = document.createElement('div');
   card.className = 'book-card' + (isFirst ? ' active' : '') + (isUnlocked ? '' : ' locked');
   if (!isUnlocked) card.title = '请先完成前一卷';
